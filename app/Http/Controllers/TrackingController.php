@@ -34,7 +34,7 @@ class TrackingController extends Controller
             }
         }
 
-        if ($request->wantsJson()) {
+        if ($request->wantsJson() || $request->is('api/*')) {
             if (!$shipment) {
                 return response()->json(['success' => false, 'message' => 'Tracking number not found.'], 404);
             }

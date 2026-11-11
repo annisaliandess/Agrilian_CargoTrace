@@ -60,7 +60,7 @@ class ShipmentController extends Controller
         $shipments = $query->paginate(10)->withQueryString();
         $carriers = Carrier::where('is_active', true)->get();
 
-        if ($request->wantsJson()) {
+        if ($request->wantsJson() || $request->is('api/*')) {
             return response()->json([
                 'success' => true,
                 'data' => $shipments,
@@ -146,7 +146,7 @@ class ShipmentController extends Controller
         $targetLocation = $shipment->currentLocation ?? $shipment->destination;
         $weather = $targetLocation ? $this->weatherService->getWeatherForLocation($targetLocation) : null;
 
-        if ($request->wantsJson()) {
+        if ($request->wantsJson() || $request->is('api/*')) {
             return response()->json([
                 'success' => true,
                 'data' => $shipment,

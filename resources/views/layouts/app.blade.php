@@ -122,13 +122,13 @@
             </div>
         @endif
 
-        @if(session('error') || $errors->any())
+        @if(session('error') || (isset($errors) && $errors->any()))
             <div class="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-900 flex items-center justify-between mb-4 shadow-xs">
                 <div class="flex items-center gap-3">
                     <svg class="w-5 h-5 text-rose-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/></svg>
                     <div class="text-sm font-medium">
                         {{ session('error') ?? 'Please correct the errors in the form.' }}
-                        @if($errors->any())
+                        @if(isset($errors) && $errors->any())
                             <ul class="list-disc list-inside mt-1 text-xs text-rose-700">
                                 @foreach($errors->all() as $error)
                                     <li>{{ $error }}</li>
