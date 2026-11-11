@@ -23,7 +23,7 @@
             <!-- Headline -->
             <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
                 Visibilitas Rantai Pasok Agro Highland <br class="hidden sm:inline" />
-                <span class="text-[#95D5B2]">ke Pasar Internasional</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#95D5B2] via-[#57C84D] to-[#95D5B2]">ke Pasar Internasional</span>
             </h1>
 
             <p class="text-xs sm:text-sm text-slate-200 mt-3 max-w-lg mx-auto font-normal leading-relaxed">
@@ -31,17 +31,17 @@
             </p>
 
             <!-- Search Form -->
-            <form action="{{ route('track.public') }}" method="GET" class="mt-6 flex flex-col sm:flex-row gap-2 max-w-lg mx-auto p-1.5 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-sm">
+            <form action="{{ route('track.public') }}" method="GET" class="mt-6 flex flex-col sm:flex-row gap-2 max-w-lg mx-auto p-1.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-sm">
                 <div class="relative flex-1">
                     <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     </div>
                     <input type="text" name="tracking_number" value="{{ $query ?? 'LNDS-2026-GY001' }}" placeholder="Masukkan nomor resi (contoh: LNDS-2026-GY001)"
-                           class="w-full pl-10 pr-3 py-2.5 rounded-lg border-0 bg-white text-slate-900 placeholder-slate-400 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all">
+                           class="w-full pl-10 pr-3 py-2.5 rounded-xl border-0 bg-white text-slate-900 placeholder-slate-400 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-[#57C84D] transition-all">
                 </div>
-                <button type="submit" class="btn-brand-primary px-5 py-2.5 rounded-lg text-xs font-bold flex items-center justify-center gap-2 cursor-pointer shadow-sm shrink-0">
+                <button type="submit" class="btn-brand-accent px-6 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 cursor-pointer shadow-sm shrink-0">
                     <span>Lacak Kargo</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    <svg class="w-4 h-4 text-[#052014]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </button>
             </form>
 

@@ -188,7 +188,7 @@
                                            class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs bg-white font-normal">
                                 </div>
                                 <button type="submit" class="btn-brand-outline w-full py-2.5 px-3 rounded-lg text-xs font-semibold cursor-pointer">
-                                    + Simpan Checkpoint
+                                    Simpan Checkpoint
                                 </button>
                             </form>
                         </div>

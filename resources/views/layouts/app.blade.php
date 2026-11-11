@@ -59,33 +59,73 @@
         .leaflet-container {
             font-family: inherit;
         }
+        /* Bulletproof SVG safety */
         svg {
             display: inline-block;
             vertical-align: middle;
             flex-shrink: 0;
+            max-width: 100%;
+        }
+        svg:not([width]) {
+            width: 1.125rem;
+            height: 1.125rem;
         }
         svg.w-6 { width: 24px !important; height: 24px !important; }
         svg.w-5 { width: 20px !important; height: 20px !important; }
         svg.w-4 { width: 16px !important; height: 16px !important; }
         svg.w-3\.5 { width: 14px !important; height: 14px !important; }
 
-        /* Sleek Sidebar Gradient */
+        /* Highland Pine Gradient (Ayaa's Bespoke Palette: #1B4332 -> #95D5B2 with #57C84D accent) */
+        .bg-hero-gradient {
+            background: linear-gradient(135deg, #091D13 0%, #1B4332 45%, #2D6A4F 80%, #1B4332 100%);
+        }
         .bg-sidebar-gradient {
             background: linear-gradient(180deg, #1B4332 0%, #153829 60%, #0F281E 100%);
         }
 
+        /* Automark Inspired Glowing Pill Buttons */
+        .btn-brand-accent {
+            background: linear-gradient(135deg, #57C84D 0%, #46B63C 100%);
+            color: #052014 !important;
+            font-weight: 700;
+            box-shadow: 0 4px 18px -2px rgba(87, 200, 77, 0.45);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .btn-brand-accent:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 24px -2px rgba(87, 200, 77, 0.6);
+            filter: brightness(1.05);
+        }
+
+        .btn-glass-secondary {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #D8F3DC !important;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .btn-glass-secondary:hover {
+            background: rgba(255, 255, 255, 0.22);
+            color: #FFFFFF !important;
+            border-color: rgba(255, 255, 255, 0.45);
+            transform: translateY(-0.5px);
+        }
+
         /* Real World SaaS Button Hierarchy */
         .btn-brand-primary {
-            background-color: #1B4332;
+            background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%);
             color: #FFFFFF !important;
             font-weight: 600;
             border: 1px solid #143527;
             transition: all 0.15s ease-in-out;
-            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 6px 0 rgba(27, 67, 50, 0.25);
         }
         .btn-brand-primary:hover {
-            background-color: #245841;
-            box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.12);
+            background: linear-gradient(135deg, #245841 0%, #357A5C 100%);
+            box-shadow: 0 4px 12px 0 rgba(27, 67, 50, 0.35);
             transform: translateY(-0.5px);
         }
 
@@ -139,7 +179,7 @@
             <div class="h-16 flex items-center justify-between px-5 border-b border-white/10 bg-black/15">
                 <a href="{{ route('dashboard') }}" class="flex items-center gap-3 group min-w-0">
                     <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#2D6A4F] to-[#1B4332] border border-[#95D5B2]/30 flex items-center justify-center text-white shadow-md shadow-black/20 group-hover:scale-105 transition-transform shrink-0">
-                        <svg class="w-5 h-5 text-[#95D5B2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg width="20" height="20" class="w-5 h-5 text-[#95D5B2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
                         </svg>
@@ -179,7 +219,7 @@
                         @if(auth()->user()->isAdmin() || auth()->user()->isOperator())
                             <a href="{{ route('shipments.create') }}" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.create') ? 'bg-white/15 text-white border-l-4 border-[#57C84D] shadow-sm font-bold' : 'text-[#95D5B2] hover:text-white hover:bg-white/10' }}">
                                 <svg class="w-4 h-4 {{ request()->routeIs('shipments.create') ? 'text-[#57C84D]' : 'text-[#95D5B2]' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                                <span>+ Buat Manifest Baru</span>
+                                <span>Buat Manifest Baru</span>
                             </a>
                         @endif
                     </nav>
@@ -360,7 +400,7 @@
                 <div class="flex items-center justify-between h-16">
                     <a href="{{ route('home') }}" class="flex items-center gap-3 group">
                         <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#1B4332] to-[#2D6A4F] border border-[#95D5B2]/40 flex items-center justify-center text-white shadow-sm shadow-[#1B4332]/20 group-hover:scale-105 transition-transform">
-                            <svg class="w-5 h-5 text-[#95D5B2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg width="20" height="20" class="w-5 h-5 text-[#95D5B2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
                             </svg>
