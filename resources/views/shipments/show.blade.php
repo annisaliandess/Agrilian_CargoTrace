@@ -8,28 +8,32 @@
     @php
         $isCoffee = str_contains(strtolower($shipment->cargo_type), 'arabica') || str_contains(strtolower($shipment->cargo_type), 'coffee');
         $isHorti = str_contains(strtolower($shipment->cargo_type), 'avocado') || str_contains(strtolower($shipment->cargo_type), 'chili');
+        $imageSrc = $isCoffee ? '/images/coffee.jpg' : ($isHorti ? '/images/avocado.jpg' : '/images/ship.jpg');
     @endphp
 
     <!-- Top Action & Waybill Banner -->
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-            <div class="flex items-center gap-2 mb-1.5">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-800 border border-slate-200">
-                    {{ $shipment->cargo_type }}
-                </span>
-                <span class="text-xs font-semibold text-slate-500">&bull; {{ $shipment->carrier->name }}</span>
-            </div>
+        <div class="flex items-start gap-4">
+            <img src="{{ $imageSrc }}" alt="{{ $shipment->cargo_type }}" class="w-16 h-16 rounded-xl object-cover border border-slate-200 shrink-0 hidden sm:block shadow-2xs">
+            <div>
+                <div class="flex items-center gap-2 mb-1.5">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-800 border border-slate-200">
+                        {{ $shipment->cargo_type }}
+                    </span>
+                    <span class="text-xs font-semibold text-slate-500">&bull; {{ $shipment->carrier->name }}</span>
+                </div>
 
-            <div class="flex items-center gap-3">
-                <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-mono tracking-tight">{{ $shipment->tracking_number }}</h1>
-                <a href="{{ route('track.public', $shipment->tracking_number) }}" target="_blank" class="btn-brand-outline px-3 py-1 rounded-xl text-xs flex items-center gap-1.5">
-                    <span>Lihat Cek Resi</span>
-                    <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                </a>
+                <div class="flex items-center gap-3">
+                    <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-mono tracking-tight">{{ $shipment->tracking_number }}</h1>
+                    <a href="{{ route('track.public', $shipment->tracking_number) }}" target="_blank" class="btn-brand-outline px-3 py-1 rounded-xl text-xs flex items-center gap-1.5">
+                        <span>Lihat Cek Resi</span>
+                        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    </a>
+                </div>
+                <p class="text-xs text-slate-600 mt-1 font-medium">
+                    Pembeli / Consignee: <strong class="text-slate-900">{{ $shipment->customer->name ?? 'Confidential' }}</strong> &bull; Komoditas: <strong class="text-slate-900">{{ $shipment->cargo_type }}</strong>
+                </p>
             </div>
-            <p class="text-xs text-slate-600 mt-1 font-medium">
-                Pembeli / Consignee: <strong class="text-slate-900">{{ $shipment->customer->name ?? 'Confidential' }}</strong> &bull; Komoditas: <strong class="text-slate-900">{{ $shipment->cargo_type }}</strong>
-            </p>
         </div>
 
         <!-- Badges -->

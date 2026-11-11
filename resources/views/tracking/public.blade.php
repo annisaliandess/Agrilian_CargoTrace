@@ -72,23 +72,35 @@
         </div>
     @elseif($shipment)
 
+        @php
+            $imageSrc = '/images/ship.jpg';
+            if (str_contains(strtolower($shipment->cargo_type), 'arabica') || str_contains(strtolower($shipment->cargo_type), 'coffee')) {
+                $imageSrc = '/images/coffee.jpg';
+            } elseif (str_contains(strtolower($shipment->cargo_type), 'avocado') || str_contains(strtolower($shipment->cargo_type), 'chili')) {
+                $imageSrc = '/images/avocado.jpg';
+            }
+        @endphp
+
         <!-- Waybill Status Banner -->
         <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-100">
-                <div>
-                    <div class="flex items-center gap-2 mb-1.5">
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-800 border border-slate-200">
-                            {{ $shipment->cargo_type }}
-                        </span>
-                        <span class="text-xs font-semibold text-slate-500">&bull; {{ $shipment->carrier->name }}</span>
-                    </div>
+                <div class="flex items-start gap-4">
+                    <img src="{{ $imageSrc }}" alt="{{ $shipment->cargo_type }}" class="w-16 h-16 rounded-xl object-cover border border-slate-200 shrink-0 hidden sm:block shadow-2xs">
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-800 border border-slate-200">
+                                {{ $shipment->cargo_type }}
+                            </span>
+                            <span class="text-xs font-semibold text-slate-500">&bull; {{ $shipment->carrier->name }}</span>
+                        </div>
 
-                    <h2 class="text-2xl font-black text-slate-900 font-mono tracking-tight">
-                        {{ $shipment->tracking_number }}
-                    </h2>
-                    <p class="text-xs text-slate-600 mt-1 font-medium">
-                        Rute: <strong class="text-slate-900">{{ $shipment->origin->name }} ({{ $shipment->origin->city }})</strong> &rarr; <strong class="text-slate-900">{{ $shipment->destination->name }} ({{ $shipment->destination->city }})</strong>
-                    </p>
+                        <h2 class="text-2xl font-black text-slate-900 font-mono tracking-tight">
+                            {{ $shipment->tracking_number }}
+                        </h2>
+                        <p class="text-xs text-slate-600 mt-1 font-medium">
+                            Rute: <strong class="text-slate-900">{{ $shipment->origin->name }} ({{ $shipment->origin->city }})</strong> &rarr; <strong class="text-slate-900">{{ $shipment->destination->name }} ({{ $shipment->destination->city }})</strong>
+                        </p>
+                    </div>
                 </div>
 
                 <div class="flex items-center gap-3">

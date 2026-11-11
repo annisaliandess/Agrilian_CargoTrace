@@ -95,11 +95,17 @@
                                 {{ $s->customer->name ?? 'Confidential' }}
                             </td>
                             <td class="py-3 px-4">
-                                <div class="font-semibold text-slate-800">
-                                    {{ $s->cargo_type }}
-                                </div>
-                                <div class="text-[11px] text-slate-400 mt-0.5">
-                                    {{ number_format($s->weight_kg, 0) }} kg &bull; {{ $s->volume_cbm ?? '-' }} CBM
+                                @php
+                                    $thumb = str_contains(strtolower($s->cargo_type), 'arabica') || str_contains(strtolower($s->cargo_type), 'coffee') 
+                                        ? '/images/coffee.jpg' 
+                                        : (str_contains(strtolower($s->cargo_type), 'avocado') || str_contains(strtolower($s->cargo_type), 'chili') ? '/images/avocado.jpg' : '/images/ship.jpg');
+                                @endphp
+                                <div class="flex items-center gap-2.5">
+                                    <img src="{{ $thumb }}" alt="" class="w-8 h-8 rounded-lg object-cover border border-slate-200 shrink-0">
+                                    <div>
+                                        <div class="font-semibold text-slate-900">{{ $s->cargo_type }}</div>
+                                        <div class="text-[11px] text-slate-400 mt-0.5">{{ number_format($s->weight_kg, 0) }} kg &bull; {{ $s->volume_cbm ?? '-' }} CBM</div>
+                                    </div>
                                 </div>
                             </td>
                             <td class="py-3 px-4 text-xs">

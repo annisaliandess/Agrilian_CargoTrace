@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full bg-slate-50">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full bg-[#F8FAFC]">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,10 +28,6 @@
                             soft: '#74C69D',
                             mint: '#95D5B2',
                             ice: '#D8F3DC',
-                        },
-                        accent: {
-                            vibrant: '#57C84D',
-                            glow: '#4ade80',
                         },
                         slate: {
                             50: '#F8FAFC',
@@ -73,38 +69,38 @@
         svg.w-4 { width: 16px !important; height: 16px !important; }
         svg.w-3\.5 { width: 14px !important; height: 14px !important; }
 
-        /* Subtle Enterprise Gradients */
+        /* Sleek Sidebar Gradient */
         .bg-sidebar-gradient {
             background: linear-gradient(180deg, #1B4332 0%, #153829 60%, #0F281E 100%);
         }
-        .bg-hero-gradient {
-            background: linear-gradient(145deg, #0F281E 0%, #1B4332 55%, #245841 100%);
-        }
 
-        /* Buttons with tactile feedback */
+        /* Real World SaaS Button Hierarchy */
         .btn-brand-primary {
-            background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%);
-            color: #FFFFFF;
+            background-color: #1B4332;
+            color: #FFFFFF !important;
+            font-weight: 600;
+            border: 1px solid #143527;
             transition: all 0.15s ease-in-out;
-            box-shadow: 0 1px 3px 0 rgba(27, 67, 50, 0.2);
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
         }
         .btn-brand-primary:hover {
-            background: linear-gradient(135deg, #245841 0%, #1B4332 100%);
-            box-shadow: 0 4px 12px 0 rgba(27, 67, 50, 0.3);
+            background-color: #245841;
+            box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.12);
             transform: translateY(-0.5px);
         }
 
         .btn-brand-outline {
-            background: #FFFFFF;
+            background-color: #FFFFFF;
             border: 1px solid #CBD5E1;
-            color: #1E293B;
+            color: #334155 !important;
             font-weight: 600;
             transition: all 0.15s ease-in-out;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
         }
         .btn-brand-outline:hover {
-            background: #F8FAFC;
+            background-color: #F8FAFC;
             border-color: #94A3B8;
-            color: #0F172A;
+            color: #0F172A !important;
         }
 
         /* Sleek scrollbar */
@@ -124,7 +120,7 @@
         }
     </style>
 </head>
-<body class="h-full font-sans text-slate-800 antialiased selection:bg-[#1B4332] selection:text-white bg-slate-50">
+<body class="h-full font-sans text-slate-800 antialiased selection:bg-[#1B4332] selection:text-white bg-[#F8FAFC]">
 
 @php
     $isPublicTracker = request()->routeIs('track.public') || request()->routeIs('home') || request()->routeIs('login');
@@ -232,18 +228,18 @@
             </div>
         </aside>
 
-        <!-- Right Main Workspace (Lebar menyesuaikan saat sidebar ditutup) -->
+        <!-- Right Main Workspace -->
         <div id="main-content" class="flex-1 pl-64 flex flex-col min-h-screen transition-all duration-300 ease-in-out">
             <!-- Top Header Bar -->
             <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 sm:px-8 sticky top-0 z-30 shadow-2xs">
                 <div class="flex items-center gap-3">
                     <!-- Tombol Buka / Tutup Sidebar (Hamburger Toggle) -->
                     <button type="button" onclick="toggleSidebar()" id="sidebar-toggle-btn" title="Buka / Tutup Menu Navigasi"
-                            class="p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer border border-slate-200 shadow-2xs flex items-center gap-2">
+                            class="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer border border-slate-200 shadow-2xs flex items-center gap-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
-                        <span class="text-xs font-semibold hidden md:inline text-slate-600" id="sidebar-toggle-text">Menu</span>
+                        <span class="text-xs font-semibold hidden md:inline text-slate-700" id="sidebar-toggle-text">Menu</span>
                     </button>
 
                     <div class="flex items-center gap-2">
@@ -257,7 +253,7 @@
                 </div>
 
                 <div class="flex items-center gap-3">
-                    <a href="{{ route('track.public') }}" class="btn-brand-outline px-3.5 py-1.5 rounded-xl text-xs flex items-center gap-2">
+                    <a href="{{ route('track.public') }}" class="btn-brand-outline px-3.5 py-1.5 rounded-lg text-xs flex items-center gap-2">
                         <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                         <span>Cek Resi Publik</span>
                     </a>
@@ -344,7 +340,6 @@
             const mainContent = document.getElementById('main-content');
             if (!sidebar || !mainContent) return;
 
-            // Di layar mobile selalu tutup awal, di desktop ikuti localStorage
             const isMobile = window.innerWidth < 1024;
             const savedState = localStorage.getItem('cargotrace_sidebar_collapsed');
 
@@ -357,9 +352,7 @@
     </script>
 
 @else
-    <!-- ======================================================== -->
-    <!-- STANDALONE TOP-NAV LAYOUT (Public Tracker & Sign In)     -->
-    <!-- ======================================================== -->
+    <!-- STANDALONE TOP-NAV LAYOUT (Public Tracker & Sign In) -->
     <div class="min-h-full flex flex-col">
         <!-- Top Nav Header -->
         <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-2xs">
@@ -379,7 +372,7 @@
                     </a>
 
                     <div class="flex items-center gap-3">
-                        <a href="{{ route('track.public') }}" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-700 bg-slate-100 border border-slate-200 hover:bg-slate-200 transition-colors">
+                        <a href="{{ route('track.public') }}" class="btn-brand-outline px-3.5 py-1.5 rounded-lg text-xs font-semibold">
                             Cek Resi Kargo
                         </a>
 
