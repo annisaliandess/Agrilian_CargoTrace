@@ -1,0 +1,360 @@
+{
+	"info": {
+		"_postman_id": "cargotrace-agrilian-v1",
+		"name": "CargoTrace AgriLian - REST API Collection",
+		"description": "Highland Agro-Export Visibility Platform API (Laravel 12 + Sanctum Auth). Multimodal tracking Takengon -> Belawan -> Singapore -> Rotterdam.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "1. Authentication",
+			"item": [
+				{
+					"name": "Login (Admin - Ayaa Liandes)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"if (jsonData.access_token) {",
+									"    pm.collectionVariables.set('token', jsonData.access_token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@cargotrace.com\",\n    \"password\": \"password123\",\n    \"device_name\": \"postman_client\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/login",
+							"host": ["{{base_url}}"],
+							"path": ["api", "login"]
+						}
+					}
+				},
+				{
+					"name": "Current Authenticated User (/me)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/me",
+							"host": ["{{base_url}}"],
+							"path": ["api", "me"]
+						}
+					}
+				},
+				{
+					"name": "Logout (Revoke Token)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/logout",
+							"host": ["{{base_url}}"],
+							"path": ["api", "logout"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Public Radar & Weather",
+			"item": [
+				{
+					"name": "Public Track by Tracking # (Ocean Export)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/track/LNDS-2026-GY001",
+							"host": ["{{base_url}}"],
+							"path": ["api", "track", "LNDS-2026-GY001"]
+						}
+					}
+				},
+				{
+					"name": "Live OpenWeather Query (Takengon Hub)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/weather?lat=4.6293&lon=96.8458",
+							"host": ["{{base_url}}"],
+							"path": ["api", "weather"],
+							"query": [
+								{
+									"key": "lat",
+									"value": "4.6293"
+								},
+								{
+									"key": "lon",
+									"value": "96.8458"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Shipments",
+			"item": [
+				{
+					"name": "List All Shipments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/shipments?status=IN_TRANSIT",
+							"host": ["{{base_url}}"],
+							"path": ["api", "shipments"],
+							"query": [
+								{
+									"key": "status",
+									"value": "IN_TRANSIT"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Shipment Details by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/shipments/1",
+							"host": ["{{base_url}}"],
+							"path": ["api", "shipments", "1"]
+						}
+					}
+				},
+				{
+					"name": "Create New Agro-Shipment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer_id\": 5,\n    \"carrier_id\": 2,\n    \"origin_id\": 1,\n    \"destination_id\": 6,\n    \"cargo_type\": \"Arabica Gayo Wine Process Organic\",\n    \"weight_kg\": 12000,\n    \"volume_cbm\": 25.5,\n    \"expected_departure\": \"2026-11-15 08:00:00\",\n    \"expected_arrival\": \"2026-12-05 14:00:00\",\n    \"items\": [\n        {\n            \"item_name\": \"Gayo Natural Anaerobic Wine Coffee\",\n            \"quantity\": 200,\n            \"weight_kg\": 12000,\n            \"package_type\": \"GrainPro Hermetic Bag 60kg\",\n            \"description\": \"SCA Score 89.0\"\n        }\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/shipments",
+							"host": ["{{base_url}}"],
+							"path": ["api", "shipments"]
+						}
+					}
+				},
+				{
+					"name": "Transition Shipment Status",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"DELIVERED\",\n    \"location_id\": 6,\n    \"notes\": \"Cargo safely arrived at Rotterdam Maasvlakte and cleared by customs.\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/shipments/1/status",
+							"host": ["{{base_url}}"],
+							"path": ["api", "shipments", "1", "status"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "4. Checkpoints & Exceptions",
+			"item": [
+				{
+					"name": "Record Checkpoint Tracking Event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"location_id\": 2,\n    \"status\": \"IN_TRANSIT\",\n    \"description\": \"Cleared Bireuen mountain transit point. Temperature maintained at 18°C.\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/shipments/1/events",
+							"host": ["{{base_url}}"],
+							"path": ["api", "shipments", "1", "events"]
+						}
+					}
+				},
+				{
+					"name": "Report Route Exception (Weather Delay)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"exception_type\": \"WEATHER_DELAY\",\n    \"severity\": \"HIGH\",\n    \"estimated_delay_hours\": 18,\n    \"description\": \"Torrential mountain monsoon rainfall triggered precautionary road stoppage.\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/shipments/1/exceptions",
+							"host": ["{{base_url}}"],
+							"path": ["api", "shipments", "1", "exceptions"]
+						}
+					}
+				},
+				{
+					"name": "Resolve Route Exception",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resolution_notes\": \"Mountain road reopened after BPBD safety inspection. Convoy resuming journey towards Belawan Port.\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/exceptions/1/resolve",
+							"host": ["{{base_url}}"],
+							"path": ["api", "exceptions", "1", "resolve"]
+						}
+					}
+				}
+			]
+		}
+	]
+}

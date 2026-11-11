@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'openweather' => [
+        'key' => env('OPENWEATHER_API_KEY', '2d42f08cfd74d9c7b2212012feefac6a'),
+    ],
+
 ];
