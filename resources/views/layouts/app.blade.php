@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full bg-[#F8FAF9]">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full bg-slate-50">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,29 +22,29 @@
                 extend: {
                     colors: {
                         pine: {
-                            deep: '#1B4332',     /* Hijau Gelap Utama (Warna Awal) */
-                            mid: '#2D6A4F',      /* Hijau Hutan Sedang */
-                            leaf: '#40916C',     /* Hijau Daun Segar */
-                            soft: '#74C69D',     /* Mint Lembut */
-                            mint: '#95D5B2',     /* Hijau Muda Lembut (Warna Akhir) */
-                            ice: '#D8F3DC',      /* Tint Sejuk */
+                            deep: '#1B4332',     /* Forest Pine Utama */
+                            mid: '#2D6A4F',
+                            leaf: '#40916C',
+                            soft: '#74C69D',
+                            mint: '#95D5B2',
+                            ice: '#D8F3DC',
                         },
                         accent: {
-                            vibrant: '#57C84D',  /* Hijau Terang / Segar (Aksen) */
+                            vibrant: '#57C84D',
                             glow: '#4ade80',
                         },
                         slate: {
-                            50: '#F8FAF9',       /* Background Lembut Adem di Mata */
-                            100: '#F0F4F2',
-                            200: '#E2E8E5',
-                            300: '#CBD5D0',
-                            400: '#94A39D',
-                            500: '#64746F',
-                            600: '#475551',
-                            700: '#33413D',
-                            800: '#1E2925',
-                            900: '#0F1714',
-                            950: '#060B09',
+                            50: '#F8FAFC',
+                            100: '#F1F5F9',
+                            200: '#E2E8F0',
+                            300: '#CBD5E1',
+                            400: '#94A3B8',
+                            500: '#64748B',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1E293B',
+                            900: '#0F172A',
+                            950: '#020617',
                         }
                     },
                     fontFamily: {
@@ -73,92 +73,58 @@
         svg.w-4 { width: 16px !important; height: 16px !important; }
         svg.w-3\.5 { width: 14px !important; height: 14px !important; }
 
-        /* Bespoke Agro-Industrial Gradients */
-        .bg-brand-gradient {
-            background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 60%, #40916C 100%);
+        /* Subtle Enterprise Gradients */
+        .bg-sidebar-gradient {
+            background: linear-gradient(180deg, #1B4332 0%, #153829 60%, #0F281E 100%);
         }
         .bg-hero-gradient {
-            background: linear-gradient(145deg, #0A1E16 0%, #1B4332 50%, #23543F 100%);
-        }
-        .bg-sidebar-gradient {
-            background: linear-gradient(180deg, #1B4332 0%, #143527 60%, #0D2219 100%);
-        }
-        .bg-accent-gradient {
-            background: linear-gradient(135deg, #57C84D 0%, #2D6A4F 100%);
-        }
-        .bg-mint-soft {
-            background: linear-gradient(135deg, #F0FBF5 0%, #E2F7EC 100%);
-        }
-
-        /* Gradient Text (Automark Style) */
-        .text-gradient-mint {
-            background: linear-gradient(135deg, #95D5B2 0%, #57C84D 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .text-gradient-forest {
-            background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            background: linear-gradient(145deg, #0F281E 0%, #1B4332 55%, #245841 100%);
         }
 
         /* Buttons with tactile feedback */
         .btn-brand-primary {
             background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%);
             color: #FFFFFF;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 14px -2px rgba(27, 67, 50, 0.4);
+            transition: all 0.15s ease-in-out;
+            box-shadow: 0 1px 3px 0 rgba(27, 67, 50, 0.2);
         }
         .btn-brand-primary:hover {
-            background: linear-gradient(135deg, #2D6A4F 0%, #1B4332 100%);
-            box-shadow: 0 6px 20px -2px rgba(27, 67, 50, 0.5);
-            transform: translateY(-1px);
-        }
-
-        .btn-brand-accent {
-            background: linear-gradient(135deg, #57C84D 0%, #40916C 100%);
-            color: #071E14;
-            font-weight: 800;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 14px -2px rgba(87, 200, 77, 0.45);
-        }
-        .btn-brand-accent:hover {
-            filter: brightness(1.08);
-            box-shadow: 0 6px 20px -2px rgba(87, 200, 77, 0.6);
-            transform: translateY(-1px);
+            background: linear-gradient(135deg, #245841 0%, #1B4332 100%);
+            box-shadow: 0 4px 12px 0 rgba(27, 67, 50, 0.3);
+            transform: translateY(-0.5px);
         }
 
         .btn-brand-outline {
             background: #FFFFFF;
-            border: 1.5px solid #95D5B2;
-            color: #1B4332;
-            font-weight: 700;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #CBD5E1;
+            color: #1E293B;
+            font-weight: 600;
+            transition: all 0.15s ease-in-out;
         }
         .btn-brand-outline:hover {
-            background: #F0FBF5;
-            border-color: #57C84D;
-            transform: translateY(-1px);
+            background: #F8FAFC;
+            border-color: #94A3B8;
+            color: #0F172A;
         }
 
-        /* Custom Scrollbar */
+        /* Sleek scrollbar */
         ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+            width: 5px;
+            height: 5px;
         }
         ::-webkit-scrollbar-track {
-            background: #F0F4F2;
+            background: #F1F5F9;
         }
         ::-webkit-scrollbar-thumb {
-            background: #CBD5D0;
+            background: #CBD5E1;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #95D5B2;
+            background: #94A3B8;
         }
     </style>
 </head>
-<body class="h-full font-sans text-slate-800 antialiased selection:bg-[#1B4332] selection:text-[#95D5B2] bg-[#F8FAF9]">
+<body class="h-full font-sans text-slate-800 antialiased selection:bg-[#1B4332] selection:text-white bg-slate-50">
 
 @php
     $isPublicTracker = request()->routeIs('track.public') || request()->routeIs('home') || request()->routeIs('login');
@@ -167,68 +133,72 @@
 
 @if($useSidebar)
     <!-- ======================================================== -->
-    <!-- AUTHENTICATED SIDEBAR LAYOUT (Dashboard, Shipments, CRUD) -->
+    <!-- AUTHENTICATED COLLAPSIBLE SIDEBAR LAYOUT                 -->
     <!-- ======================================================== -->
-    <div class="min-h-full flex">
-        <!-- Sidebar Column (Deep Pine Gradient) -->
-        <aside class="w-64 bg-sidebar-gradient text-white flex flex-col fixed inset-y-0 z-40 shadow-xl border-r border-[#1B4332]/40">
-            <!-- Brand Logo Area -->
-            <div class="h-18 flex items-center px-6 border-b border-white/10 bg-black/15">
-                <a href="{{ route('dashboard') }}" class="flex items-center gap-3 group">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#2D6A4F] to-[#1B4332] border border-[#95D5B2]/30 flex items-center justify-center text-white shadow-md shadow-black/20 group-hover:scale-105 transition-transform">
-                        <svg class="w-5 h-5 text-[#57C84D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+    <div class="min-h-full flex relative overflow-x-hidden">
+
+        <!-- Sidebar Column (Bisa Dibuka dan Ditutup) -->
+        <aside id="app-sidebar" class="w-64 bg-sidebar-gradient text-white flex flex-col fixed inset-y-0 left-0 z-40 shadow-xl border-r border-[#1B4332]/40 transition-transform duration-300 ease-in-out">
+            <!-- Brand Logo Area + Internal Close Button -->
+            <div class="h-16 flex items-center justify-between px-5 border-b border-white/10 bg-black/15">
+                <a href="{{ route('dashboard') }}" class="flex items-center gap-3 group min-w-0">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#2D6A4F] to-[#1B4332] border border-[#95D5B2]/30 flex items-center justify-center text-white shadow-md shadow-black/20 group-hover:scale-105 transition-transform shrink-0">
+                        <svg class="w-5 h-5 text-[#95D5B2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
                         </svg>
                     </div>
-                    <div>
-                        <div class="flex items-center gap-1.5 leading-none">
-                            <span class="text-base font-extrabold text-white tracking-tight">CargoTrace</span>
-                        </div>
-                        <span class="text-[11px] font-bold text-[#95D5B2] tracking-wider uppercase mt-1 block">
-                            AgriLian Portal
-                        </span>
+                    <div class="min-w-0">
+                        <span class="text-sm font-bold text-white tracking-tight block leading-tight">CargoTrace</span>
+                        <span class="text-[10px] font-semibold text-[#95D5B2] tracking-wider uppercase block mt-0.5">AgriLian Portal</span>
                     </div>
                 </a>
+
+                <!-- Tombol Tutup Sidebar di Dalam -->
+                <button type="button" onclick="toggleSidebar()" title="Sembunyikan menu" class="p-1.5 rounded-lg text-[#95D5B2] hover:text-white hover:bg-white/10 transition-colors cursor-pointer">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/>
+                    </svg>
+                </button>
             </div>
 
             <!-- Navigation Links -->
             <div class="flex-1 px-3 py-5 space-y-6 overflow-y-auto">
                 <!-- Group 1: Core Operations -->
                 <div>
-                    <div class="px-3 text-[10px] font-extrabold uppercase tracking-widest text-[#95D5B2]/70 mb-2">
+                    <div class="px-3 text-[10px] font-bold uppercase tracking-wider text-[#95D5B2]/70 mb-2">
                         Operasional Ekspor
                     </div>
-                    <nav class="space-y-1.5">
-                        <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all {{ request()->routeIs('dashboard') ? 'bg-gradient-to-r from-white/15 to-white/5 text-white border-l-4 border-[#57C84D] shadow-sm' : 'text-[#95D5B2] hover:text-white hover:bg-white/10' }}">
+                    <nav class="space-y-1">
+                        <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('dashboard') ? 'bg-white/15 text-white border-l-4 border-[#57C84D] shadow-sm font-bold' : 'text-[#95D5B2] hover:text-white hover:bg-white/10' }}">
                             <svg class="w-4 h-4 {{ request()->routeIs('dashboard') ? 'text-[#57C84D]' : 'text-[#95D5B2]' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
                             <span>Dashboard Radar</span>
                         </a>
 
-                        <a href="{{ route('shipments.index') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all {{ request()->routeIs('shipments.index') || request()->routeIs('shipments.show') ? 'bg-gradient-to-r from-white/15 to-white/5 text-white border-l-4 border-[#57C84D] shadow-sm' : 'text-[#95D5B2] hover:text-white hover:bg-white/10' }}">
+                        <a href="{{ route('shipments.index') }}" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.index') || request()->routeIs('shipments.show') ? 'bg-white/15 text-white border-l-4 border-[#57C84D] shadow-sm font-bold' : 'text-[#95D5B2] hover:text-white hover:bg-white/10' }}">
                             <svg class="w-4 h-4 {{ request()->routeIs('shipments.index') || request()->routeIs('shipments.show') ? 'text-[#57C84D]' : 'text-[#95D5B2]' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
                             <span>Manifes Kargo (Roster)</span>
                         </a>
 
                         @if(auth()->user()->isAdmin() || auth()->user()->isOperator())
-                            <a href="{{ route('shipments.create') }}" class="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all {{ request()->routeIs('shipments.create') ? 'bg-gradient-to-r from-white/15 to-white/5 text-white border-l-4 border-[#57C84D] shadow-sm' : 'text-[#95D5B2] hover:text-white hover:bg-white/10' }}">
+                            <a href="{{ route('shipments.create') }}" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.create') ? 'bg-white/15 text-white border-l-4 border-[#57C84D] shadow-sm font-bold' : 'text-[#95D5B2] hover:text-white hover:bg-white/10' }}">
                                 <svg class="w-4 h-4 {{ request()->routeIs('shipments.create') ? 'text-[#57C84D]' : 'text-[#95D5B2]' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                                <span>+ Buat Kargo Baru</span>
+                                <span>+ Buat Manifest Baru</span>
                             </a>
                         @endif
                     </nav>
                 </div>
 
-                <!-- Group 2: Public Portal & Links -->
+                <!-- Group 2: Public Portal -->
                 <div>
-                    <div class="px-3 text-[10px] font-extrabold uppercase tracking-widest text-[#95D5B2]/70 mb-2">
+                    <div class="px-3 text-[10px] font-bold uppercase tracking-wider text-[#95D5B2]/70 mb-2">
                         Portal Publik
                     </div>
-                    <nav class="space-y-1.5">
-                        <a href="{{ route('track.public') }}" target="_blank" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold text-[#95D5B2] hover:text-white hover:bg-white/10 transition-all group">
+                    <nav class="space-y-1">
+                        <a href="{{ route('track.public') }}" target="_blank" class="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold text-[#95D5B2] hover:text-white hover:bg-white/10 transition-all group">
                             <span class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-[#95D5B2] group-hover:text-[#57C84D]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                                <span>Cek Resi Publik</span>
+                                <svg class="w-4 h-4 text-[#95D5B2] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                                <span>Halaman Cek Resi</span>
                             </span>
                             <span class="text-[10px] px-1.5 py-0.5 rounded bg-white/15 text-[#95D5B2] group-hover:text-white">↗</span>
                         </a>
@@ -240,14 +210,14 @@
             <div class="p-3 border-t border-white/10 bg-black/20">
                 <div class="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-white/10">
                     <div class="flex items-center gap-2.5 overflow-hidden">
-                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#57C84D] to-[#2D6A4F] text-[#0A2016] flex items-center justify-center font-black text-xs shrink-0 shadow-sm">
+                        <div class="w-8 h-8 rounded-lg bg-[#2D6A4F] text-white flex items-center justify-center font-bold text-xs shrink-0 border border-[#95D5B2]/40">
                             {{ substr(auth()->user()->name, 0, 1) }}
                         </div>
                         <div class="min-w-0">
-                            <div class="text-xs font-extrabold text-white truncate">{{ auth()->user()->name }}</div>
+                            <div class="text-xs font-bold text-white truncate">{{ auth()->user()->name }}</div>
                             <div class="flex items-center gap-1.5">
-                                <span class="w-1.5 h-1.5 rounded-full bg-[#57C84D] animate-pulse"></span>
-                                <span class="text-[10px] font-semibold text-[#95D5B2] uppercase tracking-wider">{{ auth()->user()->role }}</span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-[#57C84D]"></span>
+                                <span class="text-[10px] font-medium text-[#95D5B2] uppercase tracking-wider">{{ auth()->user()->role }}</span>
                             </div>
                         </div>
                     </div>
@@ -262,43 +232,54 @@
             </div>
         </aside>
 
-        <!-- Right Main Workspace -->
-        <div class="flex-1 pl-64 flex flex-col min-h-screen">
-            <!-- Top Header Bar (Crisp White + Fine Border) -->
-            <header class="h-18 bg-white border-b border-slate-200/80 flex items-center justify-between px-6 sm:px-8 sticky top-0 z-30 shadow-2xs">
+        <!-- Right Main Workspace (Lebar menyesuaikan saat sidebar ditutup) -->
+        <div id="main-content" class="flex-1 pl-64 flex flex-col min-h-screen transition-all duration-300 ease-in-out">
+            <!-- Top Header Bar -->
+            <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 sm:px-8 sticky top-0 z-30 shadow-2xs">
                 <div class="flex items-center gap-3">
-                    <span class="text-xs font-extrabold text-[#1B4332] font-mono">Takengon Highland Central Hub</span>
-                    <span class="text-slate-300">•</span>
-                    <span class="inline-flex items-center gap-1.5 text-xs font-bold text-[#1B4332] bg-[#F0FBF5] px-2.5 py-1 rounded-full border border-[#95D5B2]/60">
-                        <span class="w-2 h-2 rounded-full bg-[#57C84D] animate-pulse"></span>
-                        Koridor Ekspor Aktif
-                    </span>
+                    <!-- Tombol Buka / Tutup Sidebar (Hamburger Toggle) -->
+                    <button type="button" onclick="toggleSidebar()" id="sidebar-toggle-btn" title="Buka / Tutup Menu Navigasi"
+                            class="p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors cursor-pointer border border-slate-200 shadow-2xs flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <span class="text-xs font-semibold hidden md:inline text-slate-600" id="sidebar-toggle-text">Menu</span>
+                    </button>
+
+                    <div class="flex items-center gap-2">
+                        <span class="text-xs font-bold text-slate-700 font-mono hidden sm:inline">Takengon Central Logistics Hub</span>
+                        <span class="text-slate-300 hidden sm:inline">•</span>
+                        <span class="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
+                            Koridor Ekspor Aktif
+                        </span>
+                    </div>
                 </div>
 
                 <div class="flex items-center gap-3">
                     <a href="{{ route('track.public') }}" class="btn-brand-outline px-3.5 py-1.5 rounded-xl text-xs flex items-center gap-2">
-                        <svg class="w-3.5 h-3.5 text-[#1B4332]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                        <span>Cari Resi Publik</span>
+                        <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        <span>Cek Resi Publik</span>
                     </a>
                 </div>
             </header>
 
             <!-- Alerts / Flash Messages -->
-            <div class="px-6 sm:px-8 mt-4">
+            <div class="px-4 sm:px-8 mt-4">
                 @if(session('success'))
-                    <div class="p-3.5 rounded-xl bg-[#F0FBF5] border border-[#95D5B2] text-[#1B4332] flex items-center gap-2.5 text-xs font-bold shadow-2xs">
-                        <span class="w-2 h-2 rounded-full bg-[#57C84D] shrink-0"></span>
+                    <div class="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 flex items-center gap-2.5 text-xs font-semibold shadow-2xs">
+                        <span class="w-2 h-2 rounded-full bg-emerald-600 shrink-0"></span>
                         <span>{{ session('success') }}</span>
                     </div>
                 @endif
                 @if(session('warning'))
-                    <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 flex items-center gap-2.5 text-xs font-bold shadow-2xs">
+                    <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 flex items-center gap-2.5 text-xs font-semibold shadow-2xs">
                         <span class="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
                         <span>{{ session('warning') }}</span>
                     </div>
                 @endif
                 @if(session('error') || (isset($errors) && $errors->any()))
-                    <div class="p-3.5 rounded-xl bg-rose-50 border border-rose-300 text-rose-900 text-xs font-bold shadow-2xs">
+                    <div class="p-3.5 rounded-xl bg-rose-50 border border-rose-300 text-rose-900 text-xs font-semibold shadow-2xs">
                         <div class="flex items-center gap-2.5">
                             <span class="w-2 h-2 rounded-full bg-rose-600 shrink-0"></span>
                             <div>
@@ -317,14 +298,14 @@
             </div>
 
             <!-- Main Page Slot -->
-            <main class="flex-1 px-6 sm:px-8 py-6">
+            <main class="flex-1 px-4 sm:px-8 py-6">
                 @yield('content')
             </main>
 
             <!-- Workspace Footer -->
-            <footer class="border-t border-slate-200 bg-white py-4 px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+            <footer class="border-t border-slate-200 bg-white py-4 px-4 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
                 <div>
-                    <strong class="text-[#1B4332] font-bold">CargoTrace AgriLian</strong> &bull; Takengon &bull; Bireuen &bull; Belawan &bull; Singapore &bull; Rotterdam
+                    <strong class="text-slate-800 font-semibold">CargoTrace AgriLian</strong> &bull; Takengon &bull; Bireuen &bull; Belawan &bull; Singapore &bull; Rotterdam
                 </div>
                 <div>
                     Annisa Liandes (Ayaa) &bull; <strong class="text-slate-700">Universitas Malikussaleh (Unimal)</strong>
@@ -333,40 +314,82 @@
         </div>
     </div>
 
+    <!-- Script Buka/Tutup Sidebar (Collapsible Persistence) -->
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('app-sidebar');
+            const mainContent = document.getElementById('main-content');
+            if (!sidebar || !mainContent) return;
+
+            const isClosed = sidebar.classList.contains('-translate-x-full');
+
+            if (isClosed) {
+                // Buka sidebar
+                sidebar.classList.remove('-translate-x-full');
+                mainContent.classList.remove('pl-0');
+                mainContent.classList.add('pl-64');
+                localStorage.setItem('cargotrace_sidebar_collapsed', 'false');
+            } else {
+                // Tutup sidebar
+                sidebar.classList.add('-translate-x-full');
+                mainContent.classList.remove('pl-64');
+                mainContent.classList.add('pl-0');
+                localStorage.setItem('cargotrace_sidebar_collapsed', 'true');
+            }
+        }
+
+        // Terapkan preferensi buka/tutup saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('app-sidebar');
+            const mainContent = document.getElementById('main-content');
+            if (!sidebar || !mainContent) return;
+
+            // Di layar mobile selalu tutup awal, di desktop ikuti localStorage
+            const isMobile = window.innerWidth < 1024;
+            const savedState = localStorage.getItem('cargotrace_sidebar_collapsed');
+
+            if (isMobile || savedState === 'true') {
+                sidebar.classList.add('-translate-x-full');
+                mainContent.classList.remove('pl-64');
+                mainContent.classList.add('pl-0');
+            }
+        });
+    </script>
+
 @else
     <!-- ======================================================== -->
-    <!-- STANDALONE TOP-NAV LAYOUT (For Public Tracker & Sign In) -->
+    <!-- STANDALONE TOP-NAV LAYOUT (Public Tracker & Sign In)     -->
     <!-- ======================================================== -->
     <div class="min-h-full flex flex-col">
-        <!-- Top Nav Header (Automark Inspired Clean Pill Bar) -->
-        <header class="bg-white/95 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-40 shadow-2xs">
+        <!-- Top Nav Header -->
+        <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-2xs">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-18">
+                <div class="flex items-center justify-between h-16">
                     <a href="{{ route('home') }}" class="flex items-center gap-3 group">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1B4332] to-[#2D6A4F] border border-[#95D5B2]/40 flex items-center justify-center text-white shadow-md shadow-[#1B4332]/20 group-hover:scale-105 transition-transform">
-                            <svg class="w-5 h-5 text-[#57C84D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+                        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#1B4332] to-[#2D6A4F] border border-[#95D5B2]/40 flex items-center justify-center text-white shadow-sm shadow-[#1B4332]/20 group-hover:scale-105 transition-transform">
+                            <svg class="w-5 h-5 text-[#95D5B2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
                             </svg>
                         </div>
                         <div>
-                            <span class="text-base font-extrabold text-[#1B4332] tracking-tight">CargoTrace <span class="text-[#2D6A4F]">AgriLian</span></span>
-                            <span class="block text-[10px] font-bold text-[#40916C] uppercase tracking-wider">Highland Agro-Export Visibility</span>
+                            <span class="text-base font-bold text-slate-900 tracking-tight">CargoTrace <span class="text-[#1B4332]">AgriLian</span></span>
+                            <span class="block text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Highland Agro-Export Visibility</span>
                         </div>
                     </a>
 
                     <div class="flex items-center gap-3">
-                        <a href="{{ route('track.public') }}" class="px-3.5 py-1.5 rounded-xl text-xs font-bold text-[#1B4332] bg-[#F0FBF5] border border-[#95D5B2]/60 hover:bg-[#E2F7EC] transition-colors">
+                        <a href="{{ route('track.public') }}" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-700 bg-slate-100 border border-slate-200 hover:bg-slate-200 transition-colors">
                             Cek Resi Kargo
                         </a>
 
                         @auth
-                            <a href="{{ route('dashboard') }}" class="btn-brand-primary px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2">
-                                <span>Masuk Dashboard</span>
+                            <a href="{{ route('dashboard') }}" class="btn-brand-primary px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5">
+                                <span>Dashboard</span>
                                 <span>&rarr;</span>
                             </a>
                         @else
-                            <a href="{{ route('login') }}" class="btn-brand-primary px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-2">
+                            <a href="{{ route('login') }}" class="btn-brand-primary px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5">
                                 <span>Login Staff</span>
                                 <span>&rarr;</span>
                             </a>
@@ -379,19 +402,19 @@
         <!-- Flash messages -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 w-full">
             @if(session('success'))
-                <div class="p-3.5 rounded-xl bg-[#F0FBF5] border border-[#95D5B2] text-[#1B4332] flex items-center gap-2.5 text-xs font-bold shadow-2xs">
-                    <span class="w-2 h-2 rounded-full bg-[#57C84D] shrink-0"></span>
+                <div class="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 flex items-center gap-2.5 text-xs font-semibold shadow-2xs">
+                    <span class="w-2 h-2 rounded-full bg-emerald-600 shrink-0"></span>
                     <span>{{ session('success') }}</span>
                 </div>
             @endif
             @if(session('warning'))
-                <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 flex items-center gap-2.5 text-xs font-bold shadow-2xs">
+                <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 flex items-center gap-2.5 text-xs font-semibold shadow-2xs">
                     <span class="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
                     <span>{{ session('warning') }}</span>
                 </div>
             @endif
             @if(session('error') || (isset($errors) && $errors->any()))
-                <div class="p-3.5 rounded-xl bg-rose-50 border border-rose-300 text-rose-900 text-xs font-bold shadow-2xs">
+                <div class="p-3.5 rounded-xl bg-rose-50 border border-rose-300 text-rose-900 text-xs font-semibold shadow-2xs">
                     <div class="flex items-center gap-2.5">
                         <span class="w-2 h-2 rounded-full bg-rose-600 shrink-0"></span>
                         <div>
@@ -418,7 +441,7 @@
         <footer class="border-t border-slate-200 bg-white py-6 mt-auto">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
                 <div class="flex items-center gap-2">
-                    <strong class="text-[#1B4332] font-bold">CargoTrace AgriLian</strong>
+                    <strong class="text-slate-800 font-semibold">CargoTrace AgriLian</strong>
                     <span>&bull;</span>
                     <span>Rantai Pasok Agro Dataran Tinggi Gayo ke Pasar Internasional</span>
                 </div>
