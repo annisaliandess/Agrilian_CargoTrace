@@ -14,6 +14,9 @@
     <!-- Leaflet CSS for Map Visualizations -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
+    <!-- Tailwind CSS (Instant CDN Loader) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- Vite Assets -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -23,6 +26,35 @@
     <style>
         .leaflet-container {
             font-family: inherit;
+        }
+        svg {
+            max-width: 100%;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        svg.w-6 {
+            width: 24px !important;
+            height: 24px !important;
+            max-width: 24px !important;
+            max-height: 24px !important;
+        }
+        svg.w-5 {
+            width: 20px !important;
+            height: 20px !important;
+            max-width: 20px !important;
+            max-height: 20px !important;
+        }
+        svg.w-4 {
+            width: 16px !important;
+            height: 16px !important;
+            max-width: 16px !important;
+            max-height: 16px !important;
+        }
+        svg.w-3\.5, svg.w-3 {
+            width: 14px !important;
+            height: 14px !important;
+            max-width: 14px !important;
+            max-height: 14px !important;
         }
     </style>
 </head>
@@ -34,8 +66,8 @@
                 <!-- Brand / Logo -->
                 <div class="flex items-center gap-3">
                     <a href="{{ route('home') }}" class="flex items-center gap-2 group">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 via-emerald-700 to-amber-700 flex items-center justify-center text-white font-bold shadow-md shadow-emerald-700/20 group-hover:scale-105 transition-transform">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 via-emerald-700 to-amber-700 flex items-center justify-center text-white font-bold shadow-md shadow-emerald-700/20 group-hover:scale-105 transition-transform shrink-0">
+                            <svg class="w-6 h-6" width="24" height="24" style="width: 24px; height: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
                             </svg>
