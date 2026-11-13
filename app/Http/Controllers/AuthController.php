@@ -44,6 +44,42 @@ class AuthController extends Controller
     }
 
     /**
+     * Show Web Registration Form.
+     */
+    public function showRegisterForm()
+    {
+        if (Auth::check()) {
+            return redirect()->route('dashboard');
+        }
+        return view('auth.register');
+    }
+
+    /**
+     * Web Registration Action.
+     */
+    public function webRegister(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+            'role' => 'nullable|string|in:customer,operator',
+        ]);
+
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'role' => $validated['role'] ?? 'customer',
+        ]);
+
+        Auth::login($user);
+        $request->session()->regenerate();
+
+        return redirect()->route('dashboard')->with('success', 'Selamat datang di AgriLian, akun mitra Anda berhasil didaftarkan!');
+    }
+
+    /**
      * Web Logout Action.
      */
     public function webLogout(Request $request): RedirectResponse

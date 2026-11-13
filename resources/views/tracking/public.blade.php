@@ -6,38 +6,33 @@
 <div class="space-y-8 max-w-5xl mx-auto">
 
     <!-- ======================================================== -->
-    <!-- HERO SECTION (Enterprise Logistics Grade)                -->
+    <!-- HERO SECTION (Clean Executive Light Theme)               -->
     <!-- ======================================================== -->
-    <div class="relative rounded-2xl bg-hero-gradient p-7 sm:p-12 text-center overflow-hidden shadow-2xl border border-slate-700/80">
-        <!-- Subtle Ambient Light -->
-        <div class="absolute -top-20 -left-20 w-60 h-60 rounded-full bg-amber-500/15 blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-20 -right-20 w-60 h-60 rounded-full bg-orange-500/10 blur-3xl pointer-events-none"></div>
-
-        <div class="relative z-10 max-w-2xl mx-auto">
+    <div class="bg-white rounded-2xl p-7 sm:p-10 text-center border border-stone-200/90 shadow-2xs">
+        <div class="max-w-2xl mx-auto">
             <!-- Pill Badge -->
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-slate-200 border border-white/15 mb-4 backdrop-blur-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-200 mb-3">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
                 <span>Sistem Pelacakan Kargo Ekspor Dataran Tinggi Gayo</span>
             </div>
 
             <!-- Headline -->
-            <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
-                Visibilitas Rantai Pasok Agro Highland <br class="hidden sm:inline" />
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-orange-300 to-amber-400">ke Pasar Internasional</span>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight leading-tight">
+                Visibilitas Rantai Pasok Agro Highland ke Pasar Internasional
             </h1>
 
-            <p class="text-xs sm:text-sm text-slate-200 mt-3 max-w-lg mx-auto font-normal leading-relaxed">
+            <p class="text-xs sm:text-sm text-stone-600 mt-2 max-w-lg mx-auto font-medium leading-relaxed">
                 Pemantauan telemetri kontainer, kondisi cuaca rute secara langsung, dan status kepabeanan dari Takengon ke pelabuhan tujuan.
             </p>
 
             <!-- Search Form -->
-            <form action="{{ route('track.public') }}" method="GET" class="mt-6 flex flex-col sm:flex-row gap-2 max-w-lg mx-auto p-1.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-sm">
+            <form action="{{ route('track.public') }}" method="GET" class="mt-6 flex flex-col sm:flex-row gap-2 max-w-lg mx-auto p-1.5 rounded-2xl bg-stone-50 border border-stone-300 shadow-2xs">
                 <div class="relative flex-1">
-                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-stone-400">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     </div>
                     <input type="text" name="tracking_number" value="{{ $query ?? 'LNDS-2026-GY001' }}" placeholder="Masukkan nomor resi (contoh: LNDS-2026-GY001)"
-                           class="w-full pl-10 pr-3 py-2.5 rounded-xl border-0 bg-white text-slate-900 placeholder-slate-400 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all">
+                           class="w-full pl-10 pr-3 py-2.5 rounded-xl border-0 bg-white text-stone-900 placeholder-stone-400 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all shadow-2xs">
                 </div>
                 <button type="submit" class="btn-brand-accent px-6 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 cursor-pointer shadow-sm shrink-0">
                     <span>Lacak Kargo</span>
@@ -45,16 +40,16 @@
                 </button>
             </form>
 
-            <!-- Quick Chips (No Emojis) -->
+            <!-- Quick Chips (Clean Light Buttons) -->
             <div class="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs">
-                <span class="text-slate-300 font-medium">Contoh Resi:</span>
-                <a href="{{ route('track.public', 'LNDS-2026-GY001') }}" class="px-2.5 py-1 rounded-md bg-white/10 hover:bg-white/20 text-white font-medium transition-colors border border-white/15">
+                <span class="text-stone-500 font-medium">Contoh Resi:</span>
+                <a href="{{ route('track.public', 'LNDS-2026-GY001') }}" class="px-2.5 py-1 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium transition-colors border border-stone-200">
                     LNDS-2026-GY001 (Kopi Gayo &bull; Rotterdam)
                 </a>
-                <a href="{{ route('track.public', 'LNDS-2026-GY002') }}" class="px-2.5 py-1 rounded-md bg-white/10 hover:bg-white/20 text-white font-medium transition-colors border border-white/15">
+                <a href="{{ route('track.public', 'LNDS-2026-GY002') }}" class="px-2.5 py-1 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium transition-colors border border-stone-200">
                     LNDS-2026-GY002 (Alpukat &bull; Singapura)
                 </a>
-                <a href="{{ route('track.public', 'LNDS-2026-GY003') }}" class="px-2.5 py-1 rounded-md bg-amber-400/20 hover:bg-amber-400/30 text-amber-200 font-medium transition-colors border border-amber-300/30">
+                <a href="{{ route('track.public', 'LNDS-2026-GY003') }}" class="px-2.5 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 font-medium transition-colors border border-amber-200">
                     LNDS-2026-GY003 (Status Peringatan Cuaca)
                 </a>
             </div>

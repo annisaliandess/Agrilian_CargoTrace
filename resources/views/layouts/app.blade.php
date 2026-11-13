@@ -182,7 +182,7 @@
 <body class="h-full font-sans text-stone-800 antialiased selection:bg-amber-600 selection:text-white bg-[#FAF8F5]">
 
 @php
-    $isPublicTracker = request()->routeIs('track.public') || request()->routeIs('home') || request()->routeIs('login');
+    $isPublicTracker = request()->routeIs('track.public') || request()->routeIs('home') || request()->routeIs('login') || request()->routeIs('register');
     $useSidebar = auth()->check() && !$isPublicTracker;
 @endphp
 

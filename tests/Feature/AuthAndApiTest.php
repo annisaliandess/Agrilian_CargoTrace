@@ -39,6 +39,24 @@ class AuthAndApiTest extends TestCase
         $this->assertAuthenticatedAs($this->admin);
     }
 
+    public function test_user_can_register_new_account_via_web_form(): void
+    {
+        $response = $this->post('/register', [
+            'name' => 'Mitra Gayo Coffee',
+            'email' => 'mitra@gayo.com',
+            'password' => 'secret12345',
+            'password_confirmation' => 'secret12345',
+            'role' => 'customer',
+        ]);
+
+        $response->assertRedirect('/dashboard');
+        $this->assertDatabaseHas('users', [
+            'email' => 'mitra@gayo.com',
+            'role' => 'customer',
+        ]);
+        $this->assertAuthenticated();
+    }
+
     public function test_api_login_returns_sanctum_bearer_token(): void
     {
         $response = $this->postJson('/api/login', [

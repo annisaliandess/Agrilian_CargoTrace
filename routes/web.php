@@ -17,6 +17,8 @@ Route::get('/track/{tracking_number?}', [TrackingController::class, 'publicTrack
 // Authentication Routes
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'webLogin'])->name('login.post');
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [AuthController::class, 'webRegister'])->name('register.post');
 Route::post('/logout', [AuthController::class, 'webLogout'])->name('logout');
 
 // Authenticated Application Routes

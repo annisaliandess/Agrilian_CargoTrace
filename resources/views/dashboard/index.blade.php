@@ -6,43 +6,35 @@
 <div class="space-y-6">
 
     <!-- ======================================================== -->
-    <!-- 1. HIGHLAND HERO COMMAND BANNER (Obsidian & Amber Gold)  -->
+    <!-- 1. EXECUTIVE COMMAND BANNER (Pure Clean Light Theme)     -->
     <!-- ======================================================== -->
-    <div class="relative rounded-2xl bg-hero-gradient p-6 sm:p-9 text-white overflow-hidden shadow-2xl border border-stone-800">
-        <!-- Ambient Glowing Aura Orbs (Warm Amber & Copper Glow) -->
-        <div class="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-amber-500/15 blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-orange-500/10 blur-3xl pointer-events-none"></div>
-
-        <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+    <div class="bg-white rounded-2xl p-6 sm:p-8 border border-stone-200/90 shadow-2xs">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div class="max-w-2xl">
-                <!-- Pill Badge -->
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-stone-200 border border-white/15 mb-3 backdrop-blur-sm">
-                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-                    <span>Takengon Highland Central Hub &bull; Koridor Belawan &bull; Rotterdam Direct</span>
+                <!-- Status Badge -->
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-200 mb-3">
+                    <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                    <span>Takengon Central Hub &bull; Koridor Belawan &bull; Rotterdam Direct</span>
                 </div>
 
-                <!-- Headline with Warm Copper Gradient -->
-                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight text-white">
-                    Dashboard Logistik Ekspor Highland <br class="hidden sm:inline" />
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-orange-300 to-amber-400">
-                        Visibilitas Multimodal Rantai Pasok Gayo
-                    </span>
+                <!-- Headline (Clean, Bold, Solid Typography - No AI rainbow gradient!) -->
+                <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-stone-900">
+                    Dashboard Logistik Ekspor Highland
                 </h1>
-
-                <p class="text-xs sm:text-sm text-stone-300 mt-2 max-w-xl font-normal leading-relaxed">
-                    Pusat kendali operasional telemetri kontainer kopi Arabika Gayo & hasil bumi, kalkulasi peringatan cuaca otomatis, serta kepatuhan pabean internasional.
+                <p class="text-xs sm:text-sm text-stone-600 mt-1.5 font-medium leading-relaxed">
+                    Sistem pemantauan telemetri kontainer kopi Arabika Gayo & hasil bumi, radar cuaca koridor lintas Sumatra, dan kepatuhan pabean internasional.
                 </p>
             </div>
 
-            <!-- Action Buttons (Pill Style) -->
+            <!-- Action Buttons -->
             <div class="flex flex-wrap items-center gap-3 shrink-0">
-                <a href="{{ route('track.public') }}" target="_blank" class="btn-glass-secondary px-4 py-2.5 rounded-full text-xs font-semibold flex items-center gap-2 cursor-pointer shadow-sm">
-                    <svg class="w-4 h-4 text-stone-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <a href="{{ route('track.public') }}" target="_blank" class="btn-brand-outline px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 cursor-pointer shadow-xs">
+                    <svg class="w-4 h-4 text-stone-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     <span>Halaman Cek Resi</span>
                 </a>
 
                 @if(auth()->user()->isAdmin() || auth()->user()->isOperator())
-                    <a href="{{ route('shipments.create') }}" class="btn-brand-accent px-5 py-2.5 rounded-full text-xs font-bold flex items-center gap-2 cursor-pointer">
+                    <a href="{{ route('shipments.create') }}" class="btn-brand-accent px-5 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 cursor-pointer shadow-sm">
                         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
                         <span>Buat Manifest Baru</span>
                     </a>
@@ -50,27 +42,27 @@
             </div>
         </div>
 
-        <!-- Live Global Export Valuation & Currency Bar (ECB Frankfurter API Live) -->
-        <div class="mt-6 pt-5 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs">
+        <!-- Live Global Export Valuation & Currency Bar (ECB Live in Light Mode) -->
+        <div class="mt-6 pt-4 border-t border-stone-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs">
             <div class="flex flex-wrap items-center gap-3">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 text-stone-200 font-semibold border border-white/15 backdrop-blur-xs">
-                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-stone-100 text-stone-700 font-semibold border border-stone-200">
+                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
                     <span>Kurs Valas Ekspor (ECB Live):</span>
                 </span>
-                <span class="font-mono text-stone-200">
-                    <strong class="text-white">1 USD</strong> = Rp {{ number_format($currencyRates['usd_to_idr'], 0, ',', '.') }}
+                <span class="font-mono text-stone-700">
+                    <strong class="text-stone-900">1 USD</strong> = Rp {{ number_format($currencyRates['usd_to_idr'], 0, ',', '.') }}
                 </span>
-                <span class="text-white/40">&bull;</span>
-                <span class="font-mono text-stone-200">
-                    <strong class="text-[#FBBF24]">1 EUR</strong> = Rp {{ number_format($currencyRates['eur_to_idr'], 0, ',', '.') }}
+                <span class="text-stone-300">&bull;</span>
+                <span class="font-mono text-stone-700">
+                    <strong class="text-amber-800">1 EUR</strong> = Rp {{ number_format($currencyRates['eur_to_idr'], 0, ',', '.') }}
                 </span>
-                <span class="text-[10px] text-amber-300 bg-amber-950/60 px-2 py-0.5 rounded border border-amber-500/30">Live Bank Sentral</span>
+                <span class="text-[10px] text-stone-500 bg-stone-50 px-2 py-0.5 rounded border border-stone-200">Bank Sentral Eropa</span>
             </div>
 
             <div class="flex items-center gap-2">
-                <span class="text-stone-300 font-medium">Estimasi Devisa Kargo:</span>
-                <span class="font-mono font-black text-white text-sm tracking-tight drop-shadow-sm">{{ $totalValuation['usd_formatted'] }} USD</span>
-                <span class="text-xs font-mono font-bold text-[#FBBF24] bg-amber-950/40 px-2.5 py-0.5 rounded-lg border border-amber-400/30 shadow-2xs">({{ $totalValuation['eur_formatted'] }})</span>
+                <span class="text-stone-500 font-medium">Estimasi Devisa Kargo:</span>
+                <strong class="font-mono font-bold text-stone-900 text-sm tracking-tight">{{ $totalValuation['usd_formatted'] }} USD</strong>
+                <span class="text-xs font-mono font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200">({{ $totalValuation['eur_formatted'] }})</span>
             </div>
         </div>
     </div>
