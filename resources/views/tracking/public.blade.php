@@ -44,17 +44,13 @@
                 </button>
             </form>
 
-            <!-- Quick Chips -->
-            <div class="mt-5 flex flex-wrap items-center justify-center gap-2 text-xs">
+            <!-- Quick Chip (1 Contoh Resi) -->
+            <div class="mt-5 flex items-center justify-center gap-2 text-xs">
                 <span class="text-forest-200/80 font-medium font-mono text-[11px]">Contoh Resi:</span>
-                <a href="{{ route('track.public', 'AGLN-2026-GY001') }}" class="px-2.5 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white font-medium transition-colors border border-white/15 backdrop-blur-xs font-mono text-xs">
-                    AGLN-2026-GY001 (Kopi Gayo &bull; Rotterdam)
-                </a>
-                <a href="{{ route('track.public', 'AGLN-2026-GY002') }}" class="px-2.5 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white font-medium transition-colors border border-white/15 backdrop-blur-xs font-mono text-xs">
-                    AGLN-2026-GY002 (Alpukat &bull; Singapura)
-                </a>
-                <a href="{{ route('track.public', 'AGLN-2026-GY003') }}" class="px-2.5 py-1 rounded-lg bg-amber-400/20 hover:bg-amber-400/30 text-amber-200 font-medium transition-colors border border-amber-300/30 backdrop-blur-xs font-mono text-xs">
-                    AGLN-2026-GY003 (Peringatan Cuaca)
+                <a href="{{ route('track.public', 'AGLN-2026-GY001') }}" class="px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white font-medium transition-colors border border-white/15 backdrop-blur-xs font-mono text-xs inline-flex items-center gap-1.5 shadow-2xs">
+                    <span>AGLN-2026-GY001</span>
+                    <span class="text-forest-300">&bull;</span>
+                    <span class="text-forest-200 font-sans">Kopi Gayo (Rotterdam)</span>
                 </a>
             </div>
         </div>
