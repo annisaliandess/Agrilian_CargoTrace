@@ -27,20 +27,20 @@ class ShipmentService
     ) {}
 
     /**
-     * Generate an agro-export tracking number (e.g., LNDS-2026-GY042).
+     * Generate an agro-export tracking number (e.g., AGLN-2026-GY042).
      */
     public function generateTrackingNumber(): string
     {
         $year = date('Y');
         $count = Shipment::count() + 1;
         $unique = str_pad((string) $count, 3, '0', STR_PAD_LEFT);
-        $number = "LNDS-{$year}-GY{$unique}";
+        $number = "AGLN-{$year}-GY{$unique}";
 
         // Ensure uniqueness
         while (Shipment::where('tracking_number', $number)->exists()) {
             $count++;
             $unique = str_pad((string) $count, 3, '0', STR_PAD_LEFT);
-            $number = "LNDS-{$year}-GY{$unique}";
+            $number = "AGLN-{$year}-GY{$unique}";
         }
 
         return $number;

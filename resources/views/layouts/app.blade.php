@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'CargoTrace AgriLian') }} — @yield('title', 'Highland Agro-Export Platform')</title>
+    <title>{{ config('app.name', 'AgriLian CargoTrace') }} — @yield('title', 'Highland Agro-Export Visibility')</title>
 
     <!-- Plus Jakarta Sans & JetBrains Mono Fonts (Supreme Readability) -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -204,8 +204,8 @@
                         </svg>
                     </div>
                     <div class="min-w-0">
-                        <span class="text-sm font-bold text-white tracking-tight block leading-tight">CargoTrace</span>
-                        <span class="text-[10px] font-semibold text-amber-400 tracking-wider uppercase block mt-0.5">AgriLian Portal</span>
+                        <span class="text-sm font-bold text-white tracking-tight block leading-tight">AgriLian</span>
+                        <span class="text-[10px] font-semibold text-amber-400 tracking-wider uppercase block mt-0.5">CargoTrace Platform</span>
                     </div>
                 </a>
 
@@ -264,15 +264,33 @@
             <!-- User Profile Box & Logout (Bottom of Sidebar) -->
             <div class="p-3 border-t border-stone-800 bg-black/30">
                 <div class="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-stone-800">
+                    @php
+                        $userRole = auth()->user()->role;
+                        $displayName = match($userRole) {
+                            'admin' => 'Administrator',
+                            'operator' => 'Operations Staff',
+                            default => auth()->user()->name,
+                        };
+                        $displayRole = match($userRole) {
+                            'admin' => 'System Admin',
+                            'operator' => 'Field Operator',
+                            default => 'Customer Account',
+                        };
+                        $initial = match($userRole) {
+                            'admin' => 'A',
+                            'operator' => 'S',
+                            default => strtoupper(substr(auth()->user()->name, 0, 1)),
+                        };
+                    @endphp
                     <div class="flex items-center gap-2.5 overflow-hidden">
-                        <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-300 flex items-center justify-center font-bold text-xs shrink-0 border border-amber-500/30">
-                            {{ substr(auth()->user()->name, 0, 1) }}
+                        <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-300 flex items-center justify-center font-bold text-xs shrink-0 border border-amber-500/30 font-mono">
+                            {{ $initial }}
                         </div>
                         <div class="min-w-0">
-                            <div class="text-xs font-bold text-white truncate">{{ auth()->user()->name }}</div>
+                            <div class="text-xs font-bold text-white truncate">{{ $displayName }}</div>
                             <div class="flex items-center gap-1.5">
                                 <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
-                                <span class="text-[10px] font-medium text-stone-400 uppercase tracking-wider">{{ auth()->user()->role }}</span>
+                                <span class="text-[10px] font-medium text-stone-400 uppercase tracking-wider">{{ $displayRole }}</span>
                             </div>
                         </div>
                     </div>
@@ -360,10 +378,10 @@
             <!-- Workspace Footer -->
             <footer class="border-t border-slate-200 bg-white py-4 px-4 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
                 <div>
-                    <strong class="text-slate-800 font-semibold">CargoTrace AgriLian</strong> &bull; Takengon &bull; Bireuen &bull; Belawan &bull; Singapore &bull; Rotterdam
+                    <strong class="text-slate-800 font-semibold">AgriLian CargoTrace</strong> &bull; Takengon &bull; Bireuen &bull; Belawan &bull; Singapore &bull; Rotterdam
                 </div>
                 <div>
-                    Annisa Liandes (Ayaa) &bull; <strong class="text-slate-700">Universitas Malikussaleh (Unimal)</strong>
+                    &copy; 2026 AgriLian Logistics Systems &bull; <span class="text-slate-600 font-medium">Enterprise Multimodal Visibility</span>
                 </div>
             </footer>
         </div>
@@ -425,7 +443,7 @@
                             </svg>
                         </div>
                         <div>
-                            <span class="text-base font-bold text-stone-900 tracking-tight">CargoTrace <span class="text-amber-700 font-extrabold">AgriLian</span></span>
+                            <span class="text-base font-bold text-stone-900 tracking-tight">AgriLian <span class="text-amber-700 font-extrabold">CargoTrace</span></span>
                             <span class="block text-[10px] font-semibold text-stone-500 uppercase tracking-wider">Highland Agro-Export Visibility</span>
                         </div>
                     </a>
@@ -493,12 +511,12 @@
         <footer class="border-t border-slate-200 bg-white py-6 mt-auto">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
                 <div class="flex items-center gap-2">
-                    <strong class="text-slate-800 font-semibold">CargoTrace AgriLian</strong>
+                    <strong class="text-slate-800 font-semibold">AgriLian CargoTrace</strong>
                     <span>&bull;</span>
                     <span>Rantai Pasok Agro Dataran Tinggi Gayo ke Pasar Internasional</span>
                 </div>
                 <div>
-                    Annisa Liandes (Ayaa) &bull; <strong class="text-slate-700">Universitas Malikussaleh (Unimal)</strong>
+                    &copy; 2026 AgriLian Logistics Systems &bull; <span class="text-slate-600 font-medium">Enterprise Multimodal Visibility</span>
                 </div>
             </div>
         </footer>

@@ -31,7 +31,7 @@
                     <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-stone-400">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     </div>
-                    <input type="text" name="tracking_number" value="{{ $query ?? 'LNDS-2026-GY001' }}" placeholder="Masukkan nomor resi (contoh: LNDS-2026-GY001)"
+                    <input type="text" name="tracking_number" value="{{ $query ?? 'AGLN-2026-GY001' }}" placeholder="Masukkan nomor resi (contoh: AGLN-2026-GY001)"
                            class="w-full pl-10 pr-3 py-2.5 rounded-xl border-0 bg-white text-stone-900 placeholder-stone-400 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all shadow-2xs">
                 </div>
                 <button type="submit" class="btn-brand-accent px-6 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 cursor-pointer shadow-sm shrink-0">
@@ -43,14 +43,14 @@
             <!-- Quick Chips (Clean Light Buttons) -->
             <div class="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs">
                 <span class="text-stone-500 font-medium">Contoh Resi:</span>
-                <a href="{{ route('track.public', 'LNDS-2026-GY001') }}" class="px-2.5 py-1 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium transition-colors border border-stone-200">
-                    LNDS-2026-GY001 (Kopi Gayo &bull; Rotterdam)
+                <a href="{{ route('track.public', 'AGLN-2026-GY001') }}" class="px-2.5 py-1 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium transition-colors border border-stone-200">
+                    AGLN-2026-GY001 (Kopi Gayo &bull; Rotterdam)
                 </a>
-                <a href="{{ route('track.public', 'LNDS-2026-GY002') }}" class="px-2.5 py-1 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium transition-colors border border-stone-200">
-                    LNDS-2026-GY002 (Alpukat &bull; Singapura)
+                <a href="{{ route('track.public', 'AGLN-2026-GY002') }}" class="px-2.5 py-1 rounded-lg bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium transition-colors border border-stone-200">
+                    AGLN-2026-GY002 (Alpukat &bull; Singapura)
                 </a>
-                <a href="{{ route('track.public', 'LNDS-2026-GY003') }}" class="px-2.5 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 font-medium transition-colors border border-amber-200">
-                    LNDS-2026-GY003 (Status Peringatan Cuaca)
+                <a href="{{ route('track.public', 'AGLN-2026-GY003') }}" class="px-2.5 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 font-medium transition-colors border border-amber-200">
+                    AGLN-2026-GY003 (Status Peringatan Cuaca)
                 </a>
             </div>
         </div>
@@ -98,7 +98,23 @@
                     </div>
                 </div>
 
-                <div class="flex items-center gap-3">
+                <div class="flex flex-col sm:flex-row items-end sm:items-center gap-4">
+                    <!-- Barcode / Digital Waybill Badge -->
+                    <div class="hidden md:flex flex-col items-end">
+                        <div class="bg-stone-50 px-3 py-1.5 rounded-lg border border-stone-200 shadow-2xs flex flex-col items-center">
+                            <svg class="h-6 w-36 text-stone-800" viewBox="0 0 176 26" fill="currentColor">
+                                <rect x="0" y="0" width="2" height="26"/><rect x="4" y="0" width="1" height="26"/><rect x="7" y="0" width="3" height="26"/><rect x="12" y="0" width="1" height="26"/><rect x="15" y="0" width="2" height="26"/><rect x="19" y="0" width="4" height="26"/><rect x="25" y="0" width="1" height="26"/><rect x="28" y="0" width="2" height="26"/><rect x="32" y="0" width="3" height="26"/><rect x="37" y="0" width="1" height="26"/><rect x="40" y="0" width="2" height="26"/><rect x="44" y="0" width="4" height="26"/><rect x="50" y="0" width="2" height="26"/><rect x="54" y="0" width="1" height="26"/><rect x="57" y="0" width="3" height="26"/><rect x="62" y="0" width="1" height="26"/><rect x="65" y="0" width="2" height="26"/><rect x="69" y="0" width="4" height="26"/><rect x="75" y="0" width="2" height="26"/><rect x="79" y="0" width="1" height="26"/><rect x="82" y="0" width="3" height="26"/><rect x="87" y="0" width="2" height="26"/><rect x="91" y="0" width="1" height="26"/><rect x="94" y="0" width="4" height="26"/><rect x="100" y="0" width="2" height="26"/><rect x="104" y="0" width="1" height="26"/><rect x="107" y="0" width="3" height="26"/><rect x="112" y="0" width="1" height="26"/><rect x="115" y="0" width="3" height="26"/><rect x="120" y="0" width="2" height="26"/><rect x="124" y="0" width="1" height="26"/><rect x="127" y="0" width="4" height="26"/><rect x="133" y="0" width="2" height="26"/><rect x="137" y="0" width="1" height="26"/><rect x="140" y="0" width="3" height="26"/><rect x="145" y="0" width="2" height="26"/><rect x="149" y="0" width="1" height="26"/><rect x="152" y="0" width="3" height="26"/><rect x="157" y="0" width="2" height="26"/><rect x="161" y="0" width="1" height="26"/><rect x="164" y="0" width="4" height="26"/><rect x="170" y="0" width="2" height="26"/><rect x="174" y="0" width="2" height="26"/>
+                            </svg>
+                            <span class="text-[9px] font-mono tracking-widest text-stone-600 mt-1 uppercase">*{{ $shipment->tracking_number }}*</span>
+                        </div>
+                        <div class="flex items-center gap-1.5 mt-1 text-[10px] text-stone-400">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                            <span class="font-medium text-stone-600">Digital Waybill</span>
+                            <span>&bull;</span>
+                            <a href="/api/track/{{ $shipment->tracking_number }}" target="_blank" class="hover:text-amber-800 text-stone-500 underline font-mono">API JSON ↗</a>
+                        </div>
+                    </div>
+
                     @if($shipment->is_delayed)
                         <div class="px-3.5 py-1.5 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 text-right">
                             <span class="block text-[10px] font-bold uppercase tracking-wider text-amber-700">Status Kargo</span>

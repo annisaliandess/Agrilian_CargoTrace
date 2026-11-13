@@ -46,8 +46,8 @@ class ShipmentLifecycleTest extends TestCase
         ]);
 
         $this->carrier = Carrier::create([
-            'name' => 'Liandes Highland Fleet',
-            'code' => 'LNDS',
+            'name' => 'AgriLian Highland Fleet',
+            'code' => 'AGLN',
             'transport_mode' => 'TRUCK',
         ]);
 
@@ -94,7 +94,7 @@ class ShipmentLifecycleTest extends TestCase
         ], $this->admin);
 
         $this->assertNotNull($shipment->id);
-        $this->assertStringStartsWith('LNDS-', $shipment->tracking_number);
+        $this->assertStringStartsWith('AGLN-', $shipment->tracking_number);
         $this->assertEquals('CREATED', $shipment->status);
         $this->assertCount(1, $shipment->items);
         $this->assertCount(1, $shipment->trackingEvents);

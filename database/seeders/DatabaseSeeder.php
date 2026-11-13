@@ -149,11 +149,11 @@ class DatabaseSeeder extends Seeder
 
         // 3. Seed Multimodal Carriers
         $carrierLiandes = Carrier::firstOrCreate(
-            ['code' => 'LNDS'],
+            ['code' => 'AGLN'],
             [
-                'name' => 'Liandes Highland Fleet Logistics',
+                'name' => 'AgriLian Highland Fleet Logistics',
                 'transport_mode' => 'TRUCK',
-                'contact_email' => 'dispatch@liandeslogistics.id',
+                'contact_email' => 'dispatch@agrilian.id',
                 'phone' => '+62-643-22891',
                 'is_active' => true,
             ]
@@ -196,7 +196,7 @@ class DatabaseSeeder extends Seeder
 
         // Shipment 1: Hero Ocean Export (Takengon -> Belawan -> Rotterdam, currently in Singapore)
         $shipment1 = Shipment::firstOrCreate(
-            ['tracking_number' => 'LNDS-2026-GY001'],
+            ['tracking_number' => 'AGLN-2026-GY001'],
             [
                 'customer_id' => $customerAmsterdam->id,
                 'carrier_id' => $carrierMaersk->id,
@@ -254,7 +254,7 @@ class DatabaseSeeder extends Seeder
                 'event_time' => Carbon::parse('2026-11-01 10:30:00'),
                 'latitude' => 4.6293,
                 'longitude' => 96.8458,
-                'description' => 'Container sealed with GPS lock #LNDS-LOCK-0918. Liandes Heavy Reefer Truck assigned.',
+                'description' => 'Container sealed with GPS lock #AGLN-LOCK-0918. AgriLian Heavy Reefer Truck assigned.',
                 'created_by' => $operatorGayo->id,
             ],
             [
@@ -308,7 +308,7 @@ class DatabaseSeeder extends Seeder
 
         // Shipment 2: Highland Fresh Produce (Takengon -> Belawan -> Singapore, DELIVERED)
         $shipment2 = Shipment::firstOrCreate(
-            ['tracking_number' => 'LNDS-2026-GY002'],
+            ['tracking_number' => 'AGLN-2026-GY002'],
             [
                 'customer_id' => $customerSingapore->id,
                 'carrier_id' => $carrierSamudera->id,
@@ -391,7 +391,7 @@ class DatabaseSeeder extends Seeder
 
         // Shipment 3: Delayed Shipment with Exception (Weather Alert - Landslide Warning)
         $shipment3 = Shipment::firstOrCreate(
-            ['tracking_number' => 'LNDS-2026-GY003'],
+            ['tracking_number' => 'AGLN-2026-GY003'],
             [
                 'customer_id' => $customerKoperasi->id,
                 'carrier_id' => $carrierGaruda->id,
@@ -461,14 +461,14 @@ class DatabaseSeeder extends Seeder
                 'description' => 'OpenWeather API trigger: Heavy rainstorm (85mm precipitation, wind 42 km/h) in Gayo mountain pass. Landslide risk confirmed by Aceh Tengah disaster agency. Estimated delay 18 hours.',
                 'detected_at' => Carbon::parse('2026-11-10 13:30:00'),
                 'resolved_at' => null,
-                'resolution_notes' => 'Liandes convoy waiting in safe zone; cargo integrity 100% secured with hermetic seals.',
+                'resolution_notes' => 'AgriLian convoy waiting in safe zone; cargo integrity 100% secured with hermetic seals.',
                 'reported_by' => $operatorGayo->id,
             ]
         );
 
         // Notifications
         Notification::firstOrCreate(
-            ['title' => 'Highland Weather Alert: Shipment LNDS-2026-GY003 Delayed'],
+            ['title' => 'Highland Weather Alert: Shipment AGLN-2026-GY003 Delayed'],
             [
                 'user_id' => $admin->id,
                 'message' => 'Extreme rainfall detected on mountain corridor Takengon-Bireuen. Delay duration: +18 hours.',
@@ -478,7 +478,7 @@ class DatabaseSeeder extends Seeder
         );
 
         Notification::firstOrCreate(
-            ['title' => 'Vessel Transfer Complete in Singapore (LNDS-2026-GY001)'],
+            ['title' => 'Vessel Transfer Complete in Singapore (AGLN-2026-GY001)'],
             [
                 'user_id' => $customerAmsterdam->id,
                 'message' => 'Your Arabica Gayo container was successfully transferred to mother vessel Maersk. ETA Rotterdam on schedule.',

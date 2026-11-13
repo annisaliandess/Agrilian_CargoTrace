@@ -96,12 +96,12 @@ class AuthAndApiTest extends TestCase
 
     public function test_public_tracking_api_returns_shipment_details(): void
     {
-        $carrier = Carrier::create(['name' => 'Liandes Fleet', 'code' => 'LNDS', 'transport_mode' => 'TRUCK']);
+        $carrier = Carrier::create(['name' => 'AgriLian Fleet', 'code' => 'AGLN', 'transport_mode' => 'TRUCK']);
         $origin = Location::create(['name' => 'Takengon Hub', 'code' => 'IDTKN', 'type' => 'ORIGIN_WAREHOUSE', 'city' => 'Takengon', 'country' => 'Indonesia', 'latitude' => 4.6, 'longitude' => 96.8]);
         $dest = Location::create(['name' => 'Singapore Port', 'code' => 'SGSIN', 'type' => 'DESTINATION_PORT', 'city' => 'Singapore', 'country' => 'Singapore', 'latitude' => 1.2, 'longitude' => 103.8]);
 
         $shipment = Shipment::create([
-            'tracking_number' => 'LNDS-2026-TEST01',
+            'tracking_number' => 'AGLN-2026-TEST01',
             'customer_id' => $this->admin->id,
             'carrier_id' => $carrier->id,
             'origin_id' => $origin->id,
@@ -118,17 +118,17 @@ class AuthAndApiTest extends TestCase
 
         $response->assertStatus(200)
             ->assertJsonPath('success', true)
-            ->assertJsonPath('data.tracking_number', 'LNDS-2026-TEST01');
+            ->assertJsonPath('data.tracking_number', 'AGLN-2026-TEST01');
     }
 
     public function test_web_routes_render_html_successfully(): void
     {
-        $carrier = Carrier::create(['name' => 'Liandes Fleet', 'code' => 'LNDS', 'transport_mode' => 'TRUCK']);
+        $carrier = Carrier::create(['name' => 'AgriLian Fleet', 'code' => 'AGLN', 'transport_mode' => 'TRUCK']);
         $origin = Location::create(['name' => 'Takengon Hub', 'code' => 'IDTKN', 'type' => 'ORIGIN_WAREHOUSE', 'city' => 'Takengon', 'country' => 'Indonesia', 'latitude' => 4.6, 'longitude' => 96.8]);
         $dest = Location::create(['name' => 'Singapore Port', 'code' => 'SGSIN', 'type' => 'DESTINATION_PORT', 'city' => 'Singapore', 'country' => 'Singapore', 'latitude' => 1.2, 'longitude' => 103.8]);
 
         $shipment = Shipment::create([
-            'tracking_number' => 'LNDS-2026-TEST02',
+            'tracking_number' => 'AGLN-2026-TEST02',
             'customer_id' => $this->admin->id,
             'carrier_id' => $carrier->id,
             'origin_id' => $origin->id,

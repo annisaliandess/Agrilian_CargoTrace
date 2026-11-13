@@ -36,28 +36,41 @@
             </div>
         </div>
 
-        <!-- Badges -->
-        <div class="flex flex-wrap items-center gap-2">
-            @php
-                $badgeStyle = match($shipment->status) {
-                    'CREATED' => 'bg-slate-100 text-slate-800 border-slate-300',
-                    'BOOKED' => 'bg-blue-50 text-blue-900 border-blue-200',
-                    'PICKED_UP' => 'bg-amber-50 text-amber-900 border-amber-200',
-                    'IN_TRANSIT' => 'bg-amber-50 text-amber-900 border-amber-300',
-                    'DELIVERED' => 'bg-stone-900 text-white border-stone-900',
-                    default => 'bg-slate-100 text-slate-800',
-                };
-            @endphp
-            <span class="px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider border {{ $badgeStyle }}">
-                {{ $shipment->status }}
-            </span>
+        <!-- Badges & Barcode -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+            <!-- Digital Barcode Stamp -->
+            <div class="hidden lg:flex flex-col items-end">
+                <div class="bg-stone-50 px-3 py-1.5 rounded-lg border border-stone-200 shadow-2xs flex flex-col items-center">
+                    <svg class="h-5 w-32 text-stone-800" viewBox="0 0 176 26" fill="currentColor">
+                        <rect x="0" y="0" width="2" height="26"/><rect x="4" y="0" width="1" height="26"/><rect x="7" y="0" width="3" height="26"/><rect x="12" y="0" width="1" height="26"/><rect x="15" y="0" width="2" height="26"/><rect x="19" y="0" width="4" height="26"/><rect x="25" y="0" width="1" height="26"/><rect x="28" y="0" width="2" height="26"/><rect x="32" y="0" width="3" height="26"/><rect x="37" y="0" width="1" height="26"/><rect x="40" y="0" width="2" height="26"/><rect x="44" y="0" width="4" height="26"/><rect x="50" y="0" width="2" height="26"/><rect x="54" y="0" width="1" height="26"/><rect x="57" y="0" width="3" height="26"/><rect x="62" y="0" width="1" height="26"/><rect x="65" y="0" width="2" height="26"/><rect x="69" y="0" width="4" height="26"/><rect x="75" y="0" width="2" height="26"/><rect x="79" y="0" width="1" height="26"/><rect x="82" y="0" width="3" height="26"/><rect x="87" y="0" width="2" height="26"/><rect x="91" y="0" width="1" height="26"/><rect x="94" y="0" width="4" height="26"/><rect x="100" y="0" width="2" height="26"/><rect x="104" y="0" width="1" height="26"/><rect x="107" y="0" width="3" height="26"/><rect x="112" y="0" width="1" height="26"/><rect x="115" y="0" width="3" height="26"/><rect x="120" y="0" width="2" height="26"/><rect x="124" y="0" width="1" height="26"/><rect x="127" y="0" width="4" height="26"/><rect x="133" y="0" width="2" height="26"/><rect x="137" y="0" width="1" height="26"/><rect x="140" y="0" width="3" height="26"/><rect x="145" y="0" width="2" height="26"/><rect x="149" y="0" width="1" height="26"/><rect x="152" y="0" width="3" height="26"/><rect x="157" y="0" width="2" height="26"/><rect x="161" y="0" width="1" height="26"/><rect x="164" y="0" width="4" height="26"/><rect x="170" y="0" width="2" height="26"/><rect x="174" y="0" width="2" height="26"/>
+                    </svg>
+                    <span class="text-[8px] font-mono tracking-widest text-stone-600 mt-0.5 uppercase">*{{ $shipment->tracking_number }}*</span>
+                </div>
+            </div>
 
-            @if($shipment->is_delayed)
-                <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-300 flex items-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                    Tertunda +{{ $shipment->delay_duration_hours }} Jam ({{ $shipment->delay_severity }})
+            <div class="flex flex-wrap items-center gap-2">
+                @php
+                    $badgeStyle = match($shipment->status) {
+                        'CREATED' => 'bg-slate-100 text-slate-800 border-slate-300',
+                        'BOOKED' => 'bg-blue-50 text-blue-900 border-blue-200',
+                        'PICKED_UP' => 'bg-amber-50 text-amber-900 border-amber-200',
+                        'IN_TRANSIT' => 'bg-amber-50 text-amber-900 border-amber-300',
+                        'DELIVERED' => 'bg-stone-900 text-white border-stone-900',
+                        default => 'bg-slate-100 text-slate-800',
+                    };
+                @endphp
+                <span class="px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider border {{ $badgeStyle }}">
+                    {{ $shipment->status }}
                 </span>
-            @endif
+
+                @if($shipment->is_delayed)
+                    <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-300 flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                        Tertunda +{{ $shipment->delay_duration_hours }} Jam ({{ $shipment->delay_severity }})
+                    </span>
+                @endif
+            </div>
+        </div>
         </div>
     </div>
 

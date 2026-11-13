@@ -192,115 +192,158 @@
     </div>
 
     <!-- ======================================================== -->
-    <!-- 4. BALANCED TWO-COLUMN COCKPIT (Seimbang & Tidak Menumpuk) -->
-    <!-- Kolom Kiri: Radar Peta GIS | Kolom Kanan: Komoditas HQ   -->
+    <!-- 4. RADAR VISUAL GIS RUTE MULTIMODAL (Full Width)          -->
+    <!-- Peta Luas & Jelas: Takengon - Belawan - Singapore - RTM  -->
     <!-- ======================================================== -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-
-        <!-- Kolom Kiri (7 Kolom): Radar Visual GIS Rute Multimodal -->
-        <div class="lg:col-span-7 bg-white rounded-xl border border-stone-200/90 p-5 shadow-2xs flex flex-col justify-between">
+    <div class="bg-white rounded-xl border border-stone-200/90 p-5 shadow-2xs">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-stone-100">
             <div>
-                <div class="flex items-center justify-between mb-3 pb-3 border-b border-stone-100">
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-                        <h2 class="text-xs font-bold text-stone-900 uppercase tracking-wider">
-                            Radar Visual Rute Multimodal Koridor Ekspor
-                        </h2>
-                    </div>
-                    <div class="flex items-center gap-3 text-[11px] text-stone-500 font-medium">
-                        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span> Hub Gudang</span>
-                        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Kargo Bergerak</span>
-                    </div>
+                <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
+                    <h2 class="text-sm font-bold text-stone-900 uppercase tracking-wider">
+                        Radar Visual Rute Multimodal Koridor Ekspor Agro
+                    </h2>
                 </div>
-
-                <div id="overview-map" class="h-84 w-full rounded-lg border border-stone-200 z-10"></div>
+                <p class="text-xs text-stone-500 mt-0.5">Pemantauan titik henti kargo dari Kebun Dataran Tinggi Gayo (Takengon), Transit Bireuen, Pelabuhan Belawan, Selat Malaka, Singapura, hingga Rotterdam.</p>
             </div>
-
-            <div class="mt-3 pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-stone-500">
-                <span>Koridor Terpantau: <strong>Takengon &rarr; Bireuen &rarr; Belawan &rarr; Selat Malaka &rarr; Rotterdam</strong></span>
-                <span class="text-amber-800 font-semibold font-mono text-[11px]">GIS Telemetri Aktif</span>
+            <div class="flex flex-wrap items-center gap-3 text-xs text-stone-600 font-medium">
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-stone-900"></span> Hub / Pelabuhan</span>
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Kargo Bergerak</span>
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-700"></span> Peringatan Cuaca</span>
             </div>
         </div>
 
-        <!-- Kolom Kanan (5 Kolom): Komoditas Ekspor Unggulan (Realistis HQ) -->
-        <div class="lg:col-span-5 flex flex-col gap-4">
-            
-            <!-- Card Komoditas 1: Kopi Arabika Gayo Specialty -->
+        <!-- Container Peta dengan Tinggi Pasti (460px) agar Leaflet Tidak Hilang -->
+        <div id="overview-map" class="w-full rounded-xl border border-stone-200 shadow-inner z-10" style="height: 460px; min-height: 460px; width: 100%;"></div>
+
+        <div class="mt-3 pt-3 border-t border-stone-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-stone-500">
+            <span>Koridor Terpantau: <strong class="text-stone-800">Takengon Hub (4.6°N) &rarr; Bireuen (5.2°N) &rarr; Pelabuhan Belawan (3.7°N) &rarr; Selat Malaka &rarr; Singapura &rarr; Rotterdam</strong></span>
+            <span class="text-amber-800 font-semibold font-mono text-[11px] inline-flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                GIS Telemetri GPS Aktif & Terkalibrasi
+            </span>
+        </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- 5. KOMODITAS EKSPOR UNGGULAN GAYO (Spacious HD Showcase)  -->
+    <!-- Foto Realistis & Parameter Mutu Tanpa Numpuk Kesamping   -->
+    <!-- ======================================================== -->
+    <div class="space-y-4">
+        <div class="flex items-center justify-between">
+            <div>
+                <h2 class="text-xs font-bold text-stone-900 uppercase tracking-wider flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-amber-600"></span>
+                    <span>Showcase Komoditas Ekspor Unggulan Dataran Tinggi Gayo</span>
+                </h2>
+                <p class="text-xs text-stone-500 mt-0.5">Spesifikasi mutu komoditas ekspor agro yang sedang dalam pemantauan telemetri rantai dingin & kelembaban</p>
+            </div>
+            <span class="text-[11px] font-semibold text-stone-400 hidden sm:inline">Standar Mutu Internasional</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <!-- Card 1: Kopi Arabika Gayo Specialty -->
             <div class="bg-white rounded-xl border border-stone-200/90 shadow-2xs overflow-hidden flex flex-col sm:flex-row group hover:border-amber-300 transition-all">
-                <div class="sm:w-36 h-32 sm:h-auto relative overflow-hidden bg-stone-100 shrink-0">
-                    <img src="/images/coffee.jpg" alt="Kopi Arabika Gayo Takengon" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                    <span class="absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-bold bg-stone-900/90 text-white backdrop-blur-xs border border-white/20">
-                        Ekspor Utama
+                <div class="sm:w-48 h-44 sm:h-auto relative overflow-hidden bg-stone-100 shrink-0">
+                    <img src="/images/coffee.jpg" alt="Kopi Arabika Gayo Takengon" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-md text-[10px] font-extrabold bg-stone-900/90 text-white backdrop-blur-xs border border-white/20 uppercase tracking-wider">
+                        Komoditas Utama
                     </span>
                 </div>
-                <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
+                <div class="p-5 flex-1 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between gap-1 mb-1">
-                            <span class="text-xs font-mono font-bold text-amber-800">LNDS-2026-GY001</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
-                                On Track
+                        <div class="flex items-center justify-between gap-2 mb-1.5">
+                            <span class="text-xs font-mono font-bold text-amber-800">AGLN-2026-GY001</span>
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                                Sesuai Jadwal (On Track)
                             </span>
                         </div>
-                        <h3 class="text-xs font-bold text-stone-900">Kopi Arabika Gayo Specialty Grade 1</h3>
-                        <p class="text-[11px] text-stone-500 mt-0.5">Takengon Hub &rarr; Belawan &rarr; Rotterdam Port</p>
+                        <h3 class="text-sm font-bold text-stone-900 group-hover:text-amber-800 transition-colors">
+                            Kopi Arabika Gayo Specialty Grade 1
+                        </h3>
+                        <p class="text-xs text-stone-500 mt-1">Takengon Central Hub &rarr; Pelabuhan Belawan &rarr; Port of Rotterdam</p>
+
+                        <div class="grid grid-cols-2 gap-2 mt-3 p-2.5 rounded-lg bg-stone-50 border border-stone-200/70 text-xs">
+                            <div>
+                                <span class="text-[10px] text-stone-400 block uppercase font-medium">Kadar Air</span>
+                                <strong class="text-stone-800 font-mono">11.4% (Standar &lt; 12%)</strong>
+                            </div>
+                            <div>
+                                <span class="text-[10px] text-stone-400 block uppercase font-medium">Nilai Cacat</span>
+                                <strong class="text-stone-800 font-mono">&lt; 3 (Zero Primary)</strong>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="mt-2.5 pt-2 border-t border-stone-100 flex items-center justify-between text-[11px]">
-                        <span class="text-stone-600">Kadar Air: <strong class="text-stone-900">11.4% (Standar &lt; 12%)</strong></span>
-                        <a href="/shipments/1" class="font-bold text-amber-800 hover:text-amber-950 flex items-center gap-1 transition-colors">
-                            <span>Detail</span>
+                    <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs">
+                        <span class="text-stone-500 font-mono">Tonase: <strong class="text-stone-900">18.500 kg</strong></span>
+                        <a href="/shipments/1" class="btn-brand-outline px-3 py-1.5 rounded-lg text-xs font-bold text-amber-800 hover:text-amber-950 flex items-center gap-1.5 transition-colors">
+                            <span>Periksa Kargo</span>
                             <span>&rarr;</span>
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Card Komoditas 2: Hortikultura Cold-Chain (Alpukat & Cabai) -->
+            <!-- Card 2: Hortikultura Cold-Chain (Alpukat & Cabai) -->
             <div class="bg-white rounded-xl border border-stone-200/90 shadow-2xs overflow-hidden flex flex-col sm:flex-row group hover:border-amber-300 transition-all">
-                <div class="sm:w-36 h-32 sm:h-auto relative overflow-hidden bg-stone-100 shrink-0">
-                    <img src="/images/avocado.jpg" alt="Alpukat Mentega & Cabai Takengon" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                    <span class="absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-bold bg-stone-900/90 text-white backdrop-blur-xs border border-white/20">
-                        Rantai Dingin
+                <div class="sm:w-48 h-44 sm:h-auto relative overflow-hidden bg-stone-100 shrink-0">
+                    <img src="/images/avocado.jpg" alt="Alpukat Mentega & Cabai Takengon" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-md text-[10px] font-extrabold bg-amber-900/90 text-white backdrop-blur-xs border border-white/20 uppercase tracking-wider">
+                        Rantai Dingin Reefer
                     </span>
                 </div>
-                <div class="p-3.5 sm:p-4 flex-1 flex flex-col justify-between">
+                <div class="p-5 flex-1 flex flex-col justify-between">
                     <div>
-                        <div class="flex items-center justify-between gap-1 mb-1">
-                            <span class="text-xs font-mono font-bold text-amber-800">LNDS-2026-GY002</span>
-                            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
-                                In Transit
+                        <div class="flex items-center justify-between gap-2 mb-1.5">
+                            <span class="text-xs font-mono font-bold text-amber-800">AGLN-2026-GY002</span>
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                                Dalam Perjalanan
                             </span>
                         </div>
-                        <h3 class="text-xs font-bold text-stone-900">Alpukat Mentega & Cabai Merah Segar</h3>
-                        <p class="text-[11px] text-stone-500 mt-0.5">Takengon Hub &rarr; Belawan &rarr; Port of Singapore</p>
+                        <h3 class="text-sm font-bold text-stone-900 group-hover:text-amber-800 transition-colors">
+                            Alpukat Mentega & Cabai Merah Segar
+                        </h3>
+                        <p class="text-xs text-stone-500 mt-1">Takengon Central Hub &rarr; Pelabuhan Belawan &rarr; Port of Singapore</p>
+
+                        <div class="grid grid-cols-2 gap-2 mt-3 p-2.5 rounded-lg bg-stone-50 border border-stone-200/70 text-xs">
+                            <div>
+                                <span class="text-[10px] text-stone-400 block uppercase font-medium">Suhu Reefer</span>
+                                <strong class="text-stone-800 font-mono">5.8°C (Ideal: 4-7°C)</strong>
+                            </div>
+                            <div>
+                                <span class="text-[10px] text-stone-400 block uppercase font-medium">Kelembaban</span>
+                                <strong class="text-stone-800 font-mono">88% (Stabil)</strong>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="mt-2.5 pt-2 border-t border-stone-100 flex items-center justify-between text-[11px]">
-                        <span class="text-stone-600">Suhu Reefer: <strong class="text-stone-900">5.8°C (Stabil)</strong></span>
-                        <a href="/shipments/2" class="font-bold text-amber-800 hover:text-amber-950 flex items-center gap-1 transition-colors">
-                            <span>Detail</span>
+                    <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs">
+                        <span class="text-stone-500 font-mono">Tonase: <strong class="text-stone-900">4.200 kg</strong></span>
+                        <a href="/shipments/2" class="btn-brand-outline px-3 py-1.5 rounded-lg text-xs font-bold text-amber-800 hover:text-amber-950 flex items-center gap-1.5 transition-colors">
+                            <span>Periksa Kargo</span>
                             <span>&rarr;</span>
                         </a>
                     </div>
                 </div>
             </div>
-
-            <!-- Card Ringkas Standar Kepatuhan Internasional -->
-            <div class="bg-white rounded-xl border border-stone-200/90 p-3.5 shadow-2xs flex items-center justify-between text-xs">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-7 h-7 rounded-lg bg-stone-100 text-stone-700 flex items-center justify-center">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                    </div>
-                    <div>
-                        <span class="font-bold text-stone-900 block">Sertifikasi & Kepatuhan Ekspor</span>
-                        <span class="text-[11px] text-stone-500">ISO 22000, HACCP, & Bea Cukai Belawan</span>
-                    </div>
-                </div>
-                <span class="text-[10px] font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">100% Lolos</span>
-            </div>
-
         </div>
 
+        <!-- Strip Sertifikasi & Kepatuhan Ekspor -->
+        <div class="bg-white rounded-xl border border-stone-200/90 p-4 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-amber-50 text-amber-800 flex items-center justify-center shrink-0">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                </div>
+                <div>
+                    <span class="font-bold text-stone-900 block">Kepatuhan Standar Mutu Ekspor & Kepabeanan Internasional</span>
+                    <span class="text-stone-500 text-[11px]">Terakreditasi ISO 22000:2018 (Food Safety), HACCP, Sertifikat Fitosanitari Karantina Pertanian Belawan, dan Bea Cukai Ekspor.</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+                <span class="text-[10px] font-bold text-amber-900 bg-amber-50 px-3 py-1 rounded-full border border-amber-200 font-mono">100% COMPLIANT</span>
+            </div>
+        </div>
     </div>
 
     <!-- ======================================================== -->
@@ -425,10 +468,30 @@
             }
         });
 
+        // Garis Rute Multimodal Koridor Ekspor (Takengon -> Bireuen -> Belawan -> Singapura)
+        const corridorRoute = [
+            [4.6293, 96.8458], // Takengon Warehouse
+            [5.2045, 96.7009], // Bireuen Transit
+            [3.7844, 98.6833], // Pelabuhan Belawan
+            [1.2644, 103.8220]  // Port of Singapore
+        ];
+        L.polyline(corridorRoute, {
+            color: '#D97706',
+            weight: 3,
+            opacity: 0.8,
+            dashArray: '6, 8',
+            lineJoin: 'round'
+        }).addTo(map);
+
         if (markers.length > 0) {
             const group = new L.featureGroup(markers);
             map.fitBounds(group.getBounds(), { padding: [40, 40] });
         }
+
+        // Pastikan ukuran peta Leaflet terkalkulasi sempurna setelah layout dirender
+        setTimeout(function() {
+            map.invalidateSize();
+        }, 300);
     });
 </script>
 @endpush
