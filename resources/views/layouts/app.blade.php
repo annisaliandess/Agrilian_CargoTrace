@@ -179,7 +179,9 @@
             <!-- Brand Logo Area + Internal Close Button -->
             <div class="h-16 flex items-center justify-between px-5 border-b border-forest-800/80 bg-black/30">
                 <a href="{{ route('dashboard') }}" class="flex items-center gap-3 group min-w-0">
-                    <img src="{{ asset('images/logo.jpg') }}" alt="AgriLian Logo" class="w-10 h-10 rounded-full object-cover border-2 border-forest-200/50 shadow-md group-hover:scale-105 transition-transform shrink-0">
+                    <div class="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center shadow-sm shrink-0 border border-white/20 group-hover:scale-105 transition-transform">
+                        <img src="{{ asset('images/logo.jpg') }}" alt="AgriLian Logo" class="w-full h-full object-contain">
+                    </div>
                     <div class="min-w-0">
                         <span class="text-sm font-bold text-white tracking-tight block leading-tight">AgriLian</span>
                         <span class="text-[10px] font-semibold text-forest-200 tracking-wider uppercase block mt-0.5 font-mono">CargoTrace Platform</span>
@@ -413,7 +415,9 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16">
                     <a href="{{ route('home') }}" class="flex items-center gap-3 group">
-                        <img src="{{ asset('images/logo.jpg') }}" alt="AgriLian Logo" class="w-10 h-10 rounded-full object-cover border-2 border-forest-600/30 shadow-sm group-hover:scale-105 transition-transform shrink-0">
+                        <div class="w-10 h-10 rounded-xl bg-slate-50 p-1 flex items-center justify-center border border-slate-200 shadow-2xs group-hover:scale-105 transition-transform shrink-0">
+                            <img src="{{ asset('images/logo.jpg') }}" alt="AgriLian Logo" class="w-full h-full object-contain">
+                        </div>
                         <div>
                             <span class="text-base font-bold text-slate-900 tracking-tight">AgriLian <span class="text-forest-600 font-extrabold">CargoTrace</span></span>
                             <span class="block text-[10px] font-semibold text-slate-500 uppercase tracking-wider font-mono">Highland Agro-Export Visibility</span>

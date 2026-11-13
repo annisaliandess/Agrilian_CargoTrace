@@ -8,8 +8,10 @@
         
         <!-- Header Bersih & Profesional -->
         <div class="bg-white p-7 text-center border-b border-slate-100">
-            <!-- Official AgriLian Emblem Logo -->
-            <img src="{{ asset('images/logo.jpg') }}" alt="AgriLian Logo" class="w-20 h-20 rounded-full mx-auto mb-3 shadow-md border-2 border-forest-600/30 object-cover">
+            <!-- Official AgriLian Multimodal Logo -->
+            <div class="w-20 h-20 mx-auto mb-3 bg-white rounded-2xl p-1.5 border border-slate-200/90 shadow-sm flex items-center justify-center">
+                <img src="{{ asset('images/logo.jpg') }}" alt="AgriLian Logo" class="w-full h-full object-contain">
+            </div>
             
             <h1 class="text-xl font-bold text-slate-900 tracking-tight">Pendaftaran Akun Baru</h1>
             <p class="text-xs text-forest-700 font-semibold mt-1 font-mono">AgriLian CargoTrace Ekosistem</p>
