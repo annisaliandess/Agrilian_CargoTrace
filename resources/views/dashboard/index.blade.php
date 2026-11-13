@@ -8,61 +8,64 @@
     <!-- ======================================================== -->
     <!-- 1. EXECUTIVE COMMAND BANNER (High-Precision Enterprise)   -->
     <!-- ======================================================== -->
-    <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-            <div class="max-w-2xl">
-                <!-- Status Badge -->
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-forest-50 text-forest-900 border border-forest-200 mb-3">
-                    <span class="w-2 h-2 rounded-full bg-forest-600 animate-pulse"></span>
-                    <span class="font-mono">Takengon Hub (Gayo) &bull; Belawan Ocean Port &bull; Rotterdam Direct</span>
+    <div class="relative rounded-3xl overflow-hidden shadow-xl border border-forest-800/60 bg-[#051F20] text-white">
+        <!-- Background Image with Ambient Highland Overlay -->
+        <div class="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-luminosity scale-105 transition-transform duration-1000" style="background-image: url('{{ asset('images/highland.jpg') }}');"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#051F20] via-[#051F20]/95 to-[#0B2B26]/85"></div>
+        
+        <!-- Content Container -->
+        <div class="relative p-6 sm:p-8 z-10">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                <div class="max-w-2xl">
+                    <!-- Status Badge -->
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-forest-500/30 text-forest-200 border border-forest-400/30 backdrop-blur-md mb-3 shadow-sm font-mono">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>Takengon Hub (Gayo) &bull; Belawan Ocean Port &bull; Rotterdam Direct</span>
+                    </div>
+
+                    <!-- Headline -->
+                    <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">
+                        Cockpit Visibilitas Logistik Ekspor Highland
+                    </h1>
+                    <p class="text-xs sm:text-sm text-forest-100/80 mt-2 font-medium leading-relaxed max-w-xl">
+                        Sistem pemantauan telemetri kontainer kopi Arabika Gayo & hortikultura segar, radar cuaca koridor pegunungan lintas Sumatra, dan kepatuhan pabean internasional.
+                    </p>
                 </div>
 
-                <!-- Headline -->
-                <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 leading-tight">
-                    Dashboard Logistik Ekspor Highland
-                </h1>
-                <p class="text-xs sm:text-sm text-slate-600 mt-2 font-medium leading-relaxed">
-                    Sistem pemantauan telemetri kontainer kopi Arabika Gayo & hortikultura segar, radar cuaca koridor pegunungan lintas Sumatra, dan kepatuhan pabean internasional.
-                </p>
-            </div>
-
-            <!-- Action Buttons -->
-            <div class="flex flex-wrap items-center gap-3 shrink-0">
-                <a href="{{ route('track.public') }}" target="_blank" class="btn-brand-outline px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 cursor-pointer shadow-xs">
-                    <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                    <span>Halaman Cek Resi</span>
-                </a>
-
-                @if(auth()->user()->isAdmin() || auth()->user()->isOperator())
-                    <a href="{{ route('shipments.create') }}" class="btn-brand-accent px-5 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 cursor-pointer shadow-sm">
-                        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-                        <span>Buat Manifest Baru</span>
+                <!-- Action Buttons -->
+                <div class="flex flex-wrap items-center gap-3 shrink-0">
+                    <a href="{{ route('track.public') }}" target="_blank" class="px-4 py-2.5 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer">
+                        <svg class="w-4 h-4 text-forest-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        <span>Halaman Cek Resi</span>
                     </a>
-                @endif
-            </div>
-        </div>
 
-        <!-- Live Global Export Valuation & Currency Bar (ECB Live) -->
-        <div class="mt-6 pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs">
-            <div class="flex flex-wrap items-center gap-3">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 font-semibold border border-slate-200">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                    <span>Kurs Valas Ekspor (ECB Live):</span>
-                </span>
-                <span class="font-mono text-slate-700">
-                    <strong class="text-slate-900">1 USD</strong> = Rp {{ number_format($currencyRates['usd_to_idr'], 0, ',', '.') }}
-                </span>
-                <span class="text-slate-300">&bull;</span>
-                <span class="font-mono text-slate-700">
-                    <strong class="text-forest-700">1 EUR</strong> = Rp {{ number_format($currencyRates['eur_to_idr'], 0, ',', '.') }}
-                </span>
-                <span class="text-[10px] text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200 font-mono">Bank Sentral Eropa</span>
+                    @if(auth()->user()->isAdmin() || auth()->user()->isOperator())
+                        <a href="{{ route('shipments.create') }}" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-400 hover:bg-emerald-300 text-forest-950 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/40 cursor-pointer">
+                            <svg class="w-4 h-4 text-forest-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                            <span>Buat Manifest Baru</span>
+                        </a>
+                    @endif
+                </div>
             </div>
 
-            <div class="flex items-center gap-2">
-                <span class="text-slate-500 font-medium">Estimasi Devisa Kargo:</span>
-                <strong class="font-mono font-bold text-slate-900 text-sm tracking-tight">{{ $totalValuation['usd_formatted'] }} USD</strong>
-                <span class="text-xs font-mono font-bold text-forest-800 bg-forest-50 px-2 py-0.5 rounded-md border border-forest-200">({{ $totalValuation['eur_formatted'] }})</span>
+            <!-- Live Global Export Valuation & Currency Bar (ECB Live) -->
+            <div class="mt-6 pt-5 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-forest-200/90 font-medium">
+                <div class="flex flex-wrap items-center gap-3 font-mono">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 text-white border border-white/15 backdrop-blur-xs">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                        <span>Kurs Valas Ekspor (ECB Live):</span>
+                    </span>
+                    <span><strong class="text-white">1 USD</strong> = Rp {{ number_format($currencyRates['usd_to_idr'], 0, ',', '.') }}</span>
+                    <span class="text-forest-400">&bull;</span>
+                    <span><strong class="text-forest-200">1 EUR</strong> = Rp {{ number_format($currencyRates['eur_to_idr'], 0, ',', '.') }}</span>
+                    <span class="text-[10px] text-forest-200/70 bg-white/5 px-2 py-0.5 rounded border border-white/10 font-mono">Bank Sentral Eropa</span>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <span class="text-forest-200/80">Estimasi Devisa Kargo:</span>
+                    <strong class="font-mono font-bold text-white text-sm tracking-tight">{{ $totalValuation['usd_formatted'] }} USD</strong>
+                    <span class="text-xs font-mono font-bold text-emerald-300 bg-emerald-950/80 px-2 py-0.5 rounded-md border border-emerald-500/40">({{ $totalValuation['eur_formatted'] }})</span>
+                </div>
             </div>
         </div>
     </div>
@@ -245,44 +248,47 @@
             <span class="text-[11px] font-semibold text-slate-400 hidden sm:inline font-mono">Standar Mutu Internasional</span>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
             <!-- Card 1: Kopi Arabika Gayo Specialty -->
-            <div class="bg-white rounded-2xl border border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col sm:flex-row group hover:border-blue-300 transition-all">
-                <div class="sm:w-52 h-48 sm:h-auto relative overflow-hidden bg-slate-100 shrink-0">
+            <div class="bg-white rounded-2xl border border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col group hover:border-forest-300 transition-all">
+                <div class="h-44 relative overflow-hidden bg-slate-100 shrink-0">
                     <img src="/images/coffee.jpg" alt="Kopi Arabika Gayo Takengon" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-extrabold bg-slate-900/90 text-white backdrop-blur-xs border border-white/20 uppercase tracking-wider font-mono">
-                        Komoditas Utama
+                    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-extrabold bg-[#051F20]/90 text-white backdrop-blur-xs border border-white/20 uppercase tracking-wider font-mono">
+                        Komoditas Utama Gayo
+                    </span>
+                    <span class="absolute bottom-3 left-3 px-2 py-0.5 rounded text-[10px] font-bold bg-black/60 text-forest-200 backdrop-blur-xs font-mono">
+                        1.400 mdpl Takengon
                     </span>
                 </div>
                 <div class="p-5 flex-1 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between gap-2 mb-1.5">
                             <span class="text-xs font-mono font-bold text-forest-700">AGLN-2026-GY001</span>
-                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 font-mono">
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 font-mono">
                                 On Track (Maersk)
                             </span>
                         </div>
                         <h3 class="text-sm font-bold text-slate-900 group-hover:text-forest-700 transition-colors">
                             Kopi Arabika Gayo Specialty Grade 1
                         </h3>
-                        <p class="text-xs text-slate-500 mt-1">Takengon Central Hub &rarr; Pelabuhan Belawan &rarr; Port of Rotterdam</p>
+                        <p class="text-xs text-slate-500 mt-1">Takengon Central &rarr; Belawan &rarr; Rotterdam</p>
 
-                        <div class="grid grid-cols-2 gap-2 mt-3 p-3 rounded-xl bg-slate-50 border border-slate-200/70 text-xs">
+                        <div class="grid grid-cols-2 gap-2 mt-3 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70 text-xs">
                             <div>
-                                <span class="text-[10px] text-slate-400 block uppercase font-medium font-mono">Kadar Air</span>
-                                <strong class="text-slate-800 font-mono">11.4% (Standar &lt; 12%)</strong>
+                                <span class="text-[9px] text-slate-400 block uppercase font-medium font-mono">Kadar Air</span>
+                                <strong class="text-slate-800 font-mono text-xs">11.4% (&lt; 12%)</strong>
                             </div>
                             <div>
-                                <span class="text-[10px] text-slate-400 block uppercase font-medium font-mono">Nilai Cacat</span>
-                                <strong class="text-slate-800 font-mono">&lt; 3 (Zero Primary)</strong>
+                                <span class="text-[9px] text-slate-400 block uppercase font-medium font-mono">Nilai Cacat</span>
+                                <strong class="text-slate-800 font-mono text-xs">&lt; 3 (Zero Defect)</strong>
                             </div>
                         </div>
                     </div>
 
                     <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                        <span class="text-slate-500 font-mono">Tonase: <strong class="text-slate-900">18.500 kg</strong></span>
-                        <a href="/shipments/1" class="btn-brand-outline px-3.5 py-1.5 rounded-lg text-xs font-bold text-forest-700 hover:text-forest-900 flex items-center gap-1.5 transition-colors">
-                            <span>Periksa Kargo</span>
+                        <span class="text-slate-500 font-mono">Bobot: <strong class="text-slate-900">18.500 kg</strong></span>
+                        <a href="/shipments/1" class="btn-brand-outline px-3 py-1.5 rounded-lg text-xs font-bold text-forest-700 hover:text-forest-900 flex items-center gap-1 transition-colors">
+                            <span>Periksa</span>
                             <span>&rarr;</span>
                         </a>
                     </div>
@@ -290,42 +296,91 @@
             </div>
 
             <!-- Card 2: Hortikultura Cold-Chain (Alpukat & Cabai) -->
-            <div class="bg-white rounded-2xl border border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col sm:flex-row group hover:border-forest-300 transition-all">
-                <div class="sm:w-52 h-48 sm:h-auto relative overflow-hidden bg-slate-100 shrink-0">
+            <div class="bg-white rounded-2xl border border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col group hover:border-forest-300 transition-all">
+                <div class="h-44 relative overflow-hidden bg-slate-100 shrink-0">
                     <img src="/images/avocado.jpg" alt="Alpukat Mentega & Cabai Takengon" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-extrabold bg-forest-900/90 text-white backdrop-blur-xs border border-white/20 uppercase tracking-wider font-mono">
                         Rantai Dingin Reefer
+                    </span>
+                    <span class="absolute bottom-3 left-3 px-2 py-0.5 rounded text-[10px] font-bold bg-black/60 text-emerald-300 backdrop-blur-xs font-mono">
+                        Takengon &rarr; Singapore
                     </span>
                 </div>
                 <div class="p-5 flex-1 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between gap-2 mb-1.5">
                             <span class="text-xs font-mono font-bold text-forest-700">AGLN-2026-GY002</span>
-                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-forest-50 text-forest-800 border border-forest-200 font-mono">
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-forest-50 text-forest-800 border border-forest-200 font-mono">
                                 Dalam Perjalanan
                             </span>
                         </div>
                         <h3 class="text-sm font-bold text-slate-900 group-hover:text-forest-700 transition-colors">
                             Alpukat Mentega & Cabai Merah Segar
                         </h3>
-                        <p class="text-xs text-slate-500 mt-1">Takengon Central Hub &rarr; Pelabuhan Belawan &rarr; Port of Singapore</p>
+                        <p class="text-xs text-slate-500 mt-1">Takengon Central &rarr; Belawan &rarr; Singapura</p>
 
-                        <div class="grid grid-cols-2 gap-2 mt-3 p-3 rounded-xl bg-slate-50 border border-slate-200/70 text-xs">
+                        <div class="grid grid-cols-2 gap-2 mt-3 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70 text-xs">
                             <div>
-                                <span class="text-[10px] text-slate-400 block uppercase font-medium font-mono">Suhu Reefer</span>
-                                <strong class="text-slate-800 font-mono">5.8°C (Ideal: 4-7°C)</strong>
+                                <span class="text-[9px] text-slate-400 block uppercase font-medium font-mono">Suhu Reefer</span>
+                                <strong class="text-slate-800 font-mono text-xs">5.8°C (Stabil)</strong>
                             </div>
                             <div>
-                                <span class="text-[10px] text-slate-400 block uppercase font-medium font-mono">Kelembaban</span>
-                                <strong class="text-slate-800 font-mono">88% (Stabil)</strong>
+                                <span class="text-[9px] text-slate-400 block uppercase font-medium font-mono">Kelembaban</span>
+                                <strong class="text-slate-800 font-mono text-xs">88% (Ideal)</strong>
                             </div>
                         </div>
                     </div>
 
                     <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                        <span class="text-slate-500 font-mono">Tonase: <strong class="text-slate-900">4.200 kg</strong></span>
-                        <a href="/shipments/2" class="btn-brand-outline px-3.5 py-1.5 rounded-lg text-xs font-bold text-forest-700 hover:text-forest-900 flex items-center gap-1.5 transition-colors">
-                            <span>Periksa Kargo</span>
+                        <span class="text-slate-500 font-mono">Bobot: <strong class="text-slate-900">4.200 kg</strong></span>
+                        <a href="/shipments/2" class="btn-brand-outline px-3 py-1.5 rounded-lg text-xs font-bold text-forest-700 hover:text-forest-900 flex items-center gap-1 transition-colors">
+                            <span>Periksa</span>
+                            <span>&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Armada Angkutan Samudera & Logistik Multimodal -->
+            <div class="bg-white rounded-2xl border border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col group hover:border-forest-300 transition-all">
+                <div class="h-44 relative overflow-hidden bg-slate-100 shrink-0">
+                    <img src="/images/ship.jpg" alt="Kapal Pengangkut Kontainer Samudera" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-extrabold bg-[#051F20]/90 text-white backdrop-blur-xs border border-white/20 uppercase tracking-wider font-mono">
+                        Armada Kapal Samudera
+                    </span>
+                    <span class="absolute bottom-3 left-3 px-2 py-0.5 rounded text-[10px] font-bold bg-black/60 text-sky-300 backdrop-blur-xs font-mono">
+                        Maersk Line &bull; Belawan
+                    </span>
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-1.5">
+                            <span class="text-xs font-mono font-bold text-forest-700">VESSEL-MSK-09</span>
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 font-mono">
+                                Pelayaran Aktif
+                            </span>
+                        </div>
+                        <h3 class="text-sm font-bold text-slate-900 group-hover:text-forest-700 transition-colors">
+                            Kapal Kontainer Ekspor Samudera
+                        </h3>
+                        <p class="text-xs text-slate-500 mt-1">Pelabuhan Belawan &rarr; Selat Malaka &rarr; Eropa</p>
+
+                        <div class="grid grid-cols-2 gap-2 mt-3 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70 text-xs">
+                            <div>
+                                <span class="text-[9px] text-slate-400 block uppercase font-medium font-mono">Kapasitas TEU</span>
+                                <strong class="text-slate-800 font-mono text-xs">1.250 TEU</strong>
+                            </div>
+                            <div>
+                                <span class="text-[9px] text-slate-400 block uppercase font-medium font-mono">Kecepatan Rata-rata</span>
+                                <strong class="text-slate-800 font-mono text-xs">18.4 Knots</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                        <span class="text-slate-500 font-mono">AIS GPS: <strong class="text-emerald-700">Terkoneksi</strong></span>
+                        <a href="/shipments/1" class="btn-brand-outline px-3 py-1.5 rounded-lg text-xs font-bold text-forest-700 hover:text-forest-900 flex items-center gap-1 transition-colors">
+                            <span>Radar</span>
                             <span>&rarr;</span>
                         </a>
                     </div>
