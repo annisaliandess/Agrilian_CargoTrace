@@ -489,11 +489,11 @@
         // Inisialisasi peta Leaflet
         const map = L.map('overview-map').setView([4.0, 99.0], 5);
 
-        // Menggunakan CartoDB Voyager Tiles (HD, Crisp, Modern Enterprise SaaS Look)
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        // Menggunakan OpenStreetMap Tiles Resmi (100% Bersih, Tanpa Watermark, Tanpa API Key)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
-            subdomains: 'abcd',
-            attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>'
+            subdomains: ['a', 'b', 'c'],
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
         const locations = @json($locations);

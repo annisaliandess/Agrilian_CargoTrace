@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Selamat Datang — AgriLian')
+@section('title', 'Melangkah Lebih Jauh Bersama Agrilian')
 
 @section('content')
 <div class="max-w-md mx-auto my-12 px-4">
@@ -11,8 +11,8 @@
             <!-- Official AgriLian Emblem Logo -->
             <img src="{{ asset('images/logo.jpg') }}" alt="AgriLian Logo" class="w-20 h-20 rounded-full mx-auto mb-3 shadow-md border-2 border-forest-600/30 object-cover">
             
-            <h1 class="text-xl font-bold text-slate-900 tracking-tight">Selamat Datang</h1>
-            <p class="text-xs text-forest-700 font-semibold mt-1 tracking-wide font-mono">AgriLian CargoTrace Portal</p>
+            <h1 class="text-xl font-bold text-slate-900 tracking-tight">Melangkah Lebih Jauh Bersama Agrilian</h1>
+            <p class="text-xs text-forest-700 font-semibold mt-1 tracking-wide font-mono">Masuk ke akun Anda untuk memantau dan mengirim komoditas terbaik</p>
         </div>
 
         <!-- Form Body -->
@@ -71,7 +71,7 @@
 
             <!-- Tautan ke Halaman Register -->
             <div class="pt-3 border-t border-slate-100 text-center text-xs text-slate-500">
-                Belum memiliki akun mitra? 
+                Belum memiliki akun? 
                 <a href="{{ route('register') }}" class="font-bold text-forest-700 hover:text-forest-900 transition-colors">
                     Daftar Akun Baru
                 </a>
