@@ -214,6 +214,11 @@
                             <span>Manifes Kargo (Roster)</span>
                         </a>
 
+                        <a href="{{ route('commodities.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('commodities.index') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
+                            <svg class="w-4 h-4 {{ request()->routeIs('commodities.index') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                            <span>Katalog Komoditas & Armada</span>
+                        </a>
+
                         @if(auth()->user()->isAdmin() || auth()->user()->isOperator())
                             <a href="{{ route('shipments.create') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.create') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
                                 <svg class="w-4 h-4 {{ request()->routeIs('shipments.create') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>

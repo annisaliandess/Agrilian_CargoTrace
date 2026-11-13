@@ -245,7 +245,10 @@
                 </h2>
                 <p class="text-xs text-slate-500 mt-0.5">Spesifikasi mutu komoditas ekspor agro yang sedang dalam pemantauan telemetri rantai dingin & kelembaban</p>
             </div>
-            <span class="text-[11px] font-semibold text-slate-400 hidden sm:inline font-mono">Standar Mutu Internasional</span>
+            <a href="{{ route('commodities.index') }}" class="btn-brand-accent px-3.5 py-1.5 rounded-xl text-xs flex items-center gap-1.5 shadow-sm hover:shadow transition-all font-mono">
+                <span>Buka Katalog Detail</span>
+                <span>&rarr;</span>
+            </a>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">

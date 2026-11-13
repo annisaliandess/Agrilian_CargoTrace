@@ -150,6 +150,7 @@ class AuthAndApiTest extends TestCase
 
         // 3. Authenticated dashboard & shipments
         $this->actingAs($this->admin)->get('/dashboard')->assertStatus(200);
+        $this->actingAs($this->admin)->get('/commodities')->assertStatus(200);
         $this->actingAs($this->admin)->get('/shipments')->assertStatus(200);
         $this->actingAs($this->admin)->get("/shipments/{$shipment->id}")->assertStatus(200);
         $this->actingAs($this->admin)->get('/shipments/create')->assertStatus(200);

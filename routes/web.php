@@ -24,6 +24,7 @@ Route::post('/logout', [AuthController::class, 'webLogout'])->name('logout');
 // Authenticated Application Routes
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/commodities', [DashboardController::class, 'commodities'])->name('commodities.index');
 
     // Shipments
     Route::get('/shipments', [ShipmentController::class, 'index'])->name('shipments.index');

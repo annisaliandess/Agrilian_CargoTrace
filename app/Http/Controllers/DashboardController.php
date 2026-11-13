@@ -74,4 +74,16 @@ class DashboardController extends Controller
             'totalWeightKg'
         ));
     }
+
+    public function commodities(CurrencyService $currencyService, WeatherService $weatherService)
+    {
+        $currencyRates = $currencyService->getRates();
+        $corridorWeather = $weatherService->getCorridorTelemetry();
+
+        $activeShipments = Shipment::with(['origin', 'destination', 'currentLocation', 'carrier'])
+            ->latest()
+            ->get();
+
+        return view('commodities.index', compact('currencyRates', 'corridorWeather', 'activeShipments'));
+    }
 }
