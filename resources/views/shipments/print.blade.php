@@ -71,15 +71,25 @@
                 </div>
             </div>
 
-            <!-- Barcode & Nomor Resi -->
-            <div class="text-right flex flex-col items-end">
-                <div class="bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-300 flex flex-col items-center">
-                    <svg class="h-6 w-36 text-slate-900" viewBox="0 0 176 26" fill="currentColor">
-                        <rect x="0" y="0" width="2" height="26"/><rect x="4" y="0" width="1" height="26"/><rect x="7" y="0" width="3" height="26"/><rect x="12" y="0" width="1" height="26"/><rect x="15" y="0" width="2" height="26"/><rect x="19" y="0" width="4" height="26"/><rect x="25" y="0" width="1" height="26"/><rect x="28" y="0" width="2" height="26"/><rect x="32" y="0" width="3" height="26"/><rect x="37" y="0" width="1" height="26"/><rect x="40" y="0" width="2" height="26"/><rect x="44" y="0" width="4" height="26"/><rect x="50" y="0" width="2" height="26"/><rect x="54" y="0" width="1" height="26"/><rect x="57" y="0" width="3" height="26"/><rect x="62" y="0" width="1" height="26"/><rect x="65" y="0" width="2" height="26"/><rect x="69" y="0" width="4" height="26"/><rect x="75" y="0" width="2" height="26"/><rect x="79" y="0" width="1" height="26"/><rect x="82" y="0" width="3" height="26"/><rect x="87" y="0" width="2" height="26"/><rect x="91" y="0" width="1" height="26"/><rect x="94" y="0" width="4" height="26"/><rect x="100" y="0" width="2" height="26"/><rect x="104" y="0" width="1" height="26"/><rect x="107" y="0" width="3" height="26"/><rect x="112" y="0" width="1" height="26"/><rect x="115" y="0" width="3" height="26"/><rect x="120" y="0" width="2" height="26"/><rect x="124" y="0" width="1" height="26"/><rect x="127" y="0" width="4" height="26"/><rect x="133" y="0" width="2" height="26"/><rect x="137" y="0" width="1" height="26"/><rect x="140" y="0" width="3" height="26"/><rect x="145" y="0" width="2" height="26"/><rect x="149" y="0" width="1" height="26"/><rect x="152" y="0" width="3" height="26"/><rect x="157" y="0" width="2" height="26"/><rect x="161" y="0" width="1" height="26"/><rect x="164" y="0" width="4" height="26"/><rect x="170" y="0" width="2" height="26"/><rect x="174" y="0" width="2" height="26"/>
-                    </svg>
-                    <span class="text-[9px] font-mono tracking-widest text-slate-800 font-bold uppercase mt-1">*{{ $shipment->tracking_number }}*</span>
+            <!-- Barcode & QR Code Pelacakan Resmi -->
+            <div class="flex items-center gap-3.5">
+                <!-- Dynamic Scannable QR Code via API -->
+                <div class="bg-white p-1 rounded-xl border border-slate-300 shadow-2xs flex flex-col items-center">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&color=051F20&bgcolor=FFFFFF&data={{ urlencode(url('/track/' . $shipment->tracking_number)) }}" 
+                         alt="QR Pelacakan Kargo" class="w-16 h-16 object-contain">
+                    <span class="text-[7px] font-mono font-bold text-slate-600 uppercase tracking-tight mt-0.5">SCAN QR LACAK</span>
                 </div>
-                <div class="text-[10px] text-slate-500 font-mono mt-1">Dicetak: {{ now()->format('d M Y, H:i:s') }} WIB</div>
+
+                <!-- Digital Code128 Barcode & API Security Hash -->
+                <div class="text-right flex flex-col items-end">
+                    <div class="bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-300 flex flex-col items-center">
+                        <svg class="h-6 w-36 text-slate-900" viewBox="0 0 176 26" fill="currentColor">
+                            <rect x="0" y="0" width="2" height="26"/><rect x="4" y="0" width="1" height="26"/><rect x="7" y="0" width="3" height="26"/><rect x="12" y="0" width="1" height="26"/><rect x="15" y="0" width="2" height="26"/><rect x="19" y="0" width="4" height="26"/><rect x="25" y="0" width="1" height="26"/><rect x="28" y="0" width="2" height="26"/><rect x="32" y="0" width="3" height="26"/><rect x="37" y="0" width="1" height="26"/><rect x="40" y="0" width="2" height="26"/><rect x="44" y="0" width="4" height="26"/><rect x="50" y="0" width="2" height="26"/><rect x="54" y="0" width="1" height="26"/><rect x="57" y="0" width="3" height="26"/><rect x="62" y="0" width="1" height="26"/><rect x="65" y="0" width="2" height="26"/><rect x="69" y="0" width="4" height="26"/><rect x="75" y="0" width="2" height="26"/><rect x="79" y="0" width="1" height="26"/><rect x="82" y="0" width="3" height="26"/><rect x="87" y="0" width="2" height="26"/><rect x="91" y="0" width="1" height="26"/><rect x="94" y="0" width="4" height="26"/><rect x="100" y="0" width="2" height="26"/><rect x="104" y="0" width="1" height="26"/><rect x="107" y="0" width="3" height="26"/><rect x="112" y="0" width="1" height="26"/><rect x="115" y="0" width="3" height="26"/><rect x="120" y="0" width="2" height="26"/><rect x="124" y="0" width="1" height="26"/><rect x="127" y="0" width="4" height="26"/><rect x="133" y="0" width="2" height="26"/><rect x="137" y="0" width="1" height="26"/><rect x="140" y="0" width="3" height="26"/><rect x="145" y="0" width="2" height="26"/><rect x="149" y="0" width="1" height="26"/><rect x="152" y="0" width="3" height="26"/><rect x="157" y="0" width="2" height="26"/><rect x="161" y="0" width="1" height="26"/><rect x="164" y="0" width="4" height="26"/><rect x="170" y="0" width="2" height="26"/><rect x="174" y="0" width="2" height="26"/>
+                        </svg>
+                        <span class="text-[9px] font-mono tracking-widest text-slate-800 font-bold uppercase mt-1">*{{ $shipment->tracking_number }}*</span>
+                    </div>
+                    <div class="text-[9px] text-slate-500 font-mono mt-1">Dicetak: {{ now()->format('d M Y, H:i') }} &bull; API Key: <strong class="text-slate-700">SEC-{{ strtoupper(substr(md5($shipment->tracking_number), 0, 8)) }}</strong></div>
+                </div>
             </div>
         </div>
 

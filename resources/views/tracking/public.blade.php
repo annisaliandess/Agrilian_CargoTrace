@@ -98,7 +98,18 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col sm:flex-row items-end sm:items-center gap-4">
+                <div class="flex flex-col sm:flex-row items-end sm:items-center gap-3">
+                    <!-- Dynamic Scannable QR Code via API -->
+                    <div class="hidden sm:flex items-center gap-2.5 bg-stone-50 p-2 rounded-xl border border-stone-200 shadow-2xs">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&color=051F20&bgcolor=FFFFFF&data={{ urlencode(url('/track/' . $shipment->tracking_number)) }}" 
+                             alt="QR Tracking Code" class="w-10 h-10 object-contain rounded">
+                        <div class="text-[9px] font-mono leading-tight">
+                            <span class="font-extrabold text-stone-800 block">QR TRACK</span>
+                            <span class="text-stone-500 text-[8px] block">Scan via Kamera HP</span>
+                            <span class="text-[7px] text-emerald-700 font-bold uppercase">Key: {{ substr(md5($shipment->tracking_number), 0, 8) }}</span>
+                        </div>
+                    </div>
+
                     <!-- Barcode / Digital Waybill Badge -->
                     <div class="hidden md:flex flex-col items-end">
                         <div class="bg-stone-50 px-3 py-1.5 rounded-lg border border-stone-200 shadow-2xs flex flex-col items-center">

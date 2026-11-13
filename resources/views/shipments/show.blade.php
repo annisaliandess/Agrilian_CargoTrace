@@ -40,8 +40,19 @@
             </div>
         </div>
 
-        <!-- Badges & Barcode -->
+        <!-- Badges, QR Code & Barcode -->
         <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+            <!-- Dynamic Scannable QR Code via API -->
+            <div class="hidden lg:flex items-center gap-2.5 bg-white p-2 rounded-xl border border-slate-200 shadow-2xs">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&color=051F20&bgcolor=FFFFFF&data={{ urlencode(url('/track/' . $shipment->tracking_number)) }}" 
+                     alt="QR Tracking Code" class="w-10 h-10 object-contain rounded">
+                <div class="text-[9px] font-mono leading-tight">
+                    <span class="font-extrabold text-slate-800 block">QR TRACK</span>
+                    <span class="text-slate-500 text-[8px] block">Scan via HP</span>
+                    <span class="text-[7px] text-emerald-700 font-bold uppercase">Key: {{ substr(md5($shipment->tracking_number), 0, 6) }}</span>
+                </div>
+            </div>
+
             <!-- Digital Barcode Stamp -->
             <div class="hidden lg:flex flex-col items-end">
                 <div class="bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 shadow-2xs flex flex-col items-center">
