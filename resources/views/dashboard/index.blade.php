@@ -57,20 +57,20 @@
                     <span class="w-2 h-2 rounded-full bg-[#57C84D] animate-pulse"></span>
                     <span>Kurs Valas Ekspor (ECB Live):</span>
                 </span>
-                <span class="font-mono text-white">
-                    <strong>1 USD</strong> = Rp {{ number_format($currencyRates['usd_to_idr'], 0, ',', '.') }}
+                <span class="font-mono text-slate-200">
+                    <strong class="text-white">1 USD</strong> = Rp {{ number_format($currencyRates['usd_to_idr'], 0, ',', '.') }}
                 </span>
                 <span class="text-white/40">&bull;</span>
-                <span class="font-mono text-white">
-                    <strong>1 EUR</strong> = Rp {{ number_format($currencyRates['eur_to_idr'], 0, ',', '.') }}
+                <span class="font-mono text-slate-200">
+                    <strong class="text-[#FBBF24]">1 EUR</strong> = Rp {{ number_format($currencyRates['eur_to_idr'], 0, ',', '.') }}
                 </span>
                 <span class="text-[10px] text-[#95D5B2] bg-emerald-950/60 px-2 py-0.5 rounded border border-[#95D5B2]/30">Live Bank Sentral</span>
             </div>
 
             <div class="flex items-center gap-2">
-                <span class="text-slate-300">Estimasi Devisa Kargo:</span>
-                <span class="font-mono font-extrabold text-[#57C84D] text-sm">{{ $totalValuation['usd_formatted'] }} USD</span>
-                <span class="text-xs text-[#95D5B2] font-mono">({{ $totalValuation['eur_formatted'] }})</span>
+                <span class="text-slate-200 font-medium">Estimasi Devisa Kargo:</span>
+                <span class="font-mono font-black text-white text-sm tracking-tight drop-shadow-sm">{{ $totalValuation['usd_formatted'] }} USD</span>
+                <span class="text-xs font-mono font-bold text-[#FBBF24] bg-amber-950/40 px-2.5 py-0.5 rounded-lg border border-amber-400/30 shadow-2xs">({{ $totalValuation['eur_formatted'] }})</span>
             </div>
         </div>
     </div>
