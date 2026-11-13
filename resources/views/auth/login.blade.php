@@ -6,19 +6,17 @@
 <div class="max-w-md mx-auto my-12 px-4">
     <div class="bg-white rounded-2xl shadow-lg border border-slate-200/90 overflow-hidden">
         
-        <!-- Header Bersih & Profesional (Tanpa Gimmick AI) -->
-        <div class="bg-white p-7 text-center border-b border-stone-100">
-            <!-- Brand / User Logo (Siap Diganti dengan Logo Buatan Ayaa) -->
-            <div id="login-brand-logo" class="w-12 h-12 rounded-2xl bg-stone-900 border border-stone-700 text-white flex items-center justify-center mx-auto mb-3 shadow-xs">
-                <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+        <!-- Header Bersih & Profesional -->
+        <div class="bg-white p-7 text-center border-b border-slate-100">
+            <!-- Brand Logo -->
+            <div id="login-brand-logo" class="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 border border-blue-400/30 text-white flex items-center justify-center mx-auto mb-3 shadow-md shadow-blue-900/20">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                 </svg>
             </div>
             
-            <!-- Judul Hangat & Ramah Sesuai Pilihan Ayaa -->
-            <h1 class="text-xl font-bold text-stone-900 tracking-tight">Selamat Datang</h1>
-            <!-- Subtitle Bersih & Beridentitas Brand AgriLian -->
-            <p class="text-xs text-amber-700 font-semibold mt-1 tracking-wide">AgriLian Portal</p>
+            <h1 class="text-xl font-bold text-slate-900 tracking-tight">Selamat Datang</h1>
+            <p class="text-xs text-blue-700 font-semibold mt-1 tracking-wide font-mono">AgriLian CargoTrace Portal</p>
         </div>
 
         <!-- Form Body -->
@@ -32,20 +30,20 @@
             <form action="{{ route('login.post') }}" method="POST" class="space-y-4">
                 @csrf
                 <div>
-                    <label for="email" class="block text-xs font-semibold text-stone-700 mb-1.5">Alamat Email</label>
+                    <label for="email" class="block text-xs font-semibold text-slate-700 mb-1.5">Alamat Email</label>
                     <input type="email" id="email" name="email" value="{{ old('email', 'admin@cargotrace.com') }}" placeholder="masukkan alamat email..." required autofocus
-                           class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-xs font-medium text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all">
+                           class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all">
                 </div>
 
                 <div>
-                    <label for="password" class="block text-xs font-semibold text-stone-700 mb-1.5">Kata Sandi</label>
+                    <label for="password" class="block text-xs font-semibold text-slate-700 mb-1.5">Kata Sandi</label>
                     <div class="relative">
                         <input type="password" id="password" name="password" value="password123" placeholder="masukkan kata sandi..." required
-                               class="w-full pl-3.5 pr-10 py-2.5 rounded-xl border border-stone-300 text-xs font-mono font-medium text-stone-900 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all">
+                               class="w-full pl-3.5 pr-10 py-2.5 rounded-xl border border-slate-300 text-xs font-mono font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all">
                         
                         <!-- Toggle Tampilkan/Sembunyikan Kata Sandi (Mata Terbuka & Tertutup) -->
                         <button type="button" onclick="togglePasswordVisibility()" title="Tampilkan / Sembunyikan kata sandi"
-                                class="absolute inset-y-0 right-0 pr-3 flex items-center text-stone-400 hover:text-stone-700 cursor-pointer transition-colors focus:outline-none">
+                                class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-700 cursor-pointer transition-colors focus:outline-none">
                             <!-- Mata Terbuka (Default Saat Tersembunyi) -->
                             <svg id="eye-open-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -60,13 +58,13 @@
                 </div>
 
                 <div class="flex items-center justify-between text-xs pt-1">
-                    <label class="flex items-center gap-2 cursor-pointer text-stone-600 font-medium select-none">
-                        <input type="checkbox" name="remember" class="rounded border-stone-300 text-amber-600 focus:ring-amber-500">
+                    <label class="flex items-center gap-2 cursor-pointer text-slate-600 font-medium select-none">
+                        <input type="checkbox" name="remember" class="rounded border-slate-300 text-blue-600 focus:ring-blue-500">
                         Ingat sesi saya
                     </label>
                 </div>
 
-                <!-- Tombol Berkelas Pilihan Ayaa: Masuk ke Portal -->
+                <!-- Tombol Berkelas: Masuk ke Portal -->
                 <button type="submit" class="btn-brand-accent w-full py-2.5 px-4 rounded-xl text-xs font-bold cursor-pointer transition-transform active:scale-[0.98] shadow-sm flex items-center justify-center gap-2">
                     <span>Masuk ke Portal</span>
                     <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -76,9 +74,9 @@
             </form>
 
             <!-- Tautan ke Halaman Register -->
-            <div class="pt-3 border-t border-stone-100 text-center text-xs text-stone-500">
+            <div class="pt-3 border-t border-slate-100 text-center text-xs text-slate-500">
                 Belum memiliki akun mitra? 
-                <a href="{{ route('register') }}" class="font-bold text-amber-700 hover:text-amber-800 transition-colors">
+                <a href="{{ route('register') }}" class="font-bold text-blue-700 hover:text-blue-900 transition-colors">
                     Daftar Akun Baru
                 </a>
             </div>

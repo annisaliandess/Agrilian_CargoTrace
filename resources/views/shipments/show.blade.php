@@ -40,11 +40,11 @@
         <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
             <!-- Digital Barcode Stamp -->
             <div class="hidden lg:flex flex-col items-end">
-                <div class="bg-stone-50 px-3 py-1.5 rounded-lg border border-stone-200 shadow-2xs flex flex-col items-center">
-                    <svg class="h-5 w-32 text-stone-800" viewBox="0 0 176 26" fill="currentColor">
+                <div class="bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 shadow-2xs flex flex-col items-center">
+                    <svg class="h-5 w-32 text-slate-800" viewBox="0 0 176 26" fill="currentColor">
                         <rect x="0" y="0" width="2" height="26"/><rect x="4" y="0" width="1" height="26"/><rect x="7" y="0" width="3" height="26"/><rect x="12" y="0" width="1" height="26"/><rect x="15" y="0" width="2" height="26"/><rect x="19" y="0" width="4" height="26"/><rect x="25" y="0" width="1" height="26"/><rect x="28" y="0" width="2" height="26"/><rect x="32" y="0" width="3" height="26"/><rect x="37" y="0" width="1" height="26"/><rect x="40" y="0" width="2" height="26"/><rect x="44" y="0" width="4" height="26"/><rect x="50" y="0" width="2" height="26"/><rect x="54" y="0" width="1" height="26"/><rect x="57" y="0" width="3" height="26"/><rect x="62" y="0" width="1" height="26"/><rect x="65" y="0" width="2" height="26"/><rect x="69" y="0" width="4" height="26"/><rect x="75" y="0" width="2" height="26"/><rect x="79" y="0" width="1" height="26"/><rect x="82" y="0" width="3" height="26"/><rect x="87" y="0" width="2" height="26"/><rect x="91" y="0" width="1" height="26"/><rect x="94" y="0" width="4" height="26"/><rect x="100" y="0" width="2" height="26"/><rect x="104" y="0" width="1" height="26"/><rect x="107" y="0" width="3" height="26"/><rect x="112" y="0" width="1" height="26"/><rect x="115" y="0" width="3" height="26"/><rect x="120" y="0" width="2" height="26"/><rect x="124" y="0" width="1" height="26"/><rect x="127" y="0" width="4" height="26"/><rect x="133" y="0" width="2" height="26"/><rect x="137" y="0" width="1" height="26"/><rect x="140" y="0" width="3" height="26"/><rect x="145" y="0" width="2" height="26"/><rect x="149" y="0" width="1" height="26"/><rect x="152" y="0" width="3" height="26"/><rect x="157" y="0" width="2" height="26"/><rect x="161" y="0" width="1" height="26"/><rect x="164" y="0" width="4" height="26"/><rect x="170" y="0" width="2" height="26"/><rect x="174" y="0" width="2" height="26"/>
                     </svg>
-                    <span class="text-[8px] font-mono tracking-widest text-stone-600 mt-0.5 uppercase">*{{ $shipment->tracking_number }}*</span>
+                    <span class="text-[8px] font-mono tracking-widest text-slate-600 mt-0.5 uppercase">*{{ $shipment->tracking_number }}*</span>
                 </div>
             </div>
 
@@ -53,24 +53,23 @@
                     $badgeStyle = match($shipment->status) {
                         'CREATED' => 'bg-slate-100 text-slate-800 border-slate-300',
                         'BOOKED' => 'bg-blue-50 text-blue-900 border-blue-200',
-                        'PICKED_UP' => 'bg-amber-50 text-amber-900 border-amber-200',
-                        'IN_TRANSIT' => 'bg-amber-50 text-amber-900 border-amber-300',
-                        'DELIVERED' => 'bg-stone-900 text-white border-stone-900',
+                        'PICKED_UP' => 'bg-indigo-50 text-indigo-900 border-indigo-200',
+                        'IN_TRANSIT' => 'bg-blue-50 text-blue-800 border-blue-300',
+                        'DELIVERED' => 'bg-emerald-50 text-emerald-800 border-emerald-300 font-bold',
                         default => 'bg-slate-100 text-slate-800',
                     };
                 @endphp
-                <span class="px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider border {{ $badgeStyle }}">
+                <span class="px-3.5 py-1.5 rounded-xl text-xs font-bold uppercase tracking-wider border font-mono {{ $badgeStyle }}">
                     {{ $shipment->status }}
                 </span>
 
                 @if($shipment->is_delayed)
-                    <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-300 flex items-center gap-1.5">
+                    <span class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-300 flex items-center gap-1.5 font-mono">
                         <span class="w-2 h-2 rounded-full bg-amber-500"></span>
                         Tertunda +{{ $shipment->delay_duration_hours }} Jam ({{ $shipment->delay_severity }})
                     </span>
                 @endif
             </div>
-        </div>
         </div>
     </div>
 
@@ -461,9 +460,10 @@
 
         const map = L.map('shipment-map').setView([currentLat, currentLon], 5);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 18,
-            attribution: '&copy; OpenStreetMap contributors'
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+            maxZoom: 19,
+            subdomains: 'abcd',
+            attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
         L.marker([originLat, originLon]).addTo(map)
@@ -475,8 +475,8 @@
         const isDelayed = {{ $shipment->is_delayed ? 'true' : 'false' }};
         L.circleMarker([currentLat, currentLon], {
             radius: 8,
-            color: isDelayed ? '#b45309' : '#1C1917',
-            fillColor: isDelayed ? '#f59e0b' : '#D97706',
+            color: isDelayed ? '#D97706' : '#1D4ED8',
+            fillColor: isDelayed ? '#F59E0B' : '#3B82F6',
             fillOpacity: 0.95,
             weight: 2
         }).addTo(map).bindPopup("<b>Posisi Checkpoint Kargo Saat Ini:</b><br>{{ $shipment->currentLocation->name ?? 'Dalam Perjalanan' }}<br>Status: <b>{{ $shipment->status }}</b>").openPopup();
@@ -488,9 +488,9 @@
         ];
 
         L.polyline(routePoints, {
-            color: isDelayed ? '#b45309' : '#1C1917',
-            weight: 3,
-            opacity: 0.8,
+            color: isDelayed ? '#D97706' : '#2563EB',
+            weight: 3.5,
+            opacity: 0.85,
             dashArray: '6, 8'
         }).addTo(map);
 

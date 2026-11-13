@@ -9,14 +9,14 @@
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
             <div class="flex items-center gap-2 mb-1">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-200">
-                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-800 border border-blue-200">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
                     Manifest Ekspor Multimodal
                 </span>
-                <span class="text-xs text-stone-300">&bull;</span>
-                <span class="text-xs text-stone-500 font-medium">Koridor Komoditas Agro Dataran Tinggi Gayo</span>
+                <span class="text-xs text-slate-300">&bull;</span>
+                <span class="text-xs text-slate-500 font-medium">Koridor Komoditas Agro Dataran Tinggi Gayo</span>
             </div>
-            <h1 class="text-2xl font-bold text-stone-900 tracking-tight">Daftar Pengiriman Kargo</h1>
+            <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Daftar Pengiriman Kargo</h1>
         </div>
 
         @if(auth()->user()->isAdmin() || auth()->user()->isOperator())
@@ -87,7 +87,7 @@
                     @forelse($shipments as $s)
                         <tr class="hover:bg-slate-50/70 transition-colors">
                             <td class="py-3 px-4 font-mono font-bold text-slate-900">
-                                <a href="{{ route('shipments.show', $s->id) }}" class="text-amber-800 hover:underline">
+                                <a href="{{ route('shipments.show', $s->id) }}" class="text-blue-700 hover:underline">
                                     {{ $s->tracking_number }}
                                 </a>
                             </td>
@@ -121,9 +121,9 @@
                                     $badge = match($s->status) {
                                         'CREATED' => 'bg-slate-100 text-slate-800 border-slate-300',
                                         'BOOKED' => 'bg-blue-50 text-blue-900 border-blue-200',
-                                        'PICKED_UP' => 'bg-amber-50 text-amber-900 border-amber-200',
-                                        'IN_TRANSIT' => 'bg-amber-50 text-amber-900 border-amber-200',
-                                        'DELIVERED' => 'bg-slate-900 text-white border-slate-900',
+                                        'PICKED_UP' => 'bg-indigo-50 text-indigo-900 border-indigo-200',
+                                        'IN_TRANSIT' => 'bg-blue-50 text-blue-800 border-blue-200',
+                                        'DELIVERED' => 'bg-emerald-50 text-emerald-800 border-emerald-300 font-bold',
                                         default => 'bg-slate-100 text-slate-800',
                                     };
                                 @endphp

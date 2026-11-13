@@ -8,14 +8,14 @@
     <div class="flex items-center justify-between">
         <div>
             <div class="flex items-center gap-2 mb-1">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-200">
-                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-800 border border-blue-200">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
                     Entri Manifest Ekspor Baru
                 </span>
-                <span class="text-xs text-stone-300">&bull;</span>
-                <span class="text-xs text-stone-500 font-medium">Takengon Highland Logistics Hub</span>
+                <span class="text-xs text-slate-300">&bull;</span>
+                <span class="text-xs text-slate-500 font-medium">Takengon Highland Logistics Hub</span>
             </div>
-            <h1 class="text-2xl font-bold text-stone-900 tracking-tight">Terbitkan Manifest Ekspor Baru</h1>
+            <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Terbitkan Manifest Ekspor Baru</h1>
         </div>
         <a href="{{ route('shipments.index') }}" class="btn-brand-outline px-3.5 py-1.5 rounded-xl text-xs flex items-center gap-1.5 font-semibold">
             &larr; Kembali ke Daftar Kargo
