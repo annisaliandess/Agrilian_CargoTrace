@@ -10,20 +10,20 @@
     <!-- ======================================================== -->
     <div class="relative rounded-2xl bg-hero-gradient p-7 sm:p-12 text-center overflow-hidden shadow-2xl border border-slate-700/80">
         <!-- Subtle Ambient Light -->
-        <div class="absolute -top-20 -left-20 w-60 h-60 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-20 -right-20 w-60 h-60 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none"></div>
+        <div class="absolute -top-20 -left-20 w-60 h-60 rounded-full bg-amber-500/15 blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-20 -right-20 w-60 h-60 rounded-full bg-orange-500/10 blur-3xl pointer-events-none"></div>
 
         <div class="relative z-10 max-w-2xl mx-auto">
             <!-- Pill Badge -->
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-slate-200 border border-white/15 mb-4 backdrop-blur-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
                 <span>Sistem Pelacakan Kargo Ekspor Dataran Tinggi Gayo</span>
             </div>
 
             <!-- Headline -->
             <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
                 Visibilitas Rantai Pasok Agro Highland <br class="hidden sm:inline" />
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400">ke Pasar Internasional</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-orange-300 to-amber-400">ke Pasar Internasional</span>
             </h1>
 
             <p class="text-xs sm:text-sm text-slate-200 mt-3 max-w-lg mx-auto font-normal leading-relaxed">
@@ -37,7 +37,7 @@
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     </div>
                     <input type="text" name="tracking_number" value="{{ $query ?? 'LNDS-2026-GY001' }}" placeholder="Masukkan nomor resi (contoh: LNDS-2026-GY001)"
-                           class="w-full pl-10 pr-3 py-2.5 rounded-xl border-0 bg-white text-slate-900 placeholder-slate-400 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all">
+                           class="w-full pl-10 pr-3 py-2.5 rounded-xl border-0 bg-white text-slate-900 placeholder-slate-400 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all">
                 </div>
                 <button type="submit" class="btn-brand-accent px-6 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 cursor-pointer shadow-sm shrink-0">
                     <span>Lacak Kargo</span>
@@ -146,8 +146,8 @@
                             $isCurrent = $idx === $currentIdx;
                         @endphp
                         <div class="flex flex-col items-center text-center">
-                            <div class="w-full h-1.5 rounded-full mb-2 {{ $isDone ? 'bg-slate-900' : ($isCurrent ? 'bg-emerald-600' : 'bg-slate-200') }}"></div>
-                            <span class="text-[11px] font-semibold {{ $isCurrent ? 'text-slate-900 font-bold' : ($isDone ? 'text-slate-700' : 'text-slate-400') }}">
+                            <div class="w-full h-1.5 rounded-full mb-2 {{ $isDone ? 'bg-stone-900' : ($isCurrent ? 'bg-amber-600' : 'bg-stone-200') }}"></div>
+                            <span class="text-[11px] font-semibold {{ $isCurrent ? 'text-stone-900 font-bold' : ($isDone ? 'text-stone-700' : 'text-stone-400') }}">
                                 {{ $step['label'] }}
                             </span>
                         </div>
@@ -159,15 +159,15 @@
                 <!-- Valuasi Ekspor Valas Bar (ECB Live) -->
                 <div class="mt-5 pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                     <div class="flex items-center gap-2">
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
-                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-900 border border-amber-200">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
                             Valuasi Devisa Ekspor:
                         </span>
                         <strong class="font-mono text-slate-900 text-xs">{{ $valuation['idr_formatted'] }}</strong>
                     </div>
 
                     <div class="flex items-center gap-3 font-mono text-[11px]">
-                        <span class="text-slate-600">Pasar Global: <strong class="text-emerald-800 font-bold">{{ $valuation['usd_formatted'] }} USD</strong></span>
+                        <span class="text-slate-600">Pasar Global: <strong class="text-amber-800 font-bold">{{ $valuation['usd_formatted'] }} USD</strong></span>
                         <span class="text-slate-300">&bull;</span>
                         <span class="text-slate-600">Eropa (Rotterdam): <strong class="text-blue-900 font-bold">{{ $valuation['eur_formatted'] }} EUR</strong></span>
                     </div>
@@ -468,8 +468,8 @@
                 const isDelayed = {{ $shipment->is_delayed ? 'true' : 'false' }};
                 L.circleMarker([currentLat, currentLon], {
                     radius: 8,
-                    color: isDelayed ? '#d97706' : '#0F172A',
-                    fillColor: isDelayed ? '#f59e0b' : '#10b981',
+                    color: isDelayed ? '#b45309' : '#1C1917',
+                    fillColor: isDelayed ? '#f59e0b' : '#d97706',
                     fillOpacity: 0.95,
                     weight: 2
                 }).addTo(map).bindPopup("<b>Posisi Checkpoint Kargo Saat Ini:</b><br>{{ $shipment->currentLocation->name ?? 'Dalam Perjalanan' }}<br>Status: <b>{{ $shipment->status }}</b>").openPopup();
@@ -481,7 +481,7 @@
                 ];
 
                 L.polyline(routePoints, {
-                    color: isDelayed ? '#d97706' : '#0F172A',
+                    color: isDelayed ? '#b45309' : '#1C1917',
                     weight: 3,
                     opacity: 0.8,
                     dashArray: '6, 8'

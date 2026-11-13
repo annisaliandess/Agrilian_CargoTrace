@@ -8,14 +8,14 @@
     <div class="flex items-center justify-between">
         <div>
             <div class="flex items-center gap-2 mb-1">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-200">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
                     Entri Manifest Ekspor Baru
                 </span>
-                <span class="text-xs text-slate-300">&bull;</span>
-                <span class="text-xs text-slate-500 font-medium">Takengon Highland Logistics Hub</span>
+                <span class="text-xs text-stone-300">&bull;</span>
+                <span class="text-xs text-stone-500 font-medium">Takengon Highland Logistics Hub</span>
             </div>
-            <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Terbitkan Manifest Ekspor Baru</h1>
+            <h1 class="text-2xl font-bold text-stone-900 tracking-tight">Terbitkan Manifest Ekspor Baru</h1>
         </div>
         <a href="{{ route('shipments.index') }}" class="btn-brand-outline px-3.5 py-1.5 rounded-xl text-xs flex items-center gap-1.5 font-semibold">
             &larr; Kembali ke Daftar Kargo
@@ -28,7 +28,7 @@
         <!-- 1. Consignee & Routing Logistics -->
         <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/90 shadow-2xs space-y-4">
             <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-2.5 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
                 1. Pembeli & Koridor Logistik Multimodal
             </h3>
 
@@ -131,7 +131,7 @@
         <!-- 3. Packing Manifest Items -->
         <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/90 shadow-2xs space-y-4">
             <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-2.5 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
                 3. Spesifikasi Lot Barang & Kemasan
             </h3>
 
@@ -159,7 +159,7 @@
             <a href="{{ route('shipments.index') }}" class="btn-brand-outline px-4 py-2 rounded-xl text-xs font-semibold">
                 Batal
             </a>
-            <button type="submit" class="btn-brand-primary px-5 py-2.5 rounded-xl text-xs font-bold shadow-xs cursor-pointer">
+            <button type="submit" class="btn-brand-accent px-5 py-2.5 rounded-xl text-xs font-bold shadow-xs cursor-pointer">
                 Terbitkan Manifest & Daftarkan Kargo &rarr;
             </button>
         </div>

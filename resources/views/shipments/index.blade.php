@@ -9,19 +9,19 @@
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
             <div class="flex items-center gap-2 mb-1">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-200">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
                     Manifest Ekspor Multimodal
                 </span>
-                <span class="text-xs text-slate-300">&bull;</span>
-                <span class="text-xs text-slate-500 font-medium">Koridor Komoditas Agro Dataran Tinggi Gayo</span>
+                <span class="text-xs text-stone-300">&bull;</span>
+                <span class="text-xs text-stone-500 font-medium">Koridor Komoditas Agro Dataran Tinggi Gayo</span>
             </div>
-            <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Daftar Pengiriman Kargo</h1>
+            <h1 class="text-2xl font-bold text-stone-900 tracking-tight">Daftar Pengiriman Kargo</h1>
         </div>
 
         @if(auth()->user()->isAdmin() || auth()->user()->isOperator())
-            <a href="{{ route('shipments.create') }}" class="btn-brand-primary px-4 py-2 rounded-xl text-xs font-semibold shadow-xs flex items-center gap-1.5 self-start sm:self-auto cursor-pointer">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            <a href="{{ route('shipments.create') }}" class="btn-brand-accent px-4 py-2 rounded-xl text-xs font-bold shadow-xs flex items-center gap-1.5 self-start sm:self-auto cursor-pointer">
+                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
                 <span>Buat Manifest Baru</span>
             </a>
         @endif
@@ -87,7 +87,7 @@
                     @forelse($shipments as $s)
                         <tr class="hover:bg-slate-50/70 transition-colors">
                             <td class="py-3 px-4 font-mono font-bold text-slate-900">
-                                <a href="{{ route('shipments.show', $s->id) }}" class="text-emerald-800 hover:underline">
+                                <a href="{{ route('shipments.show', $s->id) }}" class="text-amber-800 hover:underline">
                                     {{ $s->tracking_number }}
                                 </a>
                             </td>
@@ -110,7 +110,7 @@
                             </td>
                             <td class="py-3 px-4 text-xs">
                                 <div class="font-medium text-slate-800">{{ $s->origin->name }} &rarr; {{ $s->destination->name }}</div>
-                                <div class="text-emerald-800 text-[11px] font-semibold mt-0.5">Posisi: {{ $s->currentLocation->name ?? 'Dalam Perjalanan' }}</div>
+                                <div class="text-stone-500 text-[11px] font-semibold mt-0.5">Posisi: {{ $s->currentLocation->name ?? 'Dalam Perjalanan' }}</div>
                             </td>
                             <td class="py-3 px-4">
                                 <span class="font-semibold text-slate-900">{{ $s->carrier->name }}</span>
@@ -122,7 +122,7 @@
                                         'CREATED' => 'bg-slate-100 text-slate-800 border-slate-300',
                                         'BOOKED' => 'bg-blue-50 text-blue-900 border-blue-200',
                                         'PICKED_UP' => 'bg-amber-50 text-amber-900 border-amber-200',
-                                        'IN_TRANSIT' => 'bg-emerald-50 text-emerald-800 border-emerald-200',
+                                        'IN_TRANSIT' => 'bg-amber-50 text-amber-900 border-amber-200',
                                         'DELIVERED' => 'bg-slate-900 text-white border-slate-900',
                                         default => 'bg-slate-100 text-slate-800',
                                     };

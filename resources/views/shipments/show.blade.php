@@ -43,8 +43,8 @@
                     'CREATED' => 'bg-slate-100 text-slate-800 border-slate-300',
                     'BOOKED' => 'bg-blue-50 text-blue-900 border-blue-200',
                     'PICKED_UP' => 'bg-amber-50 text-amber-900 border-amber-200',
-                    'IN_TRANSIT' => 'bg-emerald-50 text-emerald-800 border-emerald-300',
-                    'DELIVERED' => 'bg-slate-900 text-white border-slate-900',
+                    'IN_TRANSIT' => 'bg-amber-50 text-amber-900 border-amber-300',
+                    'DELIVERED' => 'bg-stone-900 text-white border-stone-900',
                     default => 'bg-slate-100 text-slate-800',
                 };
             @endphp
@@ -98,7 +98,7 @@
             <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-2xs">
                 <div class="flex items-center justify-between mb-3">
                     <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                        <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
                         <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider">Peta Rute Multimodal Pelayaran & Darat</h3>
                     </div>
                     <span class="text-xs text-slate-400 font-mono">Leaflet.js &bull; OpenStreetMap</span>
@@ -346,7 +346,7 @@
                         </div>
                         <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">Valuasi Ekspor & Devisa</h3>
                     </div>
-                    <span class="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                    <span class="text-[10px] font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
                         ECB Live
                     </span>
                 </div>
@@ -363,10 +363,10 @@
                     </div>
 
                     <div class="grid grid-cols-2 gap-2">
-                        <div class="p-3 rounded-xl bg-emerald-50/70 border border-emerald-200 text-center">
-                            <span class="block text-[10px] font-bold uppercase tracking-wider text-emerald-800">Pasar Global (USD)</span>
-                            <div class="text-sm font-mono font-extrabold text-emerald-800 mt-1">{{ $valuation['usd_formatted'] ?? '$0' }}</div>
-                            <span class="block text-[10px] text-emerald-700 mt-0.5 font-mono">1 USD = Rp {{ number_format($valuation['rates']['usd_to_idr'] ?? 16200, 0, ',', '.') }}</span>
+                        <div class="p-3 rounded-xl bg-amber-50/70 border border-amber-200 text-center">
+                            <span class="block text-[10px] font-bold uppercase tracking-wider text-amber-800">Pasar Global (USD)</span>
+                            <div class="text-sm font-mono font-extrabold text-amber-900 mt-1">{{ $valuation['usd_formatted'] ?? '$0' }}</div>
+                            <span class="block text-[10px] text-amber-700 mt-0.5 font-mono">1 USD = Rp {{ number_format($valuation['rates']['usd_to_idr'] ?? 16200, 0, ',', '.') }}</span>
                         </div>
 
                         <div class="p-3 rounded-xl bg-blue-50/70 border border-blue-200 text-center">
@@ -462,8 +462,8 @@
         const isDelayed = {{ $shipment->is_delayed ? 'true' : 'false' }};
         L.circleMarker([currentLat, currentLon], {
             radius: 8,
-            color: isDelayed ? '#d97706' : '#0F172A',
-            fillColor: isDelayed ? '#f59e0b' : '#10b981',
+            color: isDelayed ? '#b45309' : '#1C1917',
+            fillColor: isDelayed ? '#f59e0b' : '#D97706',
             fillOpacity: 0.95,
             weight: 2
         }).addTo(map).bindPopup("<b>Posisi Checkpoint Kargo Saat Ini:</b><br>{{ $shipment->currentLocation->name ?? 'Dalam Perjalanan' }}<br>Status: <b>{{ $shipment->status }}</b>").openPopup();
@@ -475,7 +475,7 @@
         ];
 
         L.polyline(routePoints, {
-            color: isDelayed ? '#d97706' : '#0F172A',
+            color: isDelayed ? '#b45309' : '#1C1917',
             weight: 3,
             opacity: 0.8,
             dashArray: '6, 8'
