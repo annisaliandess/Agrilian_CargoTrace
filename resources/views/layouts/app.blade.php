@@ -75,57 +75,58 @@
         svg.w-4 { width: 16px !important; height: 16px !important; }
         svg.w-3\.5 { width: 14px !important; height: 14px !important; }
 
-        /* Highland Pine Gradient (Ayaa's Bespoke Palette: #1B4332 -> #95D5B2 with #57C84D accent) */
+        /* Midnight Slate & Emerald Accent (Enterprise Logistics Grade) */
         .bg-hero-gradient {
-            background: linear-gradient(135deg, #091D13 0%, #1B4332 45%, #2D6A4F 80%, #1B4332 100%);
+            background: linear-gradient(135deg, #090D1A 0%, #0F172A 50%, #1E293B 100%);
         }
         .bg-sidebar-gradient {
-            background: linear-gradient(180deg, #1B4332 0%, #153829 60%, #0F281E 100%);
+            background: linear-gradient(180deg, #090D1A 0%, #0F172A 60%, #070B14 100%);
         }
 
-        /* Automark Inspired Glowing Pill Buttons */
+        /* High-End Emerald Pill Buttons (Accents Only - 10% Rule) */
         .btn-brand-accent {
-            background: linear-gradient(135deg, #57C84D 0%, #46B63C 100%);
-            color: #052014 !important;
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            color: #FFFFFF !important;
             font-weight: 700;
-            box-shadow: 0 4px 18px -2px rgba(87, 200, 77, 0.45);
+            box-shadow: 0 4px 18px -2px rgba(16, 185, 129, 0.45);
             transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         .btn-brand-accent:hover {
+            background: linear-gradient(135deg, #059669 0%, #047857 100%);
             transform: translateY(-1px);
-            box-shadow: 0 6px 24px -2px rgba(87, 200, 77, 0.6);
+            box-shadow: 0 6px 24px -2px rgba(16, 185, 129, 0.6);
             filter: brightness(1.05);
         }
 
         .btn-glass-secondary {
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: #D8F3DC !important;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #F1F5F9 !important;
             font-weight: 600;
             transition: all 0.2s ease;
         }
         .btn-glass-secondary:hover {
-            background: rgba(255, 255, 255, 0.22);
+            background: rgba(255, 255, 255, 0.16);
             color: #FFFFFF !important;
-            border-color: rgba(255, 255, 255, 0.45);
+            border-color: rgba(255, 255, 255, 0.3);
             transform: translateY(-0.5px);
         }
 
         /* Real World SaaS Button Hierarchy */
         .btn-brand-primary {
-            background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%);
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
             color: #FFFFFF !important;
             font-weight: 600;
-            border: 1px solid #143527;
+            border: 1px solid #334155;
             transition: all 0.15s ease-in-out;
-            box-shadow: 0 2px 6px 0 rgba(27, 67, 50, 0.25);
+            box-shadow: 0 2px 6px 0 rgba(15, 23, 42, 0.25);
         }
         .btn-brand-primary:hover {
-            background: linear-gradient(135deg, #245841 0%, #357A5C 100%);
-            box-shadow: 0 4px 12px 0 rgba(27, 67, 50, 0.35);
+            background: linear-gradient(135deg, #1E293B 0%, #334155 100%);
+            box-shadow: 0 4px 12px 0 rgba(15, 23, 42, 0.35);
             transform: translateY(-0.5px);
         }
 
@@ -174,24 +175,24 @@
     <div class="min-h-full flex relative overflow-x-hidden">
 
         <!-- Sidebar Column (Bisa Dibuka dan Ditutup) -->
-        <aside id="app-sidebar" class="w-64 bg-sidebar-gradient text-white flex flex-col fixed inset-y-0 left-0 z-40 shadow-xl border-r border-[#1B4332]/40 transition-transform duration-300 ease-in-out">
+        <aside id="app-sidebar" class="w-64 bg-sidebar-gradient text-white flex flex-col fixed inset-y-0 left-0 z-40 shadow-2xl border-r border-slate-800/80 transition-transform duration-300 ease-in-out">
             <!-- Brand Logo Area + Internal Close Button -->
-            <div class="h-16 flex items-center justify-between px-5 border-b border-white/10 bg-black/15">
+            <div class="h-16 flex items-center justify-between px-5 border-b border-slate-800 bg-black/25">
                 <a href="{{ route('dashboard') }}" class="flex items-center gap-3 group min-w-0">
-                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#2D6A4F] to-[#1B4332] border border-[#95D5B2]/30 flex items-center justify-center text-white shadow-md shadow-black/20 group-hover:scale-105 transition-transform shrink-0">
-                        <svg width="20" height="20" class="w-5 h-5 text-[#95D5B2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#1E293B] to-[#0F172A] border border-slate-700/80 flex items-center justify-center text-white shadow-md shadow-black/30 group-hover:scale-105 transition-transform shrink-0">
+                        <svg width="20" height="20" class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
                         </svg>
                     </div>
                     <div class="min-w-0">
                         <span class="text-sm font-bold text-white tracking-tight block leading-tight">CargoTrace</span>
-                        <span class="text-[10px] font-semibold text-[#95D5B2] tracking-wider uppercase block mt-0.5">AgriLian Portal</span>
+                        <span class="text-[10px] font-semibold text-emerald-400 tracking-wider uppercase block mt-0.5">AgriLian Portal</span>
                     </div>
                 </a>
 
                 <!-- Tombol Tutup Sidebar di Dalam -->
-                <button type="button" onclick="toggleSidebar()" title="Sembunyikan menu" class="p-1.5 rounded-lg text-[#95D5B2] hover:text-white hover:bg-white/10 transition-colors cursor-pointer">
+                <button type="button" onclick="toggleSidebar()" title="Sembunyikan menu" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/>
                     </svg>
@@ -202,23 +203,23 @@
             <div class="flex-1 px-3 py-5 space-y-6 overflow-y-auto">
                 <!-- Group 1: Core Operations -->
                 <div>
-                    <div class="px-3 text-[10px] font-bold uppercase tracking-wider text-[#95D5B2]/70 mb-2">
+                    <div class="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">
                         Operasional Ekspor
                     </div>
                     <nav class="space-y-1">
-                        <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('dashboard') ? 'bg-white/15 text-white border-l-4 border-[#57C84D] shadow-sm font-bold' : 'text-[#95D5B2] hover:text-white hover:bg-white/10' }}">
-                            <svg class="w-4 h-4 {{ request()->routeIs('dashboard') ? 'text-[#57C84D]' : 'text-[#95D5B2]' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                        <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('dashboard') ? 'bg-emerald-500/15 text-white border-l-4 border-emerald-500 shadow-sm font-bold' : 'text-slate-400 hover:text-white hover:bg-white/5' }}">
+                            <svg class="w-4 h-4 {{ request()->routeIs('dashboard') ? 'text-emerald-400' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
                             <span>Dashboard Radar</span>
                         </a>
 
-                        <a href="{{ route('shipments.index') }}" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.index') || request()->routeIs('shipments.show') ? 'bg-white/15 text-white border-l-4 border-[#57C84D] shadow-sm font-bold' : 'text-[#95D5B2] hover:text-white hover:bg-white/10' }}">
-                            <svg class="w-4 h-4 {{ request()->routeIs('shipments.index') || request()->routeIs('shipments.show') ? 'text-[#57C84D]' : 'text-[#95D5B2]' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                        <a href="{{ route('shipments.index') }}" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.index') || request()->routeIs('shipments.show') ? 'bg-emerald-500/15 text-white border-l-4 border-emerald-500 shadow-sm font-bold' : 'text-slate-400 hover:text-white hover:bg-white/5' }}">
+                            <svg class="w-4 h-4 {{ request()->routeIs('shipments.index') || request()->routeIs('shipments.show') ? 'text-emerald-400' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
                             <span>Manifes Kargo (Roster)</span>
                         </a>
 
                         @if(auth()->user()->isAdmin() || auth()->user()->isOperator())
-                            <a href="{{ route('shipments.create') }}" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.create') ? 'bg-white/15 text-white border-l-4 border-[#57C84D] shadow-sm font-bold' : 'text-[#95D5B2] hover:text-white hover:bg-white/10' }}">
-                                <svg class="w-4 h-4 {{ request()->routeIs('shipments.create') ? 'text-[#57C84D]' : 'text-[#95D5B2]' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            <a href="{{ route('shipments.create') }}" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.create') ? 'bg-emerald-500/15 text-white border-l-4 border-emerald-500 shadow-sm font-bold' : 'text-slate-400 hover:text-white hover:bg-white/5' }}">
+                                <svg class="w-4 h-4 {{ request()->routeIs('shipments.create') ? 'text-emerald-400' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                                 <span>Buat Manifest Baru</span>
                             </a>
                         @endif
@@ -227,40 +228,40 @@
 
                 <!-- Group 2: Public Portal -->
                 <div>
-                    <div class="px-3 text-[10px] font-bold uppercase tracking-wider text-[#95D5B2]/70 mb-2">
+                    <div class="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">
                         Portal Publik
                     </div>
                     <nav class="space-y-1">
-                        <a href="{{ route('track.public') }}" target="_blank" class="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold text-[#95D5B2] hover:text-white hover:bg-white/10 transition-all group">
+                        <a href="{{ route('track.public') }}" target="_blank" class="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white hover:bg-white/5 transition-all group">
                             <span class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-[#95D5B2] group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                                <svg class="w-4 h-4 text-slate-400 group-hover:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                                 <span>Halaman Cek Resi</span>
                             </span>
-                            <span class="text-[10px] px-1.5 py-0.5 rounded bg-white/15 text-[#95D5B2] group-hover:text-white">↗</span>
+                            <span class="text-[10px] px-1.5 py-0.5 rounded bg-white/10 text-slate-400 group-hover:text-white">↗</span>
                         </a>
                     </nav>
                 </div>
             </div>
 
             <!-- User Profile Box & Logout (Bottom of Sidebar) -->
-            <div class="p-3 border-t border-white/10 bg-black/20">
-                <div class="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-white/10">
+            <div class="p-3 border-t border-slate-800 bg-black/30">
+                <div class="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-slate-800">
                     <div class="flex items-center gap-2.5 overflow-hidden">
-                        <div class="w-8 h-8 rounded-lg bg-[#2D6A4F] text-white flex items-center justify-center font-bold text-xs shrink-0 border border-[#95D5B2]/40">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold text-xs shrink-0 border border-emerald-500/30">
                             {{ substr(auth()->user()->name, 0, 1) }}
                         </div>
                         <div class="min-w-0">
                             <div class="text-xs font-bold text-white truncate">{{ auth()->user()->name }}</div>
                             <div class="flex items-center gap-1.5">
-                                <span class="w-1.5 h-1.5 rounded-full bg-[#57C84D]"></span>
-                                <span class="text-[10px] font-medium text-[#95D5B2] uppercase tracking-wider">{{ auth()->user()->role }}</span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                <span class="text-[10px] font-medium text-slate-400 uppercase tracking-wider">{{ auth()->user()->role }}</span>
                             </div>
                         </div>
                     </div>
 
                     <form action="{{ route('logout') }}" method="POST" class="inline">
                         @csrf
-                        <button type="submit" title="Keluar dari akun" class="p-1.5 rounded-lg text-[#95D5B2] hover:text-white hover:bg-white/15 transition-colors cursor-pointer">
+                        <button type="submit" title="Keluar dari akun" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/15 transition-colors cursor-pointer">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
                         </button>
                     </form>
@@ -399,14 +400,14 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16">
                     <a href="{{ route('home') }}" class="flex items-center gap-3 group">
-                        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#1B4332] to-[#2D6A4F] border border-[#95D5B2]/40 flex items-center justify-center text-white shadow-sm shadow-[#1B4332]/20 group-hover:scale-105 transition-transform">
-                            <svg width="20" height="20" class="w-5 h-5 text-[#95D5B2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#1E293B] to-[#0F172A] border border-slate-700 flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform">
+                            <svg width="20" height="20" class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
                             </svg>
                         </div>
                         <div>
-                            <span class="text-base font-bold text-slate-900 tracking-tight">CargoTrace <span class="text-[#1B4332]">AgriLian</span></span>
+                            <span class="text-base font-bold text-slate-900 tracking-tight">CargoTrace <span class="text-emerald-700 font-extrabold">AgriLian</span></span>
                             <span class="block text-[10px] font-semibold text-slate-500 uppercase tracking-wider">Highland Agro-Export Visibility</span>
                         </div>
                     </a>
@@ -417,12 +418,12 @@
                         </a>
 
                         @auth
-                            <a href="{{ route('dashboard') }}" class="btn-brand-primary px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5">
+                            <a href="{{ route('dashboard') }}" class="btn-brand-accent px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-1.5">
                                 <span>Dashboard</span>
                                 <span>&rarr;</span>
                             </a>
                         @else
-                            <a href="{{ route('login') }}" class="btn-brand-primary px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5">
+                            <a href="{{ route('login') }}" class="btn-brand-accent px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-1.5">
                                 <span>Login Staff</span>
                                 <span>&rarr;</span>
                             </a>

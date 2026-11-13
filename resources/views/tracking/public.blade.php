@@ -8,22 +8,22 @@
     <!-- ======================================================== -->
     <!-- HERO SECTION (Enterprise Logistics Grade)                -->
     <!-- ======================================================== -->
-    <div class="relative rounded-2xl bg-hero-gradient p-7 sm:p-12 text-center overflow-hidden shadow-lg border border-[#1B4332]/40">
+    <div class="relative rounded-2xl bg-hero-gradient p-7 sm:p-12 text-center overflow-hidden shadow-2xl border border-slate-700/80">
         <!-- Subtle Ambient Light -->
-        <div class="absolute -top-20 -left-20 w-60 h-60 rounded-full bg-[#95D5B2]/10 blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-20 -right-20 w-60 h-60 rounded-full bg-[#57C84D]/10 blur-3xl pointer-events-none"></div>
+        <div class="absolute -top-20 -left-20 w-60 h-60 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-20 -right-20 w-60 h-60 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none"></div>
 
         <div class="relative z-10 max-w-2xl mx-auto">
             <!-- Pill Badge -->
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-[#D8F3DC] border border-white/15 mb-4 backdrop-blur-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#57C84D] animate-pulse"></span>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-slate-200 border border-white/15 mb-4 backdrop-blur-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                 <span>Sistem Pelacakan Kargo Ekspor Dataran Tinggi Gayo</span>
             </div>
 
             <!-- Headline -->
             <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
                 Visibilitas Rantai Pasok Agro Highland <br class="hidden sm:inline" />
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#95D5B2] via-[#57C84D] to-[#95D5B2]">ke Pasar Internasional</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400">ke Pasar Internasional</span>
             </h1>
 
             <p class="text-xs sm:text-sm text-slate-200 mt-3 max-w-lg mx-auto font-normal leading-relaxed">

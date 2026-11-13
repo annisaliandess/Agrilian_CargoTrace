@@ -9,13 +9,13 @@
         <!-- Header with Highland Gradient -->
         <div class="bg-hero-gradient p-7 text-center relative overflow-hidden">
             <!-- Subtle Ambient Light -->
-            <div class="absolute -top-12 -left-12 w-36 h-36 rounded-full bg-[#95D5B2]/15 blur-2xl pointer-events-none"></div>
-            <div class="absolute -bottom-12 -right-12 w-36 h-36 rounded-full bg-[#57C84D]/15 blur-2xl pointer-events-none"></div>
+            <div class="absolute -top-12 -left-12 w-36 h-36 rounded-full bg-emerald-500/10 blur-2xl pointer-events-none"></div>
+            <div class="absolute -bottom-12 -right-12 w-36 h-36 rounded-full bg-cyan-500/10 blur-2xl pointer-events-none"></div>
 
             <div class="relative z-10">
                 <!-- Brand / User Logo (Siap Diganti dengan Logo Buatan Ayaa) -->
-                <div id="login-brand-logo" class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#2D6A4F] to-[#1B4332] border border-[#95D5B2]/40 text-white flex items-center justify-center mx-auto mb-3 shadow-md shadow-black/20">
-                    <svg class="w-6 h-6 text-[#95D5B2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div id="login-brand-logo" class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#1E293B] to-[#0F172A] border border-slate-700 text-white flex items-center justify-center mx-auto mb-3 shadow-md shadow-black/20">
+                    <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                     </svg>
                 </div>
@@ -23,7 +23,7 @@
                 <!-- Judul Hangat & Ramah Sesuai Pilihan Ayaa -->
                 <h1 class="text-2xl font-black text-white tracking-tight">Selamat Datang</h1>
                 <!-- Subtitle Bersih & Beridentitas Brand AgriLian -->
-                <p class="text-xs text-[#95D5B2] font-semibold mt-1 tracking-wide">AgriLian</p>
+                <p class="text-xs text-emerald-400 font-semibold mt-1 tracking-wide">AgriLian</p>
             </div>
         </div>
 

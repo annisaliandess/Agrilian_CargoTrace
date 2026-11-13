@@ -8,28 +8,28 @@
     <!-- ======================================================== -->
     <!-- 1. AUTOMARK-STYLE HIGHLAND HERO COMMAND BANNER           -->
     <!-- ======================================================== -->
-    <div class="relative rounded-2xl bg-hero-gradient p-6 sm:p-10 text-white overflow-hidden shadow-xl border border-[#1B4332]/50">
-        <!-- Ambient Glowing Aura Orbs (Ayaa's #95D5B2 and #57C84D) -->
-        <div class="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-[#95D5B2]/15 blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-[#57C84D]/15 blur-3xl pointer-events-none"></div>
+    <div class="relative rounded-2xl bg-hero-gradient p-6 sm:p-10 text-white overflow-hidden shadow-2xl border border-slate-700/80">
+        <!-- Ambient Glowing Aura Orbs (Subtle Emerald & Cyan Tech Glow) -->
+        <div class="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-cyan-500/10 blur-3xl pointer-events-none"></div>
 
         <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div class="max-w-2xl">
                 <!-- Pill Badge -->
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-[#D8F3DC] border border-white/15 mb-3 backdrop-blur-sm">
-                    <span class="w-2 h-2 rounded-full bg-[#57C84D] animate-pulse"></span>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-slate-200 border border-white/15 mb-3 backdrop-blur-sm">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                     <span>Takengon Highland Central Hub &bull; Koridor Belawan &bull; Rotterdam Direct</span>
                 </div>
 
                 <!-- Headline with Gradient Accent -->
                 <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight text-white">
                     Dashboard Logistik Ekspor Highland <br class="hidden sm:inline" />
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#95D5B2] via-[#57C84D] to-[#95D5B2]">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400">
                         Visibilitas Multimodal Rantai Pasok Gayo
                     </span>
                 </h1>
 
-                <p class="text-xs sm:text-sm text-slate-200 mt-2.5 max-w-xl font-normal leading-relaxed">
+                <p class="text-xs sm:text-sm text-slate-300 mt-2.5 max-w-xl font-normal leading-relaxed">
                     Pusat kendali operasional telemetri kontainer kopi Arabika Gayo & hasil bumi, kalkulasi peringatan cuaca otomatis, serta kepatuhan pabean internasional.
                 </p>
             </div>
@@ -37,7 +37,7 @@
             <!-- Action Buttons (Automark Glowing Pill Style - NO DUPLICATE +) -->
             <div class="flex flex-wrap items-center gap-3 shrink-0">
                 <a href="{{ route('track.public') }}" target="_blank" class="btn-glass-secondary px-4 py-2.5 rounded-full text-xs font-semibold flex items-center gap-2 cursor-pointer shadow-sm">
-                    <svg class="w-4 h-4 text-[#95D5B2]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     <span>Halaman Cek Resi</span>
                 </a>
 
