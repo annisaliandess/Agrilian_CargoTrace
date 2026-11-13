@@ -8,48 +8,52 @@
     <!-- ======================================================== -->
     <!-- HERO SECTION (High-Precision Public Tracking Cockpit)    -->
     <!-- ======================================================== -->
-    <div class="bg-white rounded-2xl p-7 sm:p-10 text-center border border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
-        <div class="max-w-2xl mx-auto">
+    <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-forest-800/60 bg-[#051F20] text-white p-7 sm:p-12 text-center">
+        <!-- Background Image with Ambient Pine & Twilight Overlay -->
+        <div class="absolute inset-0 bg-cover bg-center opacity-40 scale-105 transition-transform duration-1000" style="background-image: url('{{ asset('images/dashboard-hero.jpg') }}');"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-[#051F20]/90 via-[#0B2B26]/85 to-[#051F20]/95"></div>
+
+        <div class="relative z-10 max-w-2xl mx-auto">
             <!-- Pill Badge -->
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-forest-50 text-forest-900 border border-forest-200 mb-3">
-                <span class="w-1.5 h-1.5 rounded-full bg-forest-600 animate-pulse"></span>
-                <span class="font-mono">Sistem Pelacakan Kargo Ekspor Dataran Tinggi Gayo</span>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-forest-500/30 text-forest-200 border border-forest-400/30 backdrop-blur-md mb-4 shadow-sm font-mono">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Sistem Pelacakan Kargo Ekspor Dataran Tinggi Gayo</span>
             </div>
 
             <!-- Headline -->
-            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
                 Visibilitas Rantai Pasok Agro Highland ke Pasar Internasional
             </h1>
 
-            <p class="text-xs sm:text-sm text-slate-600 mt-2 max-w-lg mx-auto font-medium leading-relaxed">
-                Pemantauan telemetri kontainer, kondisi cuaca rute secara langsung, dan status kepabeanan dari Takengon ke pelabuhan tujuan Eropa dan Asia.
+            <p class="text-xs sm:text-sm text-forest-100/90 mt-3 max-w-lg mx-auto font-medium leading-relaxed">
+                Pemantauan telemetri kontainer kopi Arabika Gayo & komoditas segar, kondisi cuaca rute langsung, dan status pabean dari Takengon ke pelabuhan dunia.
             </p>
 
             <!-- Search Form -->
-            <form action="{{ route('track.public') }}" method="GET" class="mt-6 flex flex-col sm:flex-row gap-2 max-w-lg mx-auto p-1.5 rounded-2xl bg-slate-50 border border-slate-300 shadow-2xs">
+            <form action="{{ route('track.public') }}" method="GET" class="mt-7 flex flex-col sm:flex-row gap-2 max-w-lg mx-auto p-1.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-xl">
                 <div class="relative flex-1">
                     <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     </div>
                     <input type="text" name="tracking_number" value="{{ $query ?? 'AGLN-2026-GY001' }}" placeholder="Masukkan nomor resi (contoh: AGLN-2026-GY001)"
-                           class="w-full pl-10 pr-3 py-2.5 rounded-xl border-0 bg-white text-slate-900 placeholder-slate-400 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-forest-600 transition-all shadow-2xs">
+                           class="w-full pl-10 pr-3 py-2.5 rounded-xl border-0 bg-white text-slate-900 placeholder-slate-400 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-forest-600 transition-all shadow-sm">
                 </div>
-                <button type="submit" class="btn-brand-accent px-6 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 cursor-pointer shadow-sm shrink-0">
+                <button type="submit" class="btn-brand-accent px-6 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 cursor-pointer shadow-md shrink-0">
                     <span>Lacak Kargo</span>
                     <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </button>
             </form>
 
             <!-- Quick Chips -->
-            <div class="mt-4 flex flex-wrap items-center justify-center gap-2 text-xs">
-                <span class="text-slate-500 font-medium font-mono text-[11px]">Contoh Resi:</span>
-                <a href="{{ route('track.public', 'AGLN-2026-GY001') }}" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition-colors border border-slate-200 font-mono text-xs">
+            <div class="mt-5 flex flex-wrap items-center justify-center gap-2 text-xs">
+                <span class="text-forest-200/80 font-medium font-mono text-[11px]">Contoh Resi:</span>
+                <a href="{{ route('track.public', 'AGLN-2026-GY001') }}" class="px-2.5 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white font-medium transition-colors border border-white/15 backdrop-blur-xs font-mono text-xs">
                     AGLN-2026-GY001 (Kopi Gayo &bull; Rotterdam)
                 </a>
-                <a href="{{ route('track.public', 'AGLN-2026-GY002') }}" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium transition-colors border border-slate-200 font-mono text-xs">
+                <a href="{{ route('track.public', 'AGLN-2026-GY002') }}" class="px-2.5 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white font-medium transition-colors border border-white/15 backdrop-blur-xs font-mono text-xs">
                     AGLN-2026-GY002 (Alpukat &bull; Singapura)
                 </a>
-                <a href="{{ route('track.public', 'AGLN-2026-GY003') }}" class="px-2.5 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 font-medium transition-colors border border-amber-200 font-mono text-xs">
+                <a href="{{ route('track.public', 'AGLN-2026-GY003') }}" class="px-2.5 py-1 rounded-lg bg-amber-400/20 hover:bg-amber-400/30 text-amber-200 font-medium transition-colors border border-amber-300/30 backdrop-blur-xs font-mono text-xs">
                     AGLN-2026-GY003 (Peringatan Cuaca)
                 </a>
             </div>

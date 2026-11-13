@@ -8,10 +8,10 @@
     <!-- ======================================================== -->
     <!-- 1. EXECUTIVE COMMAND BANNER (High-Precision Enterprise)   -->
     <!-- ======================================================== -->
-    <div class="relative rounded-3xl overflow-hidden shadow-xl border border-forest-800/60 bg-[#051F20] text-white">
-        <!-- Background Image with Ambient Highland Overlay -->
-        <div class="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-luminosity scale-105 transition-transform duration-1000" style="background-image: url('{{ asset('images/highland.jpg') }}');"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-[#051F20] via-[#051F20]/95 to-[#0B2B26]/85"></div>
+    <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-forest-800/60 bg-[#051F20] text-white">
+        <!-- Background Image with Ambient Multimodal Port & Twilight Overlay -->
+        <div class="absolute inset-0 bg-cover bg-center opacity-45 scale-105 transition-transform duration-1000" style="background-image: url('{{ asset('images/dashboard-hero.jpg') }}');"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#051F20] via-[#051F20]/90 to-[#0B2B26]/75"></div>
         
         <!-- Content Container -->
         <div class="relative p-6 sm:p-8 z-10">
