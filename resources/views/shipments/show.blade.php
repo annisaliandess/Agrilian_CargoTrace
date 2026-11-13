@@ -83,7 +83,7 @@
                 <div class="grid grid-cols-5 gap-2 mt-4">
                     @foreach($steps as $idx => $step)
                         <div>
-                            <div class="h-1.5 rounded-full transition-colors {{ $idx <= $currentIdx ? 'bg-[#1B4332]' : 'bg-slate-200' }}"></div>
+                            <div class="h-1.5 rounded-full transition-colors {{ $idx <= $currentIdx ? 'bg-slate-900' : 'bg-slate-200' }}"></div>
                             <div class="mt-2 text-center">
                                 <span class="text-[10px] font-bold uppercase tracking-wide block {{ $idx <= $currentIdx ? 'text-slate-900' : 'text-slate-400' }}">
                                     {{ str_replace('_', ' ', $step) }}
@@ -346,7 +346,7 @@
                         </div>
                         <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">Valuasi Ekspor & Devisa</h3>
                     </div>
-                    <span class="text-[10px] font-bold text-[#1B4332] bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                    <span class="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                         ECB Live
                     </span>
                 </div>
@@ -365,7 +365,7 @@
                     <div class="grid grid-cols-2 gap-2">
                         <div class="p-3 rounded-xl bg-emerald-50/70 border border-emerald-200 text-center">
                             <span class="block text-[10px] font-bold uppercase tracking-wider text-emerald-800">Pasar Global (USD)</span>
-                            <div class="text-sm font-mono font-extrabold text-[#1B4332] mt-1">{{ $valuation['usd_formatted'] ?? '$0' }}</div>
+                            <div class="text-sm font-mono font-extrabold text-emerald-800 mt-1">{{ $valuation['usd_formatted'] ?? '$0' }}</div>
                             <span class="block text-[10px] text-emerald-700 mt-0.5 font-mono">1 USD = Rp {{ number_format($valuation['rates']['usd_to_idr'] ?? 16200, 0, ',', '.') }}</span>
                         </div>
 
@@ -462,7 +462,7 @@
         const isDelayed = {{ $shipment->is_delayed ? 'true' : 'false' }};
         L.circleMarker([currentLat, currentLon], {
             radius: 8,
-            color: isDelayed ? '#d97706' : '#1B4332',
+            color: isDelayed ? '#d97706' : '#0F172A',
             fillColor: isDelayed ? '#f59e0b' : '#10b981',
             fillOpacity: 0.95,
             weight: 2
@@ -475,7 +475,7 @@
         ];
 
         L.polyline(routePoints, {
-            color: isDelayed ? '#d97706' : '#1B4332',
+            color: isDelayed ? '#d97706' : '#0F172A',
             weight: 3,
             opacity: 0.8,
             dashArray: '6, 8'

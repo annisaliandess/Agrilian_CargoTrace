@@ -53,8 +53,8 @@
         <!-- Live Global Export Valuation & Currency Bar (ECB Frankfurter API Live) -->
         <div class="mt-6 pt-5 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs">
             <div class="flex flex-wrap items-center gap-3">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 text-[#D8F3DC] font-semibold border border-white/15 backdrop-blur-xs">
-                    <span class="w-2 h-2 rounded-full bg-[#57C84D] animate-pulse"></span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 text-slate-200 font-semibold border border-white/15 backdrop-blur-xs">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                     <span>Kurs Valas Ekspor (ECB Live):</span>
                 </span>
                 <span class="font-mono text-slate-200">
@@ -64,7 +64,7 @@
                 <span class="font-mono text-slate-200">
                     <strong class="text-[#FBBF24]">1 EUR</strong> = Rp {{ number_format($currencyRates['eur_to_idr'], 0, ',', '.') }}
                 </span>
-                <span class="text-[10px] text-[#95D5B2] bg-emerald-950/60 px-2 py-0.5 rounded border border-[#95D5B2]/30">Live Bank Sentral</span>
+                <span class="text-[10px] text-emerald-300 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">Live Bank Sentral</span>
             </div>
 
             <div class="flex items-center gap-2">
@@ -89,7 +89,7 @@
         <!-- Metric 2: In-Transit -->
         <div class="p-4 sm:p-5">
             <span class="block text-[11px] font-semibold text-slate-500 uppercase tracking-wider">Dalam Perjalanan</span>
-            <div class="text-2xl sm:text-3xl font-extrabold text-[#1B4332] mt-1 font-mono">{{ $inTransitCount }} <span class="text-xs font-sans font-bold text-emerald-600">Bergerak</span></div>
+            <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 font-mono">{{ $inTransitCount }} <span class="text-xs font-sans font-bold text-emerald-600">Bergerak</span></div>
             <span class="block text-[11px] text-slate-400 mt-1">Truk Darat & Kapal Kontainer</span>
         </div>
 
@@ -156,7 +156,7 @@
                                         + On Time
                                     </span>
                                     <!-- Sparkline Rise -->
-                                    <svg class="w-10 h-4 text-[#57C84D]" viewBox="0 0 40 16" fill="none" stroke="currentColor">
+                                    <svg class="w-10 h-4 text-emerald-500" viewBox="0 0 40 16" fill="none" stroke="currentColor">
                                         <path d="M0 12 L12 10 L22 4 L32 6 L40 2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 @endif
@@ -235,7 +235,7 @@
                         </div>
                         <div class="text-right shrink-0">
                             <div class="text-xs font-mono font-bold text-slate-900">11.4%</div>
-                            <span class="text-[10px] font-bold text-[#1B4332] bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">+ Lolos Uji</span>
+                            <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">+ Lolos Uji</span>
                         </div>
                     </div>
 
@@ -246,7 +246,7 @@
                         </div>
                         <div class="text-right shrink-0">
                             <div class="text-xs font-mono font-bold text-slate-900">5.8°C</div>
-                            <span class="text-[10px] font-bold text-[#1B4332] bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">+ Dingin Stabil</span>
+                            <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">+ Dingin Stabil</span>
                         </div>
                     </div>
 
@@ -257,7 +257,7 @@
                         </div>
                         <div class="text-right shrink-0">
                             <div class="text-xs font-mono font-bold text-slate-900">100%</div>
-                            <span class="text-[10px] font-bold text-[#1B4332] bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">Intact / Aman</span>
+                            <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">Intact / Aman</span>
                         </div>
                     </div>
                 </div>
@@ -280,14 +280,14 @@
         <div class="bg-white rounded-xl border border-slate-200/90 shadow-2xs overflow-hidden flex flex-col sm:flex-row group hover:border-slate-300 transition-colors">
             <div class="sm:w-44 h-36 sm:h-auto relative overflow-hidden bg-slate-100 shrink-0">
                 <img src="/images/coffee.jpg" alt="Kopi Arabika Gayo Takengon" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                <span class="absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-bold bg-[#1B4332]/90 text-white backdrop-blur-xs border border-white/20">
+                <span class="absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-bold bg-slate-900/90 text-white backdrop-blur-xs border border-white/20">
                     Ekspor Utama
                 </span>
             </div>
             <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between gap-2">
-                        <span class="text-xs font-mono font-bold text-[#1B4332]">LNDS-2026-GY001</span>
+                        <span class="text-xs font-mono font-bold text-emerald-700">LNDS-2026-GY001</span>
                         <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
                             On Track
                         </span>
@@ -302,7 +302,7 @@
                         <span class="text-slate-300 mx-1">&bull;</span>
                         <span>Bobot: <strong>12.000 KG</strong></span>
                     </div>
-                    <a href="/shipments/1" class="text-xs font-bold text-[#1B4332] hover:text-emerald-950 flex items-center gap-1">
+                    <a href="/shipments/1" class="text-xs font-bold text-slate-900 hover:text-emerald-700 flex items-center gap-1 transition-colors">
                         <span>Detail</span>
                         <span>&rarr;</span>
                     </a>
@@ -314,14 +314,14 @@
         <div class="bg-white rounded-xl border border-slate-200/90 shadow-2xs overflow-hidden flex flex-col sm:flex-row group hover:border-slate-300 transition-colors">
             <div class="sm:w-44 h-36 sm:h-auto relative overflow-hidden bg-slate-100 shrink-0">
                 <img src="/images/avocado.jpg" alt="Alpukat Mentega & Cabai Takengon" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
-                <span class="absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-bold bg-[#1B4332]/90 text-white backdrop-blur-xs border border-white/20">
+                <span class="absolute top-2 left-2 px-2 py-0.5 rounded text-[10px] font-bold bg-slate-900/90 text-white backdrop-blur-xs border border-white/20">
                     Rantai Dingin
                 </span>
             </div>
             <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between gap-2">
-                        <span class="text-xs font-mono font-bold text-[#1B4332]">LNDS-2026-GY002</span>
+                        <span class="text-xs font-mono font-bold text-emerald-700">LNDS-2026-GY002</span>
                         <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
                             In Transit
                         </span>
@@ -336,7 +336,7 @@
                         <span class="text-slate-300 mx-1">&bull;</span>
                         <span>Bobot: <strong>4.500 KG</strong></span>
                     </div>
-                    <a href="/shipments/2" class="text-xs font-bold text-[#1B4332] hover:text-emerald-950 flex items-center gap-1">
+                    <a href="/shipments/2" class="text-xs font-bold text-slate-900 hover:text-emerald-700 flex items-center gap-1 transition-colors">
                         <span>Detail</span>
                         <span>&rarr;</span>
                     </a>
@@ -352,14 +352,14 @@
     <div class="bg-white rounded-xl border border-slate-200/90 p-5 shadow-2xs flex flex-col">
         <div class="flex items-center justify-between mb-3">
             <div class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-[#57C84D] animate-pulse"></span>
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                 <h2 class="text-xs font-bold text-slate-800 uppercase tracking-wider">
                     Radar Visual Rute Multimodal Koridor Ekspor Highland
                 </h2>
             </div>
             <div class="flex items-center gap-3 text-[11px] text-slate-500 font-medium">
-                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#1B4332]"></span> Hub Gudang</span>
-                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#57C84D]"></span> Kargo Bergerak</span>
+                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-slate-900"></span> Hub Gudang</span>
+                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> Kargo Bergerak</span>
             </div>
         </div>
 
@@ -377,7 +377,7 @@
                 </h3>
                 <p class="text-xs text-slate-500 mt-0.5">Daftar consignment yang sedang dalam proses pengiriman</p>
             </div>
-            <a href="{{ route('shipments.index') }}" class="text-xs font-bold text-[#1B4332] hover:text-emerald-950 flex items-center gap-1 transition-colors">
+            <a href="{{ route('shipments.index') }}" class="text-xs font-bold text-slate-900 hover:text-emerald-700 flex items-center gap-1 transition-colors">
                 <span>Lihat Roster Lengkap</span>
                 <span>&rarr;</span>
             </a>
@@ -399,7 +399,7 @@
                     @forelse($recentShipments as $s)
                         <tr class="hover:bg-slate-50/70 transition-colors">
                             <td class="py-3 pr-3 font-mono font-bold text-slate-900">
-                                <a href="{{ route('shipments.show', $s->id) }}" class="text-[#1B4332] hover:underline font-bold">
+                                <a href="{{ route('shipments.show', $s->id) }}" class="text-emerald-700 hover:text-emerald-800 hover:underline font-bold">
                                     {{ $s->tracking_number }}
                                 </a>
                             </td>
@@ -409,14 +409,14 @@
                             </td>
                             <td class="py-3 pr-3">
                                 <div class="font-medium text-slate-700">{{ $s->origin->city }} &rarr; {{ $s->destination->city }}</div>
-                                <div class="text-[#1B4332] text-[11px] font-medium mt-0.5">Posisi: {{ $s->currentLocation->name ?? 'Dalam Perjalanan' }}</div>
+                                <div class="text-slate-500 text-[11px] font-medium mt-0.5">Posisi: {{ $s->currentLocation->name ?? 'Dalam Perjalanan' }}</div>
                             </td>
                             <td class="py-3 pr-3">
                                 <span class="font-medium text-slate-800">{{ $s->carrier->name }}</span>
                                 <span class="block text-[10px] text-slate-400 font-mono">[{{ $s->carrier->transport_mode }}]</span>
                             </td>
                             <td class="py-3 pr-3">
-                                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase {{ $s->status === 'DELIVERED' ? 'bg-slate-100 text-slate-800 border border-slate-300' : ($s->status === 'IN_TRANSIT' ? 'bg-emerald-50 text-[#1B4332] border border-emerald-200' : 'bg-slate-100 text-slate-700') }}">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase {{ $s->status === 'DELIVERED' ? 'bg-slate-100 text-slate-800 border border-slate-300' : ($s->status === 'IN_TRANSIT' ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-slate-100 text-slate-700') }}">
                                     {{ $s->status }}
                                 </span>
                                 @if($s->is_delayed)
@@ -460,11 +460,11 @@
         locations.forEach(loc => {
             const marker = L.circleMarker([loc.latitude, loc.longitude], {
                 radius: 6,
-                color: '#1B4332',
-                fillColor: '#2D6A4F',
+                color: '#0F172A',
+                fillColor: '#334155',
                 fillOpacity: 0.9,
                 weight: 2
-            }).addTo(map).bindPopup(`<b>${loc.name}</b><br>${loc.city}, ${loc.country}<br><span class="font-mono text-xs font-bold text-[#1B4332]">[${loc.code}]</span>`);
+            }).addTo(map).bindPopup(`<b>${loc.name}</b><br>${loc.city}, ${loc.country}<br><span class="font-mono text-xs font-bold text-emerald-700">[${loc.code}]</span>`);
             markers.push(marker);
         });
 
@@ -474,15 +474,15 @@
                 const isDelayed = s.is_delayed;
                 const cargoMarker = L.circleMarker([s.current_location.latitude, s.current_location.longitude], {
                     radius: 8,
-                    color: isDelayed ? '#b45309' : '#1B4332',
-                    fillColor: isDelayed ? '#f59e0b' : '#57C84D',
+                    color: isDelayed ? '#b45309' : '#047857',
+                    fillColor: isDelayed ? '#f59e0b' : '#10b981',
                     fillOpacity: 0.95,
                     weight: 2
                 }).addTo(map).bindPopup(`
                     <b>Kargo: ${s.tracking_number}</b><br>
                     Komoditas: ${s.cargo_type}<br>
                     Status: <b>${s.status}</b> ${isDelayed ? '<br><span style="color:#b45309">Tertunda: +' + s.delay_duration_hours + ' jam</span>' : ''}<br>
-                    <a href="/shipments/${s.id}" style="color:#1B4332;font-weight:bold;">Periksa Kargo &rarr;</a>
+                    <a href="/shipments/${s.id}" style="color:#047857;font-weight:bold;">Periksa Kargo &rarr;</a>
                 `);
                 markers.push(cargoMarker);
             }

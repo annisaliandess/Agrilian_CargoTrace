@@ -21,13 +21,17 @@
             theme: {
                 extend: {
                     colors: {
-                        pine: {
-                            deep: '#1B4332',     /* Forest Pine Utama */
-                            mid: '#2D6A4F',
-                            leaf: '#40916C',
-                            soft: '#74C69D',
-                            mint: '#95D5B2',
-                            ice: '#D8F3DC',
+                        brand: {
+                            50: '#ECFDF5',
+                            100: '#D1FAE5',
+                            200: '#A7F3D0',
+                            300: '#6EE7B7',
+                            400: '#34D399',
+                            500: '#10B981',
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065F46',
+                            900: '#064E3B',
                         },
                         slate: {
                             50: '#F8FAFC',
@@ -161,7 +165,7 @@
         }
     </style>
 </head>
-<body class="h-full font-sans text-slate-800 antialiased selection:bg-[#1B4332] selection:text-white bg-[#F8FAFC]">
+<body class="h-full font-sans text-slate-800 antialiased selection:bg-emerald-600 selection:text-white bg-[#F8FAFC]">
 
 @php
     $isPublicTracker = request()->routeIs('track.public') || request()->routeIs('home') || request()->routeIs('login');

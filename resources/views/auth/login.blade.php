@@ -40,14 +40,14 @@
                 <div>
                     <label for="email" class="block text-xs font-semibold text-slate-700 mb-1.5">Email</label>
                     <input type="email" id="email" name="email" value="{{ old('email', 'admin@cargotrace.com') }}" placeholder="masukkan alamat email..." required autofocus
-                           class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#57C84D] focus:border-transparent transition-all">
+                           class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all">
                 </div>
 
                 <div>
                     <label for="password" class="block text-xs font-semibold text-slate-700 mb-1.5">Kata Sandi</label>
                     <div class="relative">
                         <input type="password" id="password" name="password" value="password123" placeholder="masukkan kata sandi..." required
-                               class="w-full pl-3.5 pr-10 py-2.5 rounded-xl border border-slate-300 text-xs font-mono font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#57C84D] focus:border-transparent transition-all">
+                               class="w-full pl-3.5 pr-10 py-2.5 rounded-xl border border-slate-300 text-xs font-mono font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all">
                         
                         <!-- Toggle Tampilkan/Sembunyikan Kata Sandi (Mata Terbuka & Tertutup) -->
                         <button type="button" onclick="togglePasswordVisibility()" title="Tampilkan / Sembunyikan kata sandi"
@@ -67,7 +67,7 @@
 
                 <div class="flex items-center justify-between text-xs pt-1">
                     <label class="flex items-center gap-2 cursor-pointer text-slate-600 font-medium select-none">
-                        <input type="checkbox" name="remember" class="rounded border-slate-300 text-[#1B4332] focus:ring-[#57C84D]">
+                        <input type="checkbox" name="remember" class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500">
                         Ingat sesi saya
                     </label>
                 </div>
@@ -75,7 +75,7 @@
                 <!-- Tombol Berkelas Pilihan Ayaa: Masuk ke Portal -->
                 <button type="submit" class="btn-brand-accent w-full py-2.5 px-4 rounded-xl text-xs font-bold cursor-pointer transition-transform active:scale-[0.98] shadow-sm flex items-center justify-center gap-2">
                     <span>Masuk ke Portal</span>
-                    <svg class="w-3.5 h-3.5 text-[#052014]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                     </svg>
                 </button>

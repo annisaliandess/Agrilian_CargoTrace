@@ -37,11 +37,11 @@
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     </div>
                     <input type="text" name="tracking_number" value="{{ $query ?? 'LNDS-2026-GY001' }}" placeholder="Masukkan nomor resi (contoh: LNDS-2026-GY001)"
-                           class="w-full pl-10 pr-3 py-2.5 rounded-xl border-0 bg-white text-slate-900 placeholder-slate-400 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-[#57C84D] transition-all">
+                           class="w-full pl-10 pr-3 py-2.5 rounded-xl border-0 bg-white text-slate-900 placeholder-slate-400 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all">
                 </div>
                 <button type="submit" class="btn-brand-accent px-6 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 cursor-pointer shadow-sm shrink-0">
                     <span>Lacak Kargo</span>
-                    <svg class="w-4 h-4 text-[#052014]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </button>
             </form>
 
@@ -146,7 +146,7 @@
                             $isCurrent = $idx === $currentIdx;
                         @endphp
                         <div class="flex flex-col items-center text-center">
-                            <div class="w-full h-1.5 rounded-full mb-2 {{ $isDone ? 'bg-[#1B4332]' : ($isCurrent ? 'bg-emerald-600' : 'bg-slate-200') }}"></div>
+                            <div class="w-full h-1.5 rounded-full mb-2 {{ $isDone ? 'bg-slate-900' : ($isCurrent ? 'bg-emerald-600' : 'bg-slate-200') }}"></div>
                             <span class="text-[11px] font-semibold {{ $isCurrent ? 'text-slate-900 font-bold' : ($isDone ? 'text-slate-700' : 'text-slate-400') }}">
                                 {{ $step['label'] }}
                             </span>
@@ -159,8 +159,8 @@
                 <!-- Valuasi Ekspor Valas Bar (ECB Live) -->
                 <div class="mt-5 pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                     <div class="flex items-center gap-2">
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-[#1B4332] border border-emerald-200">
-                            <span class="w-1.5 h-1.5 rounded-full bg-[#57C84D]"></span>
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                             Valuasi Devisa Ekspor:
                         </span>
                         <strong class="font-mono text-slate-900 text-xs">{{ $valuation['idr_formatted'] }}</strong>
@@ -468,7 +468,7 @@
                 const isDelayed = {{ $shipment->is_delayed ? 'true' : 'false' }};
                 L.circleMarker([currentLat, currentLon], {
                     radius: 8,
-                    color: isDelayed ? '#d97706' : '#1B4332',
+                    color: isDelayed ? '#d97706' : '#0F172A',
                     fillColor: isDelayed ? '#f59e0b' : '#10b981',
                     fillOpacity: 0.95,
                     weight: 2
@@ -481,7 +481,7 @@
                 ];
 
                 L.polyline(routePoints, {
-                    color: isDelayed ? '#d97706' : '#1B4332',
+                    color: isDelayed ? '#d97706' : '#0F172A',
                     weight: 3,
                     opacity: 0.8,
                     dashArray: '6, 8'
