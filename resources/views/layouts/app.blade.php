@@ -11,6 +11,10 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600,700,800|jetbrains-mono:400,500,600" rel="stylesheet" />
 
+    <!-- Official AgriLian Favicon -->
+    <link rel="icon" type="image/jpeg" href="{{ asset('images/logo.jpg') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/logo.jpg') }}">
+
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
@@ -21,23 +25,41 @@
             theme: {
                 extend: {
                     colors: {
+                        forest: {
+                            50: '#DAF1DE',
+                            100: '#C1E6C8',
+                            200: '#8EB69B',
+                            300: '#649A76',
+                            400: '#3D7D5E',
+                            500: '#235347',
+                            600: '#163832',
+                            700: '#0E2E28',
+                            800: '#0B2B26',
+                            900: '#051F20',
+                            950: '#031415',
+                        },
                         brand: {
-                            50: '#EFF6FF',
-                            100: '#DBEAFE',
-                            200: '#BFDBFE',
-                            300: '#93C5FD',
-                            400: '#60A5FA',
-                            500: '#3B82F6',
-                            600: '#2563EB',
-                            700: '#1D4ED8',
-                            800: '#1E40AF',
-                            900: '#1E3A8A',
-                            950: '#172554',
+                            50: '#DAF1DE',
+                            100: '#C1E6C8',
+                            200: '#8EB69B',
+                            300: '#649A76',
+                            400: '#3D7D5E',
+                            500: '#235347',
+                            600: '#163832',
+                            700: '#0E2E28',
+                            800: '#0B2B26',
+                            900: '#051F20',
+                            950: '#031415',
+                        },
+                        coffee: {
+                            500: '#A86F44',
+                            700: '#6E473B',
+                            900: '#291C0E',
                         },
                         navy: {
-                            800: '#1E293B',
-                            900: '#0F172A',
-                            950: '#0A0F1D',
+                            800: '#0B2B26',
+                            900: '#051F20',
+                            950: '#031415',
                         }
                     },
                     fontFamily: {
@@ -72,38 +94,38 @@
         svg.w-4 { width: 16px !important; height: 16px !important; }
         svg.w-3\.5 { width: 14px !important; height: 14px !important; }
 
-        /* Modern Deep Navy Sidebar (Flexport & Enterprise SaaS aesthetic) */
+        /* Modern Highland Forest & Pine Sidebar */
         .bg-sidebar-gradient {
-            background: linear-gradient(180deg, #0A0F1D 0%, #0F172A 60%, #080C14 100%);
+            background: linear-gradient(180deg, #051F20 0%, #0B2B26 60%, #031415 100%);
         }
 
-        /* High-Precision Cobalt Button (SaaS Gold Standard) */
+        /* High-Precision Highland Pine Button */
         .btn-brand-accent {
-            background-color: #2563EB;
+            background-color: #163832;
             color: #FFFFFF !important;
             font-weight: 700;
-            box-shadow: 0 2px 8px -1px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 2px 8px -1px rgba(11, 43, 38, 0.45);
             transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid #235347;
         }
         .btn-brand-accent:hover {
-            background-color: #1D4ED8;
+            background-color: #0B2B26;
             transform: translateY(-1px);
-            box-shadow: 0 4px 14px -1px rgba(37, 99, 235, 0.55);
+            box-shadow: 0 4px 14px -1px rgba(5, 31, 32, 0.6);
         }
 
         /* Enterprise Obsidian Button */
         .btn-brand-primary {
-            background-color: #0F172A;
+            background-color: #0B2B26;
             color: #FFFFFF !important;
             font-weight: 600;
-            border: 1px solid #334155;
+            border: 1px solid #163832;
             transition: all 0.15s ease-in-out;
-            box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.15);
+            box-shadow: 0 1px 3px 0 rgba(11, 43, 38, 0.2);
         }
         .btn-brand-primary:hover {
-            background-color: #1E293B;
-            box-shadow: 0 3px 8px 0 rgba(15, 23, 42, 0.25);
+            background-color: #051F20;
+            box-shadow: 0 3px 8px 0 rgba(5, 31, 32, 0.3);
             transform: translateY(-0.5px);
         }
 
@@ -139,7 +161,7 @@
         }
     </style>
 </head>
-<body class="h-full font-sans text-slate-800 antialiased selection:bg-blue-600 selection:text-white bg-[#F8FAFC]">
+<body class="h-full font-sans text-slate-800 antialiased selection:bg-forest-600 selection:text-white bg-[#F8FAFC]">
 
 @php
     $isPublicTracker = request()->routeIs('track.public') || request()->routeIs('home') || request()->routeIs('login') || request()->routeIs('register');
@@ -155,22 +177,17 @@
         <!-- Sidebar Column (Bisa Dibuka dan Ditutup) -->
         <aside id="app-sidebar" class="w-64 bg-sidebar-gradient text-white flex flex-col fixed inset-y-0 left-0 z-40 shadow-2xl border-r border-slate-800/80 transition-transform duration-300 ease-in-out">
             <!-- Brand Logo Area + Internal Close Button -->
-            <div class="h-16 flex items-center justify-between px-5 border-b border-slate-800/80 bg-black/30">
+            <div class="h-16 flex items-center justify-between px-5 border-b border-forest-800/80 bg-black/30">
                 <a href="{{ route('dashboard') }}" class="flex items-center gap-3 group min-w-0">
-                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 border border-blue-400/30 flex items-center justify-center text-white shadow-md shadow-blue-900/40 group-hover:scale-105 transition-transform shrink-0">
-                        <svg width="20" height="20" class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
-                        </svg>
-                    </div>
+                    <img src="{{ asset('images/logo.jpg') }}" alt="AgriLian Logo" class="w-10 h-10 rounded-full object-cover border-2 border-forest-200/50 shadow-md group-hover:scale-105 transition-transform shrink-0">
                     <div class="min-w-0">
                         <span class="text-sm font-bold text-white tracking-tight block leading-tight">AgriLian</span>
-                        <span class="text-[10px] font-semibold text-blue-400 tracking-wider uppercase block mt-0.5 font-mono">CargoTrace Platform</span>
+                        <span class="text-[10px] font-semibold text-forest-200 tracking-wider uppercase block mt-0.5 font-mono">CargoTrace Platform</span>
                     </div>
                 </a>
 
                 <!-- Tombol Tutup Sidebar di Dalam -->
-                <button type="button" onclick="toggleSidebar()" title="Sembunyikan menu" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer">
+                <button type="button" onclick="toggleSidebar()" title="Sembunyikan menu" class="p-1.5 rounded-lg text-forest-200/70 hover:text-white hover:bg-white/10 transition-colors cursor-pointer">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/>
                     </svg>
@@ -181,23 +198,23 @@
             <div class="flex-1 px-3 py-5 space-y-6 overflow-y-auto">
                 <!-- Group 1: Core Operations -->
                 <div>
-                    <div class="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2 font-mono">
+                    <div class="px-3 text-[10px] font-bold uppercase tracking-wider text-forest-200/70 mb-2 font-mono">
                         Operasional Ekspor
                     </div>
                     <nav class="space-y-1">
-                        <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('dashboard') ? 'bg-blue-600/20 text-white border-l-4 border-blue-500 shadow-sm font-bold' : 'text-slate-400 hover:text-white hover:bg-white/5' }}">
-                            <svg class="w-4 h-4 {{ request()->routeIs('dashboard') ? 'text-blue-400' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                        <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('dashboard') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
+                            <svg class="w-4 h-4 {{ request()->routeIs('dashboard') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
                             <span>Dashboard Radar</span>
                         </a>
 
-                        <a href="{{ route('shipments.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.index') || request()->routeIs('shipments.show') ? 'bg-blue-600/20 text-white border-l-4 border-blue-500 shadow-sm font-bold' : 'text-slate-400 hover:text-white hover:bg-white/5' }}">
-                            <svg class="w-4 h-4 {{ request()->routeIs('shipments.index') || request()->routeIs('shipments.show') ? 'text-blue-400' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                        <a href="{{ route('shipments.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.index') || request()->routeIs('shipments.show') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
+                            <svg class="w-4 h-4 {{ request()->routeIs('shipments.index') || request()->routeIs('shipments.show') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
                             <span>Manifes Kargo (Roster)</span>
                         </a>
 
                         @if(auth()->user()->isAdmin() || auth()->user()->isOperator())
-                            <a href="{{ route('shipments.create') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.create') ? 'bg-blue-600/20 text-white border-l-4 border-blue-500 shadow-sm font-bold' : 'text-slate-400 hover:text-white hover:bg-white/5' }}">
-                                <svg class="w-4 h-4 {{ request()->routeIs('shipments.create') ? 'text-blue-400' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            <a href="{{ route('shipments.create') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.create') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
+                                <svg class="w-4 h-4 {{ request()->routeIs('shipments.create') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                                 <span>Buat Manifest Baru</span>
                             </a>
                         @endif
@@ -206,24 +223,24 @@
 
                 <!-- Group 2: Public Portal -->
                 <div>
-                    <div class="px-3 text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2 font-mono">
+                    <div class="px-3 text-[10px] font-bold uppercase tracking-wider text-forest-200/70 mb-2 font-mono">
                         Portal Publik
                     </div>
                     <nav class="space-y-1">
-                        <a href="{{ route('track.public') }}" target="_blank" class="flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-white hover:bg-white/5 transition-all group">
+                        <a href="{{ route('track.public') }}" target="_blank" class="flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/5 transition-all group">
                             <span class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-slate-400 group-hover:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                                <svg class="w-4 h-4 text-slate-400 group-hover:text-forest-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                                 <span>Halaman Cek Resi</span>
                             </span>
-                            <span class="text-[10px] px-1.5 py-0.5 rounded bg-white/10 text-slate-400 group-hover:text-white font-mono">↗</span>
+                            <span class="text-[10px] px-1.5 py-0.5 rounded bg-white/10 text-slate-300 group-hover:text-white font-mono">↗</span>
                         </a>
                     </nav>
                 </div>
             </div>
 
             <!-- User Profile Box & Logout (Bottom of Sidebar) -->
-            <div class="p-3 border-t border-slate-800 bg-black/40">
-                <div class="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-slate-800">
+            <div class="p-3 border-t border-forest-800 bg-black/40">
+                <div class="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-forest-800">
                     @php
                         $userRole = auth()->user()->role;
                         $displayName = match($userRole) {
@@ -243,14 +260,14 @@
                         };
                     @endphp
                     <div class="flex items-center gap-2.5 overflow-hidden">
-                        <div class="w-8 h-8 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center font-bold text-xs shrink-0 border border-blue-500/30 font-mono">
+                        <div class="w-8 h-8 rounded-lg bg-forest-500/25 text-forest-200 flex items-center justify-center font-bold text-xs shrink-0 border border-forest-500/40 font-mono">
                             {{ $initial }}
                         </div>
                         <div class="min-w-0">
                             <div class="text-xs font-bold text-white truncate">{{ $displayName }}</div>
                             <div class="flex items-center gap-1.5">
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                                <span class="text-[10px] font-medium text-slate-400 uppercase tracking-wider font-mono">{{ $displayRole }}</span>
+                                <span class="text-[10px] font-medium text-forest-200/80 uppercase tracking-wider font-mono">{{ $displayRole }}</span>
                             </div>
                         </div>
                     </div>
@@ -396,14 +413,9 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16">
                     <a href="{{ route('home') }}" class="flex items-center gap-3 group">
-                        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 border border-blue-400/30 flex items-center justify-center text-white shadow-sm shadow-blue-900/20 group-hover:scale-105 transition-transform">
-                            <svg width="20" height="20" class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
-                            </svg>
-                        </div>
+                        <img src="{{ asset('images/logo.jpg') }}" alt="AgriLian Logo" class="w-10 h-10 rounded-full object-cover border-2 border-forest-600/30 shadow-sm group-hover:scale-105 transition-transform shrink-0">
                         <div>
-                            <span class="text-base font-bold text-slate-900 tracking-tight">AgriLian <span class="text-blue-600 font-extrabold">CargoTrace</span></span>
+                            <span class="text-base font-bold text-slate-900 tracking-tight">AgriLian <span class="text-forest-600 font-extrabold">CargoTrace</span></span>
                             <span class="block text-[10px] font-semibold text-slate-500 uppercase tracking-wider font-mono">Highland Agro-Export Visibility</span>
                         </div>
                     </a>

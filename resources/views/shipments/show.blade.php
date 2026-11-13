@@ -52,9 +52,9 @@
                 @php
                     $badgeStyle = match($shipment->status) {
                         'CREATED' => 'bg-slate-100 text-slate-800 border-slate-300',
-                        'BOOKED' => 'bg-blue-50 text-blue-900 border-blue-200',
-                        'PICKED_UP' => 'bg-indigo-50 text-indigo-900 border-indigo-200',
-                        'IN_TRANSIT' => 'bg-blue-50 text-blue-800 border-blue-300',
+                        'BOOKED' => 'bg-forest-50 text-forest-900 border-forest-200',
+                        'PICKED_UP' => 'bg-forest-50 text-forest-900 border-forest-200',
+                        'IN_TRANSIT' => 'bg-forest-50 text-forest-800 border-forest-300',
                         'DELIVERED' => 'bg-emerald-50 text-emerald-800 border-emerald-300 font-bold',
                         default => 'bg-slate-100 text-slate-800',
                     };
@@ -475,8 +475,8 @@
         const isDelayed = {{ $shipment->is_delayed ? 'true' : 'false' }};
         L.circleMarker([currentLat, currentLon], {
             radius: 8,
-            color: isDelayed ? '#D97706' : '#1D4ED8',
-            fillColor: isDelayed ? '#F59E0B' : '#3B82F6',
+            color: isDelayed ? '#D97706' : '#0B2B26',
+            fillColor: isDelayed ? '#F59E0B' : '#235347',
             fillOpacity: 0.95,
             weight: 2
         }).addTo(map).bindPopup("<b>Posisi Checkpoint Kargo Saat Ini:</b><br>{{ $shipment->currentLocation->name ?? 'Dalam Perjalanan' }}<br>Status: <b>{{ $shipment->status }}</b>").openPopup();
@@ -488,7 +488,7 @@
         ];
 
         L.polyline(routePoints, {
-            color: isDelayed ? '#D97706' : '#2563EB',
+            color: isDelayed ? '#D97706' : '#163832',
             weight: 3.5,
             opacity: 0.85,
             dashArray: '6, 8'

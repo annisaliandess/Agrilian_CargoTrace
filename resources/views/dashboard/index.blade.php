@@ -12,8 +12,8 @@
         <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div class="max-w-2xl">
                 <!-- Status Badge -->
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-800 border border-blue-200 mb-3">
-                    <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-forest-50 text-forest-900 border border-forest-200 mb-3">
+                    <span class="w-2 h-2 rounded-full bg-forest-600 animate-pulse"></span>
                     <span class="font-mono">Takengon Hub (Gayo) &bull; Belawan Ocean Port &bull; Rotterdam Direct</span>
                 </div>
 
@@ -54,7 +54,7 @@
                 </span>
                 <span class="text-slate-300">&bull;</span>
                 <span class="font-mono text-slate-700">
-                    <strong class="text-blue-700">1 EUR</strong> = Rp {{ number_format($currencyRates['eur_to_idr'], 0, ',', '.') }}
+                    <strong class="text-forest-700">1 EUR</strong> = Rp {{ number_format($currencyRates['eur_to_idr'], 0, ',', '.') }}
                 </span>
                 <span class="text-[10px] text-slate-500 bg-slate-100 px-2 py-0.5 rounded border border-slate-200 font-mono">Bank Sentral Eropa</span>
             </div>
@@ -62,7 +62,7 @@
             <div class="flex items-center gap-2">
                 <span class="text-slate-500 font-medium">Estimasi Devisa Kargo:</span>
                 <strong class="font-mono font-bold text-slate-900 text-sm tracking-tight">{{ $totalValuation['usd_formatted'] }} USD</strong>
-                <span class="text-xs font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">({{ $totalValuation['eur_formatted'] }})</span>
+                <span class="text-xs font-mono font-bold text-forest-800 bg-forest-50 px-2 py-0.5 rounded-md border border-forest-200">({{ $totalValuation['eur_formatted'] }})</span>
             </div>
         </div>
     </div>
@@ -73,11 +73,11 @@
     <div class="bg-white rounded-2xl border border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)] divide-y sm:divide-y-0 sm:divide-x divide-slate-100 grid grid-cols-2 lg:grid-cols-4 overflow-hidden">
         <!-- Metric 1: Total Managed -->
         <div class="p-5 relative">
-            <div class="w-1.5 h-full bg-blue-600 absolute left-0 top-0"></div>
+            <div class="w-1.5 h-full bg-forest-600 absolute left-0 top-0"></div>
             <span class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider font-mono">Total Pengiriman</span>
             <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 font-mono">{{ $totalShipments }}</div>
             <span class="block text-[11px] text-slate-500 mt-1 flex items-center gap-1">
-                <svg class="w-3.5 h-3.5 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                <svg class="w-3.5 h-3.5 text-forest-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
                 100% Manifest Terverifikasi
             </span>
         </div>
@@ -114,7 +114,7 @@
         <div class="flex items-center justify-between">
             <div>
                 <h2 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2 font-mono">
-                    <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                    <span class="w-2 h-2 rounded-full bg-forest-600"></span>
                     <span>Pusat Navigasi & Pintasan Modul Utama</span>
                 </h2>
                 <p class="text-xs text-slate-500 mt-0.5">Akses cepat ke setiap kapabilitas utama platform visibilitas ekspor AgriLian</p>
@@ -124,25 +124,25 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <!-- Shortcut 1: Manifes Kargo -->
-            <a href="{{ route('shipments.index') }}" class="group bg-white rounded-2xl border border-slate-200/90 p-5 shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:border-blue-500 hover:shadow-md transition-all flex flex-col justify-between">
+            <a href="{{ route('shipments.index') }}" class="group bg-white rounded-2xl border border-slate-200/90 p-5 shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:border-forest-500 hover:shadow-md transition-all flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-3">
-                        <div class="w-9 h-9 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <div class="w-9 h-9 rounded-xl bg-forest-50 text-forest-700 flex items-center justify-center group-hover:bg-forest-600 group-hover:text-white transition-colors">
                             <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
                         </div>
-                        <span class="text-[10px] font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200 font-mono">{{ $totalShipments }} Kontainer</span>
+                        <span class="text-[10px] font-bold text-forest-800 bg-forest-50 px-2.5 py-0.5 rounded-full border border-forest-200 font-mono">{{ $totalShipments }} Kontainer</span>
                     </div>
-                    <h3 class="text-xs font-bold text-slate-900 group-hover:text-blue-700 transition-colors">Manifes & Roster Kargo</h3>
+                    <h3 class="text-xs font-bold text-slate-900 group-hover:text-forest-700 transition-colors">Manifes & Roster Kargo</h3>
                     <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">Kelola seluruh data consignment, tonase kargo, armada pengangkut, dan kepabeanan.</p>
                 </div>
-                <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-700 group-hover:translate-x-0.5 transition-transform">
+                <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-forest-700 group-hover:translate-x-0.5 transition-transform">
                     <span>Buka Roster</span>
                     <span>&rarr;</span>
                 </div>
             </a>
 
             <!-- Shortcut 2: Pelacakan Publik -->
-            <a href="{{ route('track.public') }}" target="_blank" class="group bg-white rounded-2xl border border-slate-200/90 p-5 shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:border-blue-500 hover:shadow-md transition-all flex flex-col justify-between">
+            <a href="{{ route('track.public') }}" target="_blank" class="group bg-white rounded-2xl border border-slate-200/90 p-5 shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:border-forest-500 hover:shadow-md transition-all flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-3">
                         <div class="w-9 h-9 rounded-xl bg-slate-100 text-slate-800 flex items-center justify-center group-hover:bg-slate-900 group-hover:text-white transition-colors">
@@ -150,10 +150,10 @@
                         </div>
                         <span class="text-[10px] font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200 font-mono">Akses Publik</span>
                     </div>
-                    <h3 class="text-xs font-bold text-slate-900 group-hover:text-blue-700 transition-colors">Pelacak Waybill Publik</h3>
+                    <h3 class="text-xs font-bold text-slate-900 group-hover:text-forest-700 transition-colors">Pelacak Waybill Publik</h3>
                     <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">Portal mandiri bagi buyer internasional di Singapura dan Eropa untuk cek status resi.</p>
                 </div>
-                <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-blue-700 group-hover:translate-x-0.5 transition-transform">
+                <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-forest-700 group-hover:translate-x-0.5 transition-transform">
                     <span>Lacak Waybill</span>
                     <span>↗</span>
                 </div>
@@ -163,10 +163,10 @@
             <div class="bg-white rounded-2xl border border-slate-200/90 p-5 shadow-[0_1px_3px_rgba(0,0,0,0.03)] flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-3">
-                        <div class="w-9 h-9 rounded-xl bg-sky-50 text-sky-700 flex items-center justify-center">
+                        <div class="w-9 h-9 rounded-xl bg-forest-50 text-forest-700 flex items-center justify-center">
                             <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
                         </div>
-                        <span class="text-[10px] font-bold text-sky-700 bg-sky-50 px-2.5 py-0.5 rounded-full border border-sky-200 font-mono">OpenWeather</span>
+                        <span class="text-[10px] font-bold text-forest-800 bg-forest-50 px-2.5 py-0.5 rounded-full border border-forest-200 font-mono">OpenWeather</span>
                     </div>
                     <h3 class="text-xs font-bold text-slate-900">Telemetri Cuaca Jalur</h3>
                     <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">Satelit live memantau titik rawan kabut & hujan di Takengon, Bireuen, hingga Belawan.</p>
@@ -181,10 +181,10 @@
             <div class="bg-white rounded-2xl border border-slate-200/90 p-5 shadow-[0_1px_3px_rgba(0,0,0,0.03)] flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-3">
-                        <div class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center">
+                        <div class="w-9 h-9 rounded-xl bg-forest-50 text-forest-700 flex items-center justify-center">
                             <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                         </div>
-                        <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 font-mono">ECB Live</span>
+                        <span class="text-[10px] font-bold text-forest-800 bg-forest-50 px-2.5 py-0.5 rounded-full border border-forest-200 font-mono">ECB Live</span>
                     </div>
                     <h3 class="text-xs font-bold text-slate-900">Valuasi Devisa Ekspor</h3>
                     <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">Konversi otomatis devisa ke USD ($) dan EUR (€) langsung dari data Bank Sentral Eropa.</p>
@@ -204,7 +204,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-4 border-b border-slate-100">
             <div>
                 <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-blue-600 animate-pulse"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-forest-600 animate-pulse"></span>
                     <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider font-mono">
                         Radar Visual Rute Multimodal Koridor Ekspor Agro
                     </h2>
@@ -213,7 +213,7 @@
             </div>
             <div class="flex flex-wrap items-center gap-3 text-xs text-slate-600 font-medium">
                 <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-slate-900"></span> Hub / Pelabuhan</span>
-                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span> Kargo Bergerak</span>
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-forest-600"></span> Kargo Bergerak</span>
                 <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Peringatan Cuaca</span>
             </div>
         </div>
@@ -223,7 +223,7 @@
 
         <div class="mt-4 pt-3 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-500">
             <span>Koridor Terpantau: <strong class="text-slate-800 font-mono">Takengon Hub (4.6°N) &rarr; Bireuen (5.2°N) &rarr; Pelabuhan Belawan (3.7°N) &rarr; Selat Malaka &rarr; Singapura &rarr; Rotterdam</strong></span>
-            <span class="text-blue-700 font-semibold font-mono text-[11px] inline-flex items-center gap-1.5">
+            <span class="text-forest-700 font-semibold font-mono text-[11px] inline-flex items-center gap-1.5">
                 <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
                 GIS Telemetri GPS Aktif & Terkalibrasi
             </span>
@@ -237,7 +237,7 @@
         <div class="flex items-center justify-between">
             <div>
                 <h2 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2 font-mono">
-                    <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                    <span class="w-2 h-2 rounded-full bg-forest-600"></span>
                     <span>Showcase Komoditas Ekspor Unggulan Dataran Tinggi Gayo</span>
                 </h2>
                 <p class="text-xs text-slate-500 mt-0.5">Spesifikasi mutu komoditas ekspor agro yang sedang dalam pemantauan telemetri rantai dingin & kelembaban</p>
@@ -257,12 +257,12 @@
                 <div class="p-5 flex-1 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between gap-2 mb-1.5">
-                            <span class="text-xs font-mono font-bold text-blue-700">AGLN-2026-GY001</span>
+                            <span class="text-xs font-mono font-bold text-forest-700">AGLN-2026-GY001</span>
                             <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 font-mono">
                                 On Track (Maersk)
                             </span>
                         </div>
-                        <h3 class="text-sm font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
+                        <h3 class="text-sm font-bold text-slate-900 group-hover:text-forest-700 transition-colors">
                             Kopi Arabika Gayo Specialty Grade 1
                         </h3>
                         <p class="text-xs text-slate-500 mt-1">Takengon Central Hub &rarr; Pelabuhan Belawan &rarr; Port of Rotterdam</p>
@@ -281,7 +281,7 @@
 
                     <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
                         <span class="text-slate-500 font-mono">Tonase: <strong class="text-slate-900">18.500 kg</strong></span>
-                        <a href="/shipments/1" class="btn-brand-outline px-3.5 py-1.5 rounded-lg text-xs font-bold text-blue-700 hover:text-blue-900 flex items-center gap-1.5 transition-colors">
+                        <a href="/shipments/1" class="btn-brand-outline px-3.5 py-1.5 rounded-lg text-xs font-bold text-forest-700 hover:text-forest-900 flex items-center gap-1.5 transition-colors">
                             <span>Periksa Kargo</span>
                             <span>&rarr;</span>
                         </a>
@@ -290,22 +290,22 @@
             </div>
 
             <!-- Card 2: Hortikultura Cold-Chain (Alpukat & Cabai) -->
-            <div class="bg-white rounded-2xl border border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col sm:flex-row group hover:border-blue-300 transition-all">
+            <div class="bg-white rounded-2xl border border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col sm:flex-row group hover:border-forest-300 transition-all">
                 <div class="sm:w-52 h-48 sm:h-auto relative overflow-hidden bg-slate-100 shrink-0">
                     <img src="/images/avocado.jpg" alt="Alpukat Mentega & Cabai Takengon" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-extrabold bg-blue-900/90 text-white backdrop-blur-xs border border-white/20 uppercase tracking-wider font-mono">
+                    <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-extrabold bg-forest-900/90 text-white backdrop-blur-xs border border-white/20 uppercase tracking-wider font-mono">
                         Rantai Dingin Reefer
                     </span>
                 </div>
                 <div class="p-5 flex-1 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between gap-2 mb-1.5">
-                            <span class="text-xs font-mono font-bold text-blue-700">AGLN-2026-GY002</span>
-                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-800 border border-blue-200 font-mono">
+                            <span class="text-xs font-mono font-bold text-forest-700">AGLN-2026-GY002</span>
+                            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-forest-50 text-forest-800 border border-forest-200 font-mono">
                                 Dalam Perjalanan
                             </span>
                         </div>
-                        <h3 class="text-sm font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
+                        <h3 class="text-sm font-bold text-slate-900 group-hover:text-forest-700 transition-colors">
                             Alpukat Mentega & Cabai Merah Segar
                         </h3>
                         <p class="text-xs text-slate-500 mt-1">Takengon Central Hub &rarr; Pelabuhan Belawan &rarr; Port of Singapore</p>
@@ -324,7 +324,7 @@
 
                     <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
                         <span class="text-slate-500 font-mono">Tonase: <strong class="text-slate-900">4.200 kg</strong></span>
-                        <a href="/shipments/2" class="btn-brand-outline px-3.5 py-1.5 rounded-lg text-xs font-bold text-blue-700 hover:text-blue-900 flex items-center gap-1.5 transition-colors">
+                        <a href="/shipments/2" class="btn-brand-outline px-3.5 py-1.5 rounded-lg text-xs font-bold text-forest-700 hover:text-forest-900 flex items-center gap-1.5 transition-colors">
                             <span>Periksa Kargo</span>
                             <span>&rarr;</span>
                         </a>
@@ -361,7 +361,7 @@
                 </h3>
                 <p class="text-xs text-slate-500 mt-0.5">Daftar consignment yang sedang dalam proses pengiriman</p>
             </div>
-            <a href="{{ route('shipments.index') }}" class="text-xs font-bold text-blue-700 hover:text-blue-900 flex items-center gap-1 transition-colors">
+            <a href="{{ route('shipments.index') }}" class="text-xs font-bold text-forest-700 hover:text-forest-900 flex items-center gap-1 transition-colors">
                 <span>Buka Roster Lengkap</span>
                 <span>&rarr;</span>
             </a>
@@ -383,7 +383,7 @@
                     @forelse($recentShipments as $s)
                         <tr class="hover:bg-slate-50/80 transition-colors">
                             <td class="py-3.5 pr-3 font-mono font-bold text-slate-900">
-                                <a href="{{ route('shipments.show', $s->id) }}" class="text-blue-700 hover:underline font-bold">
+                                <a href="{{ route('shipments.show', $s->id) }}" class="text-forest-700 hover:underline font-bold">
                                     {{ $s->tracking_number }}
                                 </a>
                             </td>
@@ -400,7 +400,7 @@
                                 <span class="block text-[10px] text-slate-400 font-mono">[{{ $s->carrier->transport_mode }}]</span>
                             </td>
                             <td class="py-3.5 pr-3">
-                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase font-mono {{ $s->status === 'DELIVERED' ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : ($s->status === 'IN_TRANSIT' ? 'bg-blue-50 text-blue-800 border border-blue-200' : 'bg-slate-100 text-slate-700 border border-slate-200') }}">
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase font-mono {{ $s->status === 'DELIVERED' ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : ($s->status === 'IN_TRANSIT' ? 'bg-forest-50 text-forest-800 border border-forest-200' : 'bg-slate-100 text-slate-700 border border-slate-200') }}">
                                     {{ $s->status }}
                                 </span>
                                 @if($s->is_delayed)
@@ -448,15 +448,15 @@
         locations.forEach(loc => {
             const marker = L.circleMarker([loc.latitude, loc.longitude], {
                 radius: 7,
-                color: '#0F172A',
-                fillColor: '#1E293B',
-                fillOpacity: 0.9,
+                color: '#051F20',
+                fillColor: '#0B2B26',
+                fillOpacity: 0.95,
                 weight: 2
             }).addTo(map).bindPopup(`
                 <div style="font-family: 'Plus Jakarta Sans', sans-serif; padding: 2px;">
-                    <div style="font-size: 11px; font-weight: bold; color: #0F172A;">${loc.name}</div>
+                    <div style="font-size: 11px; font-weight: bold; color: #051F20;">${loc.name}</div>
                     <div style="font-size: 10px; color: #64748B;">${loc.city}, ${loc.country}</div>
-                    <div style="font-size: 10px; font-family: monospace; font-weight: bold; color: #2563EB; margin-top: 2px;">[${loc.code}] &bull; ${loc.type}</div>
+                    <div style="font-size: 10px; font-family: monospace; font-weight: bold; color: #163832; margin-top: 2px;">[${loc.code}] &bull; ${loc.type}</div>
                 </div>
             `);
             markers.push(marker);
@@ -469,17 +469,17 @@
                 const isDelayed = s.is_delayed;
                 const cargoMarker = L.circleMarker([s.current_location.latitude, s.current_location.longitude], {
                     radius: 9,
-                    color: isDelayed ? '#D97706' : '#1D4ED8',
-                    fillColor: isDelayed ? '#F59E0B' : '#3B82F6',
+                    color: isDelayed ? '#D97706' : '#0B2B26',
+                    fillColor: isDelayed ? '#F59E0B' : '#235347',
                     fillOpacity: 1,
                     weight: 3
                 }).addTo(map).bindPopup(`
                     <div style="font-family: 'Plus Jakarta Sans', sans-serif; padding: 2px; min-width: 160px;">
-                        <div style="font-size: 12px; font-weight: 800; font-family: monospace; color: #0F172A;">${s.tracking_number}</div>
+                        <div style="font-size: 12px; font-weight: 800; font-family: monospace; color: #051F20;">${s.tracking_number}</div>
                         <div style="font-size: 10px; color: #475569; margin-top: 1px;">${s.cargo_type}</div>
-                        <div style="font-size: 10px; margin-top: 4px;">Status: <b style="color: ${isDelayed ? '#D97706' : '#2563EB'}">${s.status}</b></div>
+                        <div style="font-size: 10px; margin-top: 4px;">Status: <b style="color: ${isDelayed ? '#D97706' : '#163832'}">${s.status}</b></div>
                         ${isDelayed ? '<div style="font-size: 10px; color: #B45309; font-weight: bold;">Peringatan Cuaca (+' + s.delay_duration_hours + ' jam)</div>' : ''}
-                        <div style="margin-top: 6px;"><a href="/shipments/${s.id}" style="color: #2563EB; font-weight: bold; font-size: 10px; text-decoration: underline;">Periksa Kargo &rarr;</a></div>
+                        <div style="margin-top: 6px;"><a href="/shipments/${s.id}" style="color: #163832; font-weight: bold; font-size: 10px; text-decoration: underline;">Periksa Kargo &rarr;</a></div>
                     </div>
                 `);
                 markers.push(cargoMarker);
@@ -494,9 +494,9 @@
             [1.2644, 103.8220]  // Port of Singapore
         ];
         L.polyline(corridorRoute, {
-            color: '#2563EB',
+            color: '#163832',
             weight: 3.5,
-            opacity: 0.85,
+            opacity: 0.9,
             dashArray: '6, 8',
             lineJoin: 'round'
         }).addTo(map);

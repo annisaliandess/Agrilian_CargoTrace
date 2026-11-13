@@ -11,8 +11,8 @@
     <div class="bg-white rounded-2xl p-7 sm:p-10 text-center border border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
         <div class="max-w-2xl mx-auto">
             <!-- Pill Badge -->
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-800 border border-blue-200 mb-3">
-                <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-forest-50 text-forest-900 border border-forest-200 mb-3">
+                <span class="w-1.5 h-1.5 rounded-full bg-forest-600 animate-pulse"></span>
                 <span class="font-mono">Sistem Pelacakan Kargo Ekspor Dataran Tinggi Gayo</span>
             </div>
 
@@ -32,7 +32,7 @@
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     </div>
                     <input type="text" name="tracking_number" value="{{ $query ?? 'AGLN-2026-GY001' }}" placeholder="Masukkan nomor resi (contoh: AGLN-2026-GY001)"
-                           class="w-full pl-10 pr-3 py-2.5 rounded-xl border-0 bg-white text-slate-900 placeholder-slate-400 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-blue-600 transition-all shadow-2xs">
+                           class="w-full pl-10 pr-3 py-2.5 rounded-xl border-0 bg-white text-slate-900 placeholder-slate-400 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-forest-600 transition-all shadow-2xs">
                 </div>
                 <button type="submit" class="btn-brand-accent px-6 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 cursor-pointer shadow-sm shrink-0">
                     <span>Lacak Kargo</span>
@@ -157,8 +157,8 @@
                             $isCurrent = $idx === $currentIdx;
                         @endphp
                         <div class="flex flex-col items-center text-center">
-                            <div class="w-full h-1.5 rounded-full mb-2 {{ $isDone ? 'bg-blue-600' : ($isCurrent ? 'bg-blue-500 ring-2 ring-blue-200' : 'bg-slate-200') }}"></div>
-                            <span class="text-[11px] font-semibold {{ $isCurrent ? 'text-blue-700 font-bold' : ($isDone ? 'text-slate-800' : 'text-slate-400') }}">
+                            <div class="w-full h-1.5 rounded-full mb-2 {{ $isDone ? 'bg-forest-600' : ($isCurrent ? 'bg-forest-500 ring-2 ring-forest-200' : 'bg-slate-200') }}"></div>
+                            <span class="text-[11px] font-semibold {{ $isCurrent ? 'text-forest-700 font-bold' : ($isDone ? 'text-slate-800' : 'text-slate-400') }}">
                                 {{ $step['label'] }}
                             </span>
                         </div>
@@ -170,8 +170,8 @@
                 <!-- Valuasi Ekspor Valas Bar (ECB Live) -->
                 <div class="mt-5 pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                     <div class="flex items-center gap-2">
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-800 border border-blue-200 font-mono">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-forest-50 text-forest-800 border border-forest-200 font-mono">
+                            <span class="w-1.5 h-1.5 rounded-full bg-forest-600"></span>
                             Valuasi Devisa Ekspor:
                         </span>
                         <strong class="font-mono text-slate-900 text-xs">{{ $valuation['idr_formatted'] }}</strong>
@@ -180,7 +180,7 @@
                     <div class="flex items-center gap-3 font-mono text-[11px]">
                         <span class="text-slate-600">Pasar Global: <strong class="text-slate-900 font-bold">{{ $valuation['usd_formatted'] }} USD</strong></span>
                         <span class="text-slate-300">&bull;</span>
-                        <span class="text-slate-600">Eropa (Rotterdam): <strong class="text-blue-700 font-bold">{{ $valuation['eur_formatted'] }} EUR</strong></span>
+                        <span class="text-slate-600">Eropa (Rotterdam): <strong class="text-forest-700 font-bold">{{ $valuation['eur_formatted'] }} EUR</strong></span>
                     </div>
                 </div>
             @endif
@@ -480,8 +480,8 @@
                 const isDelayed = {{ $shipment->is_delayed ? 'true' : 'false' }};
                 L.circleMarker([currentLat, currentLon], {
                     radius: 8,
-                    color: isDelayed ? '#D97706' : '#1D4ED8',
-                    fillColor: isDelayed ? '#F59E0B' : '#3B82F6',
+                    color: isDelayed ? '#D97706' : '#0B2B26',
+                    fillColor: isDelayed ? '#F59E0B' : '#235347',
                     fillOpacity: 0.95,
                     weight: 2
                 }).addTo(map).bindPopup("<b>Posisi Checkpoint Kargo Saat Ini:</b><br>{{ $shipment->currentLocation->name ?? 'Dalam Perjalanan' }}<br>Status: <b>{{ $shipment->status }}</b>").openPopup();
@@ -493,7 +493,7 @@
                 ];
 
                 L.polyline(routePoints, {
-                    color: isDelayed ? '#D97706' : '#2563EB',
+                    color: isDelayed ? '#D97706' : '#163832',
                     weight: 3.5,
                     opacity: 0.85,
                     dashArray: '6, 8'

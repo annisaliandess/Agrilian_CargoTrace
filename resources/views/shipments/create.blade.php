@@ -8,8 +8,8 @@
     <div class="flex items-center justify-between">
         <div>
             <div class="flex items-center gap-2 mb-1">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-800 border border-blue-200">
-                    <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-forest-50 text-forest-800 border border-forest-200">
+                    <span class="w-1.5 h-1.5 rounded-full bg-forest-600 animate-pulse"></span>
                     Entri Manifest Ekspor Baru
                 </span>
                 <span class="text-xs text-slate-300">&bull;</span>

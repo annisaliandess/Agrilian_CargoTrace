@@ -9,8 +9,8 @@
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
             <div class="flex items-center gap-2 mb-1">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-800 border border-blue-200">
-                    <span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-forest-50 text-forest-800 border border-forest-200">
+                    <span class="w-1.5 h-1.5 rounded-full bg-forest-600 animate-pulse"></span>
                     Manifest Ekspor Multimodal
                 </span>
                 <span class="text-xs text-slate-300">&bull;</span>
@@ -87,7 +87,7 @@
                     @forelse($shipments as $s)
                         <tr class="hover:bg-slate-50/70 transition-colors">
                             <td class="py-3 px-4 font-mono font-bold text-slate-900">
-                                <a href="{{ route('shipments.show', $s->id) }}" class="text-blue-700 hover:underline">
+                                <a href="{{ route('shipments.show', $s->id) }}" class="text-forest-700 hover:underline">
                                     {{ $s->tracking_number }}
                                 </a>
                             </td>

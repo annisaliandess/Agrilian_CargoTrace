@@ -8,15 +8,11 @@
         
         <!-- Header Bersih & Profesional -->
         <div class="bg-white p-7 text-center border-b border-slate-100">
-            <!-- Brand Logo -->
-            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 border border-blue-400/30 text-white flex items-center justify-center mx-auto mb-3 shadow-md shadow-blue-900/20">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
-                </svg>
-            </div>
+            <!-- Official AgriLian Emblem Logo -->
+            <img src="{{ asset('images/logo.jpg') }}" alt="AgriLian Logo" class="w-20 h-20 rounded-full mx-auto mb-3 shadow-md border-2 border-forest-600/30 object-cover">
             
             <h1 class="text-xl font-bold text-slate-900 tracking-tight">Pendaftaran Akun Baru</h1>
-            <p class="text-xs text-slate-500 mt-1">Bergabung dengan ekosistem logistik ekspor Highland AgriLian</p>
+            <p class="text-xs text-forest-700 font-semibold mt-1 font-mono">AgriLian CargoTrace Ekosistem</p>
         </div>
 
         <!-- Form Body -->
@@ -34,19 +30,19 @@
                 <div>
                     <label for="name" class="block text-xs font-semibold text-slate-700 mb-1.5">Nama Lengkap / Perusahaan</label>
                     <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Contoh: CV Gayo Highland Mandiri" required autofocus
-                           class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all">
+                           class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-transparent transition-all">
                 </div>
 
                 <div>
                     <label for="email" class="block text-xs font-semibold text-slate-700 mb-1.5">Alamat Email</label>
                     <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="alamat email aktif..." required
-                           class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all">
+                           class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-transparent transition-all">
                 </div>
 
                 <div>
                     <label for="role" class="block text-xs font-semibold text-slate-700 mb-1.5">Peran / Kategori Akun</label>
                     <select id="role" name="role" required
-                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all bg-white">
+                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-transparent transition-all bg-white">
                         <option value="customer" selected>Mitra Eksportir / Buyer Kopi & Agro</option>
                         <option value="operator">Staf Operasional Gudang & Logistik</option>
                     </select>
@@ -55,13 +51,13 @@
                 <div>
                     <label for="password" class="block text-xs font-semibold text-slate-700 mb-1.5">Kata Sandi (Minimal 8 Karakter)</label>
                     <input type="password" id="password" name="password" placeholder="buat kata sandi baru..." required
-                           class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-mono font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all">
+                           class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-mono font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-transparent transition-all">
                 </div>
 
                 <div>
                     <label for="password_confirmation" class="block text-xs font-semibold text-slate-700 mb-1.5">Konfirmasi Kata Sandi</label>
                     <input type="password" id="password_confirmation" name="password_confirmation" placeholder="ulangi kata sandi..." required
-                           class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-mono font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all">
+                           class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-mono font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-transparent transition-all">
                 </div>
 
                 <!-- Tombol Submit -->
@@ -76,7 +72,7 @@
             <!-- Tautan ke Halaman Login -->
             <div class="pt-3 border-t border-slate-100 text-center text-xs text-slate-500">
                 Sudah memiliki akun? 
-                <a href="{{ route('login') }}" class="font-bold text-blue-700 hover:text-blue-900 transition-colors">
+                <a href="{{ route('login') }}" class="font-bold text-forest-700 hover:text-forest-900 transition-colors">
                     Masuk di sini
                 </a>
             </div>
