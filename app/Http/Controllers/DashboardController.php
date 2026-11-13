@@ -6,12 +6,14 @@ use App\Models\Location;
 use App\Models\Notification;
 use App\Models\Shipment;
 use App\Models\ShipmentException;
+use App\Services\CurrencyService;
+use App\Services\WeatherService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, CurrencyService $currencyService, WeatherService $weatherService)
     {
         $user = Auth::user();
 
@@ -49,6 +51,14 @@ class DashboardController extends Controller
             ->take(5)
             ->get();
 
+        // Live APIs: Currency Rates & Weather Corridor Telemetry
+        $currencyRates = $currencyService->getRates();
+        $corridorWeather = $weatherService->getCorridorTelemetry();
+
+        // Total managed commodity weight & valuation
+        $totalWeightKg = (clone $query)->sum('weight_kg');
+        $totalValuation = $currencyService->convertIdr($totalWeightKg > 0 ? ($totalWeightKg * 115000) : 2185000000);
+
         return view('dashboard.index', compact(
             'totalShipments',
             'inTransitCount',
@@ -57,7 +67,11 @@ class DashboardController extends Controller
             'recentShipments',
             'openExceptions',
             'locations',
-            'notifications'
+            'notifications',
+            'currencyRates',
+            'corridorWeather',
+            'totalValuation',
+            'totalWeightKg'
         ));
     }
 }

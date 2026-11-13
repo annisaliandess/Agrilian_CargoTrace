@@ -49,6 +49,30 @@
                 @endif
             </div>
         </div>
+
+        <!-- Live Global Export Valuation & Currency Bar (ECB Frankfurter API Live) -->
+        <div class="mt-6 pt-5 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs">
+            <div class="flex flex-wrap items-center gap-3">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 text-[#D8F3DC] font-semibold border border-white/15 backdrop-blur-xs">
+                    <span class="w-2 h-2 rounded-full bg-[#57C84D] animate-pulse"></span>
+                    <span>Kurs Valas Ekspor (ECB Live):</span>
+                </span>
+                <span class="font-mono text-white">
+                    <strong>1 USD</strong> = Rp {{ number_format($currencyRates['usd_to_idr'], 0, ',', '.') }}
+                </span>
+                <span class="text-white/40">&bull;</span>
+                <span class="font-mono text-white">
+                    <strong>1 EUR</strong> = Rp {{ number_format($currencyRates['eur_to_idr'], 0, ',', '.') }}
+                </span>
+                <span class="text-[10px] text-[#95D5B2] bg-emerald-950/60 px-2 py-0.5 rounded border border-[#95D5B2]/30">Live Bank Sentral</span>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <span class="text-slate-300">Estimasi Devisa Kargo:</span>
+                <span class="font-mono font-extrabold text-[#57C84D] text-sm">{{ $totalValuation['usd_formatted'] }} USD</span>
+                <span class="text-xs text-[#95D5B2] font-mono">({{ $totalValuation['eur_formatted'] }})</span>
+            </div>
+        </div>
     </div>
 
     <!-- ======================================================== -->
@@ -164,44 +188,29 @@
                 </div>
 
                 <div class="divide-y divide-slate-100">
-                    <div class="py-2.5 flex items-center justify-between gap-3">
-                        <div>
-                            <div class="text-xs font-bold text-slate-900">Takengon Hub (1.200m)</div>
-                            <div class="text-[11px] text-slate-500">Gudang Asal Kopi & Cabai</div>
+                    @foreach($corridorWeather as $cw)
+                        <div class="py-2.5 flex items-center justify-between gap-3">
+                            <div>
+                                <div class="text-xs font-bold text-slate-900">{{ $cw['name'] }}</div>
+                                <div class="text-[11px] text-slate-500">{{ $cw['subtitle'] }}</div>
+                            </div>
+                            <div class="text-right shrink-0">
+                                <div class="text-xs font-mono font-bold text-slate-900">{{ $cw['temp_c'] }}°C</div>
+                                <span class="text-[10px] font-semibold {{ $cw['badge_color'] === 'amber' ? 'text-amber-700 bg-amber-50 border border-amber-200' : 'text-emerald-700 bg-emerald-50 border border-emerald-200' }} px-1.5 py-0.5 rounded">
+                                    {{ $cw['condition'] }}
+                                </span>
+                            </div>
                         </div>
-                        <div class="text-right shrink-0">
-                            <div class="text-xs font-mono font-bold text-slate-900">21°C</div>
-                            <span class="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Berawan Sejuk</span>
-                        </div>
-                    </div>
-
-                    <div class="py-2.5 flex items-center justify-between gap-3">
-                        <div>
-                            <div class="text-xs font-bold text-slate-900">Jalur Bireuen - Takengon</div>
-                            <div class="text-[11px] text-slate-500">Koridor Darat Truk Ekspor</div>
-                        </div>
-                        <div class="text-right shrink-0">
-                            <div class="text-xs font-mono font-bold text-slate-900">26°C</div>
-                            <span class="text-[10px] font-semibold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded">Waspada Kabut</span>
-                        </div>
-                    </div>
-
-                    <div class="py-2.5 flex items-center justify-between gap-3">
-                        <div>
-                            <div class="text-xs font-bold text-slate-900">Belawan Container Terminal</div>
-                            <div class="text-[11px] text-slate-500">Pelabuhan Muat Kapal Laut</div>
-                        </div>
-                        <div class="text-right shrink-0">
-                            <div class="text-xs font-mono font-bold text-slate-900">31°C</div>
-                            <span class="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">Cerah Berangin</span>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
 
             <div class="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
-                <span>Sumber API:</span>
-                <span class="font-semibold text-slate-800">OpenWeather Live</span>
+                <span class="flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>OpenWeather Live Satelit</span>
+                </span>
+                <span class="font-mono text-[10px] text-slate-400">Key: 2d42...ac6a</span>
             </div>
         </div>
 

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Location;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -13,13 +14,25 @@ class WeatherService
 
     public function __construct()
     {
-        $this->apiKey = config('services.openweather.key');
+        $this->apiKey = config('services.openweather.key', '2d42f08cfd74d9c7b2212012feefac6a');
     }
 
     /**
-     * Get live weather for a specific latitude and longitude.
+     * Get live weather for a specific latitude and longitude (Cached for 15 mins).
      */
     public function getWeatherByCoordinates(float $lat, float $lon): array
+    {
+        $cacheKey = 'weather_' . round($lat, 2) . '_' . round($lon, 2);
+
+        return Cache::remember($cacheKey, 900, function () use ($lat, $lon) {
+            return $this->fetchFromOpenWeather($lat, $lon);
+        });
+    }
+
+    /**
+     * Fetch fresh weather from OpenWeatherMap API.
+     */
+    protected function fetchFromOpenWeather(float $lat, float $lon): array
     {
         if (empty($this->apiKey)) {
             return $this->fallbackWeatherData('API key not configured');
@@ -55,6 +68,7 @@ class WeatherService
                     'alert_summary' => $isHazardous
                         ? "Hazardous Weather Alert: {$condition}, Rain: {$rainMm}mm, Wind: {$windSpeed}km/h"
                         : "Weather normal: {$condition}, {$temp}°C",
+                    'source' => 'OpenWeatherMap API Live',
                 ];
             }
 
@@ -64,6 +78,43 @@ class WeatherService
             Log::warning('OpenWeatherMap API exception: ' . $e->getMessage());
             return $this->fallbackWeatherData($e->getMessage());
         }
+    }
+
+    /**
+     * Get live corridor weather telemetry for the 3 key export transit hubs.
+     */
+    public function getCorridorTelemetry(): array
+    {
+        $takengon = $this->getWeatherByCoordinates(4.629, 96.845);
+        $bireuen = $this->getWeatherByCoordinates(5.201, 96.702);
+        $belawan = $this->getWeatherByCoordinates(3.784, 98.685);
+
+        return [
+            [
+                'name' => 'Takengon Hub (1.200m)',
+                'subtitle' => 'Gudang Asal Kopi & Cabai',
+                'temp_c' => $takengon['temp_c'],
+                'condition' => $takengon['condition'],
+                'status_badge' => $takengon['is_hazardous'] ? 'Waspada Cuaca' : 'Optimal Kebun',
+                'badge_color' => $takengon['is_hazardous'] ? 'amber' : 'emerald',
+            ],
+            [
+                'name' => 'Jalur Bireuen - Takengon',
+                'subtitle' => 'Koridor Darat Truk Ekspor',
+                'temp_c' => $bireuen['temp_c'],
+                'condition' => $bireuen['condition'],
+                'status_badge' => $bireuen['is_hazardous'] ? 'Waspada Jalur' : 'Lancar Terkendali',
+                'badge_color' => $bireuen['is_hazardous'] ? 'amber' : 'emerald',
+            ],
+            [
+                'name' => 'Belawan Container Terminal',
+                'subtitle' => 'Pelabuhan Muat Kapal Laut',
+                'temp_c' => $belawan['temp_c'],
+                'condition' => $belawan['condition'],
+                'status_badge' => $belawan['is_hazardous'] ? 'Peringatan Ombak' : 'Dermaga Siap Muat',
+                'badge_color' => $belawan['is_hazardous'] ? 'amber' : 'emerald',
+            ],
+        ];
     }
 
     /**
@@ -88,6 +139,8 @@ class WeatherService
             'humidity' => 65,
             'is_hazardous' => false,
             'alert_summary' => 'Simulated normal highland climate (Weather API fallback: ' . $reason . ')',
+            'source' => 'Simulated Fallback',
         ];
     }
 }
+

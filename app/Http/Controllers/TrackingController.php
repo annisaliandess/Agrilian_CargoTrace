@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Location;
 use App\Models\Shipment;
+use App\Services\CurrencyService;
 use App\Services\ShipmentService;
 use App\Services\TrackingService;
 use App\Services\WeatherService;
@@ -15,7 +16,8 @@ class TrackingController extends Controller
     public function __construct(
         protected ShipmentService $shipmentService,
         protected TrackingService $trackingService,
-        protected WeatherService $weatherService
+        protected WeatherService $weatherService,
+        protected CurrencyService $currencyService
     ) {}
 
     /**
@@ -26,11 +28,18 @@ class TrackingController extends Controller
         $query = $tracking_number ?? $request->query('tracking_number');
         $shipment = null;
         $weather = null;
+        $valuation = null;
 
         if ($query) {
             $shipment = $this->shipmentService->findShipment(trim($query));
-            if ($shipment && $shipment->currentLocation) {
-                $weather = $this->weatherService->getWeatherForLocation($shipment->currentLocation);
+            if ($shipment) {
+                if ($shipment->currentLocation) {
+                    $weather = $this->weatherService->getWeatherForLocation($shipment->currentLocation);
+                }
+                $valuation = $this->currencyService->estimateShipmentValuation(
+                    $shipment->cargo_type,
+                    (float) $shipment->weight_kg
+                );
             }
         }
 
@@ -42,10 +51,11 @@ class TrackingController extends Controller
                 'success' => true,
                 'data' => $shipment,
                 'weather' => $weather,
+                'valuation' => $valuation,
             ]);
         }
 
-        return view('tracking.public', compact('shipment', 'query', 'weather'));
+        return view('tracking.public', compact('shipment', 'query', 'weather', 'valuation'));
     }
 
     /**

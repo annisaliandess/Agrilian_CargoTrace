@@ -154,6 +154,25 @@
                     @endforeach
                 </div>
             </div>
+
+            @if(isset($valuation))
+                <!-- Valuasi Ekspor Valas Bar (ECB Live) -->
+                <div class="mt-5 pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+                    <div class="flex items-center gap-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-[#1B4332] border border-emerald-200">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#57C84D]"></span>
+                            Valuasi Devisa Ekspor:
+                        </span>
+                        <strong class="font-mono text-slate-900 text-xs">{{ $valuation['idr_formatted'] }}</strong>
+                    </div>
+
+                    <div class="flex items-center gap-3 font-mono text-[11px]">
+                        <span class="text-slate-600">Pasar Global: <strong class="text-emerald-800 font-bold">{{ $valuation['usd_formatted'] }} USD</strong></span>
+                        <span class="text-slate-300">&bull;</span>
+                        <span class="text-slate-600">Eropa (Rotterdam): <strong class="text-blue-900 font-bold">{{ $valuation['eur_formatted'] }} EUR</strong></span>
+                    </div>
+                </div>
+            @endif
         </div>
 
         <!-- 3-Card Metrics (Enterprise B2B Format) -->

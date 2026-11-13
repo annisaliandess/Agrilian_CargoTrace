@@ -6,6 +6,7 @@ use App\Models\Carrier;
 use App\Models\Location;
 use App\Models\Shipment;
 use App\Models\User;
+use App\Services\CurrencyService;
 use App\Services\ShipmentService;
 use App\Services\WeatherService;
 use Illuminate\Http\JsonResponse;
@@ -18,7 +19,8 @@ class ShipmentController extends Controller
 {
     public function __construct(
         protected ShipmentService $shipmentService,
-        protected WeatherService $weatherService
+        protected WeatherService $weatherService,
+        protected CurrencyService $currencyService
     ) {}
 
     /**
@@ -146,17 +148,24 @@ class ShipmentController extends Controller
         $targetLocation = $shipment->currentLocation ?? $shipment->destination;
         $weather = $targetLocation ? $this->weatherService->getWeatherForLocation($targetLocation) : null;
 
+        // Export valuation via CurrencyService (IDR, USD, EUR)
+        $valuation = $this->currencyService->estimateShipmentValuation(
+            $shipment->cargo_type,
+            (float) $shipment->weight_kg
+        );
+
         if ($request->wantsJson() || $request->is('api/*')) {
             return response()->json([
                 'success' => true,
                 'data' => $shipment,
                 'live_weather' => $weather,
+                'valuation' => $valuation,
             ]);
         }
 
         $locations = Location::orderBy('name')->get();
 
-        return view('shipments.show', compact('shipment', 'weather', 'locations'));
+        return view('shipments.show', compact('shipment', 'weather', 'locations', 'valuation'));
     }
 
     /**
