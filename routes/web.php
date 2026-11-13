@@ -12,7 +12,9 @@ Route::get('/', function () {
     return redirect()->route('track.public');
 })->name('home');
 
-Route::get('/track/{tracking_number?}', [TrackingController::class, 'publicTrack'])->name('track.public');
+Route::get('/track/{tracking_number?}', [TrackingController::class, 'publicTrack'])
+    ->middleware('throttle:60,1')
+    ->name('track.public');
 
 // Authentication Routes
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -31,6 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/shipments/create', [ShipmentController::class, 'create'])->name('shipments.create');
     Route::post('/shipments', [ShipmentController::class, 'store'])->name('shipments.store');
     Route::get('/shipments/{id}', [ShipmentController::class, 'show'])->name('shipments.show');
+    Route::get('/shipments/{id}/print', [ShipmentController::class, 'printWaybill'])->name('shipments.print');
     Route::post('/shipments/{id}/status', [ShipmentController::class, 'updateStatus'])->name('shipments.status');
 
     // Checkpoint Tracking Events

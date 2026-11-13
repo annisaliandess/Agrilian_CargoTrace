@@ -169,6 +169,30 @@ class ShipmentController extends Controller
     }
 
     /**
+     * Generate printable official multimodal export waybill (Surat Jalan Ekspor).
+     */
+    public function printWaybill(Request $request, $id)
+    {
+        $shipment = $this->shipmentService->findShipment($id);
+
+        if (!$shipment) {
+            abort(404, 'Shipment not found');
+        }
+
+        $user = Auth::user();
+        if ($user && $user->isCustomer() && $shipment->customer_id !== $user->id) {
+            abort(403, 'Unauthorized to view this waybill.');
+        }
+
+        $valuation = $this->currencyService->estimateShipmentValuation(
+            $shipment->cargo_type,
+            (float) $shipment->weight_kg
+        );
+
+        return view('shipments.print', compact('shipment', 'valuation'));
+    }
+
+    /**
      * Transition shipment status.
      */
     public function updateStatus(Request $request, $id)

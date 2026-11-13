@@ -153,6 +153,7 @@ class AuthAndApiTest extends TestCase
         $this->actingAs($this->admin)->get('/commodities')->assertStatus(200);
         $this->actingAs($this->admin)->get('/shipments')->assertStatus(200);
         $this->actingAs($this->admin)->get("/shipments/{$shipment->id}")->assertStatus(200);
+        $this->actingAs($this->admin)->get("/shipments/{$shipment->id}/print")->assertStatus(200);
         $this->actingAs($this->admin)->get('/shipments/create')->assertStatus(200);
     }
 }

@@ -7,10 +7,12 @@ use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\WeatherController;
 use Illuminate\Support\Facades\Route;
 
-// Public API endpoints
-Route::post('/login', [AuthController::class, 'apiLogin']);
-Route::get('/track/{tracking_number}', [TrackingController::class, 'publicTrack']);
-Route::get('/weather', [WeatherController::class, 'query']);
+// Public API endpoints with Rate Limiting (Throttle)
+Route::middleware('throttle:30,1')->group(function () {
+    Route::post('/login', [AuthController::class, 'apiLogin']);
+    Route::get('/track/{tracking_number}', [TrackingController::class, 'publicTrack']);
+    Route::get('/weather', [WeatherController::class, 'query']);
+});
 
 // Protected API endpoints (Laravel Sanctum Bearer Token)
 Route::middleware('auth:sanctum')->group(function () {

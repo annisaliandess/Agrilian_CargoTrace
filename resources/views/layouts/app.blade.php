@@ -164,8 +164,8 @@
 <body class="h-full font-sans text-slate-800 antialiased selection:bg-forest-600 selection:text-white bg-[#F8FAFC]">
 
 @php
-    $isPublicTracker = request()->routeIs('track.public') || request()->routeIs('home') || request()->routeIs('login') || request()->routeIs('register');
-    $useSidebar = auth()->check() && !$isPublicTracker;
+    $isAuthOnlyPage = request()->routeIs('login') || request()->routeIs('register');
+    $useSidebar = auth()->check() && !$isAuthOnlyPage;
 @endphp
 
 @if($useSidebar)
@@ -173,6 +173,9 @@
     <!-- AUTHENTICATED COLLAPSIBLE SIDEBAR LAYOUT                 -->
     <!-- ======================================================== -->
     <div class="min-h-full flex relative overflow-x-hidden">
+
+        <!-- Mobile Drawer Backdrop Overlay -->
+        <div id="sidebar-backdrop" onclick="toggleSidebar()" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-30 hidden lg:hidden transition-opacity"></div>
 
         <!-- Sidebar Column (Bisa Dibuka dan Ditutup) -->
         <aside id="app-sidebar" class="w-64 bg-sidebar-gradient text-white flex flex-col fixed inset-y-0 left-0 z-40 shadow-2xl border-r border-slate-800/80 transition-transform duration-300 ease-in-out">
@@ -212,6 +215,11 @@
                         <a href="{{ route('shipments.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.index') || request()->routeIs('shipments.show') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
                             <svg class="w-4 h-4 {{ request()->routeIs('shipments.index') || request()->routeIs('shipments.show') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
                             <span>Manifes Kargo (Roster)</span>
+                        </a>
+
+                        <a href="{{ route('track.public') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('track.public') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
+                            <svg class="w-4 h-4 {{ request()->routeIs('track.public') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                            <span>Pelacakan & Cek Resi</span>
                         </a>
 
                         <a href="{{ route('commodities.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('commodities.index') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
@@ -314,9 +322,16 @@
                 </div>
 
                 <div class="flex items-center gap-3">
+                    <!-- Quick Waybill Search Bar -->
+                    <form action="{{ route('track.public') }}" method="GET" class="hidden md:flex items-center relative">
+                        <input type="text" name="tracking_number" placeholder="Cari Resi Kargo..."
+                               class="w-56 lg:w-64 pl-8 pr-3 py-1.5 rounded-xl border border-slate-200 text-xs font-mono font-medium focus:outline-none focus:ring-1 focus:ring-forest-600 bg-slate-50 focus:bg-white transition-all shadow-2xs">
+                        <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    </form>
+
                     <a href="{{ route('track.public') }}" class="btn-brand-outline px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-2">
                         <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                        <span>Cek Resi Publik</span>
+                        <span>Cek Resi</span>
                     </a>
                 </div>
             </header>
@@ -371,27 +386,44 @@
         </div>
     </div>
 
-    <!-- Script Buka/Tutup Sidebar (Collapsible Persistence) -->
+    <!-- Script Buka/Tutup Sidebar (Collapsible Persistence & Mobile Overlay) -->
     <script>
         function toggleSidebar() {
             const sidebar = document.getElementById('app-sidebar');
             const mainContent = document.getElementById('main-content');
+            const backdrop = document.getElementById('sidebar-backdrop');
             if (!sidebar || !mainContent) return;
 
             const isClosed = sidebar.classList.contains('-translate-x-full');
+            const isDesktop = window.innerWidth >= 1024;
 
             if (isClosed) {
                 // Buka sidebar
                 sidebar.classList.remove('-translate-x-full');
-                mainContent.classList.remove('pl-0');
-                mainContent.classList.add('pl-64');
-                localStorage.setItem('cargotrace_sidebar_collapsed', 'false');
+                if (isDesktop) {
+                    mainContent.classList.remove('pl-0');
+                    mainContent.classList.add('pl-64');
+                    localStorage.setItem('cargotrace_sidebar_collapsed', 'false');
+                } else if (backdrop) {
+                    backdrop.classList.remove('hidden');
+                }
             } else {
                 // Tutup sidebar
                 sidebar.classList.add('-translate-x-full');
-                mainContent.classList.remove('pl-64');
-                mainContent.classList.add('pl-0');
-                localStorage.setItem('cargotrace_sidebar_collapsed', 'true');
+                if (isDesktop) {
+                    mainContent.classList.remove('pl-64');
+                    mainContent.classList.add('pl-0');
+                    localStorage.setItem('cargotrace_sidebar_collapsed', 'true');
+                } else if (backdrop) {
+                    backdrop.classList.add('hidden');
+                }
+            }
+
+            // Sesuaikan ubin Leaflet Map agar tidak terpotong saat sidebar bergerak
+            if (window.routeMap) {
+                setTimeout(() => {
+                    try { window.routeMap.invalidateSize(); } catch(e) {}
+                }, 310);
             }
         }
 
@@ -399,12 +431,19 @@
         document.addEventListener('DOMContentLoaded', function() {
             const sidebar = document.getElementById('app-sidebar');
             const mainContent = document.getElementById('main-content');
+            const backdrop = document.getElementById('sidebar-backdrop');
             if (!sidebar || !mainContent) return;
 
-            const isMobile = window.innerWidth < 1024;
+            const isDesktop = window.innerWidth >= 1024;
             const savedState = localStorage.getItem('cargotrace_sidebar_collapsed');
 
-            if (isMobile || savedState === 'true') {
+            if (!isDesktop) {
+                // Mobile default: tutup sidebar, tanpa padding kiri
+                sidebar.classList.add('-translate-x-full');
+                mainContent.classList.remove('pl-64');
+                mainContent.classList.add('pl-0');
+                if (backdrop) backdrop.classList.add('hidden');
+            } else if (savedState === 'true') {
                 sidebar.classList.add('-translate-x-full');
                 mainContent.classList.remove('pl-64');
                 mainContent.classList.add('pl-0');

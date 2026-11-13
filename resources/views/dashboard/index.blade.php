@@ -144,21 +144,21 @@
                 </div>
             </a>
 
-            <!-- Shortcut 2: Pelacakan Publik -->
-            <a href="{{ route('track.public') }}" target="_blank" class="group bg-white rounded-2xl border border-slate-200/90 p-5 shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:border-forest-500 hover:shadow-md transition-all flex flex-col justify-between">
+            <!-- Shortcut 2: Pelacakan Waybill -->
+            <a href="{{ route('track.public') }}" class="group bg-white rounded-2xl border border-slate-200/90 p-5 shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:border-forest-500 hover:shadow-md transition-all flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-3">
                         <div class="w-9 h-9 rounded-xl bg-slate-100 text-slate-800 flex items-center justify-center group-hover:bg-slate-900 group-hover:text-white transition-colors">
                             <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                         </div>
-                        <span class="text-[10px] font-bold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200 font-mono">Akses Publik</span>
+                        <span class="text-[10px] font-bold text-forest-800 bg-forest-50 px-2.5 py-0.5 rounded-full border border-forest-200 font-mono">Pelacak Resi</span>
                     </div>
-                    <h3 class="text-xs font-bold text-slate-900 group-hover:text-forest-700 transition-colors">Pelacak Waybill Publik</h3>
-                    <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">Portal mandiri bagi buyer internasional di Singapura dan Eropa untuk cek status resi.</p>
+                    <h3 class="text-xs font-bold text-slate-900 group-hover:text-forest-700 transition-colors">Pelacak Waybill Kargo</h3>
+                    <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">Cek posisi kontainer, telemetri cuaca rute satelit, dan status kepabeanan secara langsung.</p>
                 </div>
                 <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-forest-700 group-hover:translate-x-0.5 transition-transform">
-                    <span>Lacak Waybill</span>
-                    <span>↗</span>
+                    <span>Lacak Resi</span>
+                    <span>&rarr;</span>
                 </div>
             </a>
 

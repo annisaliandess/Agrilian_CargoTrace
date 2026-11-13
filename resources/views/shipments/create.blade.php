@@ -128,28 +128,40 @@
             </div>
         </div>
 
-        <!-- 3. Packing Manifest Items -->
+        <!-- 3. Packing Manifest Items (Multi-Item Dynamic) -->
         <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/90 shadow-2xs space-y-4">
-            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-2.5 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                3. Spesifikasi Lot Barang & Kemasan
-            </h3>
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                    3. Spesifikasi Lot Barang & Kemasan (Multi-Item)
+                </h3>
+                <button type="button" onclick="addItemRow()" class="px-3 py-1 rounded-lg bg-forest-50 hover:bg-forest-100 text-forest-800 border border-forest-200 text-xs font-bold font-mono flex items-center gap-1 transition-colors cursor-pointer">
+                    <span>+ Tambah Lot Komoditas</span>
+                </button>
+            </div>
 
-            <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/70 grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
-                <div class="sm:col-span-2">
-                    <label class="block font-semibold text-slate-700 mb-1">Deskripsi Lot / Karung *</label>
-                    <input type="text" name="items[0][item_name]" value="Arabica Gayo Wet Hulled Premium Lot #01" required
-                           class="w-full px-3 py-1.5 rounded-lg border border-slate-300 bg-white font-medium focus:ring-1 focus:ring-slate-900">
-                </div>
-                <div>
-                    <label class="block font-semibold text-slate-700 mb-1">Jumlah (Karung/Crate) *</label>
-                    <input type="number" name="items[0][quantity]" value="200" required
-                           class="w-full px-3 py-1.5 rounded-lg border border-slate-300 bg-white font-mono font-bold focus:ring-1 focus:ring-slate-900">
-                </div>
-                <div>
-                    <label class="block font-semibold text-slate-700 mb-1">Berat Total (kg) *</label>
-                    <input type="number" step="0.01" name="items[0][weight_kg]" value="12000" required
-                           class="w-full px-3 py-1.5 rounded-lg border border-slate-300 bg-white font-mono font-bold focus:ring-1 focus:ring-slate-900">
+            <div id="items-container" class="space-y-3">
+                <div class="item-row p-3.5 rounded-xl bg-slate-50 border border-slate-200/70 grid grid-cols-1 sm:grid-cols-12 gap-3 text-xs items-end">
+                    <div class="sm:col-span-5">
+                        <label class="block font-semibold text-slate-700 mb-1">Deskripsi Lot / Karung *</label>
+                        <input type="text" name="items[0][item_name]" value="Arabica Gayo Wet Hulled Premium Lot #01" required
+                               class="w-full px-3 py-1.5 rounded-lg border border-slate-300 bg-white font-medium focus:ring-1 focus:ring-slate-900">
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label class="block font-semibold text-slate-700 mb-1">Jumlah (Karung/Koli) *</label>
+                        <input type="number" name="items[0][quantity]" value="200" min="1" required
+                               class="w-full px-3 py-1.5 rounded-lg border border-slate-300 bg-white font-mono font-bold focus:ring-1 focus:ring-slate-900">
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label class="block font-semibold text-slate-700 mb-1">Berat Total (kg) *</label>
+                        <input type="number" step="0.01" name="items[0][weight_kg]" value="12000" min="0.1" required
+                               class="w-full px-3 py-1.5 rounded-lg border border-slate-300 bg-white font-mono font-bold focus:ring-1 focus:ring-slate-900">
+                    </div>
+                    <div class="sm:col-span-1 flex justify-center pb-1">
+                        <button type="button" disabled class="p-1.5 text-slate-300 cursor-not-allowed" title="Minimal 1 item utama">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -163,6 +175,41 @@
                 Terbitkan Manifest & Daftarkan Kargo &rarr;
             </button>
         </div>
+    </form>
+</div>
+
+<script>
+    let itemIndex = 1;
+    function addItemRow() {
+        const container = document.getElementById('items-container');
+        const row = document.createElement('div');
+        row.className = 'item-row p-3.5 rounded-xl bg-slate-50 border border-slate-200/70 grid grid-cols-1 sm:grid-cols-12 gap-3 text-xs items-end';
+        row.innerHTML = `
+            <div class="sm:col-span-5">
+                <label class="block font-semibold text-slate-700 mb-1">Deskripsi Lot / Karung *</label>
+                <input type="text" name="items[${itemIndex}][item_name]" placeholder="Misal: Arabica Gayo Wine Anaerob Lot #02" required
+                       class="w-full px-3 py-1.5 rounded-lg border border-slate-300 bg-white font-medium focus:ring-1 focus:ring-slate-900">
+            </div>
+            <div class="sm:col-span-3">
+                <label class="block font-semibold text-slate-700 mb-1">Jumlah (Karung/Koli) *</label>
+                <input type="number" name="items[${itemIndex}][quantity]" value="50" min="1" required
+                       class="w-full px-3 py-1.5 rounded-lg border border-slate-300 bg-white font-mono font-bold focus:ring-1 focus:ring-slate-900">
+            </div>
+            <div class="sm:col-span-3">
+                <label class="block font-semibold text-slate-700 mb-1">Berat Total (kg) *</label>
+                <input type="number" step="0.01" name="items[${itemIndex}][weight_kg]" value="3000" min="0.1" required
+                       class="w-full px-3 py-1.5 rounded-lg border border-slate-300 bg-white font-mono font-bold focus:ring-1 focus:ring-slate-900">
+            </div>
+            <div class="sm:col-span-1 flex justify-center pb-1">
+                <button type="button" onclick="this.closest('.item-row').remove()" class="p-1.5 text-rose-500 hover:text-rose-700 hover:bg-rose-50 rounded-lg cursor-pointer transition-colors" title="Hapus Lot Ini">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                </button>
+            </div>
+        `;
+        container.appendChild(row);
+        itemIndex++;
+    }
+</script>
     </form>
 </div>
 @endsection
