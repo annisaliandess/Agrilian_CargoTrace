@@ -269,9 +269,12 @@
                             </span>
                         </div>
                         <h3 class="text-sm font-bold text-slate-900 group-hover:text-forest-700 transition-colors">
-                            Kopi Arabika Gayo Specialty Grade 1
+                            Biji Kopi Mentah Arabika Gayo
                         </h3>
                         <p class="text-xs text-slate-500 mt-1">Takengon Central &rarr; Belawan &rarr; Rotterdam</p>
+                        <p class="text-[11px] text-slate-700 mt-2 italic leading-relaxed bg-forest-50/70 p-2 rounded-xl border border-forest-200/60">
+                            "Biji kopi mentah Arabika Gayo kualitas ekspor premium dengan aroma rempah khas Takengon."
+                        </p>
 
                         <div class="grid grid-cols-2 gap-2 mt-3 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70 text-xs">
                             <div>
@@ -315,9 +318,12 @@
                             </span>
                         </div>
                         <h3 class="text-sm font-bold text-slate-900 group-hover:text-forest-700 transition-colors">
-                            Alpukat Mentega & Cabai Merah Segar
+                            Alpukat Mentega Hijau Segar Takengon
                         </h3>
                         <p class="text-xs text-slate-500 mt-1">Takengon Central &rarr; Belawan &rarr; Singapura</p>
+                        <p class="text-[11px] text-slate-700 mt-2 italic leading-relaxed bg-forest-50/70 p-2 rounded-xl border border-forest-200/60">
+                            "Alpukat mentega dataran tinggi Gayo kualitas grade A dengan tekstur lembut, tebal, dan bebas serat."
+                        </p>
 
                         <div class="grid grid-cols-2 gap-2 mt-3 p-2.5 rounded-xl bg-slate-50 border border-slate-200/70 text-xs">
                             <div>

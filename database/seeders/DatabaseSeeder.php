@@ -224,7 +224,7 @@ class DatabaseSeeder extends Seeder
                 'quantity' => 200,
                 'weight_kg' => 12000.00,
                 'package_type' => 'GrainPro Hermetic Bag in Jute 60kg',
-                'description' => 'Grade 1 Green Coffee Beans, moisture 12%, screen size 16-18, Takengon Highland Lot #GY26-A1',
+                'description' => 'Biji kopi mentah Arabika Gayo kualitas ekspor premium dengan aroma rempah khas Takengon. Moisture 11.4%, GrainPro hermetic, Takengon Highland Lot #GY26-A1',
             ]
         );
         ShipmentItem::firstOrCreate(
