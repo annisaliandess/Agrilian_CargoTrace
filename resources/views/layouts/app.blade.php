@@ -230,26 +230,12 @@
                             <span>{{ __('Katalog Komoditas & Armada') }}</span>
                         </a>
 
-                        <a href="{{ route('shipments.create') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.create') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
-                            <svg class="w-4 h-4 {{ request()->routeIs('shipments.create') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                            <span>{{ auth()->user()->isCustomer() ? __('Booking Pengiriman Kargo') : __('Buat Manifest Baru') }}</span>
-                        </a>
-                    </nav>
-                </div>
-
-                <!-- Group 2: Public Portal -->
-                <div>
-                    <div class="px-3 text-[10px] font-bold uppercase tracking-wider text-forest-200/70 mb-2 font-mono">
-                        Portal Publik
-                    </div>
-                    <nav class="space-y-1">
-                        <a href="{{ route('track.public') }}" target="_blank" class="flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/5 transition-all group">
-                            <span class="flex items-center gap-3">
-                                <svg class="w-4 h-4 text-slate-400 group-hover:text-forest-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                                <span>Halaman Cek Resi</span>
-                            </span>
-                            <span class="text-[10px] px-1.5 py-0.5 rounded bg-white/10 text-slate-300 group-hover:text-white font-mono">↗</span>
-                        </a>
+                        @if(auth()->user()->isOperator())
+                            <a href="{{ route('shipments.create') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.create') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
+                                <svg class="w-4 h-4 {{ request()->routeIs('shipments.create') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                                <span>{{ __('Buat Manifest Baru') }}</span>
+                            </a>
+                        @endif
                     </nav>
                 </div>
             </div>

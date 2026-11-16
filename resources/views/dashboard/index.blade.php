@@ -39,15 +39,10 @@
                         <span>{{ __('Cek Resi') }}</span>
                     </a>
 
-                    @if(auth()->user()->isAdmin() || auth()->user()->isOperator())
+                    @if(auth()->user()->isOperator())
                         <a href="{{ route('shipments.create') }}" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-400 hover:bg-emerald-300 text-forest-950 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/40 cursor-pointer">
                             <svg class="w-4 h-4 text-forest-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
                             <span>{{ __('Buat Manifest Baru') }}</span>
-                        </a>
-                    @else
-                        <a href="{{ route('shipments.create') }}" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-400 hover:bg-emerald-300 text-forest-950 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/40 cursor-pointer">
-                            <svg class="w-4 h-4 text-forest-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-                            <span>{{ __('Booking Pengiriman Kargo') }}</span>
                         </a>
                     @endif
                 </div>
