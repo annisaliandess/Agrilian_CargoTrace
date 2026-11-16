@@ -17,6 +17,7 @@ Route::middleware('throttle:30,1')->group(function () {
 // Protected API endpoints (Laravel Sanctum Bearer Token)
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', [AuthController::class, 'apiMe']);
+    Route::get('/user', [AuthController::class, 'apiMe']); // Alias sesuai Slide 12
     Route::post('/logout', [AuthController::class, 'apiLogout']);
 
     // Shipments API
@@ -31,4 +32,21 @@ Route::middleware('auth:sanctum')->group(function () {
     // Exceptions & Delays
     Route::post('/shipments/{id}/exceptions', [ExceptionController::class, 'store']);
     Route::post('/exceptions/{id}/resolve', [ExceptionController::class, 'resolve']);
+
+    // Master Data Resources (Sesuai Slide 12)
+    Route::get('/carriers', function () {
+        return response()->json([
+            'success' => true,
+            'message' => 'Carriers retrieved successfully',
+            'data' => \App\Models\Carrier::all()
+        ]);
+    });
+
+    Route::get('/locations', function () {
+        return response()->json([
+            'success' => true,
+            'message' => 'Locations retrieved successfully',
+            'data' => \App\Models\Location::all()
+        ]);
+    });
 });

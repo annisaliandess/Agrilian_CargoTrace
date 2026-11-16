@@ -1,0 +1,451 @@
+{
+	"info": {
+		"_postman_id": "cargotrace-agrilian-api-v1",
+		"name": "CargoTrace AgriLian API (UAS Web Programming 2)",
+		"description": "Comprehensive REST API Collection for CargoTrace Highland Agro-Export Visibility Platform. Includes Public Tracking, Authentication with Laravel Sanctum, Shipments, Milestone Events, Exceptions, and Master Data.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000/api",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "1. Public Endpoints",
+			"item": [
+				{
+					"name": "Public Track Shipment (AGLN-2026-GY001)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/track/AGLN-2026-GY001",
+							"host": ["{{base_url}}"],
+							"path": ["track", "AGLN-2026-GY001"]
+						},
+						"description": "Public rate-limited endpoint to track shipments by tracking number without authentication."
+					}
+				},
+				{
+					"name": "Live Weather Telemetry",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/weather?lat=4.625&lon=96.845",
+							"host": ["{{base_url}}"],
+							"path": ["weather"],
+							"query": [
+								{
+									"key": "lat",
+									"value": "4.625",
+									"description": "Takengon Latitude"
+								},
+								{
+									"key": "lon",
+									"value": "96.845",
+									"description": "Takengon Longitude"
+								}
+							]
+						},
+						"description": "Fetches external weather data with fallback caching."
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Authentication",
+			"item": [
+				{
+					"name": "Login Operator (Get Sanctum Token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    var jsonData = pm.response.json();",
+									"    var token = jsonData.token || (jsonData.data && jsonData.data.token);",
+									"    if (token) {",
+									"        pm.collectionVariables.set('token', token);",
+									"        console.log('Sanctum Bearer Token saved to collection variable!');",
+									"    }",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"operator@cargotrace.com\",\n    \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": ["{{base_url}}"],
+							"path": ["login"]
+						},
+						"description": "Authenticates user and returns Laravel Sanctum Bearer Token. Script automatically stores token into collection variable."
+					}
+				},
+				{
+					"name": "Get Authenticated User Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/user",
+							"host": ["{{base_url}}"],
+							"path": ["user"]
+						},
+						"description": "Returns current authenticated user details using Sanctum Bearer token."
+					}
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/logout",
+							"host": ["{{base_url}}"],
+							"path": ["logout"]
+						},
+						"description": "Revokes current access token."
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Master Data",
+			"item": [
+				{
+					"name": "Get All Carriers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/carriers",
+							"host": ["{{base_url}}"],
+							"path": ["carriers"]
+						},
+						"description": "Returns all registered logistics carriers across multimodal transport."
+					}
+				},
+				{
+					"name": "Get All Locations (Hubs & Ports)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/locations",
+							"host": ["{{base_url}}"],
+							"path": ["locations"]
+						},
+						"description": "Returns all origins, checkpoints, international seaports, and air terminals with coordinates."
+					}
+				}
+			]
+		},
+		{
+			"name": "4. Shipments API",
+			"item": [
+				{
+					"name": "List All Shipments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/shipments",
+							"host": ["{{base_url}}"],
+							"path": ["shipments"]
+						},
+						"description": "Returns paginated list of shipments based on authenticated user's role."
+					}
+				},
+				{
+					"name": "Get Shipment Detail (ID: 1)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/shipments/1",
+							"host": ["{{base_url}}"],
+							"path": ["shipments", "1"]
+						},
+						"description": "Returns full details of shipment #1 with items, route, carrier, and milestones."
+					}
+				},
+				{
+					"name": "Update Shipment Status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"IN_TRANSIT\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/shipments/1/status",
+							"host": ["{{base_url}}"],
+							"path": ["shipments", "1", "status"]
+						},
+						"description": "Enforces strict lifecycle transition rules (CREATED -> BOOKED -> PICKED_UP -> IN_TRANSIT -> DELIVERED)."
+					}
+				},
+				{
+					"name": "Add Milestone Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"location_id\": 2,\n    \"status\": \"IN_TRANSIT\",\n    \"event_type\": \"MOUNTAIN_CHECKPOINT_PASSED\",\n    \"description\": \"Container convoy cleared Bireuen checkpoint safely.\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/shipments/1/events",
+							"host": ["{{base_url}}"],
+							"path": ["shipments", "1", "events"]
+						},
+						"description": "Logs an immutable tracking event with timestamp and coordinates."
+					}
+				}
+			]
+		},
+		{
+			"name": "5. Exceptions Management",
+			"item": [
+				{
+					"name": "Log Shipment Exception",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"exception_type\": \"CUSTOMS_HOLD\",\n    \"severity\": \"MEDIUM\",\n    \"description\": \"Phytosanitary certificate inspection pending at Belawan port.\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/shipments/1/exceptions",
+							"host": ["{{base_url}}"],
+							"path": ["shipments", "1", "exceptions"]
+						},
+						"description": "Creates an operational exception flagged in the operator dashboard."
+					}
+				},
+				{
+					"name": "Resolve Exception (ID: 1)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"resolution_notes\": \"Inspection cleared. Certificate attached.\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/exceptions/1/resolve",
+							"host": ["{{base_url}}"],
+							"path": ["exceptions", "1", "resolve"]
+						},
+						"description": "Marks exception as RESOLVED and updates operational metrics."
+					}
+				}
+			]
+		}
+	]
+}

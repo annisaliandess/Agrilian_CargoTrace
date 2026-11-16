@@ -120,14 +120,36 @@ php artisan test
 
 ---
 
-## 📡 API Endpoints Reference
+## 📊 Database Architecture & Entity Relationship Diagram (ERD)
+
+The database consists of 9 core tables designed with strict referential integrity, foreign key constraints, and cascading rules matching the UAS brief specifications:
+
+![Entity Relationship Diagram](docs/erd_diagram.png)
+
+### Core Entities & Cardinality
+1. **`users` ➔ `shipments` (1:N)**: Consignees/customers place and track multiple shipments.
+2. **`carriers` ➔ `shipments` (1:N)**: Multimodal transport providers (Trucking, Ocean Vessels, Air Express) handle multiple cargo assignments.
+3. **`locations` ➔ `shipments` (1:N)**: Serves as origin, destination, and live tracking node.
+4. **`shipments` ➔ `shipment_items` (1:N)**: Consignment manifests support multi-lot agricultural cargo.
+5. **`shipments` ➔ `tracking_events` (1:N)**: Immutable chronological audit trail of physical milestone checkpoints.
+6. **`shipments` ➔ `shipment_exceptions` (1:N)**: Dynamic route disruptions, weather delays, and customs holds with resolution tracking.
+7. **`users` ➔ `notifications` (1:N)**: In-app operational alerts and automated status update notifications.
+8. **`users` ➔ `audit_logs` (1:N)**: Security and compliance event logging recording actor, timestamp, IP, and payload state diffs.
+
+---
+
+## 📡 API Endpoints Reference & Postman Collection
+
+A pre-configured **Postman Collection v2.1** is included in the project root: [`CargoTrace.postman_collection.json`](CargoTrace.postman_collection.json). You can import it directly into Postman to test all endpoints.
 
 | Method | Endpoint | Access | Description |
 | :--- | :--- | :--- | :--- |
 | `POST` | `/api/login` | Public | Authenticate and obtain Sanctum Bearer token |
 | `GET` | `/api/track/{tracking_number}` | Public | Public shipment radar & live weather lookup |
 | `GET` | `/api/weather` | Public | Live OpenWeather query by coordinates |
-| `GET` | `/api/me` | Bearer Token | Authenticated user profile |
+| `GET` | `/api/user` / `/api/me` | Bearer Token | Authenticated user profile |
+| `GET` | `/api/carriers` | Bearer Token | Master list of active multimodal carriers |
+| `GET` | `/api/locations` | Bearer Token | Master list of logistics hubs, seaports & airports |
 | `GET` | `/api/shipments` | Bearer Token | Filterable consignment listings |
 | `POST` | `/api/shipments` | Operator / Admin | Register new consignment & manifest items |
 | `GET` | `/api/shipments/{id}` | Authenticated | Shipment details, items, timeline, & map |
