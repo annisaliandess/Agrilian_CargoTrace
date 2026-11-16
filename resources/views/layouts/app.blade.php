@@ -383,28 +383,47 @@
                 </div>
             </header>
 
-            <!-- Alerts / Flash Messages -->
-            <div class="px-4 sm:px-8 mt-4">
+            <!-- Alerts / Custom Web Toast Container -->
+            <div id="agrilian-toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-3 max-w-sm w-full pointer-events-none transition-all duration-300">
                 @if(session('success'))
-                    <div class="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 flex items-center gap-2.5 text-xs font-semibold shadow-2xs">
-                        <span class="w-2 h-2 rounded-full bg-emerald-600 shrink-0"></span>
-                        <span>{{ session('success') }}</span>
+                    <div id="toast-success" class="pointer-events-auto bg-white/95 backdrop-blur-md border border-emerald-300 rounded-2xl p-4 shadow-xl flex items-start gap-3 transition-all duration-300 transform translate-y-0 opacity-100 animate-slide-in">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <div class="flex-1 min-w-0 pt-0.5">
+                            <div class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider font-mono">{{ app()->getLocale() === 'en' ? 'Operation Success' : 'Berhasil' }}</div>
+                            <div class="text-xs font-semibold text-slate-800 mt-0.5">{{ session('success') }}</div>
+                        </div>
+                        <button onclick="dismissToast('toast-success')" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </button>
                     </div>
                 @endif
                 @if(session('warning'))
-                    <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 flex items-center gap-2.5 text-xs font-semibold shadow-2xs">
-                        <span class="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
-                        <span>{{ session('warning') }}</span>
+                    <div id="toast-warning" class="pointer-events-auto bg-white/95 backdrop-blur-md border border-amber-300 rounded-2xl p-4 shadow-xl flex items-start gap-3 transition-all duration-300 transform translate-y-0 opacity-100 animate-slide-in">
+                        <div class="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 border border-amber-200">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        </div>
+                        <div class="flex-1 min-w-0 pt-0.5">
+                            <div class="text-[11px] font-bold text-amber-800 uppercase tracking-wider font-mono">{{ app()->getLocale() === 'en' ? 'Warning Alert' : 'Peringatan' }}</div>
+                            <div class="text-xs font-semibold text-slate-800 mt-0.5">{{ session('warning') }}</div>
+                        </div>
+                        <button onclick="dismissToast('toast-warning')" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </button>
                     </div>
                 @endif
                 @if(session('error') || (isset($errors) && $errors->any()))
-                    <div class="p-3.5 rounded-xl bg-rose-50 border border-rose-300 text-rose-900 text-xs font-semibold shadow-2xs">
-                        <div class="flex items-center gap-2.5">
-                            <span class="w-2 h-2 rounded-full bg-rose-600 shrink-0"></span>
-                            <div>
-                                {{ session('error') ?? 'Silakan periksa formulir Anda.' }}
+                    <div id="toast-error" class="pointer-events-auto bg-white/95 backdrop-blur-md border border-rose-300 rounded-2xl p-4 shadow-xl flex items-start gap-3 transition-all duration-300 transform translate-y-0 opacity-100 animate-slide-in">
+                        <div class="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center shrink-0 border border-rose-200">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <div class="flex-1 min-w-0 pt-0.5">
+                            <div class="text-[11px] font-bold text-rose-800 uppercase tracking-wider font-mono">{{ app()->getLocale() === 'en' ? 'Attention Required' : 'Perhatian' }}</div>
+                            <div class="text-xs font-semibold text-slate-800 mt-0.5">
+                                {{ session('error') ?? (app()->getLocale() === 'en' ? 'Please check your input form.' : 'Silakan periksa formulir input Anda.') }}
                                 @if(isset($errors) && $errors->any())
-                                    <ul class="list-disc list-inside mt-1 text-[11px] font-normal text-rose-800">
+                                    <ul class="list-disc list-inside mt-1 text-[11px] font-normal text-rose-700">
                                         @foreach($errors->all() as $error)
                                             <li>{{ $error }}</li>
                                         @endforeach
@@ -412,6 +431,9 @@
                                 @endif
                             </div>
                         </div>
+                        <button onclick="dismissToast('toast-error')" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </button>
                     </div>
                 @endif
             </div>
@@ -559,28 +581,47 @@
             </div>
         </header>
 
-        <!-- Flash messages -->
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 w-full">
+        <!-- Flash messages / Custom Web Toast Container (Guest Mode) -->
+        <div id="agrilian-guest-toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-3 max-w-sm w-full pointer-events-none transition-all duration-300">
             @if(session('success'))
-                <div class="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 flex items-center gap-2.5 text-xs font-semibold shadow-2xs">
-                    <span class="w-2 h-2 rounded-full bg-emerald-600 shrink-0"></span>
-                    <span>{{ session('success') }}</span>
+                <div id="toast-guest-success" class="pointer-events-auto bg-white/95 backdrop-blur-md border border-emerald-300 rounded-2xl p-4 shadow-xl flex items-start gap-3 transition-all duration-300 transform translate-y-0 opacity-100">
+                    <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    </div>
+                    <div class="flex-1 min-w-0 pt-0.5">
+                        <div class="text-[11px] font-bold text-emerald-800 uppercase tracking-wider font-mono">{{ app()->getLocale() === 'en' ? 'Operation Success' : 'Berhasil' }}</div>
+                        <div class="text-xs font-semibold text-slate-800 mt-0.5">{{ session('success') }}</div>
+                    </div>
+                    <button onclick="dismissToast('toast-guest-success')" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
                 </div>
             @endif
             @if(session('warning'))
-                <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 flex items-center gap-2.5 text-xs font-semibold shadow-2xs">
-                    <span class="w-2 h-2 rounded-full bg-amber-500 shrink-0"></span>
-                    <span>{{ session('warning') }}</span>
+                <div id="toast-guest-warning" class="pointer-events-auto bg-white/95 backdrop-blur-md border border-amber-300 rounded-2xl p-4 shadow-xl flex items-start gap-3 transition-all duration-300 transform translate-y-0 opacity-100">
+                    <div class="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 border border-amber-200">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                    </div>
+                    <div class="flex-1 min-w-0 pt-0.5">
+                        <div class="text-[11px] font-bold text-amber-800 uppercase tracking-wider font-mono">{{ app()->getLocale() === 'en' ? 'Warning Alert' : 'Peringatan' }}</div>
+                        <div class="text-xs font-semibold text-slate-800 mt-0.5">{{ session('warning') }}</div>
+                    </div>
+                    <button onclick="dismissToast('toast-guest-warning')" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
                 </div>
             @endif
             @if(session('error') || (isset($errors) && $errors->any()))
-                <div class="p-3.5 rounded-xl bg-rose-50 border border-rose-300 text-rose-900 text-xs font-semibold shadow-2xs">
-                    <div class="flex items-center gap-2.5">
-                        <span class="w-2 h-2 rounded-full bg-rose-600 shrink-0"></span>
-                        <div>
+                <div id="toast-guest-error" class="pointer-events-auto bg-white/95 backdrop-blur-md border border-rose-300 rounded-2xl p-4 shadow-xl flex items-start gap-3 transition-all duration-300 transform translate-y-0 opacity-100">
+                    <div class="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center shrink-0 border border-rose-200">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div class="flex-1 min-w-0 pt-0.5">
+                        <div class="text-[11px] font-bold text-rose-800 uppercase tracking-wider font-mono">{{ app()->getLocale() === 'en' ? 'Attention Required' : 'Perhatian' }}</div>
+                        <div class="text-xs font-semibold text-slate-800 mt-0.5">
                             {{ session('error') ?? (app()->getLocale() === 'en' ? 'Please check your input form.' : 'Silakan periksa formulir input.') }}
                             @if(isset($errors) && $errors->any())
-                                <ul class="list-disc list-inside mt-1 text-[11px] font-normal text-rose-800">
+                                <ul class="list-disc list-inside mt-1 text-[11px] font-normal text-rose-700">
                                     @foreach($errors->all() as $error)
                                         <li>{{ $error }}</li>
                                     @endforeach
@@ -588,6 +629,9 @@
                             @endif
                         </div>
                     </div>
+                    <button onclick="dismissToast('toast-guest-error')" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition-colors cursor-pointer">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
                 </div>
             @endif
         </div>
@@ -613,6 +657,28 @@
     </div>
 @endif
 
+    <script>
+        function dismissToast(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.add('opacity-0', 'translate-x-4');
+                setTimeout(() => {
+                    if (el && el.parentNode) {
+                        el.remove();
+                    }
+                }, 300);
+            }
+        }
+
+        // Auto-dismiss custom web toasts after 5 seconds
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelectorAll('[id^="toast-"]').forEach(el => {
+                    dismissToast(el.id);
+                });
+            }, 5000);
+        });
+    </script>
     @stack('scripts')
 </body>
 </html>
