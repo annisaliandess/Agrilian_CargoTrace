@@ -33,7 +33,10 @@ class TrackingController extends Controller
         // Authentication enforcement when checking resi
         if ($query && !Auth::check() && !$request->wantsJson() && !$request->is('api/*') && !app()->runningUnitTests()) {
             session(['url.intended' => route('track.public', ['tracking_number' => $query])]);
-            return redirect()->route('login')->with('warning', 'Silakan login ke akun Anda terlebih dahulu untuk mengakses rincian pelacakan kargo ini.');
+            $msg = app()->getLocale() === 'en'
+                ? 'Please log in to your account first to access this cargo tracking detail.'
+                : 'Silakan masuk ke akun Anda terlebih dahulu untuk mengakses rincian pelacakan kargo ini.';
+            return redirect()->route('login')->with('warning', $msg);
         }
 
         if ($query) {

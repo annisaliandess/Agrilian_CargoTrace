@@ -7,12 +7,14 @@ use App\Http\Controllers\ShipmentController;
 use App\Http\Controllers\TrackingController;
 use Illuminate\Support\Facades\Route;
 
-// Public Routes (Unified Landing Page & Tracking)
+// Public Routes (Unified Landing Page, Tracking & Commodities Showcase)
 Route::get('/', [TrackingController::class, 'publicTrack'])->name('home');
 
 Route::get('/track/{tracking_number?}', [TrackingController::class, 'publicTrack'])
     ->middleware('throttle:60,1')
     ->name('track.public');
+
+Route::get('/commodities', [DashboardController::class, 'commodities'])->name('commodities.index');
 
 // Language Switcher (ID & EN)
 Route::get('/lang/{locale}', function ($locale) {
@@ -34,7 +36,6 @@ Route::middleware('auth')->group(function () {
     // Dashboard & Notifications
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('/notifications/mark-read', [DashboardController::class, 'markAllNotificationsRead'])->name('notifications.markRead');
-    Route::get('/commodities', [DashboardController::class, 'commodities'])->name('commodities.index');
 
     // Shipments
     Route::get('/shipments', [ShipmentController::class, 'index'])->name('shipments.index');

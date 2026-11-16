@@ -78,14 +78,13 @@ class ShipmentController extends Controller
     public function create()
     {
         $user = Auth::user();
-        if (!$user) {
-            abort(403);
+        if (!$user || $user->isCustomer()) {
+            abort(403, app()->getLocale() === 'en'
+                ? 'Only logistics operators and administrators are authorized to issue new export manifests.'
+                : 'Hanya staf operasional logistik dan administrator yang berwenang menerbitkan manifes ekspor baru.');
         }
 
-        $customers = $user->isCustomer()
-            ? collect([$user])
-            : User::where('role', 'customer')->get();
-
+        $customers = User::where('role', 'customer')->get();
         $carriers = Carrier::where('is_active', true)->get();
         $locations = Location::orderBy('name')->get();
 
@@ -98,13 +97,10 @@ class ShipmentController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-        if (!$user) {
-            abort(403);
-        }
-
-        // If customer, auto-bind customer_id to self
-        if ($user->isCustomer()) {
-            $request->merge(['customer_id' => $user->id]);
+        if (!$user || $user->isCustomer()) {
+            abort(403, app()->getLocale() === 'en'
+                ? 'Only logistics operators and administrators are authorized to issue new export manifests.'
+                : 'Hanya staf operasional logistik dan administrator yang berwenang menerbitkan manifes ekspor baru.');
         }
 
         $validated = $request->validate([
