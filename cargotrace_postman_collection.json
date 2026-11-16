@@ -51,7 +51,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"admin@cargotrace.com\",\n    \"password\": \"password123\",\n    \"device_name\": \"postman_client\"\n}"
+							"raw": "{\n    \"email\": \"admin@agrilian.com\",\n    \"password\": \"password123\",\n    \"device_name\": \"postman_client\"\n}"
 						},
 						"url": {
 							"raw": "{{base_url}}/api/login",

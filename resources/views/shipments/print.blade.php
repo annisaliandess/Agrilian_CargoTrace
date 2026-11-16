@@ -1,9 +1,12 @@
+@php
+    $isEn = app()->getLocale() === 'en';
+@endphp
 <!DOCTYPE html>
-<html lang="id">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surat Jalan Ekspor - {{ $shipment->tracking_number }}</title>
+    <title>{{ $isEn ? 'Multimodal Export Waybill' : 'Surat Jalan Ekspor Multimodal' }} - {{ $shipment->tracking_number }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,24 +41,26 @@
 </head>
 <body class="p-4 sm:p-8">
 
-    <!-- Top Action Bar (Hanya tampil di layar monitor, hilang saat di-print) -->
+    <!-- Top Action Bar (Screen only, hidden on print) -->
     <div class="max-w-4xl mx-auto mb-6 no-print flex items-center justify-between bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
         <div class="flex items-center gap-3">
             <a href="{{ route('shipments.show', $shipment->id) }}" class="px-4 py-2 rounded-xl border border-slate-300 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors">
-                &larr; Kembali ke Rincian
+                &larr; {{ $isEn ? 'Back to Details' : 'Kembali ke Rincian' }}
             </a>
             <span class="text-xs text-slate-400">|</span>
-            <span class="text-xs font-semibold text-slate-600">Dokumen Fisik Surat Jalan Ekspor Multimodal</span>
+            <span class="text-xs font-semibold text-slate-600">
+                {{ $isEn ? 'Physical Multimodal Export Waybill Document' : 'Dokumen Fisik Surat Jalan Ekspor Multimodal' }}
+            </span>
         </div>
         <div class="flex items-center gap-2">
             <button onclick="window.print()" class="px-5 py-2.5 rounded-xl bg-[#051F20] hover:bg-[#0B2B26] text-white text-xs font-bold shadow-md flex items-center gap-2 cursor-pointer transition-all">
                 <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
-                <span>Cetak Dokumen (Print / PDF)</span>
+                <span>{{ $isEn ? 'Print Document (Print / PDF)' : 'Cetak Dokumen (Print / PDF)' }}</span>
             </button>
         </div>
     </div>
 
-    <!-- Halaman Dokumen Fisik Resmi (A4 Paper Canvas) -->
+    <!-- Official A4 Canvas Paper Document -->
     <div class="max-w-4xl mx-auto bg-white border border-slate-300 rounded-3xl p-8 sm:p-12 shadow-xl print-page space-y-6">
 
         <!-- 1. Header Kop Surat Resmi -->
@@ -66,21 +71,25 @@
                 </div>
                 <div>
                     <h1 class="text-xl font-black text-slate-900 tracking-tight leading-tight">AGRILIAN CARGOTRACE LOGISTICS</h1>
-                    <div class="text-[11px] font-bold text-slate-600 uppercase tracking-wider font-mono">Highland Agro-Export Multimodal Visibility Platform</div>
-                    <div class="text-[10px] text-slate-500 mt-0.5">Central Hub: Jl. Takengon - Bireuen Km 4, Aceh Tengah &bull; Terminal Pelabuhan Belawan &bull; Rotterdam Direct</div>
+                    <div class="text-[11px] font-bold text-slate-600 uppercase tracking-wider font-mono">
+                        {{ $isEn ? 'Highland Agro-Export Multimodal Visibility Platform' : 'Platform Visibilitas Ekspor Agro Multimoda Dataran Tinggi' }}
+                    </div>
+                    <div class="text-[10px] text-slate-500 mt-0.5">
+                        {{ $isEn ? 'Central Hub: Jl. Takengon - Bireuen Km 4, Central Aceh • Belawan Port Terminal • Rotterdam Direct' : 'Hub Pusat: Jl. Takengon - Bireuen Km 4, Aceh Tengah • Terminal Pelabuhan Belawan • Rotterdam Langsung' }}
+                    </div>
                 </div>
             </div>
 
             <!-- Barcode & QR Code Pelacakan Resmi -->
             <div class="flex items-center gap-3.5">
-                <!-- Dynamic Scannable QR Code via API -->
                 <div class="bg-white p-1 rounded-xl border border-slate-300 shadow-2xs flex flex-col items-center">
                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&color=051F20&bgcolor=FFFFFF&data={{ urlencode(url('/track/' . $shipment->tracking_number)) }}" 
                          alt="QR Pelacakan Kargo" class="w-16 h-16 object-contain">
-                    <span class="text-[7px] font-mono font-bold text-slate-600 uppercase tracking-tight mt-0.5">SCAN QR LACAK</span>
+                    <span class="text-[7px] font-mono font-bold text-slate-600 uppercase tracking-tight mt-0.5">
+                        {{ $isEn ? 'SCAN QR TO TRACK' : 'PINDAI QR LACAK' }}
+                    </span>
                 </div>
 
-                <!-- Digital Code128 Barcode & API Security Hash -->
                 <div class="text-right flex flex-col items-end">
                     <div class="bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-300 flex flex-col items-center">
                         <svg class="h-6 w-36 text-slate-900" viewBox="0 0 176 26" fill="currentColor">
@@ -88,7 +97,9 @@
                         </svg>
                         <span class="text-[9px] font-mono tracking-widest text-slate-800 font-bold uppercase mt-1">*{{ $shipment->tracking_number }}*</span>
                     </div>
-                    <div class="text-[9px] text-slate-500 font-mono mt-1">Dicetak: {{ now()->format('d M Y, H:i') }} &bull; API Key: <strong class="text-slate-700">SEC-{{ strtoupper(substr(md5($shipment->tracking_number), 0, 8)) }}</strong></div>
+                    <div class="text-[9px] text-slate-500 font-mono mt-1">
+                        {{ $isEn ? 'Printed:' : 'Dicetak:' }} {{ now()->format('d M Y, H:i') }} &bull; {{ $isEn ? 'Security Key:' : 'Kunci Keamanan API:' }} <strong class="text-slate-700">SEC-{{ strtoupper(substr(md5($shipment->tracking_number), 0, 8)) }}</strong>
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,13 +107,29 @@
         <!-- 2. Dokumen Title & Status Strip -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-slate-100 p-3.5 rounded-xl border border-slate-200">
             <div>
-                <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider font-mono">Jenis Dokumen:</span>
-                <h2 class="text-sm font-extrabold text-slate-900 uppercase tracking-tight">SURAT JALAN & MANIFES KONSINYASI EKSPOR MULTIMODAL</h2>
+                <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider font-mono">
+                    {{ $isEn ? 'Document Type:' : 'Jenis Dokumen:' }}
+                </span>
+                <h2 class="text-sm font-extrabold text-slate-900 uppercase tracking-tight">
+                    {{ $isEn ? 'MULTIMODAL EXPORT CONSIGNMENT WAYBILL & MANIFEST' : 'SURAT JALAN & MANIFES KONSINYASI EKSPOR MULTIMODAL' }}
+                </h2>
             </div>
             <div class="flex items-center gap-2 font-mono text-xs">
-                <span class="text-slate-500">Status Kargo:</span>
+                <span class="text-slate-500">{{ $isEn ? 'Cargo Status:' : 'Status Kargo:' }}</span>
                 <span class="px-2.5 py-0.5 rounded-md font-bold uppercase border bg-white text-slate-900 border-slate-300">
-                    {{ $shipment->status }}
+                    {{ $isEn ? match($shipment->status) {
+                        'In Transit' => 'In Transit',
+                        'Delayed' => 'Delayed',
+                        'Delivered' => 'Delivered',
+                        'Customs Hold' => 'Customs Hold',
+                        default => $shipment->status,
+                    } : match($shipment->status) {
+                        'In Transit' => 'Dalam Perjalanan',
+                        'Delayed' => 'Tertunda',
+                        'Delivered' => 'Terkirim',
+                        'Customs Hold' => 'Tertahan Bea Cukai',
+                        default => $shipment->status,
+                    } }}
                 </span>
             </div>
         </div>
@@ -111,50 +138,70 @@
         <div class="grid grid-cols-2 gap-6 text-xs border border-slate-200 rounded-2xl p-4">
             <!-- Kolom Pengirim -->
             <div class="space-y-1.5 border-r border-slate-200 pr-4">
-                <div class="text-[10px] font-bold text-slate-400 uppercase font-mono">1. PENGIRIM & ASAL (SHIPPER / ORIGIN)</div>
-                <div class="font-bold text-sm text-slate-900">Koperasi Tani Dataran Tinggi Gayo Organik</div>
-                <div class="text-slate-600">Hub: {{ $shipment->origin->name ?? 'Takengon Central Hub' }}</div>
-                <div class="text-slate-600">Lokasi: {{ $shipment->origin->city ?? 'Takengon' }}, {{ $shipment->origin->country ?? 'Indonesia' }} (1.400 mdpl)</div>
-                <div class="text-slate-600 font-mono text-[11px] pt-1">Jadwal Keberangkatan: <strong>{{ \Carbon\Carbon::parse($shipment->expected_departure)->format('d M Y, H:i') }} WIB</strong></div>
+                <div class="text-[10px] font-bold text-slate-400 uppercase font-mono">
+                    {{ $isEn ? '1. SHIPPER & ORIGIN' : '1. PENGIRIM & ASAL' }}
+                </div>
+                <div class="font-bold text-sm text-slate-900">
+                    {{ $isEn ? 'Gayo Highland Organic Farmers Cooperative' : 'Koperasi Tani Dataran Tinggi Gayo Organik' }}
+                </div>
+                <div class="text-slate-600">Hub: {{ $shipment->origin->name ?? ($isEn ? 'Takengon Central Hub' : 'Pusat Hub Takengon') }}</div>
+                <div class="text-slate-600">{{ $isEn ? 'Location:' : 'Lokasi:' }} {{ $shipment->origin->city ?? 'Takengon' }}, {{ $shipment->origin->country ?? 'Indonesia' }} (1.400 mdpl)</div>
+                <div class="text-slate-600 font-mono text-[11px] pt-1">
+                    {{ $isEn ? 'Scheduled Departure:' : 'Jadwal Keberangkatan:' }} <strong>{{ \Carbon\Carbon::parse($shipment->expected_departure)->format('d M Y, H:i') }} WIB</strong>
+                </div>
             </div>
 
             <!-- Kolom Penerima -->
             <div class="space-y-1.5 pl-2">
-                <div class="text-[10px] font-bold text-slate-400 uppercase font-mono">2. PENERIMA & TUJUAN (CONSIGNEE / DESTINATION)</div>
+                <div class="text-[10px] font-bold text-slate-400 uppercase font-mono">
+                    {{ $isEn ? '2. CONSIGNEE & DESTINATION' : '2. PENERIMA & TUJUAN' }}
+                </div>
                 <div class="font-bold text-sm text-slate-900">{{ $shipment->customer->name ?? 'International Coffee Importers B.V.' }}</div>
-                <div class="text-slate-600">Email: {{ $shipment->customer->email ?? 'buyer@portrotterdam.nl' }}</div>
-                <div class="text-slate-600">Pelabuhan Tujuan: {{ $shipment->destination->name ?? 'Port of Rotterdam' }} ({{ $shipment->destination->city ?? 'Rotterdam' }}, {{ $shipment->destination->country ?? 'Belanda' }})</div>
-                <div class="text-slate-600 font-mono text-[11px] pt-1">Target Tiba (ETA): <strong>{{ \Carbon\Carbon::parse($shipment->expected_arrival)->format('d M Y, H:i') }}</strong></div>
+                <div class="text-slate-600">Email: {{ $shipment->customer->email ?? 'buyer@agrilian.com' }}</div>
+                <div class="text-slate-600">{{ $isEn ? 'Destination Port:' : 'Pelabuhan Tujuan:' }} {{ $shipment->destination->name ?? 'Port of Rotterdam' }} ({{ $shipment->destination->city ?? 'Rotterdam' }}, {{ $isEn ? 'Netherlands' : 'Belanda' }})</div>
+                <div class="text-slate-600 font-mono text-[11px] pt-1">
+                    {{ $isEn ? 'Target Arrival (ETA):' : 'Perkiraan Tiba (ETA):' }} <strong>{{ \Carbon\Carbon::parse($shipment->expected_arrival)->format('d M Y, H:i') }}</strong>
+                </div>
             </div>
         </div>
 
         <!-- 4. Moda Transportasi Multimodal & Armada -->
         <div class="grid grid-cols-3 gap-4 text-xs border border-slate-200 rounded-2xl p-4 bg-slate-50/60">
             <div>
-                <span class="text-[10px] font-bold text-slate-400 uppercase font-mono block">Armada Pengangkut</span>
+                <span class="text-[10px] font-bold text-slate-400 uppercase font-mono block">
+                    {{ $isEn ? 'Carrying Fleet' : 'Armada Pengangkut' }}
+                </span>
                 <strong class="text-slate-900 font-mono">{{ $shipment->carrier->name ?? 'Maersk Line Multimodal' }}</strong>
             </div>
             <div>
-                <span class="text-[10px] font-bold text-slate-400 uppercase font-mono block">Moda Transportasi</span>
-                <strong class="text-slate-900 font-mono">MULTIMODAL (TRUCK &bull; OCEAN VESSEL)</strong>
+                <span class="text-[10px] font-bold text-slate-400 uppercase font-mono block">
+                    {{ $isEn ? 'Transport Mode' : 'Moda Transportasi' }}
+                </span>
+                <strong class="text-slate-900 font-mono">
+                    {{ $isEn ? 'MULTIMODAL (TRUCK • OCEAN VESSEL)' : 'MULTIMODA (TRUK • KAPAL SAMUDERA)' }}
+                </strong>
             </div>
             <div>
-                <span class="text-[10px] font-bold text-slate-400 uppercase font-mono block">Segel Pabean (Customs Seal)</span>
+                <span class="text-[10px] font-bold text-slate-400 uppercase font-mono block">
+                    {{ $isEn ? 'Official Customs Seal' : 'Segel Pabean Bea Cukai' }}
+                </span>
                 <strong class="text-slate-900 font-mono">ID-CUSTOMS-{{ substr(md5($shipment->tracking_number), 0, 8) }}</strong>
             </div>
         </div>
 
         <!-- 5. Tabel Manifest Barang (Item Specification) -->
         <div class="space-y-2">
-            <div class="text-[10px] font-bold text-slate-400 uppercase font-mono">3. MANIFEST SPESIFIKASI MUATAN BARANG</div>
+            <div class="text-[10px] font-bold text-slate-400 uppercase font-mono">
+                {{ $isEn ? '3. CARGO MANIFEST SPECIFICATIONS' : '3. MANIFES SPESIFIKASI MUATAN BARANG' }}
+            </div>
             <table class="w-full text-xs border border-slate-300 rounded-xl overflow-hidden">
                 <thead class="bg-slate-100 text-slate-700 font-mono text-[11px] border-b border-slate-300">
                     <tr>
                         <th class="py-2.5 px-3 text-left">No.</th>
-                        <th class="py-2.5 px-3 text-left">Deskripsi Komoditas & Lot</th>
-                        <th class="py-2.5 px-3 text-left">Jenis Kemasan</th>
-                        <th class="py-2.5 px-3 text-right">Kuantitas</th>
-                        <th class="py-2.5 px-3 text-right">Berat (kg)</th>
+                        <th class="py-2.5 px-3 text-left">{{ $isEn ? 'Commodity & Lot Description' : 'Deskripsi Komoditas & Lot' }}</th>
+                        <th class="py-2.5 px-3 text-left">{{ $isEn ? 'Packaging Type' : 'Jenis Kemasan' }}</th>
+                        <th class="py-2.5 px-3 text-right">{{ $isEn ? 'Quantity' : 'Kuantitas' }}</th>
+                        <th class="py-2.5 px-3 text-right">{{ $isEn ? 'Weight (kg)' : 'Berat (kg)' }}</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-200">
@@ -167,23 +214,25 @@
                                     <span class="block text-[10px] text-slate-500 font-normal">{{ $item->description }}</span>
                                 @endif
                             </td>
-                            <td class="py-2.5 px-3 text-slate-600 font-mono">{{ $item->package_type ?? 'GrainPro + Jute Bag' }}</td>
-                            <td class="py-2.5 px-3 text-right font-mono font-bold">{{ number_format($item->quantity) }} Karung/Koli</td>
+                            <td class="py-2.5 px-3 text-slate-600 font-mono">{{ $item->package_type ?? ($isEn ? 'GrainPro Hermetic + Jute Bag' : 'Kantong GrainPro + Goni') }}</td>
+                            <td class="py-2.5 px-3 text-right font-mono font-bold">{{ number_format($item->quantity) }} {{ $isEn ? 'Bags/Units' : 'Karung/Koli' }}</td>
                             <td class="py-2.5 px-3 text-right font-mono font-bold">{{ number_format($item->weight_kg, 2) }} kg</td>
                         </tr>
                     @empty
                         <tr>
                             <td class="py-2.5 px-3 font-mono text-slate-500">1</td>
                             <td class="py-2.5 px-3 font-semibold text-slate-900">{{ $shipment->cargo_type }}</td>
-                            <td class="py-2.5 px-3 text-slate-600 font-mono">Standard Export Packaging</td>
-                            <td class="py-2.5 px-3 text-right font-mono font-bold">1 Lot Kontainer</td>
+                            <td class="py-2.5 px-3 text-slate-600 font-mono">{{ $isEn ? 'Standard Export Packaging' : 'Kemasan Ekspor Standar' }}</td>
+                            <td class="py-2.5 px-3 text-right font-mono font-bold">{{ $isEn ? '1 Container Lot' : '1 Lot Kontainer' }}</td>
                             <td class="py-2.5 px-3 text-right font-mono font-bold">{{ number_format($shipment->weight_kg, 2) }} kg</td>
                         </tr>
                     @endforelse
                 </tbody>
                 <tfoot class="bg-slate-50 font-mono border-t border-slate-300 font-bold">
                     <tr>
-                        <td colspan="4" class="py-2.5 px-3 text-right text-slate-700">TOTAL TONASE MUATAN:</td>
+                        <td colspan="4" class="py-2.5 px-3 text-right text-slate-700">
+                            {{ $isEn ? 'TOTAL CARGO TONNAGE:' : 'TOTAL TONASE MUATAN:' }}
+                        </td>
                         <td class="py-2.5 px-3 text-right text-slate-900 text-sm">{{ number_format($shipment->weight_kg, 2) }} kg</td>
                     </tr>
                 </tfoot>
@@ -193,13 +242,17 @@
         <!-- 6. Kepatuhan Fitosanitari & Parameter Mutu -->
         <div class="grid grid-cols-2 gap-4 text-xs p-3.5 rounded-xl border border-slate-200 bg-slate-50">
             <div>
-                <span class="text-[10px] font-bold text-slate-500 uppercase font-mono block">Parameter Mutu Komoditas:</span>
+                <span class="text-[10px] font-bold text-slate-500 uppercase font-mono block">
+                    {{ $isEn ? 'Commodity Quality Parameters:' : 'Parameter Mutu Komoditas:' }}
+                </span>
                 <span class="text-slate-700 font-medium leading-relaxed block mt-0.5">
-                    Kadar Air: <strong>11.4%</strong> &bull; Nilai Cacat: <strong>&lt; 3 (Grade 1)</strong> &bull; SCA Score: <strong>87.5</strong> &bull; Organik Fairtrade
+                    {{ $isEn ? 'Moisture Content: 11.4% • Defect Count: < 3 (Grade 1) • SCA Score: 87.5 • Fairtrade Organic' : 'Kadar Air: 11,4% • Nilai Cacat: < 3 (Mutu 1) • Skor SCA: 87,5 • Organik Fairtrade' }}
                 </span>
             </div>
             <div>
-                <span class="text-[10px] font-bold text-slate-500 uppercase font-mono block">Valuasi Devisa Ekspor:</span>
+                <span class="text-[10px] font-bold text-slate-500 uppercase font-mono block">
+                    {{ $isEn ? 'Export Foreign Exchange Valuation:' : 'Valuasi Devisa Ekspor:' }}
+                </span>
                 <span class="text-slate-900 font-mono font-bold block mt-0.5">
                     {{ $valuation['usd_formatted'] ?? '$ 138,000 USD' }} ({{ $valuation['eur_formatted'] ?? '€ 130,800 EUR' }})
                 </span>
@@ -208,34 +261,45 @@
 
         <!-- 7. Lembar Tanda Tangan Resmi (3 Kolom) -->
         <div class="pt-6 border-t border-slate-300 space-y-3">
-            <div class="text-[10px] font-bold text-slate-400 uppercase font-mono">4. PENGESAHAN & SERAH TERIMA MUATAN (SIGNATURES)</div>
+            <div class="text-[10px] font-bold text-slate-400 uppercase font-mono">
+                {{ $isEn ? '4. CONSIGNMENT HANDOVER & AUTHENTICATION (SIGNATURES)' : '4. PENGESAHAN & SERAH TERIMA MUATAN (TANDA TANGAN RESMI)' }}
+            </div>
             <div class="grid grid-cols-3 gap-6 text-center text-xs">
                 <!-- Kolom 1 -->
                 <div class="border border-slate-200 rounded-xl p-4 flex flex-col justify-between h-36">
-                    <span class="font-bold text-slate-700">Petugas Gudang Asal<br><span class="font-normal text-[10px] text-slate-500">(Takengon Central Hub)</span></span>
+                    <span class="font-bold text-slate-700">
+                        {{ $isEn ? 'Origin Warehouse Officer' : 'Petugas Gudang Asal' }}<br>
+                        <span class="font-normal text-[10px] text-slate-500">({{ $isEn ? 'Takengon Central Hub' : 'Pusat Hub Takengon' }})</span>
+                    </span>
                     <div class="border-b border-dashed border-slate-400 w-3/4 mx-auto mb-1"></div>
-                    <span class="text-[11px] font-mono text-slate-600">( Petugas Dispatcher )</span>
+                    <span class="text-[11px] font-mono text-slate-600">( {{ $isEn ? 'Dispatch Officer' : 'Petugas Dispatcher' }} )</span>
                 </div>
 
                 <!-- Kolom 2 -->
                 <div class="border border-slate-200 rounded-xl p-4 flex flex-col justify-between h-36">
-                    <span class="font-bold text-slate-700">Pengemudi / Carrier<br><span class="font-normal text-[10px] text-slate-500">(Armada Truk & Kapal)</span></span>
+                    <span class="font-bold text-slate-700">
+                        {{ $isEn ? 'Driver / Carrier' : 'Pengemudi / Pengangkut' }}<br>
+                        <span class="font-normal text-[10px] text-slate-500">({{ $isEn ? 'Truck & Ocean Fleet' : 'Armada Truk & Kapal' }})</span>
+                    </span>
                     <div class="border-b border-dashed border-slate-400 w-3/4 mx-auto mb-1"></div>
-                    <span class="text-[11px] font-mono text-slate-600">( Pengemudi / Nakhoda )</span>
+                    <span class="text-[11px] font-mono text-slate-600">( {{ $isEn ? 'Driver / Vessel Master' : 'Pengemudi / Nakhoda' }} )</span>
                 </div>
 
                 <!-- Kolom 3 -->
                 <div class="border border-slate-200 rounded-xl p-4 flex flex-col justify-between h-36">
-                    <span class="font-bold text-slate-700">Karantina & Bea Cukai<br><span class="font-normal text-[10px] text-slate-500">(Terminal Pelabuhan Belawan)</span></span>
+                    <span class="font-bold text-slate-700">
+                        {{ $isEn ? 'Quarantine & Customs' : 'Karantina & Bea Cukai' }}<br>
+                        <span class="font-normal text-[10px] text-slate-500">({{ $isEn ? 'Belawan Seaport Terminal' : 'Terminal Pelabuhan Belawan' }})</span>
+                    </span>
                     <div class="border-b border-dashed border-slate-400 w-3/4 mx-auto mb-1"></div>
-                    <span class="text-[11px] font-mono text-slate-600">( Pejabat Pemeriksa )</span>
+                    <span class="text-[11px] font-mono text-slate-600">( {{ $isEn ? 'Inspecting Officer' : 'Pejabat Pemeriksa' }} )</span>
                 </div>
             </div>
         </div>
 
         <!-- Footer Notice -->
         <div class="text-[9px] text-slate-400 font-mono text-center pt-2">
-            Dokumen ini diterbitkan secara sah oleh Sistem Visibilitas Ekspor AgriLian CargoTrace &bull; Verifikasi keaslian dokumen via: http://127.0.0.1:8000/track/{{ $shipment->tracking_number }}
+            {{ $isEn ? 'This document is legally issued by AgriLian CargoTrace Multimodal Export Visibility System • Authenticity verification via:' : 'Dokumen ini diterbitkan secara sah oleh Sistem Visibilitas Ekspor AgriLian CargoTrace • Verifikasi keaslian dokumen via:' }} {{ url('/track/' . $shipment->tracking_number) }}
         </div>
     </div>
 

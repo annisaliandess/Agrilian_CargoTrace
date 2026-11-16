@@ -64,8 +64,8 @@ For evaluation and testing convenience, the login page features a **One-Click De
 
 | Role | Name | Email | Password |
 | :--- | :--- | :--- | :--- |
-| **Admin** | Ayaa Liandes | `admin@cargotrace.com` | `password123` |
-| **Operator** | Reza Pratama (Gayo Dispatcher) | `operator@cargotrace.com` | `password123` |
+| **Admin** | Ayaa Liandes | `admin@agrilian.com` | `password123` |
+| **Operator** | Reza Pratama (Gayo Dispatcher) | `operator@agrilian.com` | `password123` |
 | **Customer** | Amsterdam Coffee Roasters B.V. | `buyer.amsterdam@eurocoffee.nl` | `password123` |
 | **Customer** | SingaAgro Fresh Singapore | `procurement@singaagro.sg` | `password123` |
 

@@ -207,35 +207,23 @@
                 <!-- Group 1: Core Operations -->
                 <div>
                     <div class="px-3 text-[10px] font-bold uppercase tracking-wider text-forest-200/70 mb-2 font-mono">
-                        Operasional Ekspor
+                        {{ app()->getLocale() === 'en' ? 'Export Operations' : 'Operasional Ekspor' }}
                     </div>
                     <nav class="space-y-1">
                         <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('dashboard') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
                             <svg class="w-4 h-4 {{ request()->routeIs('dashboard') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                            <span>{{ __('Dashboard Radar') }}</span>
+                            <span>{{ app()->getLocale() === 'en' ? 'Radar Dashboard' : 'Dasbor Radar' }}</span>
                         </a>
 
                         <a href="{{ route('shipments.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.index') || request()->routeIs('shipments.show') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
                             <svg class="w-4 h-4 {{ request()->routeIs('shipments.index') || request()->routeIs('shipments.show') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-                            <span>{{ __('Manifes Kargo') }}</span>
-                        </a>
-
-                        <a href="{{ route('track.public') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('track.public') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
-                            <svg class="w-4 h-4 {{ request()->routeIs('track.public') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                            <span>{{ __('Pelacakan & Cek Resi') }}</span>
+                            <span>{{ app()->getLocale() === 'en' ? 'Cargo Manifests' : 'Manifes Kargo' }}</span>
                         </a>
 
                         <a href="{{ route('commodities.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('commodities.index') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
                             <svg class="w-4 h-4 {{ request()->routeIs('commodities.index') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-                            <span>{{ __('Katalog Komoditas & Armada') }}</span>
+                            <span>{{ app()->getLocale() === 'en' ? 'Commodities & Fleet' : 'Komoditas & Armada' }}</span>
                         </a>
-
-                        @if(auth()->user()->isOperator())
-                            <a href="{{ route('shipments.create') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.create') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
-                                <svg class="w-4 h-4 {{ request()->routeIs('shipments.create') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                                <span>{{ __('Buat Manifest Baru') }}</span>
-                            </a>
-                        @endif
                     </nav>
                 </div>
             </div>
@@ -245,15 +233,16 @@
                 <div class="flex items-center justify-between p-2 rounded-xl bg-white/5 border border-forest-800">
                     @php
                         $userRole = auth()->user()->role;
+                        $isEn = app()->getLocale() === 'en';
                         $displayName = match($userRole) {
                             'admin' => 'Administrator',
-                            'operator' => 'Operations Staff',
+                            'operator' => $isEn ? 'Operations Staff' : 'Staf Operasional',
                             default => auth()->user()->name,
                         };
                         $displayRole = match($userRole) {
-                            'admin' => 'System Admin',
-                            'operator' => 'Field Operator',
-                            default => 'Customer Account',
+                            'admin' => $isEn ? 'System Admin' : 'Admin Sistem',
+                            'operator' => $isEn ? 'Field Operator' : 'Operator Lapangan',
+                            default => $isEn ? 'Customer Account' : 'Akun Pelanggan',
                         };
                         $initial = match($userRole) {
                             'admin' => 'A',
@@ -276,7 +265,7 @@
 
                     <form action="{{ route('logout') }}" method="POST" class="inline">
                         @csrf
-                        <button type="submit" title="Keluar dari akun" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/15 transition-colors cursor-pointer">
+                        <button type="submit" title="{{ $isEn ? 'Sign out' : 'Keluar dari akun' }}" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/15 transition-colors cursor-pointer">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
                         </button>
                     </form>
@@ -299,11 +288,11 @@
                     </button>
 
                     <div class="flex items-center gap-2">
-                        <span class="text-xs font-bold text-slate-800 font-mono hidden sm:inline">Takengon Central Logistics Hub</span>
+                        <span class="text-xs font-bold text-slate-800 font-mono hidden sm:inline">{{ app()->getLocale() === 'en' ? 'Takengon Central Logistics Hub' : 'Pusat Hub Logistik Takengon' }}</span>
                         <span class="text-slate-300 hidden sm:inline">•</span>
                         <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
                             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                            Sistem Telemetri Aktif
+                            {{ app()->getLocale() === 'en' ? 'Telemetry System Online' : 'Sistem Telemetri Aktif' }}
                         </span>
                     </div>
                 </div>
@@ -336,7 +325,7 @@
                                 ->count();
                         @endphp
                         <div class="relative">
-                            <button type="button" onclick="toggleNotificationDropdown()" id="notif-bell-btn" title="Notifikasi Sistem"
+                            <button type="button" onclick="toggleNotificationDropdown()" id="notif-bell-btn" title="{{ app()->getLocale() === 'en' ? 'System Notifications' : 'Notifikasi Sistem' }}"
                                     class="relative p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors border border-slate-200 cursor-pointer">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
@@ -438,7 +427,7 @@
                     <strong class="text-slate-800 font-semibold">AgriLian CargoTrace</strong> &bull; Takengon &bull; Bireuen &bull; Belawan &bull; Singapore &bull; Rotterdam
                 </div>
                 <div>
-                    &copy; 2026 AgriLian Logistics Systems &bull; <span class="text-slate-600 font-medium">Enterprise Multimodal Visibility</span>
+                    &copy; 2026 AgriLian Logistics Systems &bull; <span class="text-slate-600 font-medium">{{ app()->getLocale() === 'en' ? 'Enterprise Multimodal Visibility' : 'Visibilitas Ekspor Multimoda Terpadu' }}</span>
                 </div>
             </footer>
         </div>
@@ -537,13 +526,21 @@
                         </div>
                         <div>
                             <span class="text-base font-bold text-slate-900 tracking-tight">AgriLian <span class="text-forest-600 font-extrabold">CargoTrace</span></span>
-                            <span class="block text-[10px] font-semibold text-slate-500 uppercase tracking-wider font-mono">Highland Agro-Export Visibility</span>
+                            <span class="block text-[10px] font-semibold text-slate-500 uppercase tracking-wider font-mono">{{ app()->getLocale() === 'en' ? 'Highland Agro-Export Visibility' : 'Visibilitas Ekspor Agro Dataran Tinggi' }}</span>
                         </div>
                     </a>
 
                     <div class="flex items-center gap-3">
+                        <!-- Language Switcher Pills (ID / EN) -->
+                        <div class="flex items-center bg-slate-100 rounded-lg p-0.5 border border-slate-200 text-[11px] font-bold font-mono">
+                            <a href="{{ route('lang.switch', 'id') }}" title="Bahasa Indonesia"
+                               class="px-2 py-1 rounded-md transition-all {{ app()->getLocale() === 'id' ? 'bg-[#0B2B26] text-white shadow-xs' : 'text-slate-600 hover:text-slate-900' }}">ID</a>
+                            <a href="{{ route('lang.switch', 'en') }}" title="English"
+                               class="px-2 py-1 rounded-md transition-all {{ app()->getLocale() === 'en' ? 'bg-[#0B2B26] text-white shadow-xs' : 'text-slate-600 hover:text-slate-900' }}">EN</a>
+                        </div>
+
                         <a href="{{ route('track.public') }}" class="btn-brand-outline px-3.5 py-1.5 rounded-lg text-xs font-semibold">
-                            Cek Resi Kargo
+                            {{ app()->getLocale() === 'en' ? 'Track Waybill' : 'Cek Resi Kargo' }}
                         </a>
 
                         @auth
@@ -553,7 +550,7 @@
                             </a>
                         @else
                             <a href="{{ route('login') }}" class="btn-brand-accent px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-1.5 cursor-pointer">
-                                <span>Masuk</span>
+                                <span>{{ app()->getLocale() === 'en' ? 'Sign In' : 'Masuk' }}</span>
                                 <span>&rarr;</span>
                             </a>
                         @endauth
@@ -581,7 +578,7 @@
                     <div class="flex items-center gap-2.5">
                         <span class="w-2 h-2 rounded-full bg-rose-600 shrink-0"></span>
                         <div>
-                            {{ session('error') ?? 'Silakan periksa formulir input.' }}
+                            {{ session('error') ?? (app()->getLocale() === 'en' ? 'Please check your input form.' : 'Silakan periksa formulir input.') }}
                             @if(isset($errors) && $errors->any())
                                 <ul class="list-disc list-inside mt-1 text-[11px] font-normal text-rose-800">
                                     @foreach($errors->all() as $error)
@@ -606,10 +603,10 @@
                 <div class="flex items-center gap-2">
                     <strong class="text-slate-800 font-semibold">AgriLian CargoTrace</strong>
                     <span>&bull;</span>
-                    <span>Rantai Pasok Agro Dataran Tinggi Gayo ke Pasar Internasional</span>
+                    <span>{{ app()->getLocale() === 'en' ? 'Highland Gayo Agro Supply Chain to Global Ocean Ports' : 'Rantai Pasok Agro Dataran Tinggi Gayo ke Pasar Internasional' }}</span>
                 </div>
                 <div>
-                    &copy; 2026 AgriLian Logistics Systems &bull; <span class="text-slate-600 font-medium">Enterprise Multimodal Visibility</span>
+                    &copy; 2026 AgriLian Logistics Systems &bull; <span class="text-slate-600 font-medium">{{ app()->getLocale() === 'en' ? 'Enterprise Multimodal Visibility' : 'Visibilitas Ekspor Multimoda Terpadu' }}</span>
                 </div>
             </div>
         </footer>

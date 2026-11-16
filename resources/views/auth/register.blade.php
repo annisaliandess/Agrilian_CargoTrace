@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Daftar Akun Baru — AgriLian')
+@php
+    $isEn = app()->getLocale() === 'en';
+@endphp
+
+@section('title', $isEn ? 'Create New Account — AgriLian' : 'Daftar Akun Baru — AgriLian')
 
 @section('content')
 <div class="max-w-md mx-auto my-10 px-4">
@@ -13,8 +17,12 @@
                 <img src="{{ asset('images/logo.jpg') }}" alt="AgriLian Logo" class="w-full h-full object-contain">
             </div>
             
-            <h1 class="text-xl font-bold text-slate-900 tracking-tight">Pendaftaran Akun Baru</h1>
-            <p class="text-xs text-forest-700 font-semibold mt-1 font-mono">AgriLian CargoTrace Ekosistem</p>
+            <h1 class="text-xl font-bold text-slate-900 tracking-tight">
+                {{ $isEn ? 'Register New Account' : 'Pendaftaran Akun Baru' }}
+            </h1>
+            <p class="text-xs text-forest-700 font-semibold mt-1 font-mono">
+                {{ $isEn ? 'AgriLian CargoTrace Ecosystem' : 'Ekosistem AgriLian CargoTrace' }}
+            </p>
         </div>
 
         <!-- Form Body -->
@@ -30,41 +38,55 @@
             <form action="{{ route('register.post') }}" method="POST" class="space-y-4">
                 @csrf
                 <div>
-                    <label for="name" class="block text-xs font-semibold text-slate-700 mb-1.5">Nama Lengkap / Perusahaan</label>
-                    <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="Contoh: CV Gayo Highland Mandiri" required autofocus
+                    <label for="name" class="block text-xs font-semibold text-slate-700 mb-1.5">
+                        {{ $isEn ? 'Full Name / Company Entity' : 'Nama Lengkap / Perusahaan' }}
+                    </label>
+                    <input type="text" id="name" name="name" value="{{ old('name') }}" 
+                           placeholder="{{ $isEn ? 'e.g. CV Gayo Highland Mandiri' : 'Contoh: CV Gayo Highland Mandiri' }}" required autofocus
                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-transparent transition-all">
                 </div>
 
                 <div>
-                    <label for="email" class="block text-xs font-semibold text-slate-700 mb-1.5">Alamat Email</label>
-                    <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="alamat email aktif..." required
+                    <label for="email" class="block text-xs font-semibold text-slate-700 mb-1.5">
+                        {{ $isEn ? 'Active Email Address' : 'Alamat Email Aktif' }}
+                    </label>
+                    <input type="email" id="email" name="email" value="{{ old('email') }}" 
+                           placeholder="{{ $isEn ? 'e.g. buyer@agrilian.com' : 'alamat email aktif...' }}" required
                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-transparent transition-all">
                 </div>
 
                 <div>
-                    <label for="role" class="block text-xs font-semibold text-slate-700 mb-1.5">Peran / Kategori Akun</label>
+                    <label for="role" class="block text-xs font-semibold text-slate-700 mb-1.5">
+                        {{ $isEn ? 'Account Category / Role' : 'Peran / Kategori Akun' }}
+                    </label>
                     <select id="role" name="role" required
                             class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-transparent transition-all bg-white">
-                        <option value="customer" selected>Mitra Eksportir / Buyer Kopi & Agro</option>
-                        <option value="operator">Staf Operasional Gudang & Logistik</option>
+                        <option value="customer" selected>{{ $isEn ? 'Export Partner / Coffee & Agro Buyer' : 'Mitra Eksportir / Buyer Kopi & Agro' }}</option>
+                        <option value="operator">{{ $isEn ? 'Warehouse & Logistics Operations Staff' : 'Staf Operasional Gudang & Logistik' }}</option>
                     </select>
                 </div>
 
                 <div>
-                    <label for="password" class="block text-xs font-semibold text-slate-700 mb-1.5">Kata Sandi (Minimal 8 Karakter)</label>
-                    <input type="password" id="password" name="password" placeholder="buat kata sandi baru..." required
+                    <label for="password" class="block text-xs font-semibold text-slate-700 mb-1.5">
+                        {{ $isEn ? 'Password (Minimum 8 Characters)' : 'Kata Sandi (Minimal 8 Karakter)' }}
+                    </label>
+                    <input type="password" id="password" name="password" 
+                           placeholder="{{ $isEn ? 'create a strong password...' : 'buat kata sandi baru...' }}" required
                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-mono font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-transparent transition-all">
                 </div>
 
                 <div>
-                    <label for="password_confirmation" class="block text-xs font-semibold text-slate-700 mb-1.5">Konfirmasi Kata Sandi</label>
-                    <input type="password" id="password_confirmation" name="password_confirmation" placeholder="ulangi kata sandi..." required
+                    <label for="password_confirmation" class="block text-xs font-semibold text-slate-700 mb-1.5">
+                        {{ $isEn ? 'Confirm Password' : 'Konfirmasi Kata Sandi' }}
+                    </label>
+                    <input type="password" id="password_confirmation" name="password_confirmation" 
+                           placeholder="{{ $isEn ? 'repeat your password...' : 'ulangi kata sandi...' }}" required
                            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-mono font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-forest-600 focus:border-transparent transition-all">
                 </div>
 
                 <!-- Tombol Submit -->
                 <button type="submit" class="btn-brand-accent w-full py-2.5 px-4 rounded-xl text-xs font-bold cursor-pointer transition-transform active:scale-[0.98] shadow-sm flex items-center justify-center gap-2 mt-2">
-                    <span>Daftar Akun Baru</span>
+                    <span>{{ $isEn ? 'Register Account' : 'Daftar Akun Baru' }}</span>
                     <svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
                     </svg>
@@ -73,9 +95,9 @@
 
             <!-- Tautan ke Halaman Login -->
             <div class="pt-3 border-t border-slate-100 text-center text-xs text-slate-500">
-                Sudah memiliki akun? 
+                {{ $isEn ? 'Already have an account?' : 'Sudah memiliki akun?' }}
                 <a href="{{ route('login') }}" class="font-bold text-forest-700 hover:text-forest-900 transition-colors">
-                    Masuk di sini
+                    {{ $isEn ? 'Sign in here' : 'Masuk di sini' }}
                 </a>
             </div>
         </div>

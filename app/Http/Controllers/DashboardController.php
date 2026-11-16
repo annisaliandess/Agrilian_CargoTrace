@@ -59,10 +59,14 @@ class DashboardController extends Controller
         $totalWeightKg = (clone $query)->sum('weight_kg');
         $totalValuation = $currencyService->convertIdr($totalWeightKg > 0 ? ($totalWeightKg * 115000) : 2185000000);
 
+        $isEn = app()->getLocale() === 'en';
+
         // Chart.js Datasets Differentiated by Role
         if ($user->isCustomer()) {
             // Customer Charts: Personal Cargo Focus
-            $doughnutLabels = ['Dalam Perjalanan (In Transit)', 'Sudah Tiba (Delivered)', 'Menunggu Jadwal (Booked)'];
+            $doughnutLabels = $isEn
+                ? ['In Transit', 'Delivered Safely', 'Scheduled / Booked']
+                : ['Dalam Perjalanan', 'Sudah Tiba di Tujuan', 'Menunggu Terjadwal'];
             $doughnutData = [
                 (clone $query)->where('status', 'IN_TRANSIT')->count(),
                 (clone $query)->where('status', 'DELIVERED')->count(),
@@ -72,10 +76,14 @@ class DashboardController extends Controller
             $customerShipments = (clone $query)->latest()->take(6)->get();
             $barLabels = $customerShipments->pluck('tracking_number')->toArray();
             $barData = $customerShipments->pluck('weight_kg')->map(fn($w) => (float) $w)->toArray();
-            $barTitle = 'Volume Kargo per Nomor Resi (kg)';
+            $barTitle = $isEn
+                ? 'Consignment Cargo Volume by Waybill (kg)'
+                : 'Volume Kargo per Nomor Resi (kg)';
         } else {
             // Admin & Operator Charts: Global Logistics & Fleet Monitoring
-            $doughnutLabels = ['Booked / Scheduled', 'Picked Up', 'In Transit', 'Delivered'];
+            $doughnutLabels = $isEn
+                ? ['Scheduled (Booked)', 'Picked Up', 'In Transit', 'Delivered Safely']
+                : ['Terjadwal (Booked)', 'Dijemput Lapangan', 'Dalam Perjalanan', 'Terkirim Sukses'];
             $doughnutData = [
                 Shipment::where('status', 'BOOKED')->count(),
                 Shipment::where('status', 'PICKED_UP')->count(),
@@ -83,13 +91,17 @@ class DashboardController extends Controller
                 Shipment::where('status', 'DELIVERED')->count(),
             ];
 
-            $barLabels = ['Truk Dataran Tinggi (Road)', 'Kapal Samudera (Sea)', 'Kargo Udara (Air)'];
+            $barLabels = $isEn
+                ? ['Highland Trucking (Inland)', 'Ocean Liner (Sea)', 'Air Cargo (Air)']
+                : ['Truk Dataran Tinggi (Darat)', 'Kapal Samudera (Laut)', 'Pesawat Kargo (Udara)'];
             $barData = [
                 (float) Shipment::whereHas('carrier', fn($q) => $q->where('transport_mode', 'TRUCK'))->sum('weight_kg'),
                 (float) Shipment::whereHas('carrier', fn($q) => $q->where('transport_mode', 'SEA'))->sum('weight_kg'),
                 (float) Shipment::whereHas('carrier', fn($q) => $q->where('transport_mode', 'AIR'))->sum('weight_kg'),
             ];
-            $barTitle = 'Total Volume Ekspor per Moda Transportasi (kg)';
+            $barTitle = $isEn
+                ? 'Total Export Tonnage by Transport Mode (kg)'
+                : 'Total Volume Ekspor per Moda Transportasi (kg)';
         }
 
         return view('dashboard.index', compact(
@@ -119,7 +131,10 @@ class DashboardController extends Controller
             ->where('is_read', false)
             ->update(['is_read' => true, 'read_at' => now()]);
 
-        return back()->with('success', 'Semua notifikasi berhasil ditandai sudah dibaca.');
+        $msg = app()->getLocale() === 'en' 
+            ? 'All notifications have been marked as read.' 
+            : 'Semua notifikasi berhasil ditandai sudah dibaca.';
+        return back()->with('success', $msg);
     }
 
     public function commodities(CurrencyService $currencyService, WeatherService $weatherService)

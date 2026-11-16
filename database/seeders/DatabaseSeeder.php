@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
     {
         // 1. Seed Users with RBAC
         $admin = User::firstOrCreate(
-            ['email' => 'admin@cargotrace.com'],
+            ['email' => 'admin@agrilian.com'],
             [
                 'name' => 'Ayaa Liandes (Admin)',
                 'password' => Hash::make('password123'),
@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         );
 
         $operatorGayo = User::firstOrCreate(
-            ['email' => 'operator@cargotrace.com'],
+            ['email' => 'operator@agrilian.com'],
             [
                 'name' => 'Reza Pratama (Gayo Dispatcher)',
                 'password' => Hash::make('password123'),
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
         );
 
         $operatorBelawan = User::firstOrCreate(
-            ['email' => 'operator.belawan@cargotrace.com'],
+            ['email' => 'operator.belawan@agrilian.com'],
             [
                 'name' => 'Budi Santoso (Belawan Port Ops)',
                 'password' => Hash::make('password123'),

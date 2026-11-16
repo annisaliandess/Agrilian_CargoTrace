@@ -1,9 +1,12 @@
+@php
+    $isEn = app()->getLocale() === 'en';
+@endphp
 <!DOCTYPE html>
-<html lang="id">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Halaman Tidak Ditemukan &bull; AgriLian CargoTrace</title>
+    <title>{{ $isEn ? '404 - Page Not Found • AgriLian CargoTrace' : '404 - Halaman Tidak Ditemukan • AgriLian CargoTrace' }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -26,7 +29,7 @@
             </div>
         </div>
         <a href="/" class="px-3.5 py-1.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition-colors">
-            Beranda
+            {{ $isEn ? 'Home' : 'Beranda' }}
         </a>
     </header>
 
@@ -38,19 +41,23 @@
             </div>
 
             <div>
-                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest font-mono">Tautan Tidak Ditemukan</span>
-                <h1 class="text-xl font-bold text-slate-900 mt-1">Koordinat Kargo Tidak Terdaftar</h1>
+                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest font-mono">
+                    {{ $isEn ? 'Resource Not Found' : 'Tautan Tidak Ditemukan' }}
+                </span>
+                <h1 class="text-xl font-bold text-slate-900 mt-1">
+                    {{ $isEn ? 'Cargo Coordinates Unregistered' : 'Koordinat Kargo Tidak Terdaftar' }}
+                </h1>
                 <p class="text-xs text-slate-500 mt-2 leading-relaxed">
-                    Halaman atau data manifes yang Anda tuju tidak ditemukan di server logistik AgriLian CargoTrace. Nomor resi atau tautan mungkin salah.
+                    {{ $isEn ? 'The page or manifest record you are looking for was not found on the AgriLian CargoTrace logistics server. The tracking number or link may be invalid.' : 'Halaman atau data manifes yang Anda tuju tidak ditemukan di server logistik AgriLian CargoTrace. Nomor resi atau tautan mungkin salah.' }}
                 </p>
             </div>
 
             <div class="pt-2 flex flex-col sm:flex-row gap-2 justify-center">
                 <a href="/dashboard" class="px-5 py-2.5 rounded-xl bg-[#051F20] hover:bg-[#0B2B26] text-white text-xs font-bold transition-all shadow-md">
-                    Kembali ke Dashboard
+                    {{ $isEn ? 'Back to Dashboard' : 'Kembali ke Dasbor' }}
                 </a>
                 <a href="/track" class="px-5 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-bold transition-all">
-                    Lacak Resi Kargo
+                    {{ $isEn ? 'Track Waybill' : 'Lacak Resi Kargo' }}
                 </a>
             </div>
         </div>
@@ -58,7 +65,7 @@
 
     <!-- Footer -->
     <footer class="p-6 text-center text-xs text-slate-400 font-mono">
-        &copy; 2026 AgriLian Logistics Systems &bull; Highland Agro-Export Visibility
+        &copy; 2026 AgriLian Logistics Systems &bull; {{ $isEn ? 'Highland Agro-Export Visibility' : 'Visibilitas Ekspor Dataran Tinggi' }}
     </footer>
 
 </body>

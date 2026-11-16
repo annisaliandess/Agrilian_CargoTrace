@@ -22,7 +22,7 @@ class AuthAndApiTest extends TestCase
 
         $this->admin = User::create([
             'name' => 'Ayaa Liandes (Admin)',
-            'email' => 'admin@cargotrace.com',
+            'email' => 'admin@agrilian.com',
             'password' => bcrypt('password123'),
             'role' => 'admin',
         ]);
@@ -31,7 +31,7 @@ class AuthAndApiTest extends TestCase
     public function test_user_can_login_via_web_form(): void
     {
         $response = $this->post('/login', [
-            'email' => 'admin@cargotrace.com',
+            'email' => 'admin@agrilian.com',
             'password' => 'password123',
         ]);
 
@@ -60,7 +60,7 @@ class AuthAndApiTest extends TestCase
     public function test_api_login_returns_sanctum_bearer_token(): void
     {
         $response = $this->postJson('/api/login', [
-            'email' => 'admin@cargotrace.com',
+            'email' => 'admin@agrilian.com',
             'password' => 'password123',
         ]);
 
@@ -80,13 +80,13 @@ class AuthAndApiTest extends TestCase
             ->getJson('/api/me');
 
         $meResponse->assertStatus(200)
-            ->assertJsonPath('user.email', 'admin@cargotrace.com');
+            ->assertJsonPath('user.email', 'admin@agrilian.com');
     }
 
     public function test_api_login_fails_with_invalid_credentials(): void
     {
         $response = $this->postJson('/api/login', [
-            'email' => 'admin@cargotrace.com',
+            'email' => 'admin@agrilian.com',
             'password' => 'wrongpassword',
         ]);
 
