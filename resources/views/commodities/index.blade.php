@@ -299,13 +299,13 @@
     <div class="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 sm:p-8 space-y-6">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
             <div>
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-sky-50 text-sky-800 border border-sky-200 uppercase tracking-wider font-mono">
-                    Arsitektur Rantai Pasok Terpadu
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-forest-50 text-forest-800 border border-forest-200 uppercase tracking-wider font-mono">
+                    Koridor Ekspor Multimoda Terpadu
                 </span>
-                <h3 class="text-lg font-bold text-slate-900 mt-1">Mengapa Sistem Membutuhkan Armada Kapal Samudera?</h3>
-                <p class="text-xs text-slate-500 mt-0.5">Penjelasan operasional logistik multimodal dari pegunungan landlocked ke pasar ekspor dunia</p>
+                <h3 class="text-lg font-bold text-slate-900 mt-1">Alur Rantai Pasok End-to-End (Multimodal Corridor)</h3>
+                <p class="text-xs text-slate-500 mt-0.5">Konektivitas seamless dari sentra perkebunan dataran tinggi Gayo menuju pelabuhan singgah dan pasar ekspor global</p>
             </div>
-            <span class="text-xs text-slate-400 font-mono hidden sm:inline">Koridor Logistik 3 Tahap</span>
+            <span class="text-xs text-slate-400 font-mono hidden sm:inline">3-Stage Multimodal Transit</span>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -355,7 +355,7 @@
                     <span class="text-[10px] font-bold text-forest-200 uppercase tracking-wider font-mono">Jalur Laut Internasional</span>
                     <h4 class="text-sm font-bold text-white mt-1">Armada Kapal Samudera (Ocean Vessels)</h4>
                     <p class="text-xs text-slate-200 mt-2 leading-relaxed">
-                        Inilah fungsi armada kapal! Kapal kontainer berlayar menyeberangi Selat Malaka menuju pelabuhan singgah (Singapura) hingga berlayar lintas benua menuju <strong>Pelabuhan Rotterdam (Eropa)</strong>. Tanpa armada kapal, komoditas Gayo tidak akan bisa menjangkau pasar ekspor dunia.
+                        Kapal kontainer samudera memfasilitasi pelayaran lintas benua melintasi Selat Malaka menuju pelabuhan singgah (Singapura) hingga berlabuh di <strong>Pelabuhan Rotterdam (Eropa)</strong>. Menjamin pengangkutan ribuan ton komoditas ekspor secara aman, terjadwal, dan berbiaya efisien.
                     </p>
                 </div>
                 <div class="mt-4 pt-3 border-t border-white/10 text-[11px] font-mono text-forest-200 flex justify-between">
