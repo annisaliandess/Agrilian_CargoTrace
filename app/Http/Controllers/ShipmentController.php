@@ -131,8 +131,12 @@ class ShipmentController extends Controller
             ], 201);
         }
 
+        $msg = app()->getLocale() === 'en'
+            ? "Export consignment {$shipment->tracking_number} created successfully."
+            : "Manifes ekspor {$shipment->tracking_number} berhasil diterbitkan.";
+
         return redirect()->route('shipments.show', $shipment->id)
-            ->with('success', "Shipment {$shipment->tracking_number} created successfully.");
+            ->with('success', $msg);
     }
 
     /**
@@ -234,8 +238,19 @@ class ShipmentController extends Controller
                 ]);
             }
 
+            $statusLabel = match($validated['status']) {
+                'IN_TRANSIT' => app()->getLocale() === 'en' ? 'In Transit' : 'Dalam Perjalanan',
+                'DELIVERED' => app()->getLocale() === 'en' ? 'Delivered' : 'Terkirim',
+                'DELAYED' => app()->getLocale() === 'en' ? 'Delayed' : 'Tertunda',
+                'CUSTOMS_HOLD' => app()->getLocale() === 'en' ? 'Customs Hold' : 'Tertahan Bea Cukai',
+                default => $validated['status'],
+            };
+            $msg = app()->getLocale() === 'en'
+                ? "Consignment status successfully updated to {$statusLabel}."
+                : "Status kargo berhasil diperbarui menjadi {$statusLabel}.";
+
             return redirect()->route('shipments.show', $shipment->id)
-                ->with('success', "Status updated to {$validated['status']}.");
+                ->with('success', $msg);
         } catch (InvalidArgumentException $e) {
             if ($request->wantsJson()) {
                 return response()->json(['success' => false, 'message' => $e->getMessage()], 422);

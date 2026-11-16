@@ -48,8 +48,20 @@ class ExceptionController extends Controller
             ], 201);
         }
 
+        $typeLabel = match($validated['exception_type']) {
+            'DAMAGED' => app()->getLocale() === 'en' ? 'Cargo Damage' : 'Kerusakan Barang',
+            'WEATHER_DELAY' => app()->getLocale() === 'en' ? 'Weather Delay' : 'Kendala Cuaca Buruk',
+            'CUSTOMS_HOLD' => app()->getLocale() === 'en' ? 'Customs Hold' : 'Pemeriksaan Bea Cukai',
+            'PORT_CONGESTION' => app()->getLocale() === 'en' ? 'Port Congestion' : 'Kepadatan Pelabuhan',
+            default => $validated['exception_type'],
+        };
+
+        $msg = app()->getLocale() === 'en'
+            ? "Exception report [{$typeLabel}] recorded successfully. Consignment status under investigation."
+            : "Laporan kendala [{$typeLabel}] berhasil dicatat. Status kargo dalam penanganan.";
+
         return redirect()->route('shipments.show', $shipment->id)
-            ->with('warning', "Laporan kendala [{$validated['exception_type']}] berhasil dicatat. Status kargo dalam investigasi.");
+            ->with('warning', $msg);
     }
 
     /**
@@ -78,7 +90,11 @@ class ExceptionController extends Controller
             ]);
         }
 
+        $msg = app()->getLocale() === 'en'
+            ? 'Exception marked as RESOLVED successfully.'
+            : 'Kendala operasional kargo berhasil diselesaikan (Tuntas).';
+
         return redirect()->route('shipments.show', $exception->shipment_id)
-            ->with('success', 'Exception marked as RESOLVED.');
+            ->with('success', $msg);
     }
 }

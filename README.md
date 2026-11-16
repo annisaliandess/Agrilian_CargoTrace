@@ -1,12 +1,13 @@
 # CargoTrace AgriLian 🌿🚢
 ### Highland Agro-Export Visibility Platform
 
+[![CI](https://github.com/annisaliandess/Agrilian_CargoTrace/actions/workflows/laravel.yml/badge.svg)](https://github.com/annisaliandess/Agrilian_CargoTrace/actions/workflows/laravel.yml)
 [![Laravel 12](https://img.shields.io/badge/Laravel-12.x-red.svg)](https://laravel.com)
 [![PHP 8.3](https://img.shields.io/badge/PHP-8.3-blue.svg)](https://php.net)
 [![Tailwind CSS 4](https://img.shields.io/badge/TailwindCSS-4.x-38bdf8.svg)](https://tailwindcss.com)
 [![Leaflet.js](https://img.shields.io/badge/Maps-Leaflet.js-199900.svg)](https://leafletjs.com)
 [![Sanctum API](https://img.shields.io/badge/API-Laravel_Sanctum-green.svg)](https://laravel.com/docs/sanctum)
-[![Tests Passing](https://img.shields.io/badge/Tests-13%20Passed-brightgreen.svg)]()
+[![Tests Passing](https://img.shields.io/badge/Tests-18%20Passed%20(75%20Assertions)-brightgreen.svg)]()
 
 > **Final Project (UAS) - Web Programming 2**  
 > **Author:** Annisa Liandes (Ayaa)  

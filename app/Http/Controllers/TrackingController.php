@@ -98,7 +98,11 @@ class TrackingController extends Controller
             ], 201);
         }
 
+        $msg = app()->getLocale() === 'en'
+            ? 'New tracking checkpoint milestone recorded successfully.'
+            : 'Titik pos pelacakan kargo (milestone) berhasil dicatat.';
+
         return redirect()->route('shipments.show', $shipment->id)
-            ->with('success', 'New tracking checkpoint milestone recorded.');
+            ->with('success', $msg);
     }
 }
