@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buku Panduan & Alur Sistem AgriLian CargoTrace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 1.5cm 1.5cm 1.5cm 1.5cm;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #0f172a;
+            background: #ffffff;
+            line-height: 1.6;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .page-break {
+            page-break-after: always;
+            break-after: page;
+        }
+        .avoid-break {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+        .forest-gradient {
+            background: linear-gradient(135deg, #051F20 0%, #0B2B26 60%, #163832 100%);
+        }
+    </style>
+</head>
+<body class="text-slate-800 text-[13px] leading-relaxed">
+
+    <!-- ======================================================== -->
+    <!-- HALAMAN 1: COVER RESMI LAPORAN UAS                        -->
+    <!-- ======================================================== -->
+    <div class="page-break flex flex-col justify-between min-h-[900px] p-6 border-4 border-[#0B2B26] rounded-3xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-[#DAF1DE]/40 rounded-full blur-3xl -z-10"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-[#8EB69B]/30 rounded-full blur-3xl -z-10"></div>
+
+        <!-- Header Atas -->
+        <div class="flex items-center justify-between border-b-2 border-[#0B2B26] pb-4">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl bg-[#051F20] text-white flex items-center justify-center font-bold text-lg font-mono">
+                    AG
+                </div>
+                <div>
+                    <span class="text-sm font-black text-slate-900 uppercase tracking-tight block">AgriLian CargoTrace</span>
+                    <span class="text-[10px] font-semibold text-slate-500 uppercase tracking-wider font-mono">Highland Agro-Export Visibility Platform</span>
+                </div>
+            </div>
+            <div class="text-right font-mono text-[10px] text-slate-500">
+                <span>DOKUMEN RESMI UAS</span><br>
+                <strong class="text-slate-800">PEMROGRAMAN WEB 2</strong>
+            </div>
+        </div>
+
+        <!-- Judul Utama -->
+        <div class="my-auto py-10 text-center space-y-4">
+            <div class="inline-block px-4 py-1.5 rounded-full bg-[#DAF1DE] text-[#0B2B26] font-mono text-[11px] font-bold tracking-widest uppercase border border-[#8EB69B]">
+                Buku Panduan Arsitektur & Alur Operasional
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-black text-[#051F20] tracking-tight leading-tight max-w-2xl mx-auto">
+                Sistem Pelacakan Logistik Ekspor Multimoda Komoditas Dataran Tinggi Gayo
+            </h1>
+            <p class="text-sm text-slate-600 max-w-xl mx-auto leading-relaxed">
+                Penjelasan komprehensif alur sistem, pembagian hak akses (*Role-Based Access Control*), mitigasi cuaca telemetri, dan integrasi rantai pasok dari Takengon ke Pelabuhan Rotterdam.
+            </p>
+        </div>
+
+        <!-- Profil Mahasiswa / Pengembang -->
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-3 avoid-break">
+            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider font-mono">Informasi Pengembang & Akademik:</div>
+            <div class="grid grid-cols-2 gap-4 text-xs">
+                <div>
+                    <span class="text-slate-500 block">Nama Mahasiswa:</span>
+                    <strong class="text-slate-900 text-sm">Annisa Liandes (Ayaa)</strong>
+                </div>
+                <div>
+                    <span class="text-slate-500 block">Nomor Induk Mahasiswa (NIM):</span>
+                    <strong class="text-slate-900 text-sm font-mono">250180123</strong>
+                </div>
+                <div>
+                    <span class="text-slate-500 block">Program Studi & Semester:</span>
+                    <strong class="text-slate-900">Teknik Informatika &bull; Semester 3</strong>
+                </div>
+                <div>
+                    <span class="text-slate-500 block">Institusi Pendidikan:</span>
+                    <strong class="text-slate-900">Universitas Malikussaleh (Unimal), Aceh</strong>
+                </div>
+            </div>
+            <div class="pt-3 border-t border-slate-200 flex justify-between items-center text-[11px] font-mono text-slate-500">
+                <span>Teknologi: Laravel 12 &bull; PHP 8.3 &bull; Tailwind CSS &bull; MySQL</span>
+                <span>Tahun Akademik 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- HALAMAN 2: LATAR BELAKANG & CERITA BISNIS                -->
+    <!-- ======================================================== -->
+    <div class="page-break space-y-5 pt-4">
+        <div class="border-b border-slate-200 pb-2 flex justify-between items-end">
+            <h2 class="text-lg font-black text-[#051F20] uppercase tracking-tight">Bab 1: Latar Belakang & Konteks Nyata Sistem</h2>
+            <span class="text-[10px] font-mono text-slate-400">Halaman 2</span>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-emerald-50/60 border border-emerald-200 text-xs space-y-2">
+            <div class="font-bold text-[#0B2B26] text-sm flex items-center gap-2">
+                <span>💡</span> Inti Masalah yang Diselesaikan AgriLian CargoTrace:
+            </div>
+            <p class="text-slate-700 leading-relaxed">
+                Kopi Arabika Gayo adalah komoditas bernilai tinggi kelas dunia. Namun, <strong>Kabupaten Aceh Tengah (Takengon) berada di dataran tinggi pegunungan tanpa pelabuhan laut langsung</strong>. Untuk sampai ke pembeli di Eropa (Rotterdam), kargo harus menempuh jalur darat pegunungan yang rawan longsor, transit di Bireuen, masuk ke Pelabuhan Belawan (Medan), lalu berlayar dengan kapal kontainer samudera menyeberangi Selat Malaka. Sistem ini hadir agar <strong>setiap kilogram komoditas terpantau secara transparan, aman dari kerusakan cuaca, dan tervalidasi sertifikasinya</strong>.
+            </p>
+        </div>
+
+        <h3 class="text-sm font-bold text-slate-900 uppercase font-mono tracking-wider pt-2">1. Karakteristik Komoditas Unggulan</h3>
+        <div class="grid grid-cols-3 gap-3 text-xs avoid-break">
+            <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50 space-y-1">
+                <span class="text-[10px] font-bold text-emerald-700 uppercase font-mono">01. Kopi Arabika Gayo</span>
+                <div class="font-bold text-slate-900">Specialty Grade 1</div>
+                <p class="text-[11px] text-slate-600">Ditanam di ketinggian 1.400–1.600 mdpl. Wajib dijaga kadar airnya pada rentang 11.5% - 12% dalam kantong kedap udara <em>GrainPro</em>.</p>
+            </div>
+            <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50 space-y-1">
+                <span class="text-[10px] font-bold text-amber-700 uppercase font-mono">02. Kakao Dataran Tinggi</span>
+                <div class="font-bold text-slate-900">Fermentasi Organik AA</div>
+                <p class="text-[11px] text-slate-600">Biji kakao fermentasi 95% dengan kadar air 7.5% untuk bahan baku cokelat premium Eropa.</p>
+            </div>
+            <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50 space-y-1">
+                <span class="text-[10px] font-bold text-sky-700 uppercase font-mono">03. Minyak Nilam (Patchouli)</span>
+                <div class="font-bold text-slate-900">Minyak Atsiri Ekspor</div>
+                <p class="text-[11px] text-slate-600">Kadar Patchouli Alcohol > 32%, dikemas dalam drum baja bersegel pabean untuk industri parfum global.</p>
+            </div>
+        </div>
+
+        <h3 class="text-sm font-bold text-slate-900 uppercase font-mono tracking-wider pt-2">2. Koridor Ekspor Multimoda 3 Tahap</h3>
+        <div class="space-y-3 text-xs avoid-break">
+            <div class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 bg-white">
+                <div class="w-7 h-7 rounded-lg bg-[#051F20] text-white flex items-center justify-center font-bold text-xs shrink-0 font-mono">01</div>
+                <div>
+                    <strong class="text-slate-900">Tahap 1: Koridor Darat Pegunungan (Truk Berpendingin / Reefer Truck)</strong>
+                    <p class="text-slate-600 text-[11px] mt-0.5">Membawa kargo menuruni jalur pegunungan Takengon menuju Bireuen lalu berlanjut ke Medan (jarak ±420 km, durasi 12 - 16 jam). Truk berpendingin menjaga kelembaban agar biji kopi tidak berjamur.</p>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 bg-white">
+                <div class="w-7 h-7 rounded-lg bg-[#163832] text-white flex items-center justify-center font-bold text-xs shrink-0 font-mono">02</div>
+                <div>
+                    <strong class="text-slate-900">Tahap 2: Hub Konsolidasi Ekspor (Terminal Petikemas Pelabuhan Belawan)</strong>
+                    <p class="text-slate-600 text-[11px] mt-0.5">Kargo diperiksa oleh Karantina Pertanian (Fitosanitari) dan Bea Cukai. Kontainer dipasang segel resmi (*customs seal*) dan dicolokkan ke listrik (*reefer plug*) sebelum dimuat ke kapal.</p>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-3 p-3 rounded-xl border border-slate-200 bg-white">
+                <div class="w-7 h-7 rounded-lg bg-[#235347] text-white flex items-center justify-center font-bold text-xs shrink-0 font-mono">03</div>
+                <div>
+                    <strong class="text-slate-900">Tahap 3: Koridor Pelayaran Samudera (Armada Kapal Petikemas / Ocean Liners)</strong>
+                    <p class="text-slate-600 text-[11px] mt-0.5">Kapal kontainer berlayar menyeberangi Selat Malaka menuju pelabuhan singgah (Singapura), lalu menempuh pelayaran lintas benua selama 20–24 hari menuju <strong>Pelabuhan Rotterdam (Belanda)</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- HALAMAN 3: PEMBAGIAN ROLE & ALUR SISTEM                  -->
+    <!-- ======================================================== -->
+    <div class="page-break space-y-5 pt-4">
+        <div class="border-b border-slate-200 pb-2 flex justify-between items-end">
+            <h2 class="text-lg font-black text-[#051F20] uppercase tracking-tight">Bab 2: Pembagian Peran Pengguna (RBAC) & Fitur</h2>
+            <span class="text-[10px] font-mono text-slate-400">Halaman 3</span>
+        </div>
+
+        <p class="text-xs text-slate-600">
+            Sistem menggunakan sistem otorisasi ketat berbasis peran (*Role-Based Access Control*). Setiap peran memiliki batasan yang jelas agar keamanan data kargo terjamin:
+        </p>
+
+        <!-- Tabel Peran -->
+        <table class="w-full text-xs border border-slate-200 rounded-xl overflow-hidden avoid-break">
+            <thead class="bg-[#051F20] text-white font-mono text-[11px]">
+                <tr>
+                    <th class="py-2.5 px-3 text-left">Peran (Role)</th>
+                    <th class="py-2.5 px-3 text-left">Pengguna Contoh</th>
+                    <th class="py-2.5 px-3 text-left">Wewenang Utama</th>
+                    <th class="py-2.5 px-3 text-left">Batasan Sistem</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200">
+                <tr class="bg-slate-50">
+                    <td class="py-2.5 px-3 font-bold text-[#0B2B26]">Admin Sistem</td>
+                    <td class="py-2.5 px-3 font-mono text-[11px]">admin@agrilian.com<br><span class="text-slate-500">(Ayaa Liandes)</span></td>
+                    <td class="py-2.5 px-3">Melihat dasbor radar global, grafik status donat, grafik tonase bar, peta sebaran GIS, audit trail semua aktivitas.</td>
+                    <td class="py-2.5 px-3 text-slate-500">Akses tak terbatas (*Super Administrator*).</td>
+                </tr>
+                <tr>
+                    <td class="py-2.5 px-3 font-bold text-emerald-800">Operator Lapangan</td>
+                    <td class="py-2.5 px-3 font-mono text-[11px]">operator@agrilian.com<br><span class="text-slate-500">(Dispatcher Takengon)</span></td>
+                    <td class="py-2.5 px-3"><strong>Menerbitkan Manifes Baru</strong>, mencatat checkpoint perjalanan kargo, update status (Terkirim, Tertahan), lapor kendala cuaca.</td>
+                    <td class="py-2.5 px-3 text-slate-500">Hanya fokus pada operasional fisik pergerakan kargo.</td>
+                </tr>
+                <tr class="bg-slate-50">
+                    <td class="py-2.5 px-3 font-bold text-blue-800">Pelanggan / Buyer</td>
+                    <td class="py-2.5 px-3 font-mono text-[11px]">buyer.amsterdam@eurocoffee.nl<br><span class="text-slate-500">(Buyer Rotterdam)</span></td>
+                    <td class="py-2.5 px-3">Memantau kontainer miliknya, melihat grafik pesanan, <strong>Cetak Surat Jalan Fisik (A4)</strong>, <strong>Lapor Klaim / Retur Barang Rusak</strong>.</td>
+                    <td class="py-2.5 px-3 text-rose-700 font-semibold">TIDAK BISA buat manifes baru (403), tidak bisa intip data pesanan pelanggan lain.</td>
+                </tr>
+                <tr>
+                    <td class="py-2.5 px-3 font-bold text-slate-700">Tamu (*Guest*)</td>
+                    <td class="py-2.5 px-3 font-mono text-[11px]">Pengunjung Umum</td>
+                    <td class="py-2.5 px-3">Melihat Landing Page, form Cek Resi, dan Katalog Komoditas Gayo.</td>
+                    <td class="py-2.5 px-3 text-slate-500">Saat cek nomor resi, otomatis diarahkan login demi privasi kargo.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Alur Klaim / Pengembalian Barang -->
+        <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 text-xs space-y-2 avoid-break">
+            <div class="font-bold text-amber-900 text-sm flex items-center gap-1.5">
+                <span>📦</span> Alur Pengembalian Barang & Klaim Mutu untuk Pelanggan (Customer):
+            </div>
+            <p class="text-slate-700 leading-relaxed text-[11px]">
+                Ayaa sebelumnya bertanya: <em>"apakah pelanggan perlu buat manifes baru, atau pengembalian barang aja?"</em><br>
+                <strong>Jawabannya:</strong> Pelanggan tidak menerbitkan manifes ekspor, melainkan mengajukan <strong>Klaim Ketidaksesuaian Mutu (*Quality Dispute / Damage Claim*)</strong>. Alurnya:
+            </p>
+            <ol class="list-decimal list-inside space-y-1 text-[11px] text-slate-700 font-medium">
+                <li>Pelanggan login ke akunnya &rarr; Buka Dasbor Pelanggan &rarr; Lihat tabel pengiriman aktif.</li>
+                <li>Jika barang rusak atau kadar air tidak sesuai saat tiba, klik tombol <strong>"Lapor Klaim / Retur"</strong>.</li>
+                <li>Akan muncul <strong>Modal Pop-Up Web Resmi AgriLian</strong>. Pelanggan memilih tingkat urgensi (*LOW, MEDIUM, HIGH*) dan menuliskan detail kerusakan.</li>
+                <li>Sistem mencatat laporan kendala secara otomatis, menghitung ulang estimasi, dan memberi notifikasi ke Operator untuk menerbitkan resi retur baru jika disetujui.</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- HALAMAN 4: ARSITEKTUR TEKNOLOGI & FITUR UNGGULAN        -->
+    <!-- ======================================================== -->
+    <div class="page-break space-y-5 pt-4">
+        <div class="border-b border-slate-200 pb-2 flex justify-between items-end">
+            <h2 class="text-lg font-black text-[#051F20] uppercase tracking-tight">Bab 3: Arsitektur Rekayasa Web & Fitur Unggulan</h2>
+            <span class="text-[10px] font-mono text-slate-400">Halaman 4</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 text-xs">
+            <div class="p-4 rounded-2xl border border-slate-200 bg-white space-y-2">
+                <span class="text-[10px] font-bold text-emerald-800 uppercase font-mono">1. Pola Service Layer (Bukan Fat Controller)</span>
+                <p class="text-slate-600 text-[11px]">
+                    Logika bisnis tidak ditumpuk di controller, melainkan dipisah ke service khusus:
+                </p>
+                <ul class="list-disc list-inside text-[11px] text-slate-700 space-y-0.5">
+                    <li><strong>ShipmentService:</strong> Menjaga transisi status kargo agar tidak melompat ilegal (*state machine*).</li>
+                    <li><strong>TrackingService:</strong> Mencatat riwayat perjalanan kargo yang tidak bisa diubah (*immutable audit trail*).</li>
+                    <li><strong>EtaService:</strong> Menghitung keterlambatan otomatis jika truk terhenti.</li>
+                    <li><strong>CurrencyService:</strong> Mengambil kurs resmi Bank Sentral Eropa (ECB) secara *live*.</li>
+                </ul>
+            </div>
+
+            <div class="p-4 rounded-2xl border border-slate-200 bg-white space-y-2">
+                <span class="text-[10px] font-bold text-sky-800 uppercase font-mono">2. Peta Geospasial GIS (Leaflet.js)</span>
+                <p class="text-slate-600 text-[11px]">
+                    Mengapa menggunakan <strong>Leaflet.js</strong> ketimbang Google Maps?
+                </p>
+                <ul class="list-disc list-inside text-[11px] text-slate-700 space-y-0.5">
+                    <li><strong>Gratis & Bebas Lisensi:</strong> Menggunakan tiles OpenStreetMap tanpa perlu kartu kredit atau kuota tagihan Google.</li>
+                    <li><strong>Ringan & Cepat:</strong> Peta memuat koordinat rute Takengon &rarr; Bireuen &rarr; Belawan &rarr; Rotterdam dalam sekejap.</li>
+                    <li><strong>Interaktif:</strong> Marker memiliki warna status dinamis (Hijau = Normal, Kuning = Tertunda).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 text-xs avoid-break">
+            <div class="p-4 rounded-2xl border border-slate-200 bg-white space-y-2">
+                <span class="text-[10px] font-bold text-purple-800 uppercase font-mono">3. Sistem Pop-Up Toast Web Elegan</span>
+                <p class="text-slate-600 text-[11px]">
+                    Sistem tidak menggunakan alert kuno bawaan browser (`alert()`), melainkan komponen <strong>Floating Web Toast</strong> di pojok kanan atas dengan animasi halus, ikon status, tombol tutup `(X)`, dan otomatis menghilang dalam 5 detik.
+                </p>
+            </div>
+
+            <div class="p-4 rounded-2xl border border-slate-200 bg-white space-y-2">
+                <span class="text-[10px] font-bold text-amber-800 uppercase font-mono">4. Surat Jalan Fisik Cetak A4</span>
+                <p class="text-slate-600 text-[11px]">
+                    Halaman `/shipments/{id}/print` menghasilkan dokumen surat jalan resmi standar logistik internasional, lengkap dengan <strong>Barcode Code128</strong>, <strong>QR Code Lacak</strong>, tabel muatan, dan lembar tanda tangan pengesahan 3 pihak.
+                </p>
+            </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-900 text-white space-y-2 avoid-break font-mono text-[11px]">
+            <div class="text-emerald-400 font-bold uppercase text-xs">5. Otomatisasi Pengujian di GitHub (GitHub Actions CI)</div>
+            <p class="text-slate-300 text-[11px] leading-relaxed font-sans">
+                Setiap kali kode di-push ke GitHub, sistem otomatis menjalankan <strong>18 unit & feature tests (75 assertions)</strong> di server cloud Ubuntu PHP 8.3. Ini memastikan tidak ada error logika atau celah keamanan sebelum aplikasi dipresentasikan saat UAS.
+            </p>
+        </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- HALAMAN 5: PANDUAN MENJAWAB DOSEN SAAT UAS (CHEAT-SHEET) -->
+    <!-- ======================================================== -->
+    <div class="space-y-5 pt-4">
+        <div class="border-b border-slate-200 pb-2 flex justify-between items-end">
+            <h2 class="text-lg font-black text-[#051F20] uppercase tracking-tight">Bab 4: Panduan Tanya-Jawab Ujian UAS (Cheat-Sheet)</h2>
+            <span class="text-[10px] font-mono text-slate-400">Halaman 5</span>
+        </div>
+
+        <p class="text-xs text-slate-600">
+            Berikut adalah bocoran pertanyaan yang paling sering diajukan dosen penguji Pemrograman Web dan cara menjawabnya dengan tenang, percaya diri, dan berbobot:
+        </p>
+
+        <div class="space-y-3 text-xs">
+            <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50 space-y-1 avoid-break">
+                <strong class="text-slate-900 block font-bold">1. Dosen: "Mengapa sistem ini dinamakan Logistik Multimoda? Kenapa tidak pakai truk saja sampai selesai?"</strong>
+                <p class="text-slate-700 text-[11px] leading-relaxed">
+                    <strong>Jawaban Ayaa:</strong> <em>"Karena komoditas ini ditujukan untuk ekspor lintas benua ke Eropa (Rotterdam). Takengon berada di dataran tinggi pegunungan tengah Aceh yang tidak punya laut, sehingga tahap pertama wajib menggunakan truk berpendingin (jalur darat). Namun truk tidak bisa menyeberangi samudra, sehingga di Pelabuhan Belawan muatan dialihkan ke kapal kontainer samudera (jalur laut). Perpindahan dari moda darat ke moda laut inilah yang disebut logistik multimoda, Pak/Bu."</em>
+                </p>
+            </div>
+
+            <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50 space-y-1 avoid-break">
+                <strong class="text-slate-900 block font-bold">2. Dosen: "Bagaimana cara sistem Anda menjaga keamanan data pelanggan?"</strong>
+                <p class="text-slate-700 text-[11px] leading-relaxed">
+                    <strong>Jawaban Ayaa:</strong> <em>"Kami menerapkan Role-Based Access Control (RBAC). Pelanggan hanya bisa melihat manifes miliknya sendiri di database melalui query filter <code>where('customer_id', $user->id)</code>. Jika pelanggan sengaja mengetik nomor resi pelanggan lain atau membuka URL buat manifes, sistem langsung memblokir dengan kode HTTP 403 Forbidden."</em>
+                </p>
+            </div>
+
+            <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50 space-y-1 avoid-break">
+                <strong class="text-slate-900 block font-bold">3. Dosen: "Apa keunggulan arsitektur backend yang Anda gunakan?"</strong>
+                <p class="text-slate-700 text-[11px] leading-relaxed">
+                    <strong>Jawaban Ayaa:</strong> <em>"Saya memisahkan logika bisnis menggunakan Service Layer Pattern (seperti ShipmentService, EtaService, dan CurrencyService). Controller hanya bertugas menerima input dan mengembalikan response, sehingga kodingan sangat rapi, mudah dirawat, dan terbukti lolos 18 skenario Automated Unit Testing dengan 75 assertions di GitHub Actions."</em>
+                </p>
+            </div>
+
+            <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50 space-y-1 avoid-break">
+                <strong class="text-slate-900 block font-bold">4. Dosen: "Bagaimana sistem memperkirakan keterlambatan kargo?"</strong>
+                <p class="text-slate-700 text-[11px] leading-relaxed">
+                    <strong>Jawaban Ayaa:</strong> <em>"Sistem membandingkan waktu estimasi tiba (ETA) dengan jadwal resmi. Jika terjadi bencana cuaca atau antrean di pelabuhan, operator mencatat 'Exception', dan EtaService secara otomatis mengkalkulasi ulang durasi keterlambatan ke dalam kategori LOW, MEDIUM, atau HIGH, lalu memperbarui radar peta secara otomatis."</em>
+                </p>
+            </div>
+        </div>
+
+        <div class="pt-4 text-center text-slate-400 font-mono text-[10px] border-t border-slate-200">
+            &copy; 2026 AgriLian CargoTrace &bull; Dibuat dengan bangga oleh Annisa Liandes (NIM 250180123) untuk UAS Pemrograman Web 2 Universitas Malikussaleh
+        </div>
+    </div>
+
+</body>
+</html>
