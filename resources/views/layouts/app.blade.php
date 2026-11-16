@@ -74,6 +74,9 @@
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
+    <!-- Chart.js for High-Precision Analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
         .leaflet-container {
             font-family: inherit;
@@ -209,30 +212,28 @@
                     <nav class="space-y-1">
                         <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('dashboard') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
                             <svg class="w-4 h-4 {{ request()->routeIs('dashboard') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                            <span>Dashboard Radar</span>
+                            <span>{{ __('Dashboard Radar') }}</span>
                         </a>
 
                         <a href="{{ route('shipments.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.index') || request()->routeIs('shipments.show') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
                             <svg class="w-4 h-4 {{ request()->routeIs('shipments.index') || request()->routeIs('shipments.show') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-                            <span>Manifes Kargo (Roster)</span>
+                            <span>{{ __('Manifes Kargo') }}</span>
                         </a>
 
                         <a href="{{ route('track.public') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('track.public') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
                             <svg class="w-4 h-4 {{ request()->routeIs('track.public') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                            <span>Pelacakan & Cek Resi</span>
+                            <span>{{ __('Pelacakan & Cek Resi') }}</span>
                         </a>
 
                         <a href="{{ route('commodities.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('commodities.index') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
                             <svg class="w-4 h-4 {{ request()->routeIs('commodities.index') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-                            <span>Katalog Komoditas & Armada</span>
+                            <span>{{ __('Katalog Komoditas & Armada') }}</span>
                         </a>
 
-                        @if(auth()->user()->isAdmin() || auth()->user()->isOperator())
-                            <a href="{{ route('shipments.create') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.create') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
-                                <svg class="w-4 h-4 {{ request()->routeIs('shipments.create') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                                <span>Buat Manifest Baru</span>
-                            </a>
-                        @endif
+                        <a href="{{ route('shipments.create') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.create') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
+                            <svg class="w-4 h-4 {{ request()->routeIs('shipments.create') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            <span>{{ auth()->user()->isCustomer() ? __('Booking Pengiriman Kargo') : __('Buat Manifest Baru') }}</span>
+                        </a>
                     </nav>
                 </div>
 
@@ -324,14 +325,85 @@
                 <div class="flex items-center gap-3">
                     <!-- Quick Waybill Search Bar -->
                     <form action="{{ route('track.public') }}" method="GET" class="hidden md:flex items-center relative">
-                        <input type="text" name="tracking_number" placeholder="Cari Resi Kargo..."
-                               class="w-56 lg:w-64 pl-8 pr-3 py-1.5 rounded-xl border border-slate-200 text-xs font-mono font-medium focus:outline-none focus:ring-1 focus:ring-forest-600 bg-slate-50 focus:bg-white transition-all shadow-2xs">
+                        <input type="text" name="tracking_number" placeholder="{{ __('Cari Resi Kargo...') }}"
+                               class="w-48 lg:w-56 pl-8 pr-3 py-1.5 rounded-xl border border-slate-200 text-xs font-mono font-medium focus:outline-none focus:ring-1 focus:ring-forest-600 bg-slate-50 focus:bg-white transition-all shadow-2xs">
                         <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     </form>
 
+                    <!-- Language Switcher Pills (ID / EN) -->
+                    <div class="flex items-center bg-slate-100 rounded-lg p-0.5 border border-slate-200 text-[11px] font-bold font-mono">
+                        <a href="{{ route('lang.switch', 'id') }}" title="Bahasa Indonesia"
+                           class="px-2 py-1 rounded-md transition-all {{ app()->getLocale() === 'id' ? 'bg-[#0B2B26] text-white shadow-xs' : 'text-slate-600 hover:text-slate-900' }}">ID</a>
+                        <a href="{{ route('lang.switch', 'en') }}" title="English"
+                           class="px-2 py-1 rounded-md transition-all {{ app()->getLocale() === 'en' ? 'bg-[#0B2B26] text-white shadow-xs' : 'text-slate-600 hover:text-slate-900' }}">EN</a>
+                    </div>
+
+                    <!-- In-App Notification Bell & Modal Dropdown (Zero OS / Browser Alerts) -->
+                    @if(auth()->check())
+                        @php
+                            $navNotifications = \App\Models\Notification::where('user_id', auth()->id())
+                                ->latest()
+                                ->take(6)
+                                ->get();
+                            $navUnreadCount = \App\Models\Notification::where('user_id', auth()->id())
+                                ->where('is_read', false)
+                                ->count();
+                        @endphp
+                        <div class="relative">
+                            <button type="button" onclick="toggleNotificationDropdown()" id="notif-bell-btn" title="Notifikasi Sistem"
+                                    class="relative p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors border border-slate-200 cursor-pointer">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                                </svg>
+                                @if($navUnreadCount > 0)
+                                    <span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-rose-600 text-white text-[9px] font-extrabold flex items-center justify-center animate-pulse">
+                                        {{ $navUnreadCount }}
+                                    </span>
+                                @endif
+                            </button>
+
+                            <!-- Custom Notification Modal/Dropdown -->
+                            <div id="notif-dropdown" class="hidden absolute right-0 mt-2 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 overflow-hidden">
+                                <div class="p-3.5 bg-sidebar-gradient text-white flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-forest-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                                        <span class="text-xs font-bold font-mono tracking-tight">{{ __('Notifikasi') }} ({{ $navUnreadCount }})</span>
+                                    </div>
+                                    @if($navUnreadCount > 0)
+                                        <form action="{{ route('notifications.markRead') }}" method="POST" class="inline">
+                                            @csrf
+                                            <button type="submit" class="text-[10px] text-forest-200 hover:text-white underline font-medium cursor-pointer">
+                                                {{ __('Tandai Semua Sudah Dibaca') }}
+                                            </button>
+                                        </form>
+                                    @endif
+                                </div>
+
+                                <div class="max-h-80 overflow-y-auto divide-y divide-slate-100">
+                                    @forelse($navNotifications as $notif)
+                                        <div class="p-3 hover:bg-slate-50 transition-colors {{ !$notif->is_read ? 'bg-emerald-50/40' : '' }}">
+                                            <div class="flex items-start gap-2.5">
+                                                <span class="w-2 h-2 rounded-full mt-1.5 shrink-0 {{ !$notif->is_read ? 'bg-emerald-500 ring-4 ring-emerald-100' : 'bg-slate-300' }}"></span>
+                                                <div class="min-w-0 flex-1">
+                                                    <p class="text-xs font-bold text-slate-800 leading-snug">{{ $notif->title }}</p>
+                                                    <p class="text-[11px] text-slate-600 mt-0.5 leading-relaxed">{{ $notif->message }}</p>
+                                                    <span class="text-[9px] text-slate-400 mt-1 block font-mono">{{ $notif->created_at->diffForHumans() }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @empty
+                                        <div class="p-6 text-center text-xs text-slate-400">
+                                            {{ __('Belum ada notifikasi') }}
+                                        </div>
+                                    @endforelse
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
                     <a href="{{ route('track.public') }}" class="btn-brand-outline px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-2">
                         <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                        <span>Cek Resi</span>
+                        <span>{{ __('Cek Resi') }}</span>
                     </a>
                 </div>
             </header>
@@ -388,6 +460,21 @@
 
     <!-- Script Buka/Tutup Sidebar (Collapsible Persistence & Mobile Overlay) -->
     <script>
+        function toggleNotificationDropdown() {
+            const dropdown = document.getElementById('notif-dropdown');
+            if (dropdown) {
+                dropdown.classList.toggle('hidden');
+            }
+        }
+
+        document.addEventListener('click', function(e) {
+            const btn = document.getElementById('notif-bell-btn');
+            const dropdown = document.getElementById('notif-dropdown');
+            if (dropdown && btn && !btn.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.add('hidden');
+            }
+        });
+
         function toggleSidebar() {
             const sidebar = document.getElementById('app-sidebar');
             const mainContent = document.getElementById('main-content');

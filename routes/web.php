@@ -7,14 +7,20 @@ use App\Http\Controllers\ShipmentController;
 use App\Http\Controllers\TrackingController;
 use Illuminate\Support\Facades\Route;
 
-// Public Routes
-Route::get('/', function () {
-    return redirect()->route('track.public');
-})->name('home');
+// Public Routes (Unified Landing Page & Tracking)
+Route::get('/', [TrackingController::class, 'publicTrack'])->name('home');
 
 Route::get('/track/{tracking_number?}', [TrackingController::class, 'publicTrack'])
     ->middleware('throttle:60,1')
     ->name('track.public');
+
+// Language Switcher (ID & EN)
+Route::get('/lang/{locale}', function ($locale) {
+    if (in_array($locale, ['id', 'en'])) {
+        session(['locale' => $locale]);
+    }
+    return back();
+})->name('lang.switch');
 
 // Authentication Routes
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -25,7 +31,9 @@ Route::post('/logout', [AuthController::class, 'webLogout'])->name('logout');
 
 // Authenticated Application Routes
 Route::middleware('auth')->group(function () {
+    // Dashboard & Notifications
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::post('/notifications/mark-read', [DashboardController::class, 'markAllNotificationsRead'])->name('notifications.markRead');
     Route::get('/commodities', [DashboardController::class, 'commodities'])->name('commodities.index');
 
     // Shipments

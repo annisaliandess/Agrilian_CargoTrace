@@ -34,15 +34,20 @@
 
                 <!-- Action Buttons -->
                 <div class="flex flex-wrap items-center gap-3 shrink-0">
-                    <a href="{{ route('track.public') }}" target="_blank" class="px-4 py-2.5 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer">
+                    <a href="{{ route('track.public') }}" class="px-4 py-2.5 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer">
                         <svg class="w-4 h-4 text-forest-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                        <span>Halaman Cek Resi</span>
+                        <span>{{ __('Cek Resi') }}</span>
                     </a>
 
                     @if(auth()->user()->isAdmin() || auth()->user()->isOperator())
                         <a href="{{ route('shipments.create') }}" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-400 hover:bg-emerald-300 text-forest-950 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/40 cursor-pointer">
                             <svg class="w-4 h-4 text-forest-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-                            <span>Buat Manifest Baru</span>
+                            <span>{{ __('Buat Manifest Baru') }}</span>
+                        </a>
+                    @else
+                        <a href="{{ route('shipments.create') }}" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-400 hover:bg-emerald-300 text-forest-950 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/40 cursor-pointer">
+                            <svg class="w-4 h-4 text-forest-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                            <span>{{ __('Booking Pengiriman Kargo') }}</span>
                         </a>
                     @endif
                 </div>
@@ -107,6 +112,45 @@
             <span class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider font-mono">Peringatan Jalur</span>
             <div class="text-2xl sm:text-3xl font-extrabold text-amber-600 mt-1 font-mono">{{ $delayedCount }}</div>
             <span class="block text-[11px] text-slate-500 mt-1">Mitigasi Cuaca & Antrean Pelabuhan</span>
+        </div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- VISUAL DATA ANALYTICS & CHARTS (Chart.js Role-Adaptive)  -->
+    <!-- ======================================================== -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Chart 1: Status Distribution Doughnut Chart -->
+        <div class="bg-white rounded-3xl border border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)] p-6">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+                <div>
+                    <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                        <span>{{ auth()->user()->isCustomer() ? 'Status Pengiriman Kargo Saya' : 'Distribusi Status Kargo Global' }}</span>
+                    </h3>
+                    <p class="text-xs text-slate-500 mt-0.5">Komposisi kargo berdasarkan tahapan operasional logistik</p>
+                </div>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-forest-50 text-forest-800 border border-forest-200 font-bold">Chart.js Live</span>
+            </div>
+            <div class="mt-4 flex items-center justify-center relative" style="height: 220px;">
+                <canvas id="statusDoughnutChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Chart 2: Export Volume Bar Chart -->
+        <div class="bg-white rounded-3xl border border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)] p-6">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+                <div>
+                    <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-forest-600"></span>
+                        <span>{{ $barTitle }}</span>
+                    </h3>
+                    <p class="text-xs text-slate-500 mt-0.5">{{ auth()->user()->isCustomer() ? 'Perbandingan tonase kopi per resi aktif' : 'Total tonase komoditas yang bergerak per moda pengangkutan' }}</p>
+                </div>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-forest-50 text-forest-800 border border-forest-200 font-bold">Metric Tonnage</span>
+            </div>
+            <div class="mt-4 flex items-center justify-center relative" style="height: 220px;">
+                <canvas id="volumeBarChart"></canvas>
+            </div>
         </div>
     </div>
 
@@ -472,9 +516,21 @@
                                 @endif
                             </td>
                             <td class="py-3.5 text-right">
-                                <a href="{{ route('shipments.show', $s->id) }}" class="btn-brand-outline px-3 py-1 rounded-lg text-xs font-semibold inline-block">
-                                    Detail
-                                </a>
+                                <div class="flex items-center justify-end gap-1.5">
+                                    <a href="{{ route('shipments.show', $s->id) }}" class="btn-brand-outline px-2.5 py-1 rounded-lg text-xs font-semibold inline-block">
+                                        Detail
+                                    </a>
+                                    <a href="{{ route('shipments.print', $s->id) }}" target="_blank" class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 inline-flex items-center gap-1 cursor-pointer" title="Cetak Waybill A4">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                                        <span>Cetak</span>
+                                    </a>
+                                    @if(auth()->user()->isCustomer())
+                                        <button type="button" onclick="openClaimModal({{ $s->id }}, '{{ $s->tracking_number }}')" class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 inline-flex items-center gap-1 cursor-pointer" title="Lapor Ketidaksesuaian Mutu / Klaim Kerusakan">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                                            <span>Klaim</span>
+                                        </button>
+                                    @endif
+                                </div>
                             </td>
                         </tr>
                     @empty
@@ -487,11 +543,145 @@
         </div>
     </div>
 
+    <!-- Custom In-App Modal: Lapor Ketidaksesuaian / Klaim Kerusakan (Customer Self-Service) -->
+    <div id="claimModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center border border-rose-100 font-bold text-base">
+                        ⚠️
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-extrabold text-slate-900">Lapor Ketidaksesuaian Kargo</h3>
+                        <p class="text-xs text-slate-500">Nomor Resi: <span id="modalTrackingNumber" class="font-mono font-bold text-forest-700"></span></p>
+                    </div>
+                </div>
+                <button type="button" onclick="closeClaimModal()" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 cursor-pointer">✕</button>
+            </div>
+
+            <form id="claimForm" method="POST" action="" class="mt-5 space-y-4">
+                @csrf
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Jenis Kendala / Ketidaksesuaian</label>
+                    <select name="exception_type" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs font-semibold focus:ring-2 focus:ring-forest-600 bg-slate-50 focus:bg-white">
+                        <option value="DAMAGED">Kargo Rusak Fisik (Kemasan / Karung Basah / Rusak)</option>
+                        <option value="DOCUMENTATION_ISSUE">Ketidaksesuaian Mutu Kopi / Dokumen Karantina</option>
+                        <option value="MISROUTED">Salah Rute / Permohonan Retur Kontainer</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Tingkat Urgensi (Severity)</label>
+                    <select name="severity" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs font-semibold focus:ring-2 focus:ring-forest-600 bg-slate-50 focus:bg-white">
+                        <option value="MEDIUM">MEDIUM — Butuh Verifikasi / Uji Mutu Lapangan</option>
+                        <option value="HIGH">HIGH — Kritis / Stop Pengiriman Segera</option>
+                        <option value="LOW">LOW — Catatan Minor Evaluasi</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Rincian Masalah / Alasan Klaim</label>
+                    <textarea name="description" rows="3" required placeholder="Jelaskan ketidaksesuaian mutu, kadar air, atau kerusakan kargo yang ditemukan..."
+                              class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-forest-600 bg-slate-50 focus:bg-white"></textarea>
+                </div>
+
+                <div class="flex items-center justify-end gap-3 pt-3 border-t border-slate-100">
+                    <button type="button" onclick="closeClaimModal()" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 cursor-pointer">Batal</button>
+                    <button type="submit" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-rose-600 hover:bg-rose-700 text-white shadow-md shadow-rose-900/20 cursor-pointer">Kirim Laporan Klaim</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 @push('scripts')
 <script>
+    // In-App Claim Modal Script
+    function openClaimModal(shipmentId, trackingNumber) {
+        const modal = document.getElementById('claimModal');
+        const form = document.getElementById('claimForm');
+        const num = document.getElementById('modalTrackingNumber');
+        if (modal && form && num) {
+            num.innerText = trackingNumber;
+            form.action = `/shipments/${shipmentId}/exceptions`;
+            modal.classList.remove('hidden');
+        }
+    }
+    function closeClaimModal() {
+        const modal = document.getElementById('claimModal');
+        if (modal) modal.classList.add('hidden');
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
+        // 1. Chart.js: Role-Adaptive Status Doughnut Chart
+        const ctxDoughnut = document.getElementById('statusDoughnutChart');
+        if (ctxDoughnut) {
+            new Chart(ctxDoughnut, {
+                type: 'doughnut',
+                data: {
+                    labels: @json($doughnutLabels),
+                    datasets: [{
+                        data: @json($doughnutData),
+                        backgroundColor: ['#163832', '#235347', '#8EB69B', '#051F20'],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: { family: 'Plus Jakarta Sans', size: 11, weight: 'bold' },
+                                padding: 12,
+                                boxWidth: 12
+                            }
+                        }
+                    },
+                    cutout: '68%'
+                }
+            });
+        }
+
+        // 2. Chart.js: Role-Adaptive Volume Bar Chart
+        const ctxBar = document.getElementById('volumeBarChart');
+        if (ctxBar) {
+            new Chart(ctxBar, {
+                type: 'bar',
+                data: {
+                    labels: @json($barLabels),
+                    datasets: [{
+                        label: 'Volume (kg)',
+                        data: @json($barData),
+                        backgroundColor: '#163832',
+                        borderRadius: 8,
+                        maxBarThickness: 42
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: '#F1F5F9' },
+                            ticks: { font: { family: 'JetBrains Mono', size: 10 } }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { font: { family: 'Plus Jakarta Sans', size: 10, weight: '600' } }
+                        }
+                    }
+                }
+            });
+        }
+
+        // 3. Leaflet Interactive Multimodal Corridor Radar Map
         const mapEl = document.getElementById('overview-map');
         if (!mapEl) return;
 

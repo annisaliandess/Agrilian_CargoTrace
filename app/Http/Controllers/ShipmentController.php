@@ -77,9 +77,15 @@ class ShipmentController extends Controller
      */
     public function create()
     {
-        $this->authorizeOperatorOrAdmin();
+        $user = Auth::user();
+        if (!$user) {
+            abort(403);
+        }
 
-        $customers = User::where('role', 'customer')->get();
+        $customers = $user->isCustomer()
+            ? collect([$user])
+            : User::where('role', 'customer')->get();
+
         $carriers = Carrier::where('is_active', true)->get();
         $locations = Location::orderBy('name')->get();
 
@@ -91,7 +97,15 @@ class ShipmentController extends Controller
      */
     public function store(Request $request)
     {
-        $this->authorizeOperatorOrAdmin();
+        $user = Auth::user();
+        if (!$user) {
+            abort(403);
+        }
+
+        // If customer, auto-bind customer_id to self
+        if ($user->isCustomer()) {
+            $request->merge(['customer_id' => $user->id]);
+        }
 
         $validated = $request->validate([
             'customer_id' => 'required|exists:users,id',
@@ -111,7 +125,7 @@ class ShipmentController extends Controller
             'items.*.description' => 'nullable|string',
         ]);
 
-        $shipment = $this->shipmentService->createShipment($validated, Auth::user());
+        $shipment = $this->shipmentService->createShipment($validated, $user);
 
         if ($request->wantsJson()) {
             return response()->json([

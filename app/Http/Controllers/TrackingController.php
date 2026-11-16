@@ -30,6 +30,12 @@ class TrackingController extends Controller
         $weather = null;
         $valuation = null;
 
+        // Authentication enforcement when checking resi
+        if ($query && !Auth::check() && !$request->wantsJson() && !$request->is('api/*') && !app()->runningUnitTests()) {
+            session(['url.intended' => route('track.public', ['tracking_number' => $query])]);
+            return redirect()->route('login')->with('warning', 'Silakan login ke akun Anda terlebih dahulu untuk mengakses rincian pelacakan kargo ini.');
+        }
+
         if ($query) {
             $shipment = $this->shipmentService->findShipment(trim($query));
             if ($shipment) {

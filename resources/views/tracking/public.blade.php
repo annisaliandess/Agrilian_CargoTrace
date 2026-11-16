@@ -543,6 +543,111 @@
             }
         </script>
         @endpush
+    @else
+        <!-- ======================================================== -->
+        <!-- LANDING PAGE SHOWCASE & CORRIDORS (When no query active) -->
+        <!-- ======================================================== -->
+        <div class="space-y-8 mt-6">
+            <!-- 3 Highland Export Corridors & Visual Showcase -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1: Gayo Arabica Coffee -->
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-md transition-all group flex flex-col">
+                    <div class="relative h-48 overflow-hidden bg-slate-900">
+                        <img src="{{ asset('images/coffee.jpg') }}" alt="Kopi Arabika Gayo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+                            <span class="text-xs font-bold font-mono px-2.5 py-1 rounded-full bg-forest-800/80 backdrop-blur-xs border border-forest-500/30">Koridor 1 &bull; Kopi Gayo</span>
+                            <span class="text-[10px] font-semibold text-emerald-300">Takengon ➔ Rotterdam</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-sm font-extrabold text-slate-900 leading-snug">Specialty Arabica Gayo (Wine & FTO)</h3>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                Biji kopi hijau grade 1 tersertifikasi organik dikemas hermetik. Diangkut truk berpendingin melintasi jalur pegunungan menuju Pelabuhan Belawan untuk muat ke kapal samudera menuju Eropa.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                            <span class="text-slate-500 font-mono text-[11px]">Kadar Air: <strong>11.5% - 12.0%</strong></span>
+                            <span class="text-forest-700 font-bold font-mono">Maersk Line</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Butter Avocado & Fresh Produce -->
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-md transition-all group flex flex-col">
+                    <div class="relative h-48 overflow-hidden bg-slate-900">
+                        <img src="{{ asset('images/avocado.jpg') }}" alt="Alpukat Mentega Gayo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+                            <span class="text-xs font-bold font-mono px-2.5 py-1 rounded-full bg-forest-800/80 backdrop-blur-xs border border-forest-500/30">Koridor 2 &bull; Hortikultura</span>
+                            <span class="text-[10px] font-semibold text-emerald-300">Takengon ➔ Singapura</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-sm font-extrabold text-slate-900 leading-snug">Alpukat Mentega & Cabai Rawit Dataran Tinggi</h3>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                Komoditas hortikultura segar dengan rantai dingin (cold chain 8°C) untuk pasar premium Singapura dan Malaysia melalui hub kargo Kualanamu dan kapal cepat Selat Malaka.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                            <span class="text-slate-500 font-mono text-[11px]">Suhu Kontainer: <strong>7.5°C</strong></span>
+                            <span class="text-forest-700 font-bold font-mono">Evergreen Reefer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Multimodal Fleet & Seaport Terminal -->
+                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-md transition-all group flex flex-col">
+                    <div class="relative h-48 overflow-hidden bg-slate-900">
+                        <img src="{{ asset('images/multimodal-port.jpg') }}" alt="Terminal Pelabuhan Petikemas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+                            <span class="text-xs font-bold font-mono px-2.5 py-1 rounded-full bg-forest-800/80 backdrop-blur-xs border border-forest-500/30">Armada Multimoda</span>
+                            <span class="text-[10px] font-semibold text-emerald-300">Darat &bull; Laut &bull; Udara</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-sm font-extrabold text-slate-900 leading-snug">Jaringan Pengangkutan Terintegrasi</h3>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                Koneksi seamless armada truk ekspedisi Sumatra, kapal feeder kontainer Belawan, mother vessel lintas samudera, hingga kargo udara darurat untuk sampel lelang dunia.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                            <span class="text-slate-500 font-mono text-[11px]">Hub: <strong>6 Lokasi Strategis</strong></span>
+                            <a href="{{ route('commodities.index') }}" class="text-forest-700 font-bold hover:underline flex items-center gap-1 font-mono">
+                                <span>Lihat Katalog &rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Banner -->
+            <div class="bg-sidebar-gradient rounded-3xl p-6 sm:p-8 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl border border-forest-800">
+                <div class="max-w-xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-semibold bg-white/10 text-forest-200 border border-white/15 mb-3 font-mono">
+                        <span>✨ Standar Ekspor Global</span>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-extrabold text-white leading-tight">
+                        Platform Visibilitas Kargo Berstandar Ekspor Dunia
+                    </h2>
+                    <p class="text-xs sm:text-sm text-forest-100/80 mt-2 leading-relaxed">
+                        Mendukung transparansi rantai pasok kopi dan hasil bumi Gayo dengan telemetri sensor suhu, radar cuaca BMKG/OpenWeather, serta audit trail kepatuhan pabean internasional.
+                    </p>
+                </div>
+                <div class="flex flex-wrap items-center gap-3 shrink-0">
+                    <a href="{{ route('commodities.index') }}" class="btn-brand-accent px-5 py-2.5 rounded-xl text-xs font-bold text-white shadow-md">
+                        Katalog Komoditas & Armada
+                    </a>
+                    <a href="{{ route('login') }}" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-white text-slate-900 hover:bg-slate-100 shadow-md transition-colors">
+                        Login Portal Sistem
+                    </a>
+                </div>
+            </div>
+        </div>
     @endif
 
 </div>

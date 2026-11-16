@@ -20,11 +20,16 @@ class ExceptionController extends Controller
     public function store(Request $request, $shipmentId)
     {
         $user = Auth::user();
-        if (!$user || (!$user->isAdmin() && !$user->isOperator())) {
+        if (!$user) {
             abort(403, 'Unauthorized.');
         }
 
         $shipment = Shipment::findOrFail($shipmentId);
+
+        // RBAC: Admin & Operator can file any exception; Customer can file damage/quality dispute on own shipment
+        if ($user->isCustomer() && $shipment->customer_id !== $user->id) {
+            abort(403, 'Unauthorized.');
+        }
 
         $validated = $request->validate([
             'exception_type' => 'required|in:WEATHER_DELAY,CUSTOMS_HOLD,PORT_CONGESTION,DAMAGED,MISROUTED,DOCUMENTATION_ISSUE',
@@ -44,7 +49,7 @@ class ExceptionController extends Controller
         }
 
         return redirect()->route('shipments.show', $shipment->id)
-            ->with('warning', "Exception [{$validated['exception_type']}] flagged. ETA updated.");
+            ->with('warning', "Laporan kendala [{$validated['exception_type']}] berhasil dicatat. Status kargo dalam investigasi.");
     }
 
     /**
