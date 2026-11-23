@@ -33,7 +33,7 @@
             </a>
             <a href="{{ route('shipments.index') }}" class="btn-brand-accent px-4 py-2 rounded-xl text-xs font-bold text-white flex items-center gap-1.5 shadow-sm">
                 <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-                <span>{{ $isEn ? 'View Active Manifests' : 'Lihat Manifes Aktif' }}</span>
+                <span>{{ $isEn ? 'View Active Shipments' : 'Lihat Daftar Pengiriman' }}</span>
             </a>
         </div>
     </div>

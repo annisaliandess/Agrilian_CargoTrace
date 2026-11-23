@@ -46,7 +46,7 @@
                     @if(auth()->user()->isOperator())
                         <a href="{{ route('shipments.create') }}" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-400 hover:bg-emerald-300 text-forest-950 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/40 cursor-pointer">
                             <svg class="w-4 h-4 text-forest-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-                            <span>{{ $isEn ? 'Create New Manifest' : 'Buat Manifest Baru' }}</span>
+                            <span>{{ $isEn ? 'Create New Shipment' : 'Buat Pengiriman Baru' }}</span>
                         </a>
                     @endif
                 </div>
@@ -85,7 +85,7 @@
             <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 font-mono">{{ $totalShipments }}</div>
             <span class="block text-[11px] text-slate-500 mt-1 flex items-center gap-1">
                 <svg class="w-3.5 h-3.5 text-forest-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                {{ $isEn ? '100% Verified Manifests' : '100% Manifest Terverifikasi' }}
+                {{ $isEn ? '100% Verified Shipments' : '100% Pengiriman Terverifikasi' }}
             </span>
         </div>
 
@@ -178,11 +178,11 @@
                         </div>
                         <span class="text-[10px] font-bold text-forest-800 bg-forest-50 px-2.5 py-0.5 rounded-full border border-forest-200 font-mono">{{ $totalShipments }} {{ $isEn ? 'Containers' : 'Kontainer' }}</span>
                     </div>
-                    <h3 class="text-xs font-bold text-slate-900 group-hover:text-forest-700 transition-colors">{{ $isEn ? 'Cargo Manifests & Roster' : 'Manifes & Roster Kargo' }}</h3>
-                    <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">{{ $isEn ? 'Manage consignments, cargo tonnage, transport fleet, and customs clearance.' : 'Kelola seluruh data consignment, tonase kargo, armada pengangkut, dan kepabeanan.' }}</p>
+                    <h3 class="text-xs font-bold text-slate-900 group-hover:text-forest-700 transition-colors">{{ $isEn ? 'Shipment List & Records' : 'Daftar Pengiriman Kargo' }}</h3>
+                    <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">{{ $isEn ? 'Manage consignments, cargo tonnage, transport fleet, and customs clearance.' : 'Kelola seluruh data pengiriman kargo, tonase muatan, armada pengangkut, dan kepabeanan.' }}</p>
                 </div>
                 <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-forest-700 group-hover:translate-x-0.5 transition-transform">
-                    <span>{{ $isEn ? 'Open Roster' : 'Buka Roster' }}</span>
+                    <span>{{ $isEn ? 'View Shipments' : 'Lihat Pengiriman' }}</span>
                     <span>&rarr;</span>
                 </div>
             </a>
@@ -464,12 +464,12 @@
         <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
             <div>
                 <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider font-mono">
-                    {{ $isEn ? 'Recent Cargo Manifests' : 'Manifest Pengiriman Terkini' }}
+                    {{ $isEn ? 'Recent Cargo Shipments' : 'Daftar Pengiriman Kargo Terkini' }}
                 </h3>
-                <p class="text-xs text-slate-500 mt-0.5">{{ $isEn ? 'List of consignments currently in transit' : 'Daftar consignment yang sedang dalam proses pengiriman' }}</p>
+                <p class="text-xs text-slate-500 mt-0.5">{{ $isEn ? 'List of consignments currently in transit' : 'Daftar kargo yang sedang dalam proses perjalanan' }}</p>
             </div>
             <a href="{{ route('shipments.index') }}" class="text-xs font-bold text-forest-700 hover:text-forest-900 flex items-center gap-1 transition-colors">
-                <span>{{ $isEn ? 'Open Full Roster' : 'Buka Roster Lengkap' }}</span>
+                <span>{{ $isEn ? 'View All Shipments' : 'Lihat Semua Pengiriman' }}</span>
                 <span>&rarr;</span>
             </a>
         </div>
@@ -478,7 +478,7 @@
             <table class="w-full text-left border-collapse text-xs">
                 <thead>
                     <tr class="border-b border-slate-200 text-[10px] font-bold uppercase tracking-wider text-slate-500 font-mono">
-                        <th class="pb-3 font-bold">{{ $isEn ? 'Waybill No.' : 'Nomor Resi' }}</th>
+                        <th class="pb-3 font-bold">{{ $isEn ? 'Waybill No.' : 'Nomor Resi / Surat Jalan' }}</th>
                         <th class="pb-3 font-bold">{{ $isEn ? 'Commodity & Weight' : 'Komoditas & Bobot' }}</th>
                         <th class="pb-3 font-bold">{{ $isEn ? 'Routing Journey' : 'Rute Perjalanan' }}</th>
                         <th class="pb-3 font-bold">{{ $isEn ? 'Carrier Fleet' : 'Armada Pengangkut' }}</th>

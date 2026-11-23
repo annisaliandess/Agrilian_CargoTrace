@@ -15,18 +15,18 @@
             <div class="flex items-center gap-2 mb-1">
                 <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-forest-50 text-forest-800 border border-forest-200">
                     <span class="w-1.5 h-1.5 rounded-full bg-forest-600 animate-pulse"></span>
-                    {{ $isEn ? 'Multimodal Export Manifest' : 'Manifest Ekspor Multimodal' }}
+                    {{ $isEn ? 'Active Consignments' : 'Pengiriman Kargo Aktif' }}
                 </span>
                 <span class="text-xs text-slate-300">&bull;</span>
-                <span class="text-xs text-slate-500 font-medium">{{ $isEn ? 'Highland Gayo Agro-Commodity Corridor' : 'Koridor Komoditas Agro Dataran Tinggi Gayo' }}</span>
+                <span class="text-xs text-slate-500 font-medium">{{ $isEn ? 'Highland Gayo Agro Corridor' : 'Koridor Komoditas Agro Dataran Tinggi Gayo' }}</span>
             </div>
-            <h1 class="text-2xl font-bold text-slate-900 tracking-tight">{{ $isEn ? 'Cargo Shipments Manifest' : 'Daftar Pengiriman Kargo' }}</h1>
+            <h1 class="text-2xl font-bold text-slate-900 tracking-tight">{{ $isEn ? 'Cargo Shipment List' : 'Daftar Pengiriman Kargo' }}</h1>
         </div>
 
         @if(auth()->user()->isAdmin() || auth()->user()->isOperator())
             <a href="{{ route('shipments.create') }}" class="btn-brand-accent px-4 py-2 rounded-xl text-xs font-bold shadow-xs flex items-center gap-1.5 self-start sm:self-auto cursor-pointer">
                 <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
-                <span>{{ $isEn ? 'Create New Manifest' : 'Buat Manifest Baru' }}</span>
+                <span>{{ $isEn ? 'Create New Shipment' : 'Buat Pengiriman Baru' }}</span>
             </a>
         @endif
     </div>
@@ -78,12 +78,12 @@
             <table class="w-full text-left text-xs">
                 <thead class="bg-slate-50 border-b border-slate-200 text-slate-500 uppercase tracking-wider text-[10px] font-bold">
                     <tr>
-                        <th class="py-3 px-4 font-bold">{{ $isEn ? 'Waybill No.' : 'Nomor Resi' }}</th>
-                        <th class="py-3 px-4 font-bold">{{ $isEn ? 'Buyer / Consignee' : 'Pembeli / Consignee' }}</th>
-                        <th class="py-3 px-4 font-bold">{{ $isEn ? 'Agro Commodity' : 'Komoditas Agro' }}</th>
-                        <th class="py-3 px-4 font-bold">{{ $isEn ? 'Routing Journey' : 'Jalur Perjalanan' }}</th>
-                        <th class="py-3 px-4 font-bold">{{ $isEn ? 'Carrier' : 'Armada' }}</th>
-                        <th class="py-3 px-4 font-bold">{{ $isEn ? 'Status & ETA' : 'Status & ETA' }}</th>
+                        <th class="py-3 px-4 font-bold">{{ $isEn ? 'Waybill No.' : 'Nomor Resi / Surat Jalan' }}</th>
+                        <th class="py-3 px-4 font-bold">{{ $isEn ? 'Buyer / Consignee' : 'Penerima / Pembeli' }}</th>
+                        <th class="py-3 px-4 font-bold">{{ $isEn ? 'Commodity & Weight' : 'Komoditas & Bobot' }}</th>
+                        <th class="py-3 px-4 font-bold">{{ $isEn ? 'Route & Location' : 'Rute & Posisi Terkini' }}</th>
+                        <th class="py-3 px-4 font-bold">{{ $isEn ? 'Carrier Fleet' : 'Armada Pengangkut' }}</th>
+                        <th class="py-3 px-4 font-bold">{{ $isEn ? 'Status & ETA' : 'Status & Estimasi Tiba' }}</th>
                         <th class="py-3 px-4 font-bold text-right">{{ $isEn ? 'Actions' : 'Aksi' }}</th>
                     </tr>
                 </thead>

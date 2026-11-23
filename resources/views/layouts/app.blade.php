@@ -217,7 +217,7 @@
 
                         <a href="{{ route('shipments.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('shipments.index') || request()->routeIs('shipments.show') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
                             <svg class="w-4 h-4 {{ request()->routeIs('shipments.index') || request()->routeIs('shipments.show') ? 'text-forest-200' : 'text-slate-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-                            <span>{{ app()->getLocale() === 'en' ? 'Cargo Manifests' : 'Manifes Kargo' }}</span>
+                            <span>{{ app()->getLocale() === 'en' ? 'Shipment List' : 'Daftar Pengiriman' }}</span>
                         </a>
 
                         <a href="{{ route('commodities.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-xs font-semibold transition-all {{ request()->routeIs('commodities.index') ? 'bg-forest-500/30 text-white border-l-4 border-forest-200 shadow-sm font-bold' : 'text-slate-300 hover:text-white hover:bg-white/5' }}">
