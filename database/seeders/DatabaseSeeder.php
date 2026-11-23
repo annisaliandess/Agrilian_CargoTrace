@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
         );
 
         $customerKoperasi = User::firstOrCreate(
-            ['email' => 'koperasi.gayo@agrilian.com'],
+            ['email' => 'koperasi.gayo@gmail.com'],
             [
                 'name' => 'Koperasi Kopi Gayo Highland',
                 'password' => Hash::make('password123'),
@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
         );
 
         $customerAmsterdam = User::firstOrCreate(
-            ['email' => 'buyer.amsterdam@eurocoffee.nl'],
+            ['email' => 'buyer.amsterdam@gmail.com'],
             [
                 'name' => 'Amsterdam Coffee Roasters B.V.',
                 'password' => Hash::make('password123'),
@@ -66,7 +66,7 @@ class DatabaseSeeder extends Seeder
         );
 
         $customerSingapore = User::firstOrCreate(
-            ['email' => 'procurement@singaagro.sg'],
+            ['email' => 'buyer.singapore@gmail.com'],
             [
                 'name' => 'SingaAgro Fresh Singapore Pte Ltd',
                 'password' => Hash::make('password123'),
