@@ -37,8 +37,10 @@ foreach ($directories as $directory) {
 // 3. Salin database sqlite lokal ke /tmp agar writable oleh Vercel Serverless
 $sqliteSource = __DIR__ . '/../database/database.sqlite';
 $sqliteDest = '/tmp/database.sqlite';
-if (file_exists($sqliteSource) && !file_exists($sqliteDest)) {
-    @copy($sqliteSource, $sqliteDest);
+if (file_exists($sqliteSource)) {
+    if (!file_exists($sqliteDest) || filesize($sqliteDest) !== filesize($sqliteSource)) {
+        @copy($sqliteSource, $sqliteDest);
+    }
 }
 
 // 4. Salin manifest packages jika ada (sudah diproteksi dari dev provider)
