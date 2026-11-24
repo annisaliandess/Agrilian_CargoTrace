@@ -1,19 +1,44 @@
 <?php
 
-// Pastikan direktori writable sementara di /tmp tersedia untuk Vercel Serverless
-$storageDirs = [
-    '/tmp/storage/framework/views',
-    '/tmp/storage/framework/sessions',
-    '/tmp/storage/framework/cache/data',
-    '/tmp/storage/logs',
+// 1. Siapkan direktori storage writable di /tmp Vercel
+$storagePath = '/tmp/storage';
+$directories = [
+    $storagePath . '/app',
+    $storagePath . '/framework/cache/data',
+    $storagePath . '/framework/sessions',
+    $storagePath . '/framework/views',
+    $storagePath . '/logs',
     '/tmp/bootstrap/cache',
 ];
 
-foreach ($storageDirs as $dir) {
-    if (!is_dir($dir)) {
-        mkdir($dir, 0755, true);
+foreach ($directories as $directory) {
+    if (!is_dir($directory)) {
+        @mkdir($directory, 0755, true);
     }
 }
 
-// Forward request Vercel ke index aplikasi Laravel
-require __DIR__ . '/../public/index.php';
+// 2. Salin database sqlite lokal ke /tmp agar writable oleh Vercel Serverless
+$sqliteSource = __DIR__ . '/../database/database.sqlite';
+$sqliteDest = '/tmp/database.sqlite';
+if (file_exists($sqliteSource) && !file_exists($sqliteDest)) {
+    @copy($sqliteSource, $sqliteDest);
+}
+
+// 3. Autoload & Bootstrap Laravel
+require __DIR__ . '/../vendor/autoload.php';
+
+/** @var \Illuminate\Foundation\Application $app */
+$app = require_once __DIR__ . '/../bootstrap/app.php';
+
+$app->useStoragePath($storagePath);
+
+// 4. Handle incoming HTTP Request
+$kernel = $app->make(\Illuminate\Contracts\Http\Kernel::class);
+
+$response = $kernel->handle(
+    $request = \Illuminate\Http\Request::capture()
+);
+
+$response->send();
+
+$kernel->terminate($request, $response);
