@@ -1,15 +1,23 @@
 <?php
 
-ini_set('display_errors', '1');
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
+// 1. Arahkan semua cache file ke /tmp yang writable
+putenv('APP_PACKAGES_CACHE=/tmp/packages.php');
+putenv('APP_SERVICES_CACHE=/tmp/services.php');
+putenv('APP_CONFIG_CACHE=/tmp/config.php');
+putenv('APP_ROUTES_CACHE=/tmp/routes.php');
+putenv('APP_EVENTS_CACHE=/tmp/events.php');
+$_ENV['APP_PACKAGES_CACHE'] = '/tmp/packages.php';
+$_ENV['APP_SERVICES_CACHE'] = '/tmp/services.php';
+$_ENV['APP_CONFIG_CACHE'] = '/tmp/config.php';
+$_ENV['APP_ROUTES_CACHE'] = '/tmp/routes.php';
+$_ENV['APP_EVENTS_CACHE'] = '/tmp/events.php';
 
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
-// 1. Siapkan direktori storage writable di /tmp Vercel
+// 2. Siapkan direktori storage writable di /tmp Vercel
 $storagePath = '/tmp/storage';
 $directories = [
     $storagePath . '/app',
@@ -26,27 +34,28 @@ foreach ($directories as $directory) {
     }
 }
 
-// 2. Salin database sqlite lokal ke /tmp agar writable oleh Vercel Serverless
+// 3. Salin database sqlite lokal ke /tmp agar writable oleh Vercel Serverless
 $sqliteSource = __DIR__ . '/../database/database.sqlite';
 $sqliteDest = '/tmp/database.sqlite';
 if (file_exists($sqliteSource) && !file_exists($sqliteDest)) {
     @copy($sqliteSource, $sqliteDest);
 }
 
-// 3. Autoload & Bootstrap Laravel 12
+// 4. Salin manifest packages jika ada
+if (file_exists(__DIR__ . '/../bootstrap/cache/packages.php') && !file_exists('/tmp/packages.php')) {
+    @copy(__DIR__ . '/../bootstrap/cache/packages.php', '/tmp/packages.php');
+}
+if (file_exists(__DIR__ . '/../bootstrap/cache/services.php') && !file_exists('/tmp/services.php')) {
+    @copy(__DIR__ . '/../bootstrap/cache/services.php', '/tmp/services.php');
+}
+
+// 5. Autoload & Bootstrap Laravel 12
 require __DIR__ . '/../vendor/autoload.php';
 
-try {
-    /** @var Application $app */
-    $app = require_once __DIR__ . '/../bootstrap/app.php';
+/** @var Application $app */
+$app = require_once __DIR__ . '/../bootstrap/app.php';
 
-    $app->useStoragePath($storagePath);
+$app->useStoragePath($storagePath);
 
-    // 4. Handle HTTP Request sesuai standar Laravel 12
-    $app->handleRequest(Request::capture());
-} catch (\Throwable $e) {
-    echo "<h1>Laravel Startup Error</h1>";
-    echo "<p><strong>Message:</strong> " . htmlspecialchars($e->getMessage()) . "</p>";
-    echo "<p><strong>File:</strong> " . htmlspecialchars($e->getFile()) . ":" . $e->getLine() . "</p>";
-    echo "<pre>" . htmlspecialchars($e->getTraceAsString()) . "</pre>";
-}
+// 6. Handle HTTP Request sesuai standar Laravel 12
+$app->handleRequest(Request::capture());
