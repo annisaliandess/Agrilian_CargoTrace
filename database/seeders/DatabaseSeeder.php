@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
         $customerAmsterdam = User::firstOrCreate(
             ['email' => 'buyer.amsterdam@gmail.com'],
             [
-                'name' => 'Amsterdam Coffee Roasters B.V.',
+                'name' => 'Buyer Amsterdam',
                 'password' => Hash::make('password123'),
                 'role' => 'customer',
             ]
@@ -68,7 +68,7 @@ class DatabaseSeeder extends Seeder
         $customerSingapore = User::firstOrCreate(
             ['email' => 'buyer.singapore@gmail.com'],
             [
-                'name' => 'SingaAgro Fresh Singapore Pte Ltd',
+                'name' => 'Buyer Singapore',
                 'password' => Hash::make('password123'),
                 'role' => 'customer',
             ]

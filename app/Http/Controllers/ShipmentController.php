@@ -80,8 +80,8 @@ class ShipmentController extends Controller
         $user = Auth::user();
         if (!$user || $user->isCustomer()) {
             abort(403, app()->getLocale() === 'en'
-                ? 'Only logistics operators and administrators are authorized to issue new export manifests.'
-                : 'Hanya staf operasional logistik dan administrator yang berwenang menerbitkan manifes ekspor baru.');
+                ? 'Only logistics operators and administrators are authorized to create new shipments.'
+                : 'Hanya staf operasional logistik dan administrator yang berwenang membuat pengiriman baru.');
         }
 
         $customers = User::where('role', 'customer')->get();
@@ -99,8 +99,8 @@ class ShipmentController extends Controller
         $user = Auth::user();
         if (!$user || $user->isCustomer()) {
             abort(403, app()->getLocale() === 'en'
-                ? 'Only logistics operators and administrators are authorized to issue new export manifests.'
-                : 'Hanya staf operasional logistik dan administrator yang berwenang menerbitkan manifes ekspor baru.');
+                ? 'Only logistics operators and administrators are authorized to create new shipments.'
+                : 'Hanya staf operasional logistik dan administrator yang berwenang membuat pengiriman baru.');
         }
 
         $validated = $request->validate([
@@ -132,8 +132,8 @@ class ShipmentController extends Controller
         }
 
         $msg = app()->getLocale() === 'en'
-            ? "Export consignment {$shipment->tracking_number} created successfully."
-            : "Manifes ekspor {$shipment->tracking_number} berhasil diterbitkan.";
+            ? "Shipment {$shipment->tracking_number} created successfully."
+            : "Pengiriman {$shipment->tracking_number} berhasil dibuat.";
 
         return redirect()->route('shipments.show', $shipment->id)
             ->with('success', $msg);

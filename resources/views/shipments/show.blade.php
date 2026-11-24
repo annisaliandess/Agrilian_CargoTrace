@@ -414,7 +414,7 @@
                 </div>
             </div>
 
-            <!-- Cargo Packing Manifest Card -->
+            <!-- Cargo Items & Packaging Card -->
             <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-2xs">
                 <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
                     <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800">

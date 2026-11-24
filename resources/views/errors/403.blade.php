@@ -45,7 +45,7 @@
                     {{ $isEn ? 'Operational Access Restricted' : 'Akses Operasional Dibatasi' }}
                 </h1>
                 <p class="text-xs text-slate-500 mt-2 leading-relaxed">
-                    {{ $isEn ? 'Your account does not possess the required role permissions to open or modify this cargo manifest. Please contact your system Administrator.' : 'Akun Anda tidak memiliki hak akses otorisasi untuk membuka atau memodifikasi berkas manifes kargo ini. Silakan hubungi Administrator sistem.' }}
+                    {{ $isEn ? 'Your account does not possess the required role permissions to open or modify this cargo shipment. Please contact your system Administrator.' : 'Akun Anda tidak memiliki hak akses otorisasi untuk membuka atau memodifikasi data pengiriman kargo ini. Silakan hubungi Administrator sistem.' }}
                 </p>
             </div>
 

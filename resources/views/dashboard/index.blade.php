@@ -10,42 +10,43 @@
 <div class="space-y-6">
 
     <!-- ======================================================== -->
-    <!-- 1. EXECUTIVE COMMAND BANNER (High-Precision Enterprise)   -->
+    <!-- 1. EXECUTIVE COMMAND BANNER (Highland Olive & Sage)      -->
     <!-- ======================================================== -->
-    <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-forest-800/60 bg-[#051F20] text-white">
-        <!-- Background Image with Ambient Multimodal Port & Twilight Overlay -->
-        <div class="absolute inset-0 bg-cover bg-center opacity-45 scale-105 transition-transform duration-1000" style="background-image: url('{{ asset('images/dashboard-hero.jpg') }}');"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-[#051F20] via-[#051F20]/90 to-[#0B2B26]/75"></div>
+    <div class="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-[#728156]/40 bg-gradient-to-br from-[#11180D] via-[#1D2617] to-[#161F12] text-white">
+        <!-- Background Image with Directional Shading (Crisp Photo on Right, Deep Contrast on Left) -->
+        <img src="{{ asset('images/dashboard-hero.jpg') }}" alt="Takengon Highland Multimodal Logistics" class="absolute inset-0 w-full h-full object-cover object-right md:object-center pointer-events-none">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#11180D] via-[#11180D]/85 via-50% to-transparent pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#11180D]/80 via-transparent to-black/30 pointer-events-none"></div>
         
         <!-- Content Container -->
-        <div class="relative p-6 sm:p-8 z-10">
+        <div class="relative p-6 sm:p-8 lg:p-10 z-10">
             <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                 <div class="max-w-2xl">
                     <!-- Status Badge -->
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-forest-500/30 text-forest-200 border border-forest-400/30 backdrop-blur-md mb-3 shadow-sm font-mono">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-[#11180D]/80 text-[#E7F5DC] border border-[#B6C99B]/40 backdrop-blur-md mb-3 shadow-xs font-mono">
+                        <span class="w-2 h-2 rounded-full bg-[#CFE1B9] animate-pulse"></span>
                         <span>{{ $isEn ? 'Takengon Hub (Gayo) • Belawan Ocean Port • Rotterdam Direct' : 'Takengon Hub (Gayo) • Belawan Ocean Port • Rotterdam Langsung' }}</span>
                     </div>
 
                     <!-- Headline -->
-                    <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white leading-tight">
+                    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight drop-shadow-sm">
                         {{ $isEn ? 'Highland Agro-Export Visibility Cockpit' : 'Cockpit Visibilitas Logistik Ekspor Highland' }}
                     </h1>
-                    <p class="text-xs sm:text-sm text-forest-100/80 mt-2 font-medium leading-relaxed max-w-xl">
+                    <p class="text-xs sm:text-sm text-[#CFE1B9] mt-2 font-normal leading-relaxed max-w-xl drop-shadow-xs">
                         {{ $isEn ? 'Telemetry tracking system for Gayo Arabica coffee & fresh horticulture containers, cross-Sumatra mountain corridor weather radar, and international customs compliance.' : 'Sistem pemantauan telemetri kontainer kopi Arabika Gayo & hortikultura segar, radar cuaca koridor pegunungan lintas Sumatra, dan kepatuhan pabean internasional.' }}
                     </p>
                 </div>
 
                 <!-- Action Buttons -->
                 <div class="flex flex-wrap items-center gap-3 shrink-0">
-                    <a href="{{ route('track.public') }}" class="px-4 py-2.5 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer">
-                        <svg class="w-4 h-4 text-forest-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                    <a href="{{ route('track.public') }}" class="btn-brand-outline px-4 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer active:scale-95">
+                        <svg class="w-4 h-4 text-[#728156]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                         <span>{{ $isEn ? 'Track Waybill' : 'Cek Resi' }}</span>
                     </a>
 
-                    @if(auth()->user()->isOperator())
-                        <a href="{{ route('shipments.create') }}" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-400 hover:bg-emerald-300 text-forest-950 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-950/40 cursor-pointer">
-                            <svg class="w-4 h-4 text-forest-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                    @if(auth()->user()->isOperator() || auth()->user()->isAdmin())
+                        <a href="{{ route('shipments.create') }}" class="btn-brand-accent px-5 py-2.5 rounded-2xl text-xs font-bold transition-all flex items-center justify-center gap-2 shadow-md cursor-pointer active:scale-95">
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
                             <span>{{ $isEn ? 'Create New Shipment' : 'Buat Pengiriman Baru' }}</span>
                         </a>
                     @endif
@@ -53,65 +54,119 @@
             </div>
 
             <!-- Live Global Export Valuation & Currency Bar (ECB Live) -->
-            <div class="mt-6 pt-5 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-forest-200/90 font-medium">
-                <div class="flex flex-wrap items-center gap-3 font-mono">
-                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 text-white border border-white/15 backdrop-blur-xs">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <div class="mt-6 pt-5 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-[#CFE1B9] font-medium">
+                <div class="flex flex-wrap items-center gap-2.5 font-mono">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#11180D]/80 text-[#E7F5DC] border border-[#B6C99B]/40 backdrop-blur-xs shadow-2xs">
+                        <span class="w-2 h-2 rounded-full bg-[#CFE1B9] animate-pulse"></span>
                         <span>{{ $isEn ? 'Live Export FX Rates (ECB Live):' : 'Kurs Valas Ekspor (ECB Live):' }}</span>
                     </span>
-                    <span><strong class="text-white">1 USD</strong> = Rp {{ number_format($currencyRates['usd_to_idr'], 0, ',', '.') }}</span>
-                    <span class="text-forest-400">&bull;</span>
-                    <span><strong class="text-forest-200">1 EUR</strong> = Rp {{ number_format($currencyRates['eur_to_idr'], 0, ',', '.') }}</span>
-                    <span class="text-[10px] text-forest-200/70 bg-white/5 px-2 py-0.5 rounded border border-white/10 font-mono">{{ $isEn ? 'European Central Bank' : 'Bank Sentral Eropa' }}</span>
+                    <span class="px-2.5 py-1 rounded-xl bg-white/10 border border-white/10 text-white"><strong class="text-white">1 USD</strong> = Rp {{ number_format($currencyRates['usd_to_idr'], 0, ',', '.') }}</span>
+                    <span class="px-2.5 py-1 rounded-xl bg-white/10 border border-white/10 text-[#CFE1B9]"><strong class="text-[#E7F5DC]">1 EUR</strong> = Rp {{ number_format($currencyRates['eur_to_idr'], 0, ',', '.') }}</span>
+                    <span class="text-[10px] text-[#B6C99B] bg-white/5 px-2.5 py-1 rounded-xl border border-white/10 font-mono">{{ $isEn ? 'European Central Bank' : 'Bank Sentral Eropa' }}</span>
                 </div>
 
-                <div class="flex items-center gap-2">
-                    <span class="text-forest-200/80">{{ $isEn ? 'Estimated Cargo Valuation:' : 'Estimasi Devisa Kargo:' }}</span>
+                <div class="flex items-center gap-2 bg-[#11180D]/80 backdrop-blur-xs px-3.5 py-1.5 rounded-2xl border border-[#B6C99B]/30">
+                    <span class="text-[#CFE1B9]">{{ $isEn ? 'Estimated Cargo Valuation:' : 'Estimasi Devisa Kargo:' }}</span>
                     <strong class="font-mono font-bold text-white text-sm tracking-tight">{{ $totalValuation['usd_formatted'] }} USD</strong>
-                    <span class="text-xs font-mono font-bold text-emerald-300 bg-emerald-950/80 px-2 py-0.5 rounded-md border border-emerald-500/40">({{ $totalValuation['eur_formatted'] }})</span>
+                    <span class="text-xs font-mono font-bold text-[#E7F5DC] bg-[#728156]/50 px-2 py-0.5 rounded-lg border border-[#B6C99B]/40">({{ $totalValuation['eur_formatted'] }})</span>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- ======================================================== -->
-    <!-- 2. UNIFIED EXECUTIVE METRIC STRIP                         -->
+    <!-- 2. INTERACTIVE EXECUTIVE BENTO KPI METRICS               -->
     <!-- ======================================================== -->
-    <div class="bg-white rounded-2xl border border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)] divide-y sm:divide-y-0 sm:divide-x divide-slate-100 grid grid-cols-2 lg:grid-cols-4 overflow-hidden">
-        <!-- Metric 1: Total Managed -->
-        <div class="p-5 relative">
-            <div class="w-1.5 h-full bg-forest-600 absolute left-0 top-0"></div>
-            <span class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider font-mono">{{ $isEn ? 'Total Shipments' : 'Total Pengiriman' }}</span>
-            <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 font-mono">{{ $totalShipments }}</div>
-            <span class="block text-[11px] text-slate-500 mt-1 flex items-center gap-1">
-                <svg class="w-3.5 h-3.5 text-forest-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                {{ $isEn ? '100% Verified Shipments' : '100% Pengiriman Terverifikasi' }}
-            </span>
-        </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        
+        <!-- Metric 1: Total Pengiriman (Bento Sage & Olive) -->
+        <a href="{{ route('shipments.index') }}" title="{{ $isEn ? 'Click to view all shipments' : 'Klik untuk melihat seluruh pengiriman' }}"
+           class="bg-gradient-to-br from-white via-[#F7FAF2] to-[#EBF3E3] rounded-3xl p-5 border-2 border-[#CFE1B9] shadow-xs hover:shadow-lg hover:-translate-y-1 hover:border-[#728156] transition-all duration-300 group cursor-pointer active:scale-95 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-[10px] font-extrabold uppercase font-mono tracking-wider text-[#4C5836] bg-[#E7F5DC] px-2.5 py-1 rounded-full border border-[#B6C99B]/60 shadow-2xs">
+                        {{ $isEn ? 'Total Shipments' : 'Total Pengiriman' }}
+                    </span>
+                    <div class="w-10 h-10 rounded-2xl bg-[#728156]/15 text-[#728156] flex items-center justify-center group-hover:scale-110 group-hover:bg-[#728156] group-hover:text-white transition-all shadow-2xs">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                    </div>
+                </div>
+                <div class="text-3xl sm:text-4xl font-black text-[#1D2617] font-mono tracking-tight mt-2">{{ $totalShipments }}</div>
+            </div>
+            <div class="flex items-center justify-between text-[11px] text-[#4C5836] font-semibold pt-3 mt-3 border-t border-[#CFE1B9]/70">
+                <span class="flex items-center gap-1.5">
+                    <svg class="w-3.5 h-3.5 text-[#728156]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                    <span>100% Terverifikasi</span>
+                </span>
+                <span class="text-[#728156] font-mono font-bold group-hover:translate-x-1 transition-transform flex items-center gap-0.5">Lihat &rarr;</span>
+            </div>
+        </a>
 
-        <!-- Metric 2: In-Transit -->
-        <div class="p-5 relative">
-            <div class="w-1.5 h-full bg-indigo-600 absolute left-0 top-0"></div>
-            <span class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider font-mono">{{ $isEn ? 'In Transit' : 'Dalam Perjalanan' }}</span>
-            <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 font-mono">{{ $inTransitCount }} <span class="text-xs font-sans font-bold text-indigo-600">{{ $isEn ? 'Moving' : 'Bergerak' }}</span></div>
-            <span class="block text-[11px] text-slate-500 mt-1">{{ $isEn ? 'Truck Fleet & Ocean Vessels' : 'Armada Truk & Kapal Kontainer' }}</span>
-        </div>
+        <!-- Metric 2: Dalam Perjalanan (Bento Ocean Sky) -->
+        <a href="{{ route('shipments.index', ['status' => 'IN_TRANSIT']) }}" title="{{ $isEn ? 'Filter in transit cargo' : 'Filter kargo dalam perjalanan' }}"
+           class="bg-gradient-to-br from-white via-[#F0F7FB] to-[#E3F0F8] rounded-3xl p-5 border-2 border-sky-200 shadow-xs hover:shadow-lg hover:-translate-y-1 hover:border-sky-500 transition-all duration-300 group cursor-pointer active:scale-95 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-[10px] font-extrabold uppercase font-mono tracking-wider text-sky-800 bg-sky-100 px-2.5 py-1 rounded-full border border-sky-300 shadow-2xs flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse"></span>
+                        <span>{{ $isEn ? 'In Transit' : 'Dalam Perjalanan' }}</span>
+                    </span>
+                    <div class="w-10 h-10 rounded-2xl bg-sky-500/15 text-sky-700 flex items-center justify-center group-hover:scale-110 group-hover:bg-sky-600 group-hover:text-white transition-all shadow-2xs">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                </div>
+                <div class="text-3xl sm:text-4xl font-black text-slate-900 font-mono tracking-tight mt-2 flex items-baseline gap-2">
+                    <span>{{ $inTransitCount }}</span>
+                    <span class="text-xs font-sans font-bold text-sky-700 bg-sky-100/90 px-2 py-0.5 rounded-full border border-sky-200">{{ $isEn ? 'Moving' : 'Bergerak' }}</span>
+                </div>
+            </div>
+            <div class="flex items-center justify-between text-[11px] text-sky-900 font-semibold pt-3 mt-3 border-t border-sky-200/80">
+                <span>Armada Truk & Kapal</span>
+                <span class="text-sky-700 font-mono font-bold group-hover:translate-x-1 transition-transform flex items-center gap-0.5">Pantau &rarr;</span>
+            </div>
+        </a>
 
-        <!-- Metric 3: Delivered Safely -->
-        <div class="p-5 relative">
-            <div class="w-1.5 h-full bg-emerald-600 absolute left-0 top-0"></div>
-            <span class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider font-mono">{{ $isEn ? 'Delivered Safely' : 'Terkirim Sukses' }}</span>
-            <div class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1 font-mono">{{ $deliveredCount }}</div>
-            <span class="block text-[11px] text-slate-500 mt-1">{{ $isEn ? 'Arrived at Destination Port' : 'Tiba di Pelabuhan Tujuan' }}</span>
-        </div>
+        <!-- Metric 3: Terkirim Sukses (Bento Fresh Emerald) -->
+        <a href="{{ route('shipments.index', ['status' => 'DELIVERED']) }}" title="{{ $isEn ? 'Filter delivered cargo' : 'Filter kargo terkirim sukses' }}"
+           class="bg-gradient-to-br from-white via-[#F0FDF4] to-[#DCFCE7] rounded-3xl p-5 border-2 border-emerald-200 shadow-xs hover:shadow-lg hover:-translate-y-1 hover:border-emerald-500 transition-all duration-300 group cursor-pointer active:scale-95 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-[10px] font-extrabold uppercase font-mono tracking-wider text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded-full border border-emerald-300 shadow-2xs">
+                        {{ $isEn ? 'Delivered Safely' : 'Terkirim Sukses' }}
+                    </span>
+                    <div class="w-10 h-10 rounded-2xl bg-emerald-500/15 text-emerald-700 flex items-center justify-center group-hover:scale-110 group-hover:bg-emerald-600 group-hover:text-white transition-all shadow-2xs">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                </div>
+                <div class="text-3xl sm:text-4xl font-black text-slate-900 font-mono tracking-tight mt-2">{{ $deliveredCount }}</div>
+            </div>
+            <div class="flex items-center justify-between text-[11px] text-emerald-900 font-semibold pt-3 mt-3 border-t border-emerald-200/80">
+                <span>Tiba di Pelabuhan Tujuan</span>
+                <span class="text-emerald-700 font-mono font-bold group-hover:translate-x-1 transition-transform flex items-center gap-0.5">Riwayat &rarr;</span>
+            </div>
+        </a>
 
-        <!-- Metric 4: Route Alerts -->
-        <div class="p-5 relative">
-            <div class="w-1.5 h-full bg-amber-500 absolute left-0 top-0"></div>
-            <span class="block text-[11px] font-bold text-slate-500 uppercase tracking-wider font-mono">{{ $isEn ? 'Route Alerts' : 'Peringatan Jalur' }}</span>
-            <div class="text-2xl sm:text-3xl font-extrabold text-amber-600 mt-1 font-mono">{{ $delayedCount }}</div>
-            <span class="block text-[11px] text-slate-500 mt-1">{{ $isEn ? 'Weather Mitigation & Port Queue' : 'Mitigasi Cuaca & Antrean Pelabuhan' }}</span>
-        </div>
+        <!-- Metric 4: Peringatan Jalur (Bento Highland Amber Alert) -->
+        <a href="{{ route('shipments.index') }}" title="{{ $isEn ? 'Check route weather alerts' : 'Periksa mitigasi peringatan jalur' }}"
+           class="bg-gradient-to-br from-white via-[#FFFBEB] to-[#FEF3C7] rounded-3xl p-5 border-2 border-amber-200 shadow-xs hover:shadow-lg hover:-translate-y-1 hover:border-amber-500 transition-all duration-300 group cursor-pointer active:scale-95 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-[10px] font-extrabold uppercase font-mono tracking-wider text-amber-900 bg-amber-100 px-2.5 py-1 rounded-full border border-amber-300 shadow-2xs flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping"></span>
+                        <span>{{ $isEn ? 'Route Alerts' : 'Peringatan Jalur' }}</span>
+                    </span>
+                    <div class="w-10 h-10 rounded-2xl bg-amber-500/15 text-amber-700 flex items-center justify-center group-hover:scale-110 group-hover:bg-amber-600 group-hover:text-white transition-all shadow-2xs">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                    </div>
+                </div>
+                <div class="text-3xl sm:text-4xl font-black text-amber-700 font-mono tracking-tight mt-2">{{ $delayedCount }}</div>
+            </div>
+            <div class="flex items-center justify-between text-[11px] text-amber-900 font-semibold pt-3 mt-3 border-t border-amber-200/80">
+                <span>Mitigasi Jalur Km 48</span>
+                <span class="text-amber-700 font-mono font-bold group-hover:translate-x-1 transition-transform flex items-center gap-0.5">Detail &rarr;</span>
+            </div>
+        </a>
+
     </div>
 
     <!-- ======================================================== -->
@@ -119,16 +174,16 @@
     <!-- ======================================================== -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <!-- Chart 1: Status Distribution Doughnut Chart -->
-        <div class="bg-white rounded-3xl border border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)] p-6">
-            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div class="bg-white/95 rounded-3xl border-2 border-[#CFE1B9] shadow-sm p-6 backdrop-blur-xs">
+            <div class="flex items-center justify-between pb-4 border-b border-[#E7F5DC]">
                 <div>
-                    <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+                    <h3 class="text-sm font-bold text-[#1D2617] flex items-center gap-2">
                         <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
                         <span>{{ auth()->user()->isCustomer() ? ($isEn ? 'My Cargo Consignment Status' : 'Status Pengiriman Kargo Saya') : ($isEn ? 'Global Cargo Status Distribution' : 'Distribusi Status Kargo Global') }}</span>
                     </h3>
-                    <p class="text-xs text-slate-500 mt-0.5">{{ $isEn ? 'Cargo composition across operational logistic stages' : 'Komposisi kargo berdasarkan tahapan operasional logistik' }}</p>
+                    <p class="text-xs text-[#4C5836] mt-0.5">{{ $isEn ? 'Cargo composition across operational logistic stages' : 'Komposisi kargo berdasarkan tahapan operasional logistik' }}</p>
                 </div>
-                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-forest-50 text-forest-800 border border-forest-200 font-bold">Chart.js Live</span>
+                <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-[#E7F5DC] text-[#384226] border border-[#B6C99B] font-bold">Chart.js Live</span>
             </div>
             <div class="mt-4 flex items-center justify-center relative" style="height: 220px;">
                 <canvas id="statusDoughnutChart"></canvas>
@@ -136,16 +191,16 @@
         </div>
 
         <!-- Chart 2: Export Volume Bar Chart -->
-        <div class="bg-white rounded-3xl border border-slate-200/90 shadow-[0_1px_3px_rgba(0,0,0,0.03)] p-6">
-            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div class="bg-white/95 rounded-3xl border-2 border-[#CFE1B9] shadow-sm p-6 backdrop-blur-xs">
+            <div class="flex items-center justify-between pb-4 border-b border-[#E7F5DC]">
                 <div>
-                    <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2">
-                        <span class="w-2.5 h-2.5 rounded-full bg-forest-600"></span>
+                    <h3 class="text-sm font-bold text-[#1D2617] flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-[#728156]"></span>
                         <span>{{ $barTitle }}</span>
                     </h3>
-                    <p class="text-xs text-slate-500 mt-0.5">{{ auth()->user()->isCustomer() ? ($isEn ? 'Coffee tonnage comparison per active waybill' : 'Perbandingan tonase kopi per resi aktif') : ($isEn ? 'Total commodity tonnage moving per transport mode' : 'Total tonase komoditas yang bergerak per moda pengangkutan') }}</p>
+                    <p class="text-xs text-[#4C5836] mt-0.5">{{ auth()->user()->isCustomer() ? ($isEn ? 'Coffee tonnage comparison per active waybill' : 'Perbandingan tonase kopi per resi aktif') : ($isEn ? 'Total commodity tonnage moving per transport mode' : 'Total tonase komoditas yang bergerak per moda pengangkutan') }}</p>
                 </div>
-                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-forest-50 text-forest-800 border border-forest-200 font-bold">Metric Tonnage</span>
+                <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-[#E7F5DC] text-[#384226] border border-[#B6C99B] font-bold">Metric Tonnage</span>
             </div>
             <div class="mt-4 flex items-center justify-center relative" style="height: 220px;">
                 <canvas id="volumeBarChart"></canvas>
@@ -159,85 +214,85 @@
     <div class="space-y-3">
         <div class="flex items-center justify-between">
             <div>
-                <h2 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2 font-mono">
-                    <span class="w-2 h-2 rounded-full bg-forest-600"></span>
+                <h2 class="text-xs font-bold text-[#1D2617] uppercase tracking-wider flex items-center gap-2 font-mono">
+                    <span class="w-2 h-2 rounded-full bg-[#728156]"></span>
                     <span>{{ $isEn ? 'Navigation Center & Primary Shortcuts' : 'Pusat Navigasi & Pintasan Modul Utama' }}</span>
                 </h2>
-                <p class="text-xs text-slate-500 mt-0.5">{{ $isEn ? 'Rapid access to each core capability of the AgriLian export visibility platform' : 'Akses cepat ke setiap kapabilitas utama platform visibilitas ekspor AgriLian' }}</p>
+                <p class="text-xs text-[#4C5836] mt-0.5">{{ $isEn ? 'Rapid access to each core capability of the AgriLian export visibility platform' : 'Akses cepat ke setiap kapabilitas utama platform visibilitas ekspor AgriLian' }}</p>
             </div>
-            <span class="text-[11px] font-semibold text-slate-400 hidden sm:inline font-mono">{{ $isEn ? '4 Integrated Modules' : '4 Modul Terintegrasi' }}</span>
+            <span class="text-[11px] font-bold text-[#728156] hidden sm:inline font-mono">{{ $isEn ? '4 Integrated Modules' : '4 Modul Terintegrasi' }}</span>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <!-- Shortcut 1: Manifes Kargo -->
-            <a href="{{ route('shipments.index') }}" class="group bg-white rounded-2xl border border-slate-200/90 p-5 shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:border-forest-500 hover:shadow-md transition-all flex flex-col justify-between">
+            <!-- Shortcut 1: Daftar Pengiriman Kargo -->
+            <a href="{{ route('shipments.index') }}" class="group bg-gradient-to-br from-white via-[#F7FAF2] to-white rounded-3xl border-2 border-[#CFE1B9] p-5 shadow-xs hover:border-[#728156] hover:shadow-md hover:-translate-y-1 transition-all flex flex-col justify-between active:scale-95">
                 <div>
                     <div class="flex items-center justify-between mb-3">
-                        <div class="w-9 h-9 rounded-xl bg-forest-50 text-forest-700 flex items-center justify-center group-hover:bg-forest-600 group-hover:text-white transition-colors">
-                            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                        <div class="w-10 h-10 rounded-2xl bg-[#E7F5DC] text-[#384226] flex items-center justify-center group-hover:bg-[#728156] group-hover:text-white transition-all shadow-2xs">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
                         </div>
-                        <span class="text-[10px] font-bold text-forest-800 bg-forest-50 px-2.5 py-0.5 rounded-full border border-forest-200 font-mono">{{ $totalShipments }} {{ $isEn ? 'Containers' : 'Kontainer' }}</span>
+                        <span class="text-[10px] font-bold text-[#384226] bg-[#E7F5DC] px-2.5 py-0.5 rounded-full border border-[#B6C99B] font-mono">{{ $totalShipments }} {{ $isEn ? 'Containers' : 'Kontainer' }}</span>
                     </div>
-                    <h3 class="text-xs font-bold text-slate-900 group-hover:text-forest-700 transition-colors">{{ $isEn ? 'Shipment List & Records' : 'Daftar Pengiriman Kargo' }}</h3>
+                    <h3 class="text-xs font-bold text-[#1D2617] group-hover:text-[#728156] transition-colors">{{ $isEn ? 'Shipment List & Records' : 'Daftar Pengiriman Kargo' }}</h3>
                     <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">{{ $isEn ? 'Manage consignments, cargo tonnage, transport fleet, and customs clearance.' : 'Kelola seluruh data pengiriman kargo, tonase muatan, armada pengangkut, dan kepabeanan.' }}</p>
                 </div>
-                <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-forest-700 group-hover:translate-x-0.5 transition-transform">
+                <div class="mt-4 pt-3 border-t border-[#CFE1B9]/60 flex items-center justify-between text-xs font-bold text-[#728156] group-hover:translate-x-0.5 transition-transform">
                     <span>{{ $isEn ? 'View Shipments' : 'Lihat Pengiriman' }}</span>
                     <span>&rarr;</span>
                 </div>
             </a>
 
             <!-- Shortcut 2: Pelacakan Waybill -->
-            <a href="{{ route('track.public') }}" class="group bg-white rounded-2xl border border-slate-200/90 p-5 shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:border-forest-500 hover:shadow-md transition-all flex flex-col justify-between">
+            <a href="{{ route('track.public') }}" class="group bg-gradient-to-br from-white via-[#F7FAF2] to-white rounded-3xl border-2 border-[#CFE1B9] p-5 shadow-xs hover:border-[#728156] hover:shadow-md hover:-translate-y-1 transition-all flex flex-col justify-between active:scale-95">
                 <div>
                     <div class="flex items-center justify-between mb-3">
-                        <div class="w-9 h-9 rounded-xl bg-slate-100 text-slate-800 flex items-center justify-center group-hover:bg-slate-900 group-hover:text-white transition-colors">
-                            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        <div class="w-10 h-10 rounded-2xl bg-slate-100 text-slate-800 flex items-center justify-center group-hover:bg-[#1D2617] group-hover:text-white transition-all shadow-2xs">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                         </div>
-                        <span class="text-[10px] font-bold text-forest-800 bg-forest-50 px-2.5 py-0.5 rounded-full border border-forest-200 font-mono">{{ $isEn ? 'Waybill Tracker' : 'Pelacak Resi' }}</span>
+                        <span class="text-[10px] font-bold text-[#384226] bg-[#E7F5DC] px-2.5 py-0.5 rounded-full border border-[#B6C99B] font-mono">{{ $isEn ? 'Waybill Tracker' : 'Pelacak Resi' }}</span>
                     </div>
-                    <h3 class="text-xs font-bold text-slate-900 group-hover:text-forest-700 transition-colors">{{ $isEn ? 'Cargo Waybill Tracker' : 'Pelacak Waybill Kargo' }}</h3>
+                    <h3 class="text-xs font-bold text-[#1D2617] group-hover:text-[#728156] transition-colors">{{ $isEn ? 'Cargo Waybill Tracker' : 'Pelacak Waybill Kargo' }}</h3>
                     <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">{{ $isEn ? 'Track container location, live satellite corridor weather, and customs clearance.' : 'Cek posisi kontainer, telemetri cuaca rute satelit, dan status kepabeanan secara langsung.' }}</p>
                 </div>
-                <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-forest-700 group-hover:translate-x-0.5 transition-transform">
+                <div class="mt-4 pt-3 border-t border-[#CFE1B9]/60 flex items-center justify-between text-xs font-bold text-[#728156] group-hover:translate-x-0.5 transition-transform">
                     <span>{{ $isEn ? 'Track Waybill' : 'Lacak Resi' }}</span>
                     <span>&rarr;</span>
                 </div>
             </a>
 
             <!-- Shortcut 3: Telemetri Cuaca Rute -->
-            <div class="bg-white rounded-2xl border border-slate-200/90 p-5 shadow-[0_1px_3px_rgba(0,0,0,0.03)] flex flex-col justify-between">
+            <div class="bg-gradient-to-br from-white via-[#F7FAF2] to-white rounded-3xl border-2 border-[#CFE1B9] p-5 shadow-xs flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-3">
-                        <div class="w-9 h-9 rounded-xl bg-forest-50 text-forest-700 flex items-center justify-center">
-                            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+                        <div class="w-10 h-10 rounded-2xl bg-[#E7F5DC] text-[#384226] flex items-center justify-center shadow-2xs">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
                         </div>
-                        <span class="text-[10px] font-bold text-forest-800 bg-forest-50 px-2.5 py-0.5 rounded-full border border-forest-200 font-mono">OpenWeather</span>
+                        <span class="text-[10px] font-bold text-[#384226] bg-[#E7F5DC] px-2.5 py-0.5 rounded-full border border-[#B6C99B] font-mono">OpenWeather</span>
                     </div>
-                    <h3 class="text-xs font-bold text-slate-900">{{ $isEn ? 'Route Weather Telemetry' : 'Telemetri Cuaca Jalur' }}</h3>
+                    <h3 class="text-xs font-bold text-[#1D2617]">{{ $isEn ? 'Route Weather Telemetry' : 'Telemetri Cuaca Jalur' }}</h3>
                     <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">{{ $isEn ? 'Live satellite monitoring fog & precipitation risks across Takengon, Bireuen, to Belawan.' : 'Satelit live memantau titik rawan kabut & hujan di Takengon, Bireuen, hingga Belawan.' }}</p>
                 </div>
-                <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600 font-mono">
+                <div class="mt-4 pt-3 border-t border-[#CFE1B9]/60 flex items-center justify-between text-xs text-slate-600 font-mono">
                     <span>Takengon Hub:</span>
-                    <strong class="text-slate-900">{{ $corridorWeather[0]['temp_c'] ?? '19.2' }}°C</strong>
+                    <strong class="text-[#1D2617] font-bold">{{ $corridorWeather[0]['temp_c'] ?? '19.2' }}°C</strong>
                 </div>
             </div>
 
             <!-- Shortcut 4: Valuasi Devisa ECB -->
-            <div class="bg-white rounded-2xl border border-slate-200/90 p-5 shadow-[0_1px_3px_rgba(0,0,0,0.03)] flex flex-col justify-between">
+            <div class="bg-gradient-to-br from-white via-[#F7FAF2] to-white rounded-3xl border-2 border-[#CFE1B9] p-5 shadow-xs flex flex-col justify-between">
                 <div>
                     <div class="flex items-center justify-between mb-3">
-                        <div class="w-9 h-9 rounded-xl bg-forest-50 text-forest-700 flex items-center justify-center">
-                            <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <div class="w-10 h-10 rounded-2xl bg-[#E7F5DC] text-[#384226] flex items-center justify-center shadow-2xs">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                         </div>
-                        <span class="text-[10px] font-bold text-forest-800 bg-forest-50 px-2.5 py-0.5 rounded-full border border-forest-200 font-mono">ECB Live</span>
+                        <span class="text-[10px] font-bold text-[#384226] bg-[#E7F5DC] px-2.5 py-0.5 rounded-full border border-[#B6C99B] font-mono">ECB Live</span>
                     </div>
-                    <h3 class="text-xs font-bold text-slate-900">{{ $isEn ? 'Export Foreign Valuation' : 'Valuasi Devisa Ekspor' }}</h3>
+                    <h3 class="text-xs font-bold text-[#1D2617]">{{ $isEn ? 'Export Foreign Valuation' : 'Valuasi Devisa Ekspor' }}</h3>
                     <p class="text-[11px] text-slate-500 mt-1 leading-relaxed">{{ $isEn ? 'Automated currency conversion to USD ($) and EUR (€) directly from ECB data.' : 'Konversi otomatis devisa ke USD ($) dan EUR (€) langsung dari data Bank Sentral Eropa.' }}</p>
                 </div>
-                <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600 font-mono">
+                <div class="mt-4 pt-3 border-t border-[#CFE1B9]/60 flex items-center justify-between text-xs text-slate-600 font-mono">
                     <span>{{ $isEn ? 'Total Valuation:' : 'Total Devisa:' }}</span>
-                    <strong class="text-slate-900">{{ $totalValuation['usd_formatted'] }}</strong>
+                    <strong class="text-[#1D2617] font-bold">{{ $totalValuation['usd_formatted'] }}</strong>
                 </div>
             </div>
         </div>
@@ -246,16 +301,16 @@
     <!-- ======================================================== -->
     <!-- 4. RADAR VISUAL GIS RUTE MULTIMODAL (Full Width)          -->
     <!-- ======================================================== -->
-    <div class="bg-white rounded-2xl border border-slate-200/90 p-6 shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-4 border-b border-slate-100">
+    <div class="bg-white/95 rounded-3xl border-2 border-[#CFE1B9] p-6 shadow-sm backdrop-blur-xs">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-4 border-b border-[#E7F5DC]">
             <div>
                 <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-forest-600 animate-pulse"></span>
-                    <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider font-mono">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#728156] animate-pulse"></span>
+                    <h2 class="text-sm font-bold text-[#1D2617] uppercase tracking-wider font-mono">
                         {{ $isEn ? 'Multimodal Agro-Export Corridor Visual GIS Radar' : 'Radar Visual Rute Multimodal Koridor Ekspor Agro' }}
                     </h2>
                 </div>
-                <p class="text-xs text-slate-500 mt-0.5">{{ $isEn ? 'Monitoring cargo waypoints from Highland Gayo Plantations (Takengon), Bireuen Transit, Belawan Ocean Port, Malacca Strait, Singapore, to Rotterdam.' : 'Pemantauan titik henti kargo dari Kebun Dataran Tinggi Gayo (Takengon), Transit Bireuen, Pelabuhan Belawan, Selat Malaka, Singapura, hingga Rotterdam.' }}</p>
+                <p class="text-xs text-[#4C5836] mt-0.5">{{ $isEn ? 'Monitoring cargo waypoints from Highland Gayo Plantations (Takengon), Bireuen Transit, Belawan Ocean Port, Malacca Strait, Singapore, to Rotterdam.' : 'Pemantauan titik henti kargo dari Kebun Dataran Tinggi Gayo (Takengon), Transit Bireuen, Pelabuhan Belawan, Selat Malaka, Singapura, hingga Rotterdam.' }}</p>
             </div>
             <div class="flex flex-wrap items-center gap-3 text-xs text-slate-600 font-medium">
                 <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-slate-900"></span> {{ $isEn ? 'Hub / Seaport' : 'Hub / Pelabuhan' }}</span>
@@ -458,83 +513,112 @@
     </div>
 
     <!-- ======================================================== -->
-    <!-- 6. RECENT CONSIGNMENTS MANIFEST TABLE                   -->
+    <!-- 6. RECENT SHIPMENT LIST TABLE (Unified Highland Sage)   -->
     <!-- ======================================================== -->
-    <div class="bg-white rounded-2xl border border-slate-200/90 p-6 shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
-        <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+    <div class="bg-white/95 rounded-3xl border-2 border-[#CFE1B9] shadow-md overflow-hidden backdrop-blur-xs">
+        <div class="flex items-center justify-between p-5 sm:p-6 pb-4 border-b border-[#E7F5DC]">
             <div>
-                <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider font-mono">
-                    {{ $isEn ? 'Recent Cargo Shipments' : 'Daftar Pengiriman Kargo Terkini' }}
+                <h3 class="text-xs font-bold text-[#1D2617] uppercase tracking-wider font-mono flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#728156]"></span>
+                    <span>{{ $isEn ? 'Recent Cargo Shipments' : 'Daftar Pengiriman Kargo Terkini' }}</span>
                 </h3>
-                <p class="text-xs text-slate-500 mt-0.5">{{ $isEn ? 'List of consignments currently in transit' : 'Daftar kargo yang sedang dalam proses perjalanan' }}</p>
+                <p class="text-xs text-[#4C5836] mt-0.5">{{ $isEn ? 'List of consignments currently in transit' : 'Daftar kargo yang sedang dalam proses perjalanan' }}</p>
             </div>
-            <a href="{{ route('shipments.index') }}" class="text-xs font-bold text-forest-700 hover:text-forest-900 flex items-center gap-1 transition-colors">
+            <a href="{{ route('shipments.index') }}" class="px-3.5 py-1.5 rounded-xl bg-[#E7F5DC] hover:bg-[#CFE1B9] text-[#1D2617] border border-[#B6C99B] text-xs font-bold flex items-center gap-1.5 transition-all shadow-2xs active:scale-95">
                 <span>{{ $isEn ? 'View All Shipments' : 'Lihat Semua Pengiriman' }}</span>
                 <span>&rarr;</span>
             </a>
         </div>
 
         <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse text-xs">
-                <thead>
-                    <tr class="border-b border-slate-200 text-[10px] font-bold uppercase tracking-wider text-slate-500 font-mono">
-                        <th class="pb-3 font-bold">{{ $isEn ? 'Waybill No.' : 'Nomor Resi / Surat Jalan' }}</th>
-                        <th class="pb-3 font-bold">{{ $isEn ? 'Commodity & Weight' : 'Komoditas & Bobot' }}</th>
-                        <th class="pb-3 font-bold">{{ $isEn ? 'Routing Journey' : 'Rute Perjalanan' }}</th>
-                        <th class="pb-3 font-bold">{{ $isEn ? 'Carrier Fleet' : 'Armada Pengangkut' }}</th>
-                        <th class="pb-3 font-bold">{{ $isEn ? 'Status' : 'Status' }}</th>
-                        <th class="pb-3 font-bold text-right">{{ $isEn ? 'Actions' : 'Aksi' }}</th>
+            <table class="w-full text-left text-xs">
+                <thead class="bg-gradient-to-r from-[#E7F5DC] via-[#F1F6EA] to-[#E7F5DC] border-b-2 border-[#B6C99B] text-[#384226] uppercase tracking-wider text-[10px] font-extrabold font-mono">
+                    <tr>
+                        <th class="py-3.5 px-4 font-bold">{{ $isEn ? 'Waybill No.' : 'Nomor Resi / Surat Jalan' }}</th>
+                        <th class="py-3.5 px-4 font-bold">{{ $isEn ? 'Buyer / Consignee' : 'Penerima / Pembeli' }}</th>
+                        <th class="py-3.5 px-4 font-bold">{{ $isEn ? 'Commodity & Weight' : 'Komoditas & Bobot' }}</th>
+                        <th class="py-3.5 px-4 font-bold">{{ $isEn ? 'Route & Location' : 'Rute & Posisi Terkini' }}</th>
+                        <th class="py-3.5 px-4 font-bold">{{ $isEn ? 'Carrier Fleet' : 'Armada Pengangkut' }}</th>
+                        <th class="py-3.5 px-4 font-bold">{{ $isEn ? 'Status & ETA' : 'Status & Estimasi Tiba' }}</th>
+                        <th class="py-3.5 px-4 font-bold text-right">{{ $isEn ? 'Actions' : 'Aksi' }}</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-100">
+                <tbody class="divide-y divide-[#E7F5DC]/80 text-slate-700">
                     @forelse($recentShipments as $s)
-                        <tr class="hover:bg-slate-50/80 transition-colors">
-                            <td class="py-3.5 pr-3 font-mono font-bold text-slate-900">
-                                <a href="{{ route('shipments.show', $s->id) }}" class="text-forest-700 hover:underline font-bold">
-                                    {{ $s->tracking_number }}
+                        <tr class="{{ $loop->even ? 'bg-[#F9FBF7]' : 'bg-white' }} hover:bg-[#E7F5DC]/45 transition-colors">
+                            <td class="py-3.5 px-4 font-mono font-bold text-[#1D2617]">
+                                <a href="{{ route('shipments.show', $s->id) }}" class="text-[#728156] hover:text-[#384226] hover:underline flex items-center gap-1">
+                                    <span>{{ $s->tracking_number }}</span>
                                 </a>
                             </td>
-                            <td class="py-3.5 pr-3">
-                                <div class="font-semibold text-slate-900">{{ $s->cargo_type }}</div>
-                                <div class="text-[11px] text-slate-500 mt-0.5 font-mono">{{ number_format($s->weight_kg, 0) }} kg</div>
+                            <td class="py-3.5 px-4 font-bold text-slate-900">
+                                {{ $s->customer->name ?? 'Confidential' }}
                             </td>
-                            <td class="py-3.5 pr-3">
-                                <div class="font-medium text-slate-700">{{ $s->origin->city }} &rarr; {{ $s->destination->city }}</div>
-                                <div class="text-slate-500 text-[11px] font-medium mt-0.5">{{ $isEn ? 'Location:' : 'Posisi:' }} {{ $s->currentLocation->name ?? ($isEn ? 'In Transit' : 'Dalam Perjalanan') }}</div>
+                            <td class="py-3.5 px-4">
+                                @php
+                                    $thumb = str_contains(strtolower($s->cargo_type), 'arabica') || str_contains(strtolower($s->cargo_type), 'coffee') 
+                                        ? '/images/coffee.jpg' 
+                                        : (str_contains(strtolower($s->cargo_type), 'avocado') || str_contains(strtolower($s->cargo_type), 'chili') ? '/images/avocado.jpg' : '/images/ship.jpg');
+                                @endphp
+                                <div class="flex items-center gap-2.5">
+                                    <img src="{{ $thumb }}" alt="" class="w-8 h-8 rounded-xl object-cover border border-[#CFE1B9] shrink-0 shadow-2xs">
+                                    <div>
+                                        <div class="font-bold text-slate-900">{{ $s->cargo_type }}</div>
+                                        <div class="text-[11px] text-slate-500 font-mono mt-0.5">{{ number_format($s->weight_kg, 0) }} kg &bull; {{ $s->volume_cbm ?? '-' }} CBM</div>
+                                    </div>
+                                </div>
                             </td>
-                            <td class="py-3.5 pr-3">
-                                <span class="font-medium text-slate-800">{{ $s->carrier->name }}</span>
-                                <span class="block text-[10px] text-slate-400 font-mono">[{{ $s->carrier->transport_mode }}]</span>
+                            <td class="py-3.5 px-4 text-xs">
+                                <div class="font-bold text-slate-800">{{ $s->origin->name }} &rarr; {{ $s->destination->name }}</div>
+                                <div class="text-[#728156] text-[11px] font-semibold mt-0.5">{{ $isEn ? 'Location:' : 'Posisi:' }} {{ $s->currentLocation->name ?? ($isEn ? 'In Transit' : 'Dalam Perjalanan') }}</div>
                             </td>
-                            <td class="py-3.5 pr-3">
-                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase font-mono {{ $s->status === 'DELIVERED' ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : ($s->status === 'IN_TRANSIT' ? 'bg-forest-50 text-forest-800 border border-forest-200' : 'bg-slate-100 text-slate-700 border border-slate-200') }}">
+                            <td class="py-3.5 px-4">
+                                <span class="font-bold text-slate-900">{{ $s->carrier->name }}</span>
+                                <span class="block text-[10px] text-[#728156] font-mono font-bold mt-0.5">[{{ $s->carrier->transport_mode }}]</span>
+                            </td>
+                            <td class="py-3.5 px-4">
+                                @php
+                                    $badge = match($s->status) {
+                                        'CREATED' => 'bg-[#E7F5DC] text-[#384226] border-[#B6C99B]',
+                                        'BOOKED' => 'bg-sky-50 text-sky-900 border-sky-300',
+                                        'PICKED_UP' => 'bg-indigo-50 text-indigo-900 border-indigo-300',
+                                        'IN_TRANSIT' => 'bg-sky-100 text-sky-950 border-sky-300 font-bold',
+                                        'DELIVERED' => 'bg-emerald-50 text-emerald-900 border-emerald-300 font-bold',
+                                        default => 'bg-slate-100 text-slate-800 border-slate-200',
+                                    };
+                                @endphp
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase border font-mono {{ $badge }}">
                                     {{ $s->status }}
                                 </span>
                                 @if($s->is_delayed)
-                                    <span class="block text-[10px] text-amber-700 font-medium mt-0.5 font-mono">+{{ $s->delay_duration_hours }}{{ $isEn ? 'h delayed' : 'j tertunda' }}</span>
+                                    <span class="block text-[10px] text-amber-700 font-bold mt-1 font-mono">
+                                        +{{ $s->delay_duration_hours }}{{ $isEn ? 'h Delayed' : 'j Tunda' }}
+                                    </span>
+                                @else
+                                    <span class="block text-[10px] text-slate-500 font-medium mt-1 font-mono">
+                                        ETA: {{ \Carbon\Carbon::parse($s->estimated_arrival)->format('d M, H:i') }}
+                                    </span>
                                 @endif
                             </td>
-                            <td class="py-3.5 text-right">
-                                <div class="flex items-center justify-end gap-1.5">
-                                    <a href="{{ route('shipments.show', $s->id) }}" class="btn-brand-outline px-2.5 py-1 rounded-lg text-xs font-semibold inline-block">
-                                        {{ $isEn ? 'Details' : 'Detail' }}
-                                    </a>
-                                    <a href="{{ route('shipments.print', $s->id) }}" target="_blank" class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 inline-flex items-center gap-1 cursor-pointer" title="{{ $isEn ? 'Print Waybill A4' : 'Cetak Waybill A4' }}">
-                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
-                                        <span>{{ $isEn ? 'Print' : 'Cetak' }}</span>
-                                    </a>
-                                    @if(auth()->user()->isCustomer())
-                                        <button type="button" onclick="openClaimModal({{ $s->id }}, '{{ $s->tracking_number }}')" class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 inline-flex items-center gap-1 cursor-pointer" title="{{ $isEn ? 'Report Discrepancy / Return Claim' : 'Lapor Ketidaksesuaian Mutu / Klaim Kerusakan' }}">
-                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                                            <span>{{ $isEn ? 'Claim' : 'Klaim' }}</span>
-                                        </button>
-                                    @endif
-                                </div>
+                            <td class="py-3.5 px-4 text-right space-x-1.5 whitespace-nowrap">
+                                <a href="{{ route('shipments.show', $s->id) }}" class="px-3 py-1.5 rounded-xl bg-[#E7F5DC] hover:bg-[#CFE1B9] text-[#1D2617] border border-[#B6C99B] text-xs font-bold inline-block shadow-2xs active:scale-95 transition-all">
+                                    {{ auth()->user()->isCustomer() ? ($isEn ? 'Detail' : 'Detail') : ($isEn ? 'Manage' : 'Kelola') }}
+                                </a>
+                                <a href="{{ route('track.public', $s->tracking_number) }}" target="_blank" title="{{ $isEn ? 'Open Waybill Tracking' : 'Buka Halaman Cek Resi' }}" 
+                                   class="px-2.5 py-1.5 rounded-xl bg-white text-slate-700 hover:text-[#1D2617] hover:bg-[#E7F5DC] border border-[#CFE1B9] text-xs font-semibold inline-block transition-all shadow-2xs active:scale-95">
+                                    Radar
+                                </a>
+                                @if(auth()->user()->isCustomer())
+                                    <button type="button" onclick="openClaimModal({{ $s->id }}, '{{ $s->tracking_number }}')" class="px-2.5 py-1.5 rounded-xl text-xs font-bold bg-[#FFF5F5] hover:bg-rose-50 text-rose-700 border border-rose-200 inline-flex items-center gap-1 cursor-pointer transition-all shadow-2xs active:scale-95" title="{{ $isEn ? 'Report Discrepancy / Return Claim' : 'Lapor Ketidaksesuaian Mutu / Klaim Kerusakan' }}">
+                                        <svg class="w-3.5 h-3.5 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                                        <span>{{ $isEn ? 'Claim' : 'Klaim' }}</span>
+                                    </button>
+                                @endif
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="6" class="py-8 text-center text-slate-400 italic">{{ $isEn ? 'No registered cargo manifests found.' : 'Belum ada manifest kargo terdaftar.' }}</td>
+                            <td colspan="7" class="py-10 text-center text-slate-400 italic">{{ $isEn ? 'No active cargo shipments found.' : 'Belum ada pengiriman kargo terdaftar.' }}</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -544,25 +628,25 @@
 
     <!-- Custom In-App Modal: Lapor Ketidaksesuaian / Klaim Kerusakan (Customer Self-Service) -->
     <div id="claimModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200">
-            <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border-2 border-[#CFE1B9]">
+            <div class="flex items-center justify-between pb-4 border-b border-[#E7F5DC]">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center border border-rose-100 font-bold text-base">
+                    <div class="w-10 h-10 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-200 font-bold text-base shadow-2xs">
                         ⚠️
                     </div>
                     <div>
-                        <h3 class="text-sm font-extrabold text-slate-900">{{ $isEn ? 'Report Cargo Discrepancy' : 'Lapor Ketidaksesuaian Kargo' }}</h3>
-                        <p class="text-xs text-slate-500">{{ $isEn ? 'Waybill Number:' : 'Nomor Resi:' }} <span id="modalTrackingNumber" class="font-mono font-bold text-forest-700"></span></p>
+                        <h3 class="text-sm font-extrabold text-[#1D2617]">{{ $isEn ? 'Report Cargo Discrepancy' : 'Lapor Ketidaksesuaian Kargo' }}</h3>
+                        <p class="text-xs text-[#4C5836]">{{ $isEn ? 'Waybill Number:' : 'Nomor Resi:' }} <span id="modalTrackingNumber" class="font-mono font-bold text-[#728156]"></span></p>
                     </div>
                 </div>
-                <button type="button" onclick="closeClaimModal()" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 cursor-pointer">✕</button>
+                <button type="button" onclick="closeClaimModal()" class="p-1.5 rounded-xl text-stone-400 hover:text-stone-700 hover:bg-[#E7F5DC] cursor-pointer transition-colors active:scale-90">✕</button>
             </div>
 
             <form id="claimForm" method="POST" action="" class="mt-5 space-y-4">
                 @csrf
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">{{ $isEn ? 'Issue Type / Discrepancy' : 'Jenis Kendala / Ketidaksesuaian' }}</label>
-                    <select name="exception_type" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs font-semibold focus:ring-2 focus:ring-forest-600 bg-slate-50 focus:bg-white">
+                    <label class="block text-xs font-bold text-[#1D2617] uppercase tracking-wider mb-1 font-mono">{{ $isEn ? 'Issue Type / Discrepancy' : 'Jenis Kendala / Ketidaksesuaian' }}</label>
+                    <select name="exception_type" required class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-xs font-semibold focus:ring-2 focus:ring-[#728156] focus:border-[#728156] bg-white transition-all">
                         <option value="DAMAGED">{{ $isEn ? 'Physical Cargo Damage (Packaging / Wet / Torn Jute Bags)' : 'Kargo Rusak Fisik (Kemasan / Karung Basah / Rusak)' }}</option>
                         <option value="DOCUMENTATION_ISSUE">{{ $isEn ? 'Coffee Quality Discrepancy / Quarantine Document Issue' : 'Ketidaksesuaian Mutu Kopi / Dokumen Karantina' }}</option>
                         <option value="MISROUTED">{{ $isEn ? 'Misrouted / Container Return Request' : 'Salah Rute / Permohonan Retur Kontainer' }}</option>
@@ -570,8 +654,8 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">{{ $isEn ? 'Urgency Level (Severity)' : 'Tingkat Urgensi (Severity)' }}</label>
-                    <select name="severity" required class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs font-semibold focus:ring-2 focus:ring-forest-600 bg-slate-50 focus:bg-white">
+                    <label class="block text-xs font-bold text-[#1D2617] uppercase tracking-wider mb-1 font-mono">{{ $isEn ? 'Urgency Level (Severity)' : 'Tingkat Urgensi (Severity)' }}</label>
+                    <select name="severity" required class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-xs font-semibold focus:ring-2 focus:ring-[#728156] focus:border-[#728156] bg-white transition-all">
                         <option value="MEDIUM">{{ $isEn ? 'MEDIUM — Field Verification / Quality Inspection Required' : 'MEDIUM — Butuh Verifikasi / Uji Mutu Lapangan' }}</option>
                         <option value="HIGH">{{ $isEn ? 'HIGH — Critical / Halt Consignment Immediately' : 'HIGH — Kritis / Stop Pengiriman Segera' }}</option>
                         <option value="LOW">{{ $isEn ? 'LOW — Minor Evaluation Note' : 'LOW — Catatan Minor Evaluasi' }}</option>
@@ -579,14 +663,14 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">{{ $isEn ? 'Issue Description / Reason for Claim' : 'Rincian Masalah / Alasan Klaim' }}</label>
+                    <label class="block text-xs font-bold text-[#1D2617] uppercase tracking-wider mb-1 font-mono">{{ $isEn ? 'Issue Description / Reason for Claim' : 'Rincian Masalah / Alasan Klaim' }}</label>
                     <textarea name="description" rows="3" required placeholder="{{ $isEn ? 'Describe quality discrepancy, moisture variance, or cargo damage found...' : 'Jelaskan ketidaksesuaian mutu, kadar air, atau kerusakan kargo yang ditemukan...' }}"
-                              class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-forest-600 bg-slate-50 focus:bg-white"></textarea>
+                              class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-xs focus:ring-2 focus:ring-[#728156] focus:border-[#728156] bg-white transition-all"></textarea>
                 </div>
 
-                <div class="flex items-center justify-end gap-3 pt-3 border-t border-slate-100">
-                    <button type="button" onclick="closeClaimModal()" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 cursor-pointer">{{ $isEn ? 'Cancel' : 'Batal' }}</button>
-                    <button type="submit" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-rose-600 hover:bg-rose-700 text-white shadow-md shadow-rose-900/20 cursor-pointer">{{ $isEn ? 'Submit Claim Report' : 'Kirim Laporan Klaim' }}</button>
+                <div class="flex items-center justify-end gap-3 pt-3 border-t border-[#E7F5DC]">
+                    <button type="button" onclick="closeClaimModal()" class="btn-brand-outline px-4 py-2 rounded-xl text-xs font-bold active:scale-95 cursor-pointer">{{ $isEn ? 'Cancel' : 'Batal' }}</button>
+                    <button type="submit" class="btn-brand-accent px-5 py-2.5 rounded-xl text-xs font-bold shadow-md cursor-pointer active:scale-95">{{ $isEn ? 'Submit Claim Report' : 'Kirim Laporan Klaim' }}</button>
                 </div>
             </form>
         </div>

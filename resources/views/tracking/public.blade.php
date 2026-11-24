@@ -7,55 +7,111 @@
 @section('title', $isEn ? 'Track Highland Agro-Export Cargo' : 'Lacak Kargo Ekspor Agro')
 
 @section('content')
-<div class="space-y-8 max-w-5xl mx-auto">
+<div class="space-y-8 max-w-6xl mx-auto">
 
     <!-- ======================================================== -->
-    <!-- HERO SECTION (High-Precision Public Tracking Cockpit)    -->
+    <!-- HERO SECTION (Full-Bleed HD Immersive Cockpit Hero)       -->
     <!-- ======================================================== -->
-    <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-forest-800/60 bg-[#051F20] text-white p-7 sm:p-12 text-center">
-        <!-- Background Image with Ambient Pine & Twilight Overlay -->
-        <div class="absolute inset-0 bg-cover bg-center opacity-40 scale-105 transition-transform duration-1000" style="background-image: url('{{ asset('images/dashboard-hero.jpg') }}');"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-[#051F20]/90 via-[#0B2B26]/85 to-[#051F20]/95"></div>
+    <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-[#728156]/40 p-6 sm:p-10 lg:p-12">
+        <!-- Full-bleed background photo (100% full & crisp) -->
+        <img src="{{ asset('images/dashboard-hero.jpg') }}" alt="Takengon Highland Multimodal Logistics" class="absolute inset-0 w-full h-full object-cover object-right md:object-center">
+        
+        <!-- Subtle directional shading for text readability WITHOUT green tint over the whole photo -->
+        <!-- On left: deep dark shadow so text is crisp and readable. On right: transparent so photo is completely visible! -->
+        <div class="absolute inset-0 bg-gradient-to-r from-[#11180D] via-[#11180D]/80 via-45% to-transparent pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#11180D]/80 via-transparent to-black/30 pointer-events-none"></div>
 
-        <div class="relative z-10 max-w-2xl mx-auto">
-            <!-- Pill Badge -->
-            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-forest-500/30 text-forest-200 border border-forest-400/30 backdrop-blur-md mb-4 shadow-sm font-mono">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>{{ $isEn ? 'Highland Gayo Agro-Export Cargo Tracking System' : 'Sistem Pelacakan Kargo Ekspor Dataran Tinggi Gayo' }}</span>
-            </div>
-
-            <!-- Headline -->
-            <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
-                {{ $isEn ? 'Highland Agro Supply Chain Visibility to Global Markets' : 'Visibilitas Rantai Pasok Agro Highland ke Pasar Internasional' }}
-            </h1>
-
-            <p class="text-xs sm:text-sm text-forest-100/90 mt-3 max-w-lg mx-auto font-medium leading-relaxed">
-                {{ $isEn ? 'Container telemetry tracking for Gayo Arabica coffee & fresh commodities, live route weather conditions, and customs status from Takengon to global ocean ports.' : 'Pemantauan telemetri kontainer kopi Arabika Gayo & komoditas segar, kondisi cuaca rute langsung, dan status pabean dari Takengon ke pelabuhan dunia.' }}
-            </p>
-
-            <!-- Search Form -->
-            <form action="{{ route('track.public') }}" method="GET" class="mt-7 flex flex-col sm:flex-row gap-2 max-w-lg mx-auto p-1.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 shadow-xl">
-                <div class="relative flex-1">
-                    <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <div class="w-full relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Left 7 Cols: Text, Search, Badges -->
+                <div class="lg:col-span-7 space-y-5">
+                    <!-- Pill Badge -->
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-[#11180D]/80 text-[#E7F5DC] border border-[#B6C99B]/40 backdrop-blur-md shadow-xs font-mono">
+                        <span class="w-2 h-2 rounded-full bg-[#CFE1B9] animate-pulse"></span>
+                        <span>{{ $isEn ? 'Highland Gayo Logistics & Multimodal Corridors' : 'Logistik Dataran Tinggi Gayo & Koridor Multimoda' }}</span>
                     </div>
-                    <input type="text" name="tracking_number" value="{{ $query ?? 'AGLN-2026-GY001' }}" placeholder="{{ $isEn ? 'Enter waybill number (e.g. AGLN-2026-GY001)' : 'Masukkan nomor resi (contoh: AGLN-2026-GY001)' }}"
-                           class="w-full pl-10 pr-3 py-2.5 rounded-xl border-0 bg-white text-slate-900 placeholder-slate-400 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-forest-600 transition-all shadow-sm">
-                </div>
-                <button type="submit" class="btn-brand-accent px-6 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 cursor-pointer shadow-md shrink-0">
-                    <span>{{ $isEn ? 'Track Cargo' : 'Lacak Kargo' }}</span>
-                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </button>
-            </form>
 
-            <!-- Quick Chip (1 Contoh Resi) -->
-            <div class="mt-5 flex items-center justify-center gap-2 text-xs">
-                <span class="text-forest-200/80 font-medium font-mono text-[11px]">{{ $isEn ? 'Sample Waybill:' : 'Contoh Resi:' }}</span>
-                <a href="{{ route('track.public', 'AGLN-2026-GY001') }}" class="px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white font-medium transition-colors border border-white/15 backdrop-blur-xs font-mono text-xs inline-flex items-center gap-1.5 shadow-2xs">
-                    <span>AGLN-2026-GY001</span>
-                    <span class="text-forest-300">&bull;</span>
-                    <span class="text-forest-200 font-sans">{{ $isEn ? 'Gayo Coffee (Rotterdam)' : 'Kopi Gayo (Rotterdam)' }}</span>
-                </a>
+                    <!-- Headline -->
+                    <h1 class="text-2xl sm:text-4xl lg:text-[38px] font-extrabold text-white tracking-tight leading-tight drop-shadow-sm">
+                        {{ $isEn ? 'Highland Agro Cargo Visibility from Takengon to the World' : 'Visibilitas Pengiriman Kargo Dataran Tinggi Takengon ke Seluruh Dunia' }}
+                    </h1>
+
+                    <p class="text-xs sm:text-sm text-[#CFE1B9] leading-relaxed max-w-xl font-normal drop-shadow-xs">
+                        {{ $isEn ? 'Real-time telemetry tracking for Gayo coffee & fresh commodities, route climate intelligence, and seamless multimodal checkpoints from Aceh highlands to global seaports.' : 'Pelacakan telemetri langsung untuk kopi Gayo & komoditas segar, pemantauan cuaca jalur pegunungan, dan kepatuhan pabean dari Aceh Tengah ke pelabuhan tujuan dunia.' }}
+                    </p>
+
+                    <!-- Search Form -->
+                    <form action="{{ route('track.public') }}" method="GET" class="flex flex-col sm:flex-row gap-2 max-w-lg p-1.5 rounded-2xl bg-[#11180D]/80 backdrop-blur-md border border-[#B6C99B]/40 shadow-2xl">
+                        <div class="relative flex-1">
+                            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                            </div>
+                            <input type="text" name="tracking_number" value="{{ $query ?? 'AGLN-2026-GY001' }}" 
+                                   placeholder="{{ $isEn ? 'Enter waybill number...' : 'Masukkan nomor resi kargo...' }}"
+                                   class="w-full pl-10 pr-3 py-2.5 rounded-xl border-0 bg-white text-slate-900 placeholder-slate-400 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-[#728156] transition-all shadow-sm">
+                        </div>
+                        <button type="submit" class="btn-brand-accent px-6 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 cursor-pointer shadow-md shrink-0">
+                            <span>{{ $isEn ? 'Track Cargo' : 'Lacak Kargo' }}</span>
+                            <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </button>
+                    </form>
+
+                    <!-- Quick Samples & Live Pills -->
+                    <div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
+                        <span class="text-[#B6C99B] font-mono text-[11px]">{{ $isEn ? 'Sample Waybill:' : 'Contoh Resi Cepat:' }}</span>
+                        <a href="{{ route('track.public', 'AGLN-2026-GY001') }}" class="px-2.5 py-1 rounded-lg bg-[#11180D]/80 hover:bg-[#1D2617] text-[#E7F5DC] transition-colors border border-[#B6C99B]/30 font-mono text-xs flex items-center gap-1.5 shadow-2xs backdrop-blur-xs">
+                            <span class="font-bold">AGLN-2026-GY001</span>
+                            <span class="text-[#CFE1B9]">&bull;</span>
+                            <span class="text-[11px] text-[#CFE1B9]">{{ $isEn ? 'Gayo Coffee (Rotterdam)' : 'Kopi Gayo (Rotterdam)' }}</span>
+                        </a>
+                        <a href="{{ route('track.public', 'AGLN-2026-GY002') }}" class="px-2.5 py-1 rounded-lg bg-[#11180D]/80 hover:bg-[#1D2617] text-[#E7F5DC] transition-colors border border-[#B6C99B]/30 font-mono text-xs hidden sm:flex items-center gap-1.5 shadow-2xs backdrop-blur-xs">
+                            <span class="font-bold">AGLN-2026-GY002</span>
+                            <span class="text-[#CFE1B9]">&bull;</span>
+                            <span class="text-[11px] text-[#CFE1B9]">{{ $isEn ? 'Avocado (Singapore)' : 'Alpukat (Singapura)' }}</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right 5 Cols: Floating Telemetry Cards Over Full Photo -->
+                <div class="lg:col-span-5 flex flex-col items-start lg:items-end gap-3.5 pt-4 lg:pt-0">
+                    
+                    <!-- Floating Badge 1: Central Hub Pulse -->
+                    <div class="bg-[#11180D]/85 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-[#B6C99B]/40 text-white shadow-xl flex items-center gap-3">
+                        <span class="relative flex h-3 w-3">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                        </span>
+                        <div>
+                            <div class="text-[10px] font-mono text-[#B6C99B] font-bold uppercase tracking-wider">Pusat Operasional</div>
+                            <div class="text-xs font-bold text-white">Takengon Central Hub Online</div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Badge 2: Telemetry Card -->
+                    <div class="bg-[#11180D]/85 backdrop-blur-md p-4 rounded-2xl border border-[#B6C99B]/40 text-white shadow-2xl w-full max-w-xs space-y-3">
+                        <div class="flex items-center justify-between pb-2 border-b border-white/10 text-xs">
+                            <span class="text-[11px] font-mono text-[#B6C99B] font-bold uppercase">Koridor Multimoda</span>
+                            <span class="text-[11px] font-mono text-[#CFE1B9] font-bold">Aktif 24/7</span>
+                        </div>
+                        <div class="space-y-1.5 text-xs">
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-300">Rute Ekspor:</span>
+                                <span class="font-bold text-[#E7F5DC]">Gayo &rarr; Belawan &rarr; Eropa</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-300">Rantai Dingin:</span>
+                                <span class="font-mono font-bold text-emerald-300">4°C - 8°C Verified</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-slate-300">Satelit Jalur Km 48:</span>
+                                <span class="font-bold text-amber-200">Cerah Berawan (24°C)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </div>
@@ -67,7 +123,7 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             </div>
             <h3 class="text-base font-bold text-slate-900">{{ $isEn ? 'Waybill Number Not Found' : 'Nomor Resi Tidak Ditemukan' }}</h3>
-            <p class="text-xs text-slate-500 mt-1 leading-relaxed">{{ $isEn ? 'No cargo record found for number "' . $query . '". Please verify your manifest number.' : 'Tidak ditemukan riwayat kargo dengan nomor "' . $query . '". Silakan periksa kembali nomor manifest Anda.' }}</p>
+            <p class="text-xs text-slate-500 mt-1 leading-relaxed">{{ $isEn ? 'No cargo record found for number "' . $query . '". Please verify your tracking number.' : 'Tidak ditemukan riwayat kargo dengan nomor "' . $query . '". Silakan periksa kembali nomor resi pengiriman Anda.' }}</p>
         </div>
     @elseif($shipment)
 
@@ -343,7 +399,7 @@
         <!-- Map & Event Timeline (2 Columns) -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-            <!-- Left 2 Cols: Leaflet Radar Map & Packing Manifest -->
+            <!-- Left 2 Cols: Leaflet Radar Map & Shipment Items -->
             <div class="lg:col-span-2 space-y-6">
 
                 <!-- Interactive Leaflet Map Card -->
@@ -361,7 +417,7 @@
                     <div id="shipment-map" class="h-80 w-full rounded-xl border border-slate-200 z-10"></div>
                 </div>
 
-                <!-- Cargo Packing Manifest Items -->
+                <!-- Cargo Shipment Items -->
                 <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-2xs">
                     <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
                         <h4 class="text-xs font-bold uppercase tracking-wider text-slate-800">
@@ -549,114 +605,168 @@
         @endpush
     @else
         <!-- ======================================================== -->
-        <!-- LANDING PAGE SHOWCASE & CORRIDORS (When no query active) -->
+        <!-- LANDING PAGE DYNAMIC BENTO SHOWCASE (Non-Monotonous UI) -->
         <!-- ======================================================== -->
-        <div class="space-y-8 mt-6">
-            <!-- 3 Highland Export Corridors & Visual Showcase -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Card 1: Gayo Arabica Coffee -->
-                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-md transition-all group flex flex-col">
-                    <div class="relative h-48 overflow-hidden bg-slate-900">
-                        <img src="{{ asset('images/coffee.jpg') }}" alt="Kopi Arabika Gayo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                        <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
-                            <span class="text-xs font-bold font-mono px-2.5 py-1 rounded-full bg-forest-800/80 backdrop-blur-xs border border-forest-500/30">{{ $isEn ? 'Corridor 1 • Gayo Coffee' : 'Koridor 1 • Kopi Gayo' }}</span>
-                            <span class="text-[10px] font-semibold text-emerald-300">Takengon ➔ Rotterdam</span>
-                        </div>
+        <div class="space-y-8 mt-8">
+
+            <!-- 1. Pipeline Rute Multimoda Terpadu (Editorial Interactive Strip) -->
+            <div class="bg-white rounded-3xl p-6 sm:p-7 border border-[#B6C99B]/50 shadow-sm">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase tracking-wider text-[#728156] font-mono block">
+                            {{ $isEn ? 'Multimodal Pipeline' : 'Alur Rantai Pasok Terpadu' }}
+                        </span>
+                        <h3 class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight">
+                            {{ $isEn ? 'Takengon Highland to Global Destination Ocean Ports' : 'Dari Perkebunan Dataran Tinggi Gayo ke Pelabuhan Samudra Dunia' }}
+                        </h3>
                     </div>
-                    <div class="p-5 flex-1 flex flex-col justify-between">
-                        <div>
-                            <h3 class="text-sm font-extrabold text-slate-900 leading-snug">Specialty Arabica Gayo (Wine & FTO)</h3>
-                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                                {{ $isEn ? 'Grade 1 certified organic green coffee beans hermetically packed. Transported by refrigerated trucks across mountain passes to Belawan Port for ocean container vessels bound for Europe.' : 'Biji kopi hijau grade 1 tersertifikasi organik dikemas hermetik. Diangkut truk berpendingin melintasi jalur pegunungan menuju Pelabuhan Belawan untuk muat ke kapal samudera menuju Eropa.' }}
-                            </p>
-                        </div>
-                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                            <span class="text-slate-500 font-mono text-[11px]">{{ $isEn ? 'Moisture Content:' : 'Kadar Air:' }} <strong>11.5% - 12.0%</strong></span>
-                            <span class="text-forest-700 font-bold font-mono">Maersk Line</span>
-                        </div>
-                    </div>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#E7F5DC] text-[#4C5836] border border-[#CFE1B9] font-mono self-start sm:self-auto">
+                        <span class="w-2 h-2 rounded-full bg-[#728156]"></span>
+                        {{ $isEn ? 'Continuous Cold-Chain' : 'Rantai Dingin Terjamin' }}
+                    </span>
                 </div>
 
-                <!-- Card 2: Butter Avocado & Fresh Produce -->
-                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-md transition-all group flex flex-col">
-                    <div class="relative h-48 overflow-hidden bg-slate-900">
-                        <img src="{{ asset('images/avocado.jpg') }}" alt="Alpukat Mentega Gayo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                        <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
-                            <span class="text-xs font-bold font-mono px-2.5 py-1 rounded-full bg-forest-800/80 backdrop-blur-xs border border-forest-500/30">{{ $isEn ? 'Corridor 2 • Horticulture' : 'Koridor 2 • Hortikultura' }}</span>
-                            <span class="text-[10px] font-semibold text-emerald-300">Takengon ➔ {{ $isEn ? 'Singapore' : 'Singapura' }}</span>
-                        </div>
+                <!-- 4 Step Flow Badges -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
+                    <div class="p-3.5 rounded-2xl bg-[#E7F5DC]/50 border border-[#CFE1B9] flex flex-col justify-between">
+                        <span class="text-[10px] font-bold text-[#728156] font-mono">01 &bull; KEBUN GAYO</span>
+                        <div class="text-xs font-bold text-slate-900 mt-1">Takengon Central Depot</div>
+                        <span class="text-[10px] text-slate-500 mt-0.5">Muat Truk Reefer (4°C)</span>
                     </div>
-                    <div class="p-5 flex-1 flex flex-col justify-between">
-                        <div>
-                            <h3 class="text-sm font-extrabold text-slate-900 leading-snug">{{ $isEn ? 'Butter Avocado & Highland Birdseye Chili' : 'Alpukat Mentega & Cabai Rawit Dataran Tinggi' }}</h3>
-                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                                {{ $isEn ? 'Fresh horticultural produce maintained under cold-chain (8°C) for Singapore & Malaysia premium markets via Kualanamu cargo hub and Malacca Strait express liners.' : 'Komoditas hortikultura segar dengan rantai dingin (cold chain 8°C) untuk pasar premium Singapura dan Malaysia melalui hub kargo Kualanamu dan kapal cepat Selat Malaka.' }}
-                            </p>
-                        </div>
-                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                            <span class="text-slate-500 font-mono text-[11px]">{{ $isEn ? 'Container Temp:' : 'Suhu Kontainer:' }} <strong>7.5°C</strong></span>
-                            <span class="text-forest-700 font-bold font-mono">Evergreen Reefer</span>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Card 3: Multimodal Fleet & Seaport Terminal -->
-                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm hover:shadow-md transition-all group flex flex-col">
-                    <div class="relative h-48 overflow-hidden bg-slate-900">
-                        <img src="{{ asset('images/multimodal-port.jpg') }}" alt="Terminal Pelabuhan Petikemas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-                        <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
-                            <span class="text-xs font-bold font-mono px-2.5 py-1 rounded-full bg-forest-800/80 backdrop-blur-xs border border-forest-500/30">{{ $isEn ? 'Multimodal Fleet' : 'Armada Multimoda' }}</span>
-                            <span class="text-[10px] font-semibold text-emerald-300">{{ $isEn ? 'Inland • Ocean • Air' : 'Darat • Laut • Udara' }}</span>
-                        </div>
+                    <div class="p-3.5 rounded-2xl bg-[#E7F5DC]/50 border border-[#CFE1B9] flex flex-col justify-between">
+                        <span class="text-[10px] font-bold text-[#728156] font-mono">02 &bull; JALUR PEGUNUNGAN</span>
+                        <div class="text-xs font-bold text-slate-900 mt-1">Koridor Bireuen (Km 48)</div>
+                        <span class="text-[10px] text-slate-500 mt-0.5">Monitoring Cuaca Satelit</span>
                     </div>
-                    <div class="p-5 flex-1 flex flex-col justify-between">
-                        <div>
-                            <h3 class="text-sm font-extrabold text-slate-900 leading-snug">{{ $isEn ? 'Integrated Multimodal Transport Network' : 'Jaringan Pengangkutan Terintegrasi' }}</h3>
-                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
-                                {{ $isEn ? 'Seamless interconnection of Sumatra trucking fleets, Belawan container feeders, cross-ocean mother vessels, and air freight for global auction micro-lots.' : 'Koneksi seamless armada truk ekspedisi Sumatra, kapal feeder kontainer Belawan, mother vessel lintas samudera, hingga kargo udara darurat untuk sampel lelang dunia.' }}
-                            </p>
-                        </div>
-                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                            <span class="text-slate-500 font-mono text-[11px]">{{ $isEn ? 'Strategic Hubs:' : 'Hub:' }} <strong>{{ $isEn ? '6 Locations' : '6 Lokasi Strategis' }}</strong></span>
-                            <a href="{{ route('commodities.index') }}" class="text-forest-700 font-bold hover:underline flex items-center gap-1 font-mono">
-                                <span>{{ $isEn ? 'View Catalog →' : 'Lihat Katalog →' }}</span>
-                            </a>
-                        </div>
+
+                    <div class="p-3.5 rounded-2xl bg-[#E7F5DC]/50 border border-[#CFE1B9] flex flex-col justify-between">
+                        <span class="text-[10px] font-bold text-[#728156] font-mono">03 &bull; HUB PELABUHAN</span>
+                        <div class="text-xs font-bold text-slate-900 mt-1">Terminal Belawan (Medan)</div>
+                        <span class="text-[10px] text-slate-500 mt-0.5">Klirens Bea Cukai & Pabean</span>
+                    </div>
+
+                    <div class="p-3.5 rounded-2xl bg-[#728156] text-white border border-[#5F6D46] flex flex-col justify-between shadow-xs">
+                        <span class="text-[10px] font-bold text-[#CFE1B9] font-mono">04 &bull; SAMUDERA DUNIA</span>
+                        <div class="text-xs font-bold text-white mt-1">Singapura &bull; Rotterdam</div>
+                        <span class="text-[10px] text-[#E7F5DC] mt-0.5">Kapal Kontainer Samudera</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Features Banner -->
-            <div class="bg-sidebar-gradient rounded-3xl p-6 sm:p-8 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl border border-forest-800">
-                <div class="max-w-xl">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-semibold bg-white/10 text-forest-200 border border-white/15 mb-3 font-mono">
-                        <span>{{ $isEn ? '✨ Global Export Standard' : '✨ Standar Ekspor Global' }}</span>
+            <!-- 2. Asymmetrical Bento-Grid (Bukan 3 Kartu Kembar Monoton) -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                
+                <!-- Main Feature Bento (7 Cols): Kopi Arabika Gayo Spesial -->
+                <div class="lg:col-span-7 bg-white rounded-3xl overflow-hidden border border-[#B6C99B]/60 shadow-sm hover:shadow-md transition-all flex flex-col group">
+                    <div class="relative h-64 sm:h-72 overflow-hidden bg-slate-900">
+                        <!-- Photo is fully visible & crisp -->
+                        <img src="{{ asset('images/coffee.jpg') }}" alt="Kopi Arabika Gayo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#E7F5DC] text-[#384226] border border-[#CFE1B9] shadow-sm font-mono">
+                                {{ $isEn ? 'Premier Export Commodity' : 'Komoditas Unggulan Utama' }}
+                            </span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <span class="text-xs font-mono font-bold text-[#CFE1B9] uppercase tracking-wider block">Koridor 01 &bull; Dataran Tinggi Gayo ➔ Eropa</span>
+                            <h3 class="text-lg sm:text-xl font-extrabold text-white leading-tight mt-0.5">
+                                Kopi Arabika Specialty Gayo (Wine & Full Washed)
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            {{ $isEn ? 'Grade 1 certified organic green coffee beans hermetically packed in grainpro bags. Transported via climate-controlled multimodal routes directly to European roasters.' : 'Biji kopi hijau Grade 1 tersertifikasi organik dikemas hermetis khusus. Dikirim melintasi koridor pegunungan menuju Pelabuhan Belawan untuk dimuat ke kapal kargo samudera Maersk Line menuju Pelabuhan Rotterdam, Belanda.' }}
+                        </p>
+                        <div class="pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-xs">
+                            <div class="flex items-center gap-2">
+                                <span class="px-2.5 py-0.5 rounded-lg bg-[#E7F5DC] text-[#4C5836] font-bold font-mono text-[11px]">Kadar Air: 11.5%</span>
+                                <span class="px-2.5 py-0.5 rounded-lg bg-[#E7F5DC] text-[#4C5836] font-bold font-mono text-[11px]">Suhu: 18°C</span>
+                            </div>
+                            <span class="text-[#728156] font-bold font-mono">Armada: Maersk Container</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secondary Stacked Bento (5 Cols): Alpukat & Hub Multimoda -->
+                <div class="lg:col-span-5 flex flex-col gap-6">
+                    
+                    <!-- Card 2A: Alpukat Mentega Gayo -->
+                    <div class="bg-white rounded-3xl overflow-hidden border border-[#B6C99B]/60 shadow-sm hover:shadow-md transition-all flex flex-col group flex-1">
+                        <div class="relative h-36 overflow-hidden bg-slate-900">
+                            <!-- Photo clear and bright -->
+                            <img src="{{ asset('images/avocado.jpg') }}" alt="Alpukat Mentega Gayo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 text-white">
+                                <span class="text-[10px] font-mono text-[#CFE1B9] font-bold uppercase">Koridor 02 &bull; Hortikultura Segar</span>
+                                <h4 class="text-sm font-extrabold text-white">Alpukat Mentega Dataran Tinggi</h4>
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#E7F5DC] text-[#384226] font-mono">Takengon ➔ Singapura</span>
+                            </div>
+                        </div>
+                        <div class="p-4 flex items-center justify-between text-xs">
+                            <span class="text-slate-500 font-mono text-[11px]">Rantai Dingin: <strong>7.5°C</strong></span>
+                            <span class="text-[#728156] font-bold font-mono">Evergreen Reefer</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2B: Pelabuhan & Hub Multimoda -->
+                    <div class="bg-white rounded-3xl overflow-hidden border border-[#B6C99B]/60 shadow-sm hover:shadow-md transition-all flex flex-col group flex-1">
+                        <div class="relative h-36 overflow-hidden bg-slate-900">
+                            <!-- Photo clear and bright -->
+                            <img src="{{ asset('images/multimodal-port.jpg') }}" alt="Terminal Pelabuhan Belawan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                            <div class="absolute bottom-3 left-3 text-white">
+                                <span class="text-[10px] font-mono text-[#CFE1B9] font-bold uppercase">Infrastruktur Ekspor</span>
+                                <h4 class="text-sm font-extrabold text-white">Terminal Petikemas Samudera</h4>
+                            </div>
+                            <div class="absolute top-3 right-3">
+                                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#E7F5DC] text-[#384226] font-mono">Darat &bull; Laut &bull; Udara</span>
+                            </div>
+                        </div>
+                        <div class="p-4 flex items-center justify-between text-xs">
+                            <span class="text-slate-500 font-mono text-[11px]">Status Hub: <strong>6 Lokasi Strategis</strong></span>
+                            <a href="{{ route('commodities.index') }}" class="text-[#728156] font-bold hover:underline flex items-center gap-1 font-mono text-[11px]">
+                                <span>Lihat Rute Lengkap &rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 3. Kotak Gelap Banner (Highland Dark Olive Box #1D2617) -->
+            <div class="rounded-3xl p-7 sm:p-9 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl border border-[#728156]/40 bg-gradient-to-br from-[#11180D] via-[#1D2617] to-[#161F12]">
+                <div class="max-w-xl space-y-2">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-semibold bg-[#728156]/30 text-[#E7F5DC] border border-[#B6C99B]/30 font-mono">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#CFE1B9]"></span>
+                        <span>{{ $isEn ? 'Enterprise Multimodal Visibility' : 'Sistem Pengiriman Logistik Terpadu' }}</span>
                     </div>
                     <h2 class="text-xl sm:text-2xl font-extrabold text-white leading-tight">
-                        {{ $isEn ? 'Export-Grade Cargo Visibility Platform' : 'Platform Visibilitas Kargo Berstandar Ekspor Dunia' }}
+                        {{ $isEn ? 'Highland Agro Cargo Traceability Platform' : 'Platform Pelacakan Pengiriman Kargo Dataran Tinggi Gayo' }}
                     </h2>
-                    <p class="text-xs sm:text-sm text-forest-100/80 mt-2 leading-relaxed">
-                        {{ $isEn ? 'Delivering end-to-end transparency for Gayo coffee and highland agro commodities with temperature sensors, live satellite weather radar, and international customs audit trail.' : 'Mendukung transparansi rantai pasok kopi dan hasil bumi Gayo dengan telemetri sensor suhu, radar cuaca BMKG/OpenWeather, serta audit trail kepatuhan pabean internasional.' }}
+                    <p class="text-xs sm:text-sm text-[#CFE1B9] leading-relaxed">
+                        {{ $isEn ? 'Delivering end-to-end transparency for Gayo coffee and highland agro commodities with temperature sensors, live satellite weather radar, and international customs audit trail.' : 'Menjamin transparansi pengiriman kopi dan komoditas pertanian Gayo dengan pemantauan suhu, satelit cuaca jalur pegunungan, serta dokumen surat jalan digital.' }}
                     </p>
                 </div>
                 <div class="flex flex-wrap items-center gap-3 shrink-0">
                     <a href="{{ route('commodities.index') }}" class="btn-brand-accent px-5 py-2.5 rounded-xl text-xs font-bold text-white shadow-md">
-                        {{ $isEn ? 'Commodities & Fleet Catalog' : 'Katalog Komoditas & Armada' }}
+                        {{ $isEn ? 'Commodities & Fleet' : 'Komoditas & Armada' }}
                     </a>
                     @guest
-                        <a href="{{ route('login') }}" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-white text-slate-900 hover:bg-slate-100 shadow-md transition-colors">
+                        <a href="{{ route('login') }}" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#E7F5DC] text-[#1D2617] hover:bg-white shadow-md transition-colors">
                             {{ $isEn ? 'Sign In to Portal' : 'Masuk ke Portal' }}
                         </a>
                     @else
-                        <a href="{{ route('dashboard') }}" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-white text-slate-900 hover:bg-slate-100 shadow-md transition-colors">
+                        <a href="{{ route('dashboard') }}" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#E7F5DC] text-[#1D2617] hover:bg-white shadow-md transition-colors">
                             Dashboard
                         </a>
                     @endguest
                 </div>
             </div>
+
         </div>
     @endif
 

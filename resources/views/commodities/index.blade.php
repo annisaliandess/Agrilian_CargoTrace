@@ -160,7 +160,7 @@
                             <span class="text-xs font-mono font-bold text-forest-800">AGLN-2026-GY001</span>
                         </div>
                         <a href="/shipments/1" class="btn-brand-accent px-3 py-1.5 rounded-xl text-xs font-bold text-white flex items-center gap-1">
-                            <span>{{ $isEn ? 'View Manifest' : 'Buka Manifes' }}</span>
+                            <span>{{ $isEn ? 'View Shipment' : 'Lihat Pengiriman' }}</span>
                             <span>&rarr;</span>
                         </a>
                     </div>
@@ -224,7 +224,7 @@
                             <span class="text-xs font-mono font-bold text-forest-800">AGLN-2026-GY002</span>
                         </div>
                         <a href="/shipments/2" class="btn-brand-accent px-3 py-1.5 rounded-xl text-xs font-bold text-white flex items-center gap-1">
-                            <span>{{ $isEn ? 'View Manifest' : 'Buka Manifes' }}</span>
+                            <span>{{ $isEn ? 'View Shipment' : 'Lihat Pengiriman' }}</span>
                             <span>&rarr;</span>
                         </a>
                     </div>

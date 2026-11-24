@@ -48,7 +48,7 @@
                     {{ $isEn ? 'Cargo Coordinates Unregistered' : 'Koordinat Kargo Tidak Terdaftar' }}
                 </h1>
                 <p class="text-xs text-slate-500 mt-2 leading-relaxed">
-                    {{ $isEn ? 'The page or manifest record you are looking for was not found on the AgriLian CargoTrace logistics server. The tracking number or link may be invalid.' : 'Halaman atau data manifes yang Anda tuju tidak ditemukan di server logistik AgriLian CargoTrace. Nomor resi atau tautan mungkin salah.' }}
+                    {{ $isEn ? 'The page or shipment record you are looking for was not found on the AgriLian CargoTrace logistics server. The tracking number or link may be invalid.' : 'Halaman atau data pengiriman yang Anda tuju tidak ditemukan di server logistik AgriLian CargoTrace. Nomor resi atau tautan mungkin salah.' }}
                 </p>
             </div>
 

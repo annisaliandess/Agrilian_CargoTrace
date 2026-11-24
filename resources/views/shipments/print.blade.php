@@ -111,7 +111,7 @@
                     {{ $isEn ? 'Document Type:' : 'Jenis Dokumen:' }}
                 </span>
                 <h2 class="text-sm font-extrabold text-slate-900 uppercase tracking-tight">
-                    {{ $isEn ? 'MULTIMODAL EXPORT CONSIGNMENT WAYBILL & MANIFEST' : 'SURAT JALAN & MANIFES KONSINYASI EKSPOR MULTIMODAL' }}
+                    {{ $isEn ? 'MULTIMODAL EXPORT CONSIGNMENT WAYBILL' : 'SURAT JALAN PENGIRIMAN EKSPOR MULTIMODAL' }}
                 </h2>
             </div>
             <div class="flex items-center gap-2 font-mono text-xs">
@@ -189,10 +189,10 @@
             </div>
         </div>
 
-        <!-- 5. Tabel Manifest Barang (Item Specification) -->
+        <!-- 5. Tabel Rincian Barang (Item Specification) -->
         <div class="space-y-2">
             <div class="text-[10px] font-bold text-slate-400 uppercase font-mono">
-                {{ $isEn ? '3. CARGO MANIFEST SPECIFICATIONS' : '3. MANIFES SPESIFIKASI MUATAN BARANG' }}
+                {{ $isEn ? '3. CARGO SPECIFICATIONS & PACKING LIST' : '3. RINCIAN SPESIFIKASI MUATAN BARANG' }}
             </div>
             <table class="w-full text-xs border border-slate-300 rounded-xl overflow-hidden">
                 <thead class="bg-slate-100 text-slate-700 font-mono text-[11px] border-b border-slate-300">
