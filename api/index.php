@@ -1,5 +1,10 @@
 <?php
 
+use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
+
+define('LARAVEL_START', microtime(true));
+
 // 1. Siapkan direktori storage writable di /tmp Vercel
 $storagePath = '/tmp/storage';
 $directories = [
@@ -24,21 +29,13 @@ if (file_exists($sqliteSource) && !file_exists($sqliteDest)) {
     @copy($sqliteSource, $sqliteDest);
 }
 
-// 3. Autoload & Bootstrap Laravel
+// 3. Autoload & Bootstrap Laravel 12
 require __DIR__ . '/../vendor/autoload.php';
 
-/** @var \Illuminate\Foundation\Application $app */
+/** @var Application $app */
 $app = require_once __DIR__ . '/../bootstrap/app.php';
 
 $app->useStoragePath($storagePath);
 
-// 4. Handle incoming HTTP Request
-$kernel = $app->make(\Illuminate\Contracts\Http\Kernel::class);
-
-$response = $kernel->handle(
-    $request = \Illuminate\Http\Request::capture()
-);
-
-$response->send();
-
-$kernel->terminate($request, $response);
+// 4. Handle HTTP Request sesuai standar Laravel 12
+$app->handleRequest(Request::capture());
