@@ -41,12 +41,9 @@ if (file_exists($sqliteSource) && !file_exists($sqliteDest)) {
     @copy($sqliteSource, $sqliteDest);
 }
 
-// 4. Salin manifest packages jika ada
+// 4. Salin manifest packages jika ada (sudah diproteksi dari dev provider)
 if (file_exists(__DIR__ . '/../bootstrap/cache/packages.php') && !file_exists('/tmp/packages.php')) {
     @copy(__DIR__ . '/../bootstrap/cache/packages.php', '/tmp/packages.php');
-}
-if (file_exists(__DIR__ . '/../bootstrap/cache/services.php') && !file_exists('/tmp/services.php')) {
-    @copy(__DIR__ . '/../bootstrap/cache/services.php', '/tmp/services.php');
 }
 
 // 5. Autoload & Bootstrap Laravel 12
