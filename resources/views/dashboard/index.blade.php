@@ -23,7 +23,7 @@
             <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                 <div class="max-w-2xl">
                     <!-- Status Badge -->
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-[#11180D]/80 text-[#E7F5DC] border border-[#B6C99B]/40 backdrop-blur-md mb-3 shadow-xs font-mono">
+                    <div class="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 px-3 py-1 rounded-full text-[10px] sm:text-xs font-semibold bg-[#11180D]/80 text-[#E7F5DC] border border-[#B6C99B]/40 backdrop-blur-md mb-3 shadow-xs font-mono max-w-full">
                         <span class="w-2 h-2 rounded-full bg-[#CFE1B9] animate-pulse"></span>
                         <span>{{ $isEn ? 'Takengon Hub (Gayo) • Belawan Ocean Port • Rotterdam Direct' : 'Takengon Hub (Gayo) • Belawan Ocean Port • Rotterdam Langsung' }}</span>
                     </div>
@@ -65,7 +65,7 @@
                     <span class="text-[10px] text-[#B6C99B] bg-white/5 px-2.5 py-1 rounded-xl border border-white/10 font-mono">{{ $isEn ? 'European Central Bank' : 'Bank Sentral Eropa' }}</span>
                 </div>
 
-                <div class="flex items-center gap-2 bg-[#11180D]/80 backdrop-blur-xs px-3.5 py-1.5 rounded-2xl border border-[#B6C99B]/30">
+                <div class="flex flex-wrap items-center gap-2 bg-[#11180D]/80 backdrop-blur-xs px-3 sm:px-3.5 py-1.5 rounded-2xl border border-[#B6C99B]/30 max-w-full">
                     <span class="text-[#CFE1B9]">{{ $isEn ? 'Estimated Cargo Valuation:' : 'Estimasi Devisa Kargo:' }}</span>
                     <strong class="font-mono font-bold text-white text-sm tracking-tight">{{ $totalValuation['usd_formatted'] }} USD</strong>
                     <span class="text-xs font-mono font-bold text-[#E7F5DC] bg-[#728156]/50 px-2 py-0.5 rounded-lg border border-[#B6C99B]/40">({{ $totalValuation['eur_formatted'] }})</span>

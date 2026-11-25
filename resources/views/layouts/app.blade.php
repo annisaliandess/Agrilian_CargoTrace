@@ -233,7 +233,7 @@
         <div id="sidebar-backdrop" onclick="toggleSidebar()" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-30 hidden lg:hidden transition-opacity"></div>
 
         <!-- Sidebar Column (Bisa Dibuka dan Ditutup) -->
-        <aside id="app-sidebar" class="w-64 bg-sidebar-gradient text-white flex flex-col fixed inset-y-0 left-0 z-40 shadow-2xl border-r border-[#1D2617] transition-transform duration-300 ease-in-out">
+        <aside id="app-sidebar" class="w-64 bg-sidebar-gradient text-white flex flex-col fixed inset-y-0 left-0 z-40 shadow-2xl border-r border-[#1D2617] transition-transform duration-300 ease-in-out -translate-x-full lg:translate-x-0">
             <!-- Brand Logo Area with Bubble Badge (Clickable to Toggle Sidebar) -->
             <div class="h-16 flex items-center justify-between px-4 border-b border-[#384226]/40 bg-black/25">
                 <button type="button" onclick="toggleSidebar()" title="{{ app()->getLocale() === 'en' ? 'Collapse navigation menu' : 'Sembunyikan menu' }}"
@@ -372,7 +372,7 @@
         </aside>
 
         <!-- Right Main Workspace -->
-        <div id="main-content" class="flex-1 pl-64 flex flex-col min-h-screen transition-all duration-300 ease-in-out bg-gradient-to-br from-[#F6F9F2] via-[#EDF3E6] to-[#F2F7ED]">
+        <div id="main-content" class="flex-1 min-w-0 w-full max-w-full overflow-x-hidden pl-0 lg:pl-64 flex flex-col min-h-screen transition-all duration-300 ease-in-out bg-gradient-to-br from-[#F6F9F2] via-[#EDF3E6] to-[#F2F7ED]">
             <!-- Top Header Bar -->
             <header class="h-16 bg-white/95 backdrop-blur-md border-b border-[#CFE1B9] flex items-center justify-between px-4 sm:px-8 sticky top-0 z-30 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
                 <div class="flex items-center gap-3">
@@ -543,7 +543,7 @@
             </div>
 
             <!-- Main Page Slot -->
-            <main class="flex-1 px-4 sm:px-8 py-6">
+            <main class="flex-1 min-w-0 w-full max-w-full overflow-x-hidden px-3 sm:px-6 lg:px-8 py-5 sm:py-6">
                 @yield('content')
             </main>
 
@@ -595,25 +595,29 @@
             const backdrop = document.getElementById('sidebar-backdrop');
             if (!sidebar || !mainContent) return;
 
-            const isClosed = sidebar.classList.contains('-translate-x-full');
             const isDesktop = window.innerWidth >= 1024;
+            const isClosed = sidebar.classList.contains('-translate-x-full');
 
             if (isClosed) {
                 // Buka sidebar
                 sidebar.classList.remove('-translate-x-full');
                 if (isDesktop) {
+                    sidebar.classList.add('lg:translate-x-0');
                     mainContent.classList.remove('pl-0');
-                    mainContent.classList.add('pl-64');
+                    mainContent.classList.add('lg:pl-64');
                     localStorage.setItem('cargotrace_sidebar_collapsed', 'false');
-                } else if (backdrop) {
-                    backdrop.classList.remove('hidden');
+                } else {
+                    sidebar.classList.add('translate-x-0');
+                    if (backdrop) backdrop.classList.remove('hidden');
                 }
                 updateNavbarBrandVisibility(false);
             } else {
                 // Tutup sidebar
                 sidebar.classList.add('-translate-x-full');
+                sidebar.classList.remove('translate-x-0');
+                sidebar.classList.remove('lg:translate-x-0');
                 if (isDesktop) {
-                    mainContent.classList.remove('pl-64');
+                    mainContent.classList.remove('lg:pl-64');
                     mainContent.classList.add('pl-0');
                     localStorage.setItem('cargotrace_sidebar_collapsed', 'true');
                 } else if (backdrop) {
@@ -643,23 +647,37 @@
             if (!isDesktop) {
                 // Mobile default: tutup sidebar, tanpa padding kiri
                 sidebar.classList.add('-translate-x-full');
-                mainContent.classList.remove('pl-64');
+                sidebar.classList.remove('translate-x-0');
+                sidebar.classList.remove('lg:translate-x-0');
+                mainContent.classList.remove('lg:pl-64');
                 mainContent.classList.add('pl-0');
                 if (backdrop) backdrop.classList.add('hidden');
                 updateNavbarBrandVisibility(true);
             } else if (savedState === 'true') {
                 sidebar.classList.add('-translate-x-full');
-                mainContent.classList.remove('pl-64');
+                sidebar.classList.remove('lg:translate-x-0');
+                mainContent.classList.remove('lg:pl-64');
                 mainContent.classList.add('pl-0');
                 updateNavbarBrandVisibility(true);
             } else {
-                // Desktop default terbuka: sembunyikan logo navbar agar tidak double
+                sidebar.classList.remove('-translate-x-full');
+                sidebar.classList.add('lg:translate-x-0');
+                mainContent.classList.add('lg:pl-64');
+                mainContent.classList.remove('pl-0');
                 updateNavbarBrandVisibility(false);
             }
 
             // Responsif saat ukuran layar browser diubah
             window.addEventListener('resize', function() {
+                const isNowDesktop = window.innerWidth >= 1024;
                 const isNowClosed = sidebar.classList.contains('-translate-x-full');
+                if (!isNowDesktop) {
+                    mainContent.classList.remove('lg:pl-64');
+                    mainContent.classList.add('pl-0');
+                } else if (!isNowClosed) {
+                    mainContent.classList.add('lg:pl-64');
+                    mainContent.classList.remove('pl-0');
+                }
                 updateNavbarBrandVisibility(isNowClosed);
             });
         });
