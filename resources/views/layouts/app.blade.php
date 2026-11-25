@@ -119,17 +119,17 @@
 
         /* Earthy Olive & Sage Accent Button */
         .btn-brand-accent {
-            background: linear-gradient(135deg, #728156 0%, #5F6D46 100%);
+            background: linear-gradient(135deg, #2D6A4F 0%, #1B4332 100%);
             color: #FFFFFF !important;
             font-weight: 700;
-            box-shadow: 0 3px 12px -2px rgba(114, 129, 86, 0.45);
+            box-shadow: 0 3px 12px -2px rgba(16, 185, 129, 0.40);
             transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-            border: 1px solid #88976C;
+            border: 1px solid rgba(52, 211, 153, 0.35);
         }
         .btn-brand-accent:hover {
-            background: linear-gradient(135deg, #88976C 0%, #728156 100%);
+            background: linear-gradient(135deg, #387A5B 0%, #22533E 100%);
             transform: translateY(-1px);
-            box-shadow: 0 6px 18px -2px rgba(114, 129, 86, 0.55);
+            box-shadow: 0 6px 18px -2px rgba(16, 185, 129, 0.50);
         }
 
         /* Deep Smoked Olive Button */
@@ -185,7 +185,7 @@
         }
 
         .btn-brand-accent:active {
-            background: linear-gradient(135deg, #4C5836 0%, #384226 100%) !important;
+            background: linear-gradient(135deg, #1B4332 0%, #0D281E 100%) !important;
         }
 
         .btn-brand-primary:active {
@@ -259,67 +259,67 @@
             <div class="flex-1 px-3 py-5 space-y-6 overflow-y-auto">
                 <!-- Group 1: Core Operations -->
                 <div>
-                    <div class="px-3 text-[10px] font-bold uppercase tracking-widest text-[#B6C99B] mb-2 font-mono flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[#728156]"></span>
+                    <div class="px-3 text-[10px] font-bold uppercase tracking-widest text-emerald-300/90 mb-2 font-mono flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
                         <span>{{ app()->getLocale() === 'en' ? 'Export Operations' : 'Operasional Ekspor' }}</span>
                     </div>
                     <nav class="space-y-1.5">
                         <!-- 1. Dasbor Radar -->
-                        <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs font-semibold transition-all group {{ request()->routeIs('dashboard') ? 'bg-gradient-to-r from-[#728156] to-[#5F6D46] text-white shadow-md shadow-black/20 border border-[#88976C]/60 font-bold' : 'text-[#CFE1B9] hover:text-white hover:bg-white/10' }}">
-                            <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 {{ request()->routeIs('dashboard') ? 'bg-white/20 text-white' : 'bg-white/5 text-[#CFE1B9] group-hover:bg-white/10 group-hover:text-white' }} transition-colors">
+                        <a href="{{ route('dashboard') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs font-semibold transition-all group {{ request()->routeIs('dashboard') ? 'bg-gradient-to-r from-[#2D6A4F] to-[#1B4332] text-white shadow-md shadow-black/30 border border-emerald-400/30 font-bold' : 'text-slate-200 hover:text-white hover:bg-white/10' }}">
+                            <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 {{ request()->routeIs('dashboard') ? 'bg-white/20 text-white' : 'bg-white/5 text-emerald-300/80 group-hover:bg-white/10 group-hover:text-emerald-300' }} transition-colors">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
                             </div>
                             <span>{{ app()->getLocale() === 'en' ? 'Radar Dashboard' : 'Dasbor Radar' }}</span>
                             @if(request()->routeIs('dashboard'))
-                                <span class="w-1.5 h-1.5 rounded-full bg-[#E7F5DC] ml-auto animate-pulse"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-300 ml-auto animate-pulse"></span>
                             @endif
                         </a>
 
                         <!-- 2. Tambah Pengiriman (Khusus Admin / Operator) -->
                         @if(auth()->user()->isOperator() || auth()->user()->isAdmin())
-                            <a href="{{ route('shipments.create') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs font-semibold transition-all group {{ request()->routeIs('shipments.create') ? 'bg-gradient-to-r from-[#728156] to-[#5F6D46] text-white shadow-md shadow-black/20 border border-[#88976C]/60 font-bold' : 'text-[#CFE1B9] hover:text-white hover:bg-white/10' }}">
-                                <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 {{ request()->routeIs('shipments.create') ? 'bg-white/20 text-white' : 'bg-white/5 text-[#CFE1B9] group-hover:bg-white/10 group-hover:text-white' }} transition-colors">
+                            <a href="{{ route('shipments.create') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs font-semibold transition-all group {{ request()->routeIs('shipments.create') ? 'bg-gradient-to-r from-[#2D6A4F] to-[#1B4332] text-white shadow-md shadow-black/30 border border-emerald-400/30 font-bold' : 'text-slate-200 hover:text-white hover:bg-white/10' }}">
+                                <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 {{ request()->routeIs('shipments.create') ? 'bg-white/20 text-white' : 'bg-white/5 text-emerald-300/80 group-hover:bg-white/10 group-hover:text-emerald-300' }} transition-colors">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
                                 </div>
                                 <span class="flex-1">{{ app()->getLocale() === 'en' ? 'Create Shipment' : 'Tambah Pengiriman' }}</span>
                                 @if(request()->routeIs('shipments.create'))
-                                    <span class="w-1.5 h-1.5 rounded-full bg-[#E7F5DC] ml-auto animate-pulse"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-300 ml-auto animate-pulse"></span>
                                 @else
-                                    <span class="text-[9px] font-mono font-bold bg-[#728156]/40 text-[#E7F5DC] px-1.5 py-0.5 rounded-md border border-[#B6C99B]/30">+ Baru</span>
+                                    <span class="text-[9px] font-mono font-bold bg-emerald-950/80 text-emerald-300 px-1.5 py-0.5 rounded-md border border-emerald-500/30">+ Baru</span>
                                 @endif
                             </a>
                         @endif
 
                         <!-- 3. Daftar Pengiriman -->
-                        <a href="{{ route('shipments.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs font-semibold transition-all group {{ (request()->routeIs('shipments.index') || request()->routeIs('shipments.show')) && !request()->routeIs('shipments.create') ? 'bg-gradient-to-r from-[#728156] to-[#5F6D46] text-white shadow-md shadow-black/20 border border-[#88976C]/60 font-bold' : 'text-[#CFE1B9] hover:text-white hover:bg-white/10' }}">
-                            <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 {{ (request()->routeIs('shipments.index') || request()->routeIs('shipments.show')) && !request()->routeIs('shipments.create') ? 'bg-white/20 text-white' : 'bg-white/5 text-[#CFE1B9] group-hover:bg-white/10 group-hover:text-white' }} transition-colors">
+                        <a href="{{ route('shipments.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs font-semibold transition-all group {{ (request()->routeIs('shipments.index') || request()->routeIs('shipments.show')) && !request()->routeIs('shipments.create') ? 'bg-gradient-to-r from-[#2D6A4F] to-[#1B4332] text-white shadow-md shadow-black/30 border border-emerald-400/30 font-bold' : 'text-slate-200 hover:text-white hover:bg-white/10' }}">
+                            <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 {{ (request()->routeIs('shipments.index') || request()->routeIs('shipments.show')) && !request()->routeIs('shipments.create') ? 'bg-white/20 text-white' : 'bg-white/5 text-emerald-300/80 group-hover:bg-white/10 group-hover:text-emerald-300' }} transition-colors">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
                             </div>
                             <span>{{ app()->getLocale() === 'en' ? 'Shipment List' : 'Daftar Pengiriman' }}</span>
                             @if((request()->routeIs('shipments.index') || request()->routeIs('shipments.show')) && !request()->routeIs('shipments.create'))
-                                <span class="w-1.5 h-1.5 rounded-full bg-[#E7F5DC] ml-auto animate-pulse"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-300 ml-auto animate-pulse"></span>
                             @endif
                         </a>
 
                         <!-- 4. Komoditas & Armada -->
-                        <a href="{{ route('commodities.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs font-semibold transition-all group {{ request()->routeIs('commodities.index') ? 'bg-gradient-to-r from-[#728156] to-[#5F6D46] text-white shadow-md shadow-black/20 border border-[#88976C]/60 font-bold' : 'text-[#CFE1B9] hover:text-white hover:bg-white/10' }}">
-                            <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 {{ request()->routeIs('commodities.index') ? 'bg-white/20 text-white' : 'bg-white/5 text-[#CFE1B9] group-hover:bg-white/10 group-hover:text-white' }} transition-colors">
+                        <a href="{{ route('commodities.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs font-semibold transition-all group {{ request()->routeIs('commodities.index') ? 'bg-gradient-to-r from-[#2D6A4F] to-[#1B4332] text-white shadow-md shadow-black/30 border border-emerald-400/30 font-bold' : 'text-slate-200 hover:text-white hover:bg-white/10' }}">
+                            <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 {{ request()->routeIs('commodities.index') ? 'bg-white/20 text-white' : 'bg-white/5 text-emerald-300/80 group-hover:bg-white/10 group-hover:text-emerald-300' }} transition-colors">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
                             </div>
                             <span>{{ app()->getLocale() === 'en' ? 'Commodities & Fleet' : 'Komoditas & Armada' }}</span>
                             @if(request()->routeIs('commodities.index'))
-                                <span class="w-1.5 h-1.5 rounded-full bg-[#E7F5DC] ml-auto animate-pulse"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-300 ml-auto animate-pulse"></span>
                             @endif
                         </a>
 
                         <!-- 5. Pelacakan Waybill -->
-                        <a href="{{ route('track.public') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs font-semibold transition-all group {{ request()->routeIs('track.public') ? 'bg-gradient-to-r from-[#728156] to-[#5F6D46] text-white shadow-md shadow-black/20 border border-[#88976C]/60 font-bold' : 'text-[#CFE1B9] hover:text-white hover:bg-white/10' }}">
-                            <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 {{ request()->routeIs('track.public') ? 'bg-white/20 text-white' : 'bg-white/5 text-[#CFE1B9] group-hover:bg-white/10 group-hover:text-white' }} transition-colors">
+                        <a href="{{ route('track.public') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs font-semibold transition-all group {{ request()->routeIs('track.public') ? 'bg-gradient-to-r from-[#2D6A4F] to-[#1B4332] text-white shadow-md shadow-black/30 border border-emerald-400/30 font-bold' : 'text-slate-200 hover:text-white hover:bg-white/10' }}">
+                            <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 {{ request()->routeIs('track.public') ? 'bg-white/20 text-white' : 'bg-white/5 text-emerald-300/80 group-hover:bg-white/10 group-hover:text-emerald-300' }} transition-colors">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                             </div>
                             <span>{{ app()->getLocale() === 'en' ? 'Track Waybill' : 'Pelacakan Waybill' }}</span>
                             @if(request()->routeIs('track.public'))
-                                <span class="w-1.5 h-1.5 rounded-full bg-[#E7F5DC] ml-auto animate-pulse"></span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-300 ml-auto animate-pulse"></span>
                             @endif
                         </a>
                     </nav>
@@ -328,7 +328,7 @@
 
             <!-- User Profile Box & Logout (Bottom of Sidebar) -->
             <div class="p-3 border-t border-[#384226]/40 bg-black/30">
-                <div class="flex items-center justify-between p-2.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-[#B6C99B]/30 transition-all">
+                <div class="flex items-center justify-between p-2.5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all">
                     @php
                         $userRole = auth()->user()->role;
                         $isEn = app()->getLocale() === 'en';
@@ -349,14 +349,14 @@
                         };
                     @endphp
                     <div class="flex items-center gap-2.5 flex-1 min-w-0 mr-2">
-                        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-[#728156] to-[#4C5836] text-white flex items-center justify-center font-bold text-xs shrink-0 border border-[#B6C99B]/50 font-mono shadow-xs">
+                        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-[#2D6A4F] to-[#1B4332] text-white flex items-center justify-center font-bold text-xs shrink-0 border border-emerald-400/40 font-mono shadow-xs">
                             {{ $initial }}
                         </div>
                         <div class="min-w-0 flex-1">
                             <div class="text-xs font-bold text-white truncate" title="{{ $displayName }}">{{ $displayName }}</div>
                             <div class="flex items-center gap-1.5">
                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                                <span class="text-[9px] font-bold text-[#CFE1B9] uppercase tracking-wider font-mono">{{ $displayRole }}</span>
+                                <span class="text-[9px] font-bold text-emerald-300 uppercase tracking-wider font-mono">{{ $displayRole }}</span>
                             </div>
                         </div>
                     </div>
@@ -393,9 +393,9 @@
                     </button>
 
                     <!-- Status Telemetri & Info Koridor (Selalu Aktif di Navbar) -->
-                    <div class="flex items-center gap-2 pl-1">
-                        <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#384226] bg-[#E7F5DC] px-2.5 py-1 rounded-full border border-[#CFE1B9]">
-                            <span class="w-1.5 h-1.5 rounded-full bg-[#728156] animate-pulse"></span>
+                    <div class="hidden sm:flex items-center gap-2 pl-1">
+                        <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#1D2617] bg-[#E7F5DC] px-2.5 py-1 rounded-full border border-[#B6C99B]">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse"></span>
                             <span class="font-mono text-[11px] font-bold">{{ app()->getLocale() === 'en' ? 'Takengon Hub • Telemetry Online' : 'Pusat Hub Takengon • Sistem Telemetri Aktif' }}</span>
                         </span>
                     </div>
