@@ -80,7 +80,7 @@
             <div class="grid grid-cols-2 gap-4 text-xs">
                 <div>
                     <span class="text-slate-500 block">Nama Mahasiswa:</span>
-                    <strong class="text-slate-900 text-sm">Annisa Liandes (Ayaa)</strong>
+                    <strong class="text-slate-900 text-sm">Annisa Liandes</strong>
                 </div>
                 <div>
                     <span class="text-slate-500 block">Nomor Induk Mahasiswa (NIM):</span>
@@ -193,7 +193,7 @@
             <tbody class="divide-y divide-slate-200">
                 <tr class="bg-slate-50">
                     <td class="py-2.5 px-3 font-bold text-[#0B2B26]">Admin Sistem</td>
-                    <td class="py-2.5 px-3 font-mono text-[11px]">admin@agrilian.com<br><span class="text-slate-500">(Ayaa Liandes)</span></td>
+                    <td class="py-2.5 px-3 font-mono text-[11px]">admin@agrilian.com<br><span class="text-slate-500">(Annisa Liandes)</span></td>
                     <td class="py-2.5 px-3">Melihat dasbor radar global, grafik status donat, grafik tonase bar, peta sebaran GIS, audit trail semua aktivitas.</td>
                     <td class="py-2.5 px-3 text-slate-500">Akses tak terbatas (*Super Administrator*).</td>
                 </tr>
@@ -224,7 +224,7 @@
                 <span>📦</span> Alur Pengembalian Barang & Klaim Mutu untuk Pelanggan (Customer):
             </div>
             <p class="text-slate-700 leading-relaxed text-[11px]">
-                Ayaa sebelumnya bertanya: <em>"apakah pelanggan perlu buat manifes baru, atau pengembalian barang aja?"</em><br>
+                Catatan Implementasi: <em>"apakah pelanggan perlu buat manifes baru, atau pengembalian barang aja?"</em><br>
                 <strong>Jawabannya:</strong> Pelanggan tidak menerbitkan manifes ekspor, melainkan mengajukan <strong>Klaim Ketidaksesuaian Mutu (*Quality Dispute / Damage Claim*)</strong>. Alurnya:
             </p>
             <ol class="list-decimal list-inside space-y-1 text-[11px] text-slate-700 font-medium">
@@ -313,28 +313,28 @@
             <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50 space-y-1 avoid-break">
                 <strong class="text-slate-900 block font-bold">1. Dosen: "Mengapa sistem ini dinamakan Logistik Multimoda? Kenapa tidak pakai truk saja sampai selesai?"</strong>
                 <p class="text-slate-700 text-[11px] leading-relaxed">
-                    <strong>Jawaban Ayaa:</strong> <em>"Karena komoditas ini ditujukan untuk ekspor lintas benua ke Eropa (Rotterdam). Takengon berada di dataran tinggi pegunungan tengah Aceh yang tidak punya laut, sehingga tahap pertama wajib menggunakan truk berpendingin (jalur darat). Namun truk tidak bisa menyeberangi samudra, sehingga di Pelabuhan Belawan muatan dialihkan ke kapal kontainer samudera (jalur laut). Perpindahan dari moda darat ke moda laut inilah yang disebut logistik multimoda, Pak/Bu."</em>
+                    <strong>Jawaban Mahasiswa:</strong> <em>"Karena komoditas ini ditujukan untuk ekspor lintas benua ke Eropa (Rotterdam). Takengon berada di dataran tinggi pegunungan tengah Aceh yang tidak punya laut, sehingga tahap pertama wajib menggunakan truk berpendingin (jalur darat). Namun truk tidak bisa menyeberangi samudra, sehingga di Pelabuhan Belawan muatan dialihkan ke kapal kontainer samudera (jalur laut). Perpindahan dari moda darat ke moda laut inilah yang disebut logistik multimoda, Pak/Bu."</em>
                 </p>
             </div>
 
             <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50 space-y-1 avoid-break">
                 <strong class="text-slate-900 block font-bold">2. Dosen: "Bagaimana cara sistem Anda menjaga keamanan data pelanggan?"</strong>
                 <p class="text-slate-700 text-[11px] leading-relaxed">
-                    <strong>Jawaban Ayaa:</strong> <em>"Kami menerapkan Role-Based Access Control (RBAC). Pelanggan hanya bisa melihat manifes miliknya sendiri di database melalui query filter <code>where('customer_id', $user->id)</code>. Jika pelanggan sengaja mengetik nomor resi pelanggan lain atau membuka URL buat manifes, sistem langsung memblokir dengan kode HTTP 403 Forbidden."</em>
+                    <strong>Jawaban Mahasiswa:</strong> <em>"Kami menerapkan Role-Based Access Control (RBAC). Pelanggan hanya bisa melihat manifes miliknya sendiri di database melalui query filter <code>where('customer_id', $user->id)</code>. Jika pelanggan sengaja mengetik nomor resi pelanggan lain atau membuka URL buat manifes, sistem langsung memblokir dengan kode HTTP 403 Forbidden."</em>
                 </p>
             </div>
 
             <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50 space-y-1 avoid-break">
                 <strong class="text-slate-900 block font-bold">3. Dosen: "Apa keunggulan arsitektur backend yang Anda gunakan?"</strong>
                 <p class="text-slate-700 text-[11px] leading-relaxed">
-                    <strong>Jawaban Ayaa:</strong> <em>"Saya memisahkan logika bisnis menggunakan Service Layer Pattern (seperti ShipmentService, EtaService, dan CurrencyService). Controller hanya bertugas menerima input dan mengembalikan response, sehingga kodingan sangat rapi, mudah dirawat, dan terbukti lolos 18 skenario Automated Unit Testing dengan 75 assertions di GitHub Actions."</em>
+                    <strong>Jawaban Mahasiswa:</strong> <em>"Saya memisahkan logika bisnis menggunakan Service Layer Pattern (seperti ShipmentService, EtaService, dan CurrencyService). Controller hanya bertugas menerima input dan mengembalikan response, sehingga kodingan sangat rapi, mudah dirawat, dan terbukti lolos 18 skenario Automated Unit Testing dengan 75 assertions di GitHub Actions."</em>
                 </p>
             </div>
 
             <div class="p-3.5 rounded-xl border border-slate-200 bg-slate-50 space-y-1 avoid-break">
                 <strong class="text-slate-900 block font-bold">4. Dosen: "Bagaimana sistem memperkirakan keterlambatan kargo?"</strong>
                 <p class="text-slate-700 text-[11px] leading-relaxed">
-                    <strong>Jawaban Ayaa:</strong> <em>"Sistem membandingkan waktu estimasi tiba (ETA) dengan jadwal resmi. Jika terjadi bencana cuaca atau antrean di pelabuhan, operator mencatat 'Exception', dan EtaService secara otomatis mengkalkulasi ulang durasi keterlambatan ke dalam kategori LOW, MEDIUM, atau HIGH, lalu memperbarui radar peta secara otomatis."</em>
+                    <strong>Jawaban Mahasiswa:</strong> <em>"Sistem membandingkan waktu estimasi tiba (ETA) dengan jadwal resmi. Jika terjadi bencana cuaca atau antrean di pelabuhan, operator mencatat 'Exception', dan EtaService secara otomatis mengkalkulasi ulang durasi keterlambatan ke dalam kategori LOW, MEDIUM, atau HIGH, lalu memperbarui radar peta secara otomatis."</em>
                 </p>
             </div>
         </div>

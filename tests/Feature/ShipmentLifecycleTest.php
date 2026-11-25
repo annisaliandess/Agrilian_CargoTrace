@@ -32,7 +32,7 @@ class ShipmentLifecycleTest extends TestCase
         $this->shipmentService = app(ShipmentService::class);
 
         $this->admin = User::create([
-            'name' => 'Ayaa Liandes (Admin)',
+            'name' => 'Annisa Liandes (Admin)',
             'email' => 'admin@test.com',
             'password' => bcrypt('password123'),
             'role' => 'admin',

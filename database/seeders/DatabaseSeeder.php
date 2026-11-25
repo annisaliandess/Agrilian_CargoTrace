@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         $admin = User::firstOrCreate(
             ['email' => 'admin@agrilian.com'],
             [
-                'name' => 'Ayaa Liandes (Admin)',
+                'name' => 'Annisa Liandes (Admin)',
                 'password' => Hash::make('password123'),
                 'role' => 'admin',
             ]

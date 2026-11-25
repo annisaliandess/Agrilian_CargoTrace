@@ -21,7 +21,7 @@ class AuthAndApiTest extends TestCase
         parent::setUp();
 
         $this->admin = User::create([
-            'name' => 'Ayaa Liandes (Admin)',
+            'name' => 'Annisa Liandes (Admin)',
             'email' => 'admin@agrilian.com',
             'password' => bcrypt('password123'),
             'role' => 'admin',

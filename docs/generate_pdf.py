@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Generator Dokumen PDF Resmi: Buku Panduan & Alur Sistem AgriLian CargoTrace
-Penulis: Annisa Liandes (Ayaa) - NIM 250180123
+Penulis: Annisa Liandes - NIM 250180123
 UAS Pemrograman Web 2 - Universitas Malikussaleh
 """
 
@@ -192,7 +192,7 @@ def build_pdf(filename="D:/Projects/cargotrace/docs/Buku_Panduan_Alur_AgriLian_C
     author_info = [
         [
             Paragraph("<b>Nama Mahasiswa:</b>", style_table_cell),
-            Paragraph("Annisa Liandes (Ayaa)", style_table_cell),
+            Paragraph("Annisa Liandes", style_table_cell),
             Paragraph("<b>Program Studi:</b>", style_table_cell),
             Paragraph("Teknik Informatika", style_table_cell)
         ],
@@ -333,7 +333,7 @@ def build_pdf(filename="D:/Projects/cargotrace/docs/Buku_Panduan_Alur_AgriLian_C
         ],
         [
             Paragraph("<b>Admin Sistem</b><br/>(Super Administrator)", style_table_cell),
-            Paragraph("admin@agrilian.com<br/><i>(Ayaa Liandes)</i>", style_table_cell),
+            Paragraph("admin@agrilian.com<br/><i>(Annisa Liandes)</i>", style_table_cell),
             Paragraph("Melihat dasbor kontrol radar global, grafik status kargo donat, grafik tonase bar, peta sebaran GIS, telemetri cuaca, dan audit log lengkap.", style_table_cell),
             Paragraph("Akses penuh ke seluruh modul sistem.", style_table_cell)
         ],
@@ -370,7 +370,7 @@ def build_pdf(filename="D:/Projects/cargotrace/docs/Buku_Panduan_Alur_AgriLian_C
     story.append(Paragraph("2.1 Alur Pengembalian Barang & Klaim Mutu bagi Pelanggan", style_h2))
     claim_box = [[
         Paragraph(
-            "<b>Pertanyaan Penting Ayaa:</b> <i>\"Apakah pelanggan perlu buat manifes baru, atau pengembalian barang aja cetak resi baru?\"</i><br/>"
+            "<b>Pertanyaan Penting Operasional:</b> <i>\"Apakah pelanggan perlu buat manifes baru, atau pengembalian barang aja cetak resi baru?\"</i><br/>"
             "<b>Penjelasan Ahli:</b> Dalam bisnis ekspor internasional, <b>Pelanggan (Buyer di Amsterdam) TIDAK BOLEH membuat manifes pengiriman baru</b>, "
             "karena manifes adalah dokumen resmi kepabeanan yang diterbitkan gudang pengirim di Takengon.<br/>"
             "Sebagai gantinya, pelanggan disediakan alur <b>Lapor Klaim / Retur Barang (*Quality & Damage Claim*)</b>:<br/>"
@@ -512,26 +512,26 @@ def build_pdf(filename="D:/Projects/cargotrace/docs/Buku_Panduan_Alur_AgriLian_C
     story.append(HRFlowable(width="100%", thickness=1.5, color=C_PINE, spaceAfter=10))
 
     story.append(Paragraph(
-        "Berikut adalah rangkuman tanya-jawab paling krusial yang dapat Ayaa gunakan saat presentasi di hadapan Dosen Penguji:",
+        "Berikut adalah rangkuman tanya-jawab paling krusial yang dapat digunakan saat presentasi di hadapan Dosen Penguji:",
         style_body
     ))
 
     qa_list = [
         (
             "1. Dosen: \"Mengapa sistem Anda disebut Logistik Multimoda? Kenapa tidak pakai truk saja?\"",
-            "Jawaban Ayaa: \"Karena komoditas ini diekspor ke Eropa (Rotterdam). Takengon berada di dataran tinggi Aceh tanpa akses laut, sehingga tahap pertama wajib memakai truk berpendingin (darat). Namun truk tidak bisa menyeberang benua, sehingga di Pelabuhan Belawan muatan dialihkan ke kapal kontainer samudera (laut). Penggabungan dua moda angkutan inilah yang dinamakan logistik multimoda, Pak/Bu.\""
+            "Jawaban Mahasiswa: \"Karena komoditas ini diekspor ke Eropa (Rotterdam). Takengon berada di dataran tinggi Aceh tanpa akses laut, sehingga tahap pertama wajib memakai truk berpendingin (darat). Namun truk tidak bisa menyeberang benua, sehingga di Pelabuhan Belawan muatan dialihkan ke kapal kontainer samudera (laut). Penggabungan dua moda angkutan inilah yang dinamakan logistik multimoda, Pak/Bu.\""
         ),
         (
             "2. Dosen: \"Bagaimana sistem memastikan keamanan data antar pelanggan (data isolation)?\"",
-            "Jawaban Ayaa: \"Kami menerapkan Role-Based Access Control (RBAC). Saat pelanggan login, sistem menyaring kueri database secara otomatis dengan klausa where('customer_id', $user->id). Pelanggan tidak bisa melihat pesanan milik pembeli lain, dan jika sengaja membuka URL buat manifes, sistem langsung memblokir dengan kode HTTP 403 Forbidden.\""
+            "Jawaban Mahasiswa: \"Kami menerapkan Role-Based Access Control (RBAC). Saat pelanggan login, sistem menyaring kueri database secara otomatis dengan klausa where('customer_id', $user->id). Pelanggan tidak bisa melihat pesanan milik pembeli lain, dan jika sengaja membuka URL buat manifes, sistem langsung memblokir dengan kode HTTP 403 Forbidden.\""
         ),
         (
             "3. Dosen: \"Mengapa Anda memilih Leaflet.js daripada Google Maps?\"",
-            "Jawaban Ayaa: \"Leaflet.js menggunakan pustaka sumber terbuka (OpenStreetMap) yang ringan, cepat, dan 100% gratis tanpa memerlukan kartu kredit atau batasan kuota tagihan API seperti Google Maps, sehingga sangat ideal dan mandiri untuk proyek sistem informasi logistik.\""
+            "Jawaban Mahasiswa: \"Leaflet.js menggunakan pustaka sumber terbuka (OpenStreetMap) yang ringan, cepat, dan 100% gratis tanpa memerlukan kartu kredit atau batasan kuota tagihan API seperti Google Maps, sehingga sangat ideal dan mandiri untuk proyek sistem informasi logistik.\""
         ),
         (
             "4. Dosen: \"Bagaimana Anda menguji bahwa sistem ini bebas bug sebelum ujian?\"",
-            "Jawaban Ayaa: \"Saya telah membangun 18 pengujian otomatis (Automated Unit & Feature Tests) dengan 75 assertions di framework PHPUnit. Pengujian ini juga terhubung ke GitHub Actions CI di cloud, sehingga setiap kali ada kode baru di-push, sistem langsung diuji otomatis dan mendapatkan status 'Tests: Passing'.\""
+            "Jawaban Mahasiswa: \"Saya telah membangun 18 pengujian otomatis (Automated Unit & Feature Tests) dengan 75 assertions di framework PHPUnit. Pengujian ini juga terhubung ke GitHub Actions CI di cloud, sehingga setiap kali ada kode baru di-push, sistem langsung diuji otomatis dan mendapatkan status 'Tests: Passing'.\""
         )
     ]
 

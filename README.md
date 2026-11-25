@@ -10,7 +10,7 @@
 [![Tests Passing](https://img.shields.io/badge/Tests-18%20Passed%20(75%20Assertions)-brightgreen.svg)]()
 
 > **Final Project (UAS) - Web Programming 2**  
-> **Author:** Annisa Liandes (Ayaa)  
+> **Author:** Annisa Liandes  
 > **Student ID / NIM:** 250180123  
 > **Institution:** Universitas Malikussaleh (Unimal), Aceh  
 
