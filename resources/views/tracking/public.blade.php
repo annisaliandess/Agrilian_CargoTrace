@@ -18,8 +18,8 @@
         
         <!-- Subtle directional shading for text readability WITHOUT green tint over the whole photo -->
         <!-- On left: deep dark shadow so text is crisp and readable. On right: transparent so photo is completely visible! -->
-        <div class="absolute inset-0 bg-gradient-to-r from-[#11180D] via-[#11180D]/80 via-45% to-transparent pointer-events-none"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-[#11180D]/80 via-transparent to-black/30 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 via-50% to-transparent pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/30 pointer-events-none"></div>
 
         <div class="w-full relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -27,8 +27,8 @@
                 <!-- Left 7 Cols: Text, Search, Badges -->
                 <div class="lg:col-span-7 space-y-5">
                     <!-- Pill Badge -->
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-[#11180D]/80 text-[#E7F5DC] border border-[#B6C99B]/40 backdrop-blur-md shadow-xs font-mono">
-                        <span class="w-2 h-2 rounded-full bg-[#CFE1B9] animate-pulse"></span>
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-black/60 text-emerald-300 border border-emerald-500/30 backdrop-blur-md shadow-xs font-mono">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                         <span>{{ $isEn ? 'Highland Gayo Logistics & Multimodal Corridors' : 'Logistik Dataran Tinggi Gayo & Koridor Multimoda' }}</span>
                     </div>
 
@@ -37,21 +37,21 @@
                         {{ $isEn ? 'Highland Agro Cargo Visibility from Takengon to the World' : 'Visibilitas Pengiriman Kargo Dataran Tinggi Takengon ke Seluruh Dunia' }}
                     </h1>
 
-                    <p class="text-xs sm:text-sm text-[#CFE1B9] leading-relaxed max-w-xl font-normal drop-shadow-xs">
+                    <p class="text-xs sm:text-sm text-slate-200 leading-relaxed max-w-xl font-normal drop-shadow-xs">
                         {{ $isEn ? 'Real-time telemetry tracking for Gayo coffee & fresh commodities, route climate intelligence, and seamless multimodal checkpoints from Aceh highlands to global seaports.' : 'Pelacakan telemetri langsung untuk kopi Gayo & komoditas segar, pemantauan cuaca jalur pegunungan, dan kepatuhan pabean dari Aceh Tengah ke pelabuhan tujuan dunia.' }}
                     </p>
 
                     <!-- Search Form -->
-                    <form action="{{ route('track.public') }}" method="GET" class="flex flex-col sm:flex-row gap-2 max-w-lg p-1.5 rounded-2xl bg-[#11180D]/80 backdrop-blur-md border border-[#B6C99B]/40 shadow-2xl">
+                    <form action="{{ route('track.public') }}" method="GET" class="flex flex-col sm:flex-row gap-2 max-w-lg p-1.5 rounded-2xl bg-black/60 backdrop-blur-md border border-white/20 shadow-2xl">
                         <div class="relative flex-1">
                             <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                             </div>
                             <input type="text" name="tracking_number" value="{{ $query ?? 'AGLN-2026-GY001' }}" 
                                    placeholder="{{ $isEn ? 'Enter waybill number...' : 'Masukkan nomor resi kargo...' }}"
-                                   class="w-full pl-10 pr-3 py-2.5 rounded-xl border-0 bg-white text-slate-900 placeholder-slate-400 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-[#728156] transition-all shadow-sm">
+                                   class="w-full pl-10 pr-3 py-2.5 rounded-xl border-0 bg-white text-slate-900 placeholder-slate-400 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all shadow-sm">
                         </div>
-                        <button type="submit" class="btn-brand-accent px-6 py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 cursor-pointer shadow-md shrink-0">
+                        <button type="submit" class="px-6 py-2.5 rounded-xl text-xs font-bold text-white flex items-center justify-center gap-2 cursor-pointer shadow-lg bg-gradient-to-r from-[#2D6A4F] to-[#1B4332] hover:from-[#1B4332] hover:to-[#081C15] border border-emerald-400/30 transition-all shrink-0">
                             <span>{{ $isEn ? 'Track Cargo' : 'Lacak Kargo' }}</span>
                             <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         </button>
@@ -59,16 +59,16 @@
 
                     <!-- Quick Samples & Live Pills -->
                     <div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
-                        <span class="text-[#B6C99B] font-mono text-[11px]">{{ $isEn ? 'Sample Waybill:' : 'Contoh Resi Cepat:' }}</span>
-                        <a href="{{ route('track.public', 'AGLN-2026-GY001') }}" class="px-2.5 py-1 rounded-lg bg-[#11180D]/80 hover:bg-[#1D2617] text-[#E7F5DC] transition-colors border border-[#B6C99B]/30 font-mono text-xs flex items-center gap-1.5 shadow-2xs backdrop-blur-xs">
+                        <span class="text-slate-300 font-mono text-[11px] font-medium">{{ $isEn ? 'Sample Waybill:' : 'Contoh Resi Cepat:' }}</span>
+                        <a href="{{ route('track.public', 'AGLN-2026-GY001') }}" class="px-2.5 py-1 rounded-lg bg-black/55 hover:bg-black/75 text-white transition-colors border border-white/20 hover:border-emerald-400/50 font-mono text-xs flex items-center gap-1.5 shadow-2xs backdrop-blur-xs">
                             <span class="font-bold">AGLN-2026-GY001</span>
-                            <span class="text-[#CFE1B9]">&bull;</span>
-                            <span class="text-[11px] text-[#CFE1B9]">{{ $isEn ? 'Gayo Coffee (Rotterdam)' : 'Kopi Gayo (Rotterdam)' }}</span>
+                            <span class="text-slate-500">&bull;</span>
+                            <span class="text-[11px] text-emerald-300 font-medium">{{ $isEn ? 'Gayo Coffee (Rotterdam)' : 'Kopi Gayo (Rotterdam)' }}</span>
                         </a>
-                        <a href="{{ route('track.public', 'AGLN-2026-GY002') }}" class="px-2.5 py-1 rounded-lg bg-[#11180D]/80 hover:bg-[#1D2617] text-[#E7F5DC] transition-colors border border-[#B6C99B]/30 font-mono text-xs hidden sm:flex items-center gap-1.5 shadow-2xs backdrop-blur-xs">
+                        <a href="{{ route('track.public', 'AGLN-2026-GY002') }}" class="px-2.5 py-1 rounded-lg bg-black/55 hover:bg-black/75 text-white transition-colors border border-white/20 hover:border-emerald-400/50 font-mono text-xs hidden sm:flex items-center gap-1.5 shadow-2xs backdrop-blur-xs">
                             <span class="font-bold">AGLN-2026-GY002</span>
-                            <span class="text-[#CFE1B9]">&bull;</span>
-                            <span class="text-[11px] text-[#CFE1B9]">{{ $isEn ? 'Avocado (Singapore)' : 'Alpukat (Singapura)' }}</span>
+                            <span class="text-slate-500">&bull;</span>
+                            <span class="text-[11px] text-emerald-300 font-medium">{{ $isEn ? 'Avocado (Singapore)' : 'Alpukat (Singapura)' }}</span>
                         </a>
                     </div>
                 </div>
@@ -77,34 +77,34 @@
                 <div class="lg:col-span-5 flex flex-col items-start lg:items-end gap-3.5 pt-4 lg:pt-0">
                     
                     <!-- Floating Badge 1: Central Hub Pulse -->
-                    <div class="bg-[#11180D]/85 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-[#B6C99B]/40 text-white shadow-xl flex items-center gap-3">
+                    <div class="bg-black/60 backdrop-blur-xl px-4 py-2.5 rounded-2xl border border-white/15 text-white shadow-xl flex items-center gap-3">
                         <span class="relative flex h-3 w-3">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
                         </span>
                         <div>
-                            <div class="text-[10px] font-mono text-[#B6C99B] font-bold uppercase tracking-wider">Pusat Operasional</div>
+                            <div class="text-[10px] font-mono text-emerald-400 font-bold uppercase tracking-wider">Pusat Operasional</div>
                             <div class="text-xs font-bold text-white">Takengon Central Hub Online</div>
                         </div>
                     </div>
 
                     <!-- Floating Badge 2: Telemetry Card -->
-                    <div class="bg-[#11180D]/85 backdrop-blur-md p-4 rounded-2xl border border-[#B6C99B]/40 text-white shadow-2xl w-full max-w-xs space-y-3">
+                    <div class="bg-black/60 backdrop-blur-xl p-4 rounded-2xl border border-white/15 text-white shadow-2xl w-full max-w-xs space-y-3">
                         <div class="flex items-center justify-between pb-2 border-b border-white/10 text-xs">
-                            <span class="text-[11px] font-mono text-[#B6C99B] font-bold uppercase">Koridor Multimoda</span>
-                            <span class="text-[11px] font-mono text-[#CFE1B9] font-bold">Aktif 24/7</span>
+                            <span class="text-[11px] font-mono text-slate-300 font-bold uppercase">Koridor Multimoda</span>
+                            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-500/30">Aktif 24/7</span>
                         </div>
                         <div class="space-y-1.5 text-xs">
                             <div class="flex items-center justify-between">
-                                <span class="text-slate-300">Rute Ekspor:</span>
-                                <span class="font-bold text-[#E7F5DC]">Gayo &rarr; Belawan &rarr; Eropa</span>
+                                <span class="text-slate-400">Rute Ekspor:</span>
+                                <span class="font-bold text-slate-100">Gayo &rarr; Belawan &rarr; Eropa</span>
                             </div>
                             <div class="flex items-center justify-between">
-                                <span class="text-slate-300">Rantai Dingin:</span>
-                                <span class="font-mono font-bold text-emerald-300">4°C - 8°C Verified</span>
+                                <span class="text-slate-400">Rantai Dingin:</span>
+                                <span class="font-mono font-bold text-emerald-400">4°C - 8°C Verified</span>
                             </div>
                             <div class="flex items-center justify-between">
-                                <span class="text-slate-300">Satelit Jalur Km 48:</span>
+                                <span class="text-slate-400">Satelit Jalur Km 48:</span>
                                 <span class="font-bold text-amber-200">Cerah Berawan (24°C)</span>
                             </div>
                         </div>
@@ -699,7 +699,7 @@
                             <img src="{{ asset('images/avocado.jpg') }}" alt="Alpukat Mentega Gayo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                             <div class="absolute bottom-3 left-3 text-white">
-                                <span class="text-[10px] font-mono text-[#CFE1B9] font-bold uppercase">Koridor 02 &bull; Hortikultura Segar</span>
+                                <span class="text-[10px] font-mono text-emerald-300 font-bold uppercase">Koridor 02 &bull; Hortikultura Segar</span>
                                 <h4 class="text-sm font-extrabold text-white">Alpukat Mentega Dataran Tinggi</h4>
                             </div>
                             <div class="absolute top-3 right-3">
@@ -719,7 +719,7 @@
                             <img src="{{ asset('images/multimodal-port.jpg') }}" alt="Terminal Pelabuhan Belawan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                             <div class="absolute bottom-3 left-3 text-white">
-                                <span class="text-[10px] font-mono text-[#CFE1B9] font-bold uppercase">Infrastruktur Ekspor</span>
+                                <span class="text-[10px] font-mono text-emerald-300 font-bold uppercase">Infrastruktur Ekspor</span>
                                 <h4 class="text-sm font-extrabold text-white">Terminal Petikemas Samudera</h4>
                             </div>
                             <div class="absolute top-3 right-3">
@@ -738,16 +738,16 @@
             </div>
 
             <!-- 3. Kotak Gelap Banner (Highland Dark Olive Box #1D2617) -->
-            <div class="rounded-3xl p-7 sm:p-9 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl border border-[#728156]/40 bg-gradient-to-br from-[#11180D] via-[#1D2617] to-[#161F12]">
+            <div class="rounded-3xl p-7 sm:p-9 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl border border-emerald-500/20 bg-gradient-to-br from-[#0B1209] via-[#142010] to-[#0D180A]">
                 <div class="max-w-xl space-y-2">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-semibold bg-[#728156]/30 text-[#E7F5DC] border border-[#B6C99B]/30 font-mono">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[#CFE1B9]"></span>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-semibold bg-emerald-950/80 text-emerald-300 border border-emerald-500/30 font-mono">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
                         <span>{{ $isEn ? 'Enterprise Multimodal Visibility' : 'Sistem Pengiriman Logistik Terpadu' }}</span>
                     </div>
                     <h2 class="text-xl sm:text-2xl font-extrabold text-white leading-tight">
                         {{ $isEn ? 'Highland Agro Cargo Traceability Platform' : 'Platform Pelacakan Pengiriman Kargo Dataran Tinggi Gayo' }}
                     </h2>
-                    <p class="text-xs sm:text-sm text-[#CFE1B9] leading-relaxed">
+                    <p class="text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
                         {{ $isEn ? 'Delivering end-to-end transparency for Gayo coffee and highland agro commodities with temperature sensors, live satellite weather radar, and international customs audit trail.' : 'Menjamin transparansi pengiriman kopi dan komoditas pertanian Gayo dengan pemantauan suhu, satelit cuaca jalur pegunungan, serta dokumen surat jalan digital.' }}
                     </p>
                 </div>
@@ -756,11 +756,11 @@
                         {{ $isEn ? 'Commodities & Fleet' : 'Komoditas & Armada' }}
                     </a>
                     @guest
-                        <a href="{{ route('login') }}" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#E7F5DC] text-[#1D2617] hover:bg-white shadow-md transition-colors">
+                        <a href="{{ route('login') }}" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-white text-[#142010] hover:bg-slate-100 shadow-md transition-colors">
                             {{ $isEn ? 'Sign In to Portal' : 'Masuk ke Portal' }}
                         </a>
                     @else
-                        <a href="{{ route('dashboard') }}" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-[#E7F5DC] text-[#1D2617] hover:bg-white shadow-md transition-colors">
+                        <a href="{{ route('dashboard') }}" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-white text-[#142010] hover:bg-slate-100 shadow-md transition-colors">
                             Dashboard
                         </a>
                     @endguest
