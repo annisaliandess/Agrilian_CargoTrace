@@ -466,6 +466,212 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
+        // Shipment 4: Gayo Natural Honey Process (Takengon -> Belawan, BOOKED)
+        $shipment4 = Shipment::firstOrCreate(
+            ['tracking_number' => 'AGLN-2026-GY004'],
+            [
+                'customer_id' => $customerKoperasi->id,
+                'carrier_id' => $carrierLiandes->id,
+                'origin_id' => $locTakengon->id,
+                'destination_id' => $locBelawan->id,
+                'cargo_type' => 'Gayo Natural Honey Process Specialty Arabica (Lot #GY-HNY04)',
+                'weight_kg' => 10000.00,
+                'volume_cbm' => 18.50,
+                'expected_departure' => Carbon::parse('2026-11-28 08:00:00'),
+                'expected_arrival' => Carbon::parse('2026-11-30 18:00:00'),
+                'estimated_arrival' => Carbon::parse('2026-11-30 18:00:00'),
+                'status' => 'BOOKED',
+                'is_delayed' => false,
+                'delay_duration_hours' => 0,
+                'delay_severity' => 'NONE',
+                'delay_reason' => null,
+                'current_location_id' => $locTakengon->id,
+            ]
+        );
+
+        ShipmentItem::firstOrCreate(
+            ['shipment_id' => $shipment4->id, 'item_name' => 'Highland Yellow Honey Arabica Green Beans'],
+            [
+                'quantity' => 160,
+                'weight_kg' => 10000.00,
+                'package_type' => 'GrainPro Hermetic Bag in Jute 62.5kg',
+                'description' => 'Sweet floral profile, altitude 1,550m ASL, moisture 11.2%, moisture-lock verified.',
+            ]
+        );
+
+        TrackingEvent::firstOrCreate(
+            [
+                'shipment_id' => $shipment4->id,
+                'status' => 'BOOKED',
+                'event_time' => Carbon::parse('2026-11-27 10:00:00'),
+            ],
+            [
+                'location_id' => $locTakengon->id,
+                'latitude' => 4.6293,
+                'longitude' => 96.8458,
+                'description' => 'Container booking confirmed. Scheduled for inland convoy departure via Bireuen.',
+                'created_by' => $operatorGayo->id,
+            ]
+        );
+
+        // Shipment 5: Highland Fresh Passion Fruit & Tamarillo (Takengon -> KNO -> Singapore, PICKED_UP)
+        $shipment5 = Shipment::firstOrCreate(
+            ['tracking_number' => 'AGLN-2026-GY005'],
+            [
+                'customer_id' => $customerSingapore->id,
+                'carrier_id' => $carrierLiandes->id,
+                'origin_id' => $locTakengon->id,
+                'destination_id' => $locSingapore->id,
+                'cargo_type' => 'Highland Fresh Passion Fruit (Markisa) & Tamarillo (Terong Belanda)',
+                'weight_kg' => 2800.00,
+                'volume_cbm' => 8.20,
+                'expected_departure' => Carbon::parse('2026-11-27 06:00:00'),
+                'expected_arrival' => Carbon::parse('2026-11-29 12:00:00'),
+                'estimated_arrival' => Carbon::parse('2026-11-29 12:00:00'),
+                'status' => 'PICKED_UP',
+                'is_delayed' => false,
+                'delay_duration_hours' => 0,
+                'delay_severity' => 'NONE',
+                'delay_reason' => null,
+                'current_location_id' => $locTakengon->id,
+            ]
+        );
+
+        ShipmentItem::firstOrCreate(
+            ['shipment_id' => $shipment5->id, 'item_name' => 'Takengon Sweet Golden Passion Fruit'],
+            [
+                'quantity' => 140,
+                'weight_kg' => 2800.00,
+                'package_type' => 'Ventilated Reefer Carton 20kg',
+                'description' => 'Grade A highland fresh fruits maintained at 8°C cold chain.',
+            ]
+        );
+
+        TrackingEvent::firstOrCreate(
+            [
+                'shipment_id' => $shipment5->id,
+                'status' => 'PICKED_UP',
+                'event_time' => Carbon::parse('2026-11-27 07:30:00'),
+            ],
+            [
+                'location_id' => $locTakengon->id,
+                'latitude' => 4.6293,
+                'longitude' => 96.8458,
+                'description' => 'Reefer truck loaded at Bebesen packing facility, moving towards Bireuen checkpoint.',
+                'created_by' => $operatorGayo->id,
+            ]
+        );
+
+        // Shipment 6: Organic Certified Fairtrade Gayo Mandheling (Takengon -> Rotterdam, DELIVERED)
+        $shipment6 = Shipment::firstOrCreate(
+            ['tracking_number' => 'AGLN-2026-GY006'],
+            [
+                'customer_id' => $customerAmsterdam->id,
+                'carrier_id' => $carrierMaersk->id,
+                'origin_id' => $locTakengon->id,
+                'destination_id' => $locRotterdam->id,
+                'cargo_type' => 'Organic Certified Fairtrade Gayo Mandheling Blend (Batch #ORG-77)',
+                'weight_kg' => 21500.00,
+                'volume_cbm' => 40.00,
+                'expected_departure' => Carbon::parse('2026-10-15 08:00:00'),
+                'expected_arrival' => Carbon::parse('2026-11-20 16:00:00'),
+                'estimated_arrival' => Carbon::parse('2026-11-20 14:00:00'),
+                'status' => 'DELIVERED',
+                'is_delayed' => false,
+                'delay_duration_hours' => 0,
+                'delay_severity' => 'NONE',
+                'delay_reason' => null,
+                'current_location_id' => $locRotterdam->id,
+            ]
+        );
+
+        ShipmentItem::firstOrCreate(
+            ['shipment_id' => $shipment6->id, 'item_name' => 'Organic Grade 1 Gayo Green Beans'],
+            [
+                'quantity' => 350,
+                'weight_kg' => 21500.00,
+                'package_type' => 'GrainPro Hermetic Bag in Jute 60kg',
+                'description' => 'European Union Organic Certification (EU-Bio) verified.',
+            ]
+        );
+
+        TrackingEvent::firstOrCreate(
+            [
+                'shipment_id' => $shipment6->id,
+                'status' => 'DELIVERED',
+                'event_time' => Carbon::parse('2026-11-20 14:00:00'),
+            ],
+            [
+                'location_id' => $locRotterdam->id,
+                'latitude' => 51.9547,
+                'longitude' => 4.0322,
+                'description' => 'Container discharged at Rotterdam Maasvlakte terminal and released by Dutch customs.',
+                'created_by' => $admin->id,
+            ]
+        );
+
+        // Shipment 7: Gayo Washed Super Green Beans (Belawan -> Singapore, IN_TRANSIT with Customs Hold Delay)
+        $shipment7 = Shipment::firstOrCreate(
+            ['tracking_number' => 'AGLN-2026-GY007'],
+            [
+                'customer_id' => $customerKoperasi->id,
+                'carrier_id' => $carrierSamudera->id,
+                'origin_id' => $locTakengon->id,
+                'destination_id' => $locSingapore->id,
+                'cargo_type' => 'Gayo Washed Grade 1 Super Green Beans (Container #AGLN-U8831)',
+                'weight_kg' => 14000.00,
+                'volume_cbm' => 26.00,
+                'expected_departure' => Carbon::parse('2026-11-24 09:00:00'),
+                'expected_arrival' => Carbon::parse('2026-11-28 16:00:00'),
+                'estimated_arrival' => Carbon::parse('2026-11-29 04:00:00'),
+                'status' => 'IN_TRANSIT',
+                'is_delayed' => true,
+                'delay_duration_hours' => 12,
+                'delay_severity' => 'MEDIUM',
+                'delay_reason' => 'Port of Belawan phytosanitary re-inspection queue clearance',
+                'current_location_id' => $locBelawan->id,
+            ]
+        );
+
+        ShipmentItem::firstOrCreate(
+            ['shipment_id' => $shipment7->id, 'item_name' => 'Washed Specialty Gayo Arabica Beans'],
+            [
+                'quantity' => 230,
+                'weight_kg' => 14000.00,
+                'package_type' => 'GrainPro Hermetic Bag in Jute 60kg',
+                'description' => 'Clean cup, citrus acidity, SCA 86.5, moisture 11.5%.',
+            ]
+        );
+
+        TrackingEvent::firstOrCreate(
+            [
+                'shipment_id' => $shipment7->id,
+                'status' => 'IN_TRANSIT',
+                'event_time' => Carbon::parse('2026-11-26 15:00:00'),
+            ],
+            [
+                'location_id' => $locBelawan->id,
+                'latitude' => 3.7844,
+                'longitude' => 98.6833,
+                'description' => 'Vessel moored at Belawan terminal berth 04 awaiting customs phytosanitary clearance certificate.',
+                'created_by' => $operatorBelawan->id,
+            ]
+        );
+
+        // Exception 2 for Shipment 7
+        ShipmentException::firstOrCreate(
+            ['shipment_id' => $shipment7->id, 'exception_type' => 'PORT_CONGESTION'],
+            [
+                'severity' => 'MEDIUM',
+                'status' => 'OPEN',
+                'description' => 'Agricultural Quarantine inspection terminal backlog at Belawan port. Re-verification scheduled. Estimated delay 12 hours.',
+                'detected_at' => Carbon::parse('2026-11-26 16:00:00'),
+                'resolved_at' => null,
+                'resolution_notes' => 'Expedited documentation submitted by AgriLian customs liaison team.',
+                'reported_by' => $operatorBelawan->id,
+            ]
+        );
+
         // Notifications
         Notification::firstOrCreate(
             ['title' => 'Highland Weather Alert: Shipment AGLN-2026-GY003 Delayed'],
