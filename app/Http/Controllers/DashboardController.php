@@ -129,7 +129,7 @@ class DashboardController extends Controller
     {
         Notification::where('user_id', Auth::id())
             ->where('is_read', false)
-            ->update(['is_read' => true, 'read_at' => now()]);
+            ->update(['is_read' => true]);
 
         $msg = app()->getLocale() === 'en' 
             ? 'All notifications have been marked as read.' 
