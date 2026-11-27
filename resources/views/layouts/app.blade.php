@@ -290,37 +290,54 @@
                             </a>
                         @endif
 
-                        <!-- 3. Daftar Pengiriman -->
-                        <a href="{{ route('shipments.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs font-semibold transition-all group {{ (request()->routeIs('shipments.index') || request()->routeIs('shipments.show')) && !request()->routeIs('shipments.create') ? 'bg-gradient-to-r from-[#728156] to-[#5F6D46] text-white shadow-md shadow-black/20 border border-[#88976C]/60 font-bold' : 'text-[#CFE1B9] hover:text-white hover:bg-white/10' }}">
-                            <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 {{ (request()->routeIs('shipments.index') || request()->routeIs('shipments.show')) && !request()->routeIs('shipments.create') ? 'bg-white/20 text-white' : 'bg-white/5 text-[#CFE1B9] group-hover:bg-white/10 group-hover:text-white' }} transition-colors">
+                        <!-- 3. Daftar Pengiriman (Shipments) -->
+                        <a href="{{ route('shipments.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs font-semibold transition-all group {{ (request()->routeIs('shipments.index') || request()->routeIs('shipments.show')) && !request()->routeIs('shipments.create') && !request('delayed') ? 'bg-gradient-to-r from-[#728156] to-[#5F6D46] text-white shadow-md shadow-black/20 border border-[#88976C]/60 font-bold' : 'text-[#CFE1B9] hover:text-white hover:bg-white/10' }}">
+                            <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 {{ (request()->routeIs('shipments.index') || request()->routeIs('shipments.show')) && !request()->routeIs('shipments.create') && !request('delayed') ? 'bg-white/20 text-white' : 'bg-white/5 text-[#CFE1B9] group-hover:bg-white/10 group-hover:text-white' }} transition-colors">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
                             </div>
-                            <span>{{ app()->getLocale() === 'en' ? 'Shipment List' : 'Daftar Pengiriman' }}</span>
-                            @if((request()->routeIs('shipments.index') || request()->routeIs('shipments.show')) && !request()->routeIs('shipments.create'))
+                            <span>{{ app()->getLocale() === 'en' ? 'Shipments' : 'Daftar Pengiriman' }}</span>
+                            @if((request()->routeIs('shipments.index') || request()->routeIs('shipments.show')) && !request()->routeIs('shipments.create') && !request('delayed'))
                                 <span class="w-1.5 h-1.5 rounded-full bg-[#E7F5DC] ml-auto animate-pulse"></span>
                             @endif
                         </a>
 
-                        <!-- 4. Komoditas & Armada -->
+                        <!-- 4. Pelacakan Waybill (Tracking) -->
+                        <a href="{{ route('track.public') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs font-semibold transition-all group {{ request()->routeIs('track.public') ? 'bg-gradient-to-r from-[#728156] to-[#5F6D46] text-white shadow-md shadow-black/20 border border-[#88976C]/60 font-bold' : 'text-[#CFE1B9] hover:text-white hover:bg-white/10' }}">
+                            <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 {{ request()->routeIs('track.public') ? 'bg-white/20 text-white' : 'bg-white/5 text-[#CFE1B9] group-hover:bg-white/10 group-hover:text-white' }} transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                            </div>
+                            <span>{{ app()->getLocale() === 'en' ? 'Tracking' : 'Pelacakan Waybill' }}</span>
+                            @if(request()->routeIs('track.public'))
+                                <span class="w-1.5 h-1.5 rounded-full bg-[#E7F5DC] ml-auto animate-pulse"></span>
+                            @endif
+                        </a>
+
+                        <!-- 5. Kendala Kargo (Exceptions - Matching Slide) -->
+                        <a href="{{ route('shipments.index', ['delayed' => 1]) }}" class="flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs font-semibold transition-all group {{ request('delayed') ? 'bg-gradient-to-r from-[#728156] to-[#5F6D46] text-white shadow-md shadow-black/20 border border-[#88976C]/60 font-bold' : 'text-[#CFE1B9] hover:text-white hover:bg-white/10' }}">
+                            <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 {{ request('delayed') ? 'bg-white/20 text-white' : 'bg-white/5 text-[#CFE1B9] group-hover:bg-white/10 group-hover:text-white' }} transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                            </div>
+                            <span class="flex-1">{{ app()->getLocale() === 'en' ? 'Exceptions' : 'Kendala Kargo' }}</span>
+                            <span class="text-[9px] font-mono font-bold bg-rose-500/30 text-rose-200 px-1.5 py-0.5 rounded-md border border-rose-400/40">Alert</span>
+                        </a>
+
+                        <!-- 6. Armada Ekspedisi (Carriers - Matching Slide) -->
                         <a href="{{ route('commodities.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs font-semibold transition-all group {{ request()->routeIs('commodities.index') ? 'bg-gradient-to-r from-[#728156] to-[#5F6D46] text-white shadow-md shadow-black/20 border border-[#88976C]/60 font-bold' : 'text-[#CFE1B9] hover:text-white hover:bg-white/10' }}">
                             <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 {{ request()->routeIs('commodities.index') ? 'bg-white/20 text-white' : 'bg-white/5 text-[#CFE1B9] group-hover:bg-white/10 group-hover:text-white' }} transition-colors">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>
                             </div>
-                            <span>{{ app()->getLocale() === 'en' ? 'Commodities & Fleet' : 'Komoditas & Armada' }}</span>
+                            <span>{{ app()->getLocale() === 'en' ? 'Carriers' : 'Armada Ekspedisi' }}</span>
                             @if(request()->routeIs('commodities.index'))
                                 <span class="w-1.5 h-1.5 rounded-full bg-[#E7F5DC] ml-auto animate-pulse"></span>
                             @endif
                         </a>
 
-                        <!-- 5. Pelacakan Waybill -->
-                        <a href="{{ route('track.public') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs font-semibold transition-all group {{ request()->routeIs('track.public') ? 'bg-gradient-to-r from-[#728156] to-[#5F6D46] text-white shadow-md shadow-black/20 border border-[#88976C]/60 font-bold' : 'text-[#CFE1B9] hover:text-white hover:bg-white/10' }}">
-                            <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 {{ request()->routeIs('track.public') ? 'bg-white/20 text-white' : 'bg-white/5 text-[#CFE1B9] group-hover:bg-white/10 group-hover:text-white' }} transition-colors">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        <!-- 7. Laporan & Ekspor (Reports - Matching Slide) -->
+                        <a href="{{ route('shipments.index') }}" class="flex items-center gap-3 px-3 py-2.5 rounded-2xl text-xs font-semibold transition-all group text-[#CFE1B9] hover:text-white hover:bg-white/10">
+                            <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 bg-white/5 text-[#CFE1B9] group-hover:bg-white/10 group-hover:text-white transition-colors">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                             </div>
-                            <span>{{ app()->getLocale() === 'en' ? 'Track Waybill' : 'Pelacakan Waybill' }}</span>
-                            @if(request()->routeIs('track.public'))
-                                <span class="w-1.5 h-1.5 rounded-full bg-[#E7F5DC] ml-auto animate-pulse"></span>
-                            @endif
+                            <span>{{ app()->getLocale() === 'en' ? 'Reports' : 'Laporan & Ekspor' }}</span>
                         </a>
                     </nav>
                 </div>

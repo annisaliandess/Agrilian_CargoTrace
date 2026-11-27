@@ -77,7 +77,7 @@
     <!-- ======================================================== -->
     <!-- 2. INTERACTIVE EXECUTIVE BENTO KPI METRICS               -->
     <!-- ======================================================== -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4">
         
         <!-- Metric 1: Total Pengiriman (Bento Sage & Olive) -->
         <a href="{{ route('shipments.index') }}" title="{{ $isEn ? 'Click to view all shipments' : 'Klik untuk melihat seluruh pengiriman' }}"
@@ -147,16 +147,16 @@
         </a>
 
         <!-- Metric 4: Peringatan Jalur (Bento Highland Amber Alert) -->
-        <a href="{{ route('shipments.index') }}" title="{{ $isEn ? 'Check route weather alerts' : 'Periksa mitigasi peringatan jalur' }}"
+        <a href="{{ route('shipments.index', ['delayed' => 1]) }}" title="{{ $isEn ? 'Check route weather alerts' : 'Periksa mitigasi peringatan jalur' }}"
            class="bg-gradient-to-br from-white via-[#FFFBEB] to-[#FEF3C7] rounded-3xl p-5 border-2 border-amber-200 shadow-xs hover:shadow-lg hover:-translate-y-1 hover:border-amber-500 transition-all duration-300 group cursor-pointer active:scale-95 flex flex-col justify-between">
             <div>
                 <div class="flex items-center justify-between mb-2">
                     <span class="text-[10px] font-extrabold uppercase font-mono tracking-wider text-amber-900 bg-amber-100 px-2.5 py-1 rounded-full border border-amber-300 shadow-2xs flex items-center gap-1.5">
                         <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping"></span>
-                        <span>{{ $isEn ? 'Route Alerts' : 'Peringatan Jalur' }}</span>
+                        <span>{{ $isEn ? 'Delayed' : 'Peringatan Jalur' }}</span>
                     </span>
                     <div class="w-10 h-10 rounded-2xl bg-amber-500/15 text-amber-700 flex items-center justify-center group-hover:scale-110 group-hover:bg-amber-600 group-hover:text-white transition-all shadow-2xs">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     </div>
                 </div>
                 <div class="text-3xl sm:text-4xl font-black text-amber-700 font-mono tracking-tight mt-2">{{ $delayedCount }}</div>
@@ -167,40 +167,85 @@
             </div>
         </a>
 
+        <!-- Metric 5: Open Exceptions (Bento Rose Alert Matching Slide) -->
+        <a href="{{ route('shipments.index') }}" title="{{ $isEn ? 'Review open cargo exceptions' : 'Periksa kendala kargo yang aktif' }}"
+           class="bg-gradient-to-br from-white via-[#FFF5F5] to-[#FEE2E2] rounded-3xl p-5 border-2 border-rose-200 shadow-xs hover:shadow-lg hover:-translate-y-1 hover:border-rose-500 transition-all duration-300 group cursor-pointer active:scale-95 flex flex-col justify-between">
+            <div>
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-[10px] font-extrabold uppercase font-mono tracking-wider text-rose-900 bg-rose-100 px-2.5 py-1 rounded-full border border-rose-300 shadow-2xs flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping"></span>
+                        <span>{{ $isEn ? 'Open Exceptions' : 'Kendala Terbuka' }}</span>
+                    </span>
+                    <div class="w-10 h-10 rounded-2xl bg-rose-500/15 text-rose-700 flex items-center justify-center group-hover:scale-110 group-hover:bg-rose-600 group-hover:text-white transition-all shadow-2xs">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                    </div>
+                </div>
+                <div class="text-3xl sm:text-4xl font-black text-rose-700 font-mono tracking-tight mt-2">{{ $openExceptionsCount }}</div>
+            </div>
+            <div class="flex items-center justify-between text-[11px] text-rose-900 font-semibold pt-3 mt-3 border-t border-rose-200/80">
+                <span>Status Investigasi</span>
+                <span class="text-rose-700 font-mono font-bold group-hover:translate-x-1 transition-transform flex items-center gap-0.5">Pantau &rarr;</span>
+            </div>
+        </a>
+
     </div>
 
     <!-- ======================================================== -->
     <!-- VISUAL DATA ANALYTICS & CHARTS (Chart.js Role-Adaptive)  -->
     <!-- ======================================================== -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         <!-- Chart 1: Status Distribution Doughnut Chart -->
-        <div class="bg-white/95 rounded-3xl border-2 border-[#CFE1B9] shadow-sm p-6 backdrop-blur-xs">
-            <div class="flex items-center justify-between pb-4 border-b border-[#E7F5DC]">
+        <div class="bg-white/95 rounded-3xl border-2 border-[#CFE1B9] shadow-sm p-5.5 backdrop-blur-xs flex flex-col justify-between">
+            <div class="flex items-center justify-between pb-3.5 border-b border-[#E7F5DC]">
                 <div>
                     <h3 class="text-sm font-bold text-[#1D2617] flex items-center gap-2">
                         <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                        <span>{{ auth()->user()->isCustomer() ? ($isEn ? 'My Cargo Consignment Status' : 'Status Pengiriman Kargo Saya') : ($isEn ? 'Global Cargo Status Distribution' : 'Distribusi Status Kargo Global') }}</span>
+                        <span>{{ auth()->user()->isCustomer() ? ($isEn ? 'My Consignment Status' : 'Status Pengiriman Kargo') : ($isEn ? 'Shipments by Status' : 'Distribusi Status Kargo') }}</span>
                     </h3>
-                    <p class="text-xs text-[#4C5836] mt-0.5">{{ $isEn ? 'Cargo composition across operational logistic stages' : 'Komposisi kargo berdasarkan tahapan operasional logistik' }}</p>
+                    <p class="text-xs text-[#4C5836] mt-0.5">{{ $isEn ? 'Overview of active shipments by status' : 'Komposisi kargo berdasarkan tahapan operasional' }}</p>
                 </div>
-                <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-[#E7F5DC] text-[#384226] border border-[#B6C99B] font-bold">Chart.js Live</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#E7F5DC] text-[#384226] border border-[#B6C99B] font-bold">Chart.js</span>
             </div>
             <div class="mt-4 flex items-center justify-center relative" style="height: 220px;">
                 <canvas id="statusDoughnutChart"></canvas>
             </div>
         </div>
 
-        <!-- Chart 2: Export Volume Bar Chart -->
-        <div class="bg-white/95 rounded-3xl border-2 border-[#CFE1B9] shadow-sm p-6 backdrop-blur-xs">
-            <div class="flex items-center justify-between pb-4 border-b border-[#E7F5DC]">
+        <!-- Chart 2: Delay Rate by Carrier (Matching PPT Slide Specs) -->
+        <div class="bg-white/95 rounded-3xl border-2 border-[#CFE1B9] shadow-sm p-5.5 backdrop-blur-xs flex flex-col justify-between">
+            <div class="flex items-center justify-between pb-3.5 border-b border-[#E7F5DC]">
+                <div>
+                    <h3 class="text-sm font-bold text-[#1D2617] flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                        <span>{{ $isEn ? 'Delay Rate by Carrier' : 'Rasio Delay Armada Ekspedisi' }}</span>
+                    </h3>
+                    <p class="text-xs text-[#4C5836] mt-0.5">{{ $isEn ? 'Distribution of delay rates across carriers' : 'Distribusi persentase keterlambatan per armada' }}</p>
+                </div>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200 font-bold">
+                    {{ $averageDelayRate }}% {{ $isEn ? 'Avg' : 'Rata-rata' }}
+                </span>
+            </div>
+            <div class="mt-4 flex items-center justify-center relative" style="height: 220px;">
+                <canvas id="delayCarrierDoughnutChart"></canvas>
+                <!-- Center Text Overlay -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                    <span class="text-2xl font-black font-mono text-[#1D2617]">{{ $averageDelayRate }}%</span>
+                    <span class="text-[9px] font-bold text-stone-500 uppercase tracking-wider font-mono">{{ $isEn ? 'Avg Delay' : 'Rata Delay' }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart 3: Export Volume Bar Chart -->
+        <div class="bg-white/95 rounded-3xl border-2 border-[#CFE1B9] shadow-sm p-5.5 backdrop-blur-xs flex flex-col justify-between">
+            <div class="flex items-center justify-between pb-3.5 border-b border-[#E7F5DC]">
                 <div>
                     <h3 class="text-sm font-bold text-[#1D2617] flex items-center gap-2">
                         <span class="w-2.5 h-2.5 rounded-full bg-[#728156]"></span>
                         <span>{{ $barTitle }}</span>
                     </h3>
-                    <p class="text-xs text-[#4C5836] mt-0.5">{{ auth()->user()->isCustomer() ? ($isEn ? 'Coffee tonnage comparison per active waybill' : 'Perbandingan tonase kopi per resi aktif') : ($isEn ? 'Total commodity tonnage moving per transport mode' : 'Total tonase komoditas yang bergerak per moda pengangkutan') }}</p>
+                    <p class="text-xs text-[#4C5836] mt-0.5">{{ auth()->user()->isCustomer() ? ($isEn ? 'Tonnage per active waybill' : 'Tonase kopi per nomor resi') : ($isEn ? 'Tonnage per transport mode' : 'Total tonase per moda transportasi') }}</p>
                 </div>
-                <span class="text-[10px] font-mono px-2.5 py-1 rounded-full bg-[#E7F5DC] text-[#384226] border border-[#B6C99B] font-bold">Metric Tonnage</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#E7F5DC] text-[#384226] border border-[#B6C99B] font-bold">Metric Ton</span>
             </div>
             <div class="mt-4 flex items-center justify-center relative" style="height: 220px;">
                 <canvas id="volumeBarChart"></canvas>
@@ -516,18 +561,34 @@
     <!-- 6. RECENT SHIPMENT LIST TABLE (Unified Highland Sage)   -->
     <!-- ======================================================== -->
     <div class="bg-white/95 rounded-3xl border-2 border-[#CFE1B9] shadow-md overflow-hidden backdrop-blur-xs">
-        <div class="flex items-center justify-between p-5 sm:p-6 pb-4 border-b border-[#E7F5DC]">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 sm:p-6 pb-4 border-b border-[#E7F5DC]">
             <div>
                 <h3 class="text-xs font-bold text-[#1D2617] uppercase tracking-wider font-mono flex items-center gap-2">
                     <span class="w-2.5 h-2.5 rounded-full bg-[#728156]"></span>
-                    <span>{{ $isEn ? 'Recent Cargo Shipments' : 'Daftar Pengiriman Kargo Terkini' }}</span>
+                    <span>{{ $isEn ? 'Recent Shipments' : 'Recent Shipments (Pengiriman Terkini)' }}</span>
                 </h3>
-                <p class="text-xs text-[#4C5836] mt-0.5">{{ $isEn ? 'List of consignments currently in transit' : 'Daftar kargo yang sedang dalam proses perjalanan' }}</p>
+                <p class="text-xs text-[#4C5836] mt-0.5">{{ $isEn ? 'Live overview of all shipments' : 'Live overview pemantauan seluruh kargo aktif' }}</p>
             </div>
-            <a href="{{ route('shipments.index') }}" class="px-3.5 py-1.5 rounded-xl bg-[#E7F5DC] hover:bg-[#CFE1B9] text-[#1D2617] border border-[#B6C99B] text-xs font-bold flex items-center gap-1.5 transition-all shadow-2xs active:scale-95">
-                <span>{{ $isEn ? 'View All Shipments' : 'Lihat Semua Pengiriman' }}</span>
-                <span>&rarr;</span>
-            </a>
+            <div class="flex items-center gap-2">
+                <!-- Filter Button (Matching Slide TV Specs) -->
+                <a href="{{ route('shipments.index') }}" title="{{ $isEn ? 'Filter shipments' : 'Filter pengiriman' }}"
+                   class="px-3 py-1.5 rounded-xl bg-white hover:bg-[#E7F5DC] text-slate-700 border border-[#CFE1B9] text-xs font-bold flex items-center gap-1.5 transition-all shadow-2xs active:scale-95">
+                    <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+                    <span>Filter</span>
+                </a>
+
+                <!-- Export Button (Matching Slide TV Specs) -->
+                <a href="{{ route('shipments.index') }}" title="{{ $isEn ? 'Export shipment data' : 'Export data pengiriman' }}"
+                   class="px-3 py-1.5 rounded-xl bg-white hover:bg-[#E7F5DC] text-slate-700 border border-[#CFE1B9] text-xs font-bold flex items-center gap-1.5 transition-all shadow-2xs active:scale-95">
+                    <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    <span>Export</span>
+                </a>
+
+                <a href="{{ route('shipments.index') }}" class="px-3.5 py-1.5 rounded-xl bg-[#E7F5DC] hover:bg-[#CFE1B9] text-[#1D2617] border border-[#B6C99B] text-xs font-bold flex items-center gap-1.5 transition-all shadow-2xs active:scale-95">
+                    <span>{{ $isEn ? 'View All' : 'Lihat Semua' }}</span>
+                    <span>&rarr;</span>
+                </a>
+            </div>
         </div>
 
         <div class="overflow-x-auto">
@@ -728,7 +789,46 @@
             });
         }
 
-        // 2. Chart.js: Role-Adaptive Volume Bar Chart
+        // 2. Chart.js: Delay Rate by Carrier Doughnut Chart (Slide TV Requirement)
+        const ctxDelay = document.getElementById('delayCarrierDoughnutChart');
+        if (ctxDelay) {
+            new Chart(ctxDelay, {
+                type: 'doughnut',
+                data: {
+                    labels: @json($carrierDelayLabels),
+                    datasets: [{
+                        data: @json($carrierDelayData),
+                        backgroundColor: ['#F97316', '#0284C7', '#10B981', '#6366F1', '#EC4899'],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: { family: 'Plus Jakarta Sans', size: 10, weight: 'bold' },
+                                padding: 8,
+                                boxWidth: 10
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ' ' + context.label + ': ' + context.parsed + '% delay';
+                                }
+                            }
+                        }
+                    },
+                    cutout: '72%'
+                }
+            });
+        }
+
+        // 3. Chart.js: Role-Adaptive Volume Bar Chart
         const ctxBar = document.getElementById('volumeBarChart');
         if (ctxBar) {
             new Chart(ctxBar, {
